@@ -40,6 +40,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         self.viewControllers = [tabOne, tabTwo, tabThree, tabFour, tabFive]
         self.selectedIndex = 0
+        
      
         if(!UserDefaults.standard.bool(forKey: "isFirst")){
             loadTutorialScreen()

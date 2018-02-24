@@ -59,7 +59,7 @@ class GoalSettingViewController: UIViewController {
     }
     
     @IBAction func finishGoalSetting(_ sender: UIButton) {
-        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     func addGoal(_ goal: String){

@@ -10,9 +10,14 @@ import UIKit
 
 class ScheduleViewController: UIViewController {
 
+    @IBOutlet var graph: UIView!
+    @IBOutlet var days: UICollectionView!
+    @IBOutlet var totalSchedule: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setViewBorder(graph)
+        setViewBorder(totalSchedule)
         // Do any additional setup after loading the view.
     }
 
@@ -20,16 +25,10 @@ class ScheduleViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+func setViewBorder(_ view: UIView) {
+    view.layer.borderColor = UIColor.black.cgColor
+    view.layer.borderWidth = 2
+    view.layer.cornerRadius = 20
 }
