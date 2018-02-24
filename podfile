@@ -1,0 +1,25 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'DigitalNomad' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'RealmSwift'
+  pod 'Alamofire', '~> 4.5'
+  pod 'DZNEmptyDataSet'
+  pod 'SwiftyJSON'
+  pod 'ActionSheetPicker-3.0'
+  pod 'GaugeKit'
+  pod 'MarqueeLabel/Swift'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+  pod 'NotificationBannerSwift'
+  pod 'Charts'
+
+  # Pods for DigitalNomad
+ 
+end
