@@ -12,7 +12,6 @@ class ResearchResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -26,16 +25,9 @@ class ResearchResultViewController: UIViewController {
     }
     
     @IBAction func start(_ sender: UIButton) {
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "GoalSetting", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "GoalSettingViewController") as! GoalSettingViewController
+        present(controller, animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+

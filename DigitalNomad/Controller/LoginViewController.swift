@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import GoogleSignIn
-import MBProgressHUD
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate {
 
@@ -25,9 +24,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             if(user != nil){
                 let storyboard = UIStoryboard(name: "Research", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "ResearchViewController") as! ResearchViewController
-                controller.modalTransitionStyle = .crossDissolve
+                //controller.modalTransitionStyle = .crossDissolve
                 self.present(controller, animated: true, completion: nil)
-                //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             }
         }
     }

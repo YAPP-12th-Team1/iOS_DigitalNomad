@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ResearchViewController: UIPageViewController {
+class ResearchViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        /*self.view.backgroundColor = .white
         dataSource = self
         let appearance = UIPageControl.appearance()
         appearance.pageIndicatorTintColor = .gray
@@ -21,7 +21,7 @@ class ResearchViewController: UIPageViewController {
         
         if let firstViewController = orderedResearchViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
-        }
+        }*/
 
         // Do any additional setup after loading the view.
     }
@@ -30,21 +30,10 @@ class ResearchViewController: UIPageViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
-private(set) var orderedResearchViewControllers: [UIViewController] = {
+/*private(set) var orderedResearchViewControllers: [UIViewController] = {
     let storyboard = UIStoryboard(name: "Research", bundle: nil)
     return [storyboard.instantiateViewController(withIdentifier: "Research1ViewController"), storyboard.instantiateViewController(withIdentifier: "Research2ViewController"), storyboard.instantiateViewController(withIdentifier: "Research3ViewController"), storyboard.instantiateViewController(withIdentifier: "Research4ViewController"), storyboard.instantiateViewController(withIdentifier: "Research5ViewController")]
 }()
@@ -72,4 +61,4 @@ extension ResearchViewController: UIPageViewControllerDataSource {
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }
-}
+}*/
