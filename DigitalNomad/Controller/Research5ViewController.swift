@@ -22,7 +22,9 @@ class Research5ViewController: UIViewController {
     }
     
     @IBAction func researchEnd(_ sender: UIButton) {
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        let controller = storyboard?.instantiateViewController(withIdentifier: "ResearchResultViewController") as! ResearchResultViewController
+        //controller.modalTransitionStyle = .crossDissolve
+        present(controller, animated: true, completion: nil)
     }
     
     /*

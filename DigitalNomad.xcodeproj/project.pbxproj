@@ -27,6 +27,14 @@
 		196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4B012041497500C7BFAF /* MyPage.storyboard */; };
 		196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B0320414AE500C7BFAF /* TutorialViewController.swift */; };
 		196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */; };
+		19AB507120419ECE000C8DCB /* Finance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507020419ECE000C8DCB /* Finance.swift */; };
+		19AB507320419ED6000C8DCB /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507220419ED6000C8DCB /* Schedule.swift */; };
+		19AB50752041A100000C8DCB /* GoalSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AB50742041A100000C8DCB /* GoalSetting.storyboard */; };
+		19AB50772041A3AE000C8DCB /* GoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */; };
+		19AB50792041AC1E000C8DCB /* Research1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB50782041AC1E000C8DCB /* Research1ViewController.swift */; };
+		19AB507B2041AC28000C8DCB /* Research2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507A2041AC28000C8DCB /* Research2ViewController.swift */; };
+		19AB507D2041AC32000C8DCB /* Research3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507C2041AC32000C8DCB /* Research3ViewController.swift */; };
+		19AB507F2041AC3F000C8DCB /* Research4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507E2041AC3F000C8DCB /* Research4ViewController.swift */; };
 		19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19E63EE020416D4D003D3155 /* GoogleService-Info.plist */; };
 		19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2CDE02041419C00CB113B /* AppDelegate.swift */; };
 		19F2CDE82041419C00CB113B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE62041419C00CB113B /* Main.storyboard */; };
@@ -94,6 +102,14 @@
 		196C4B012041497500C7BFAF /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		196C4B0320414AE500C7BFAF /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailViewController.swift; sourceTree = "<group>"; };
+		19AB507020419ECE000C8DCB /* Finance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finance.swift; sourceTree = "<group>"; };
+		19AB507220419ED6000C8DCB /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		19AB50742041A100000C8DCB /* GoalSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalSetting.storyboard; sourceTree = "<group>"; };
+		19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingViewController.swift; sourceTree = "<group>"; };
+		19AB50782041AC1E000C8DCB /* Research1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research1ViewController.swift; sourceTree = "<group>"; };
+		19AB507A2041AC28000C8DCB /* Research2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research2ViewController.swift; sourceTree = "<group>"; };
+		19AB507C2041AC32000C8DCB /* Research3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research3ViewController.swift; sourceTree = "<group>"; };
+		19AB507E2041AC3F000C8DCB /* Research4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research4ViewController.swift; sourceTree = "<group>"; };
 		19E63EE020416D4D003D3155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19F2CDDD2041419B00CB113B /* DigitalNomad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalNomad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F2CDE02041419C00CB113B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +212,8 @@
 		19F2CDF4204141B000CB113B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				19AB507020419ECE000C8DCB /* Finance.swift */,
+				19AB507220419ED6000C8DCB /* Schedule.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,11 +232,16 @@
 			children = (
 				196C4B0320414AE500C7BFAF /* TutorialViewController.swift */,
 				196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */,
-				196C4AF72041483200C7BFAF /* TabBarController.swift */,
 				196C4AF12041455500C7BFAF /* LoginViewController.swift */,
 				196C4AF32041457A00C7BFAF /* ResearchViewController.swift */,
+				19AB50782041AC1E000C8DCB /* Research1ViewController.swift */,
+				19AB507A2041AC28000C8DCB /* Research2ViewController.swift */,
+				19AB507C2041AC32000C8DCB /* Research3ViewController.swift */,
+				19AB507E2041AC3F000C8DCB /* Research4ViewController.swift */,
 				19384ECF204191A30003CC12 /* Research5ViewController.swift */,
 				19384ED1204192590003CC12 /* ResearchResultViewController.swift */,
+				19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */,
+				196C4AF72041483200C7BFAF /* TabBarController.swift */,
 				196C4AE7204144DF00C7BFAF /* MapViewController.swift */,
 				196C4AE9204144F600C7BFAF /* ScheduleViewController.swift */,
 				196C4AEB204144FD00C7BFAF /* AddViewController.swift */,
@@ -235,8 +258,9 @@
 				19F2CDEB2041419C00CB113B /* LaunchScreen.storyboard */,
 				196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */,
 				196C4AE32041440100C7BFAF /* Login.storyboard */,
-				19F2CDE62041419C00CB113B /* Main.storyboard */,
 				196C4AE52041440A00C7BFAF /* Research.storyboard */,
+				19AB50742041A100000C8DCB /* GoalSetting.storyboard */,
+				19F2CDE62041419C00CB113B /* Main.storyboard */,
 				196C4AF92041493600C7BFAF /* Map.storyboard */,
 				196C4AFB2041495400C7BFAF /* Schedule.storyboard */,
 				196C4AFD2041495B00C7BFAF /* Add.storyboard */,
@@ -413,6 +437,7 @@
 				6B54120D2041900600DDB2D5 /* map_pin_red@3x.png in Resources */,
 				196C4AFE2041495B00C7BFAF /* Add.storyboard in Resources */,
 				6B5412152041900600DDB2D5 /* info_box_tail.png in Resources */,
+				19AB50752041A100000C8DCB /* GoalSetting.storyboard in Resources */,
 				6B5412182041900600DDB2D5 /* map_pin.png in Resources */,
 				6B54121A2041900600DDB2D5 /* noimage.png in Resources */,
 				6B54121C2041900600DDB2D5 /* daum_th_line.png in Resources */,
@@ -540,13 +565,20 @@
 				196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */,
 				196C4AEA204144F600C7BFAF /* ScheduleViewController.swift in Sources */,
 				196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */,
+				19AB50792041AC1E000C8DCB /* Research1ViewController.swift in Sources */,
+				19AB507320419ED6000C8DCB /* Schedule.swift in Sources */,
 				196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */,
+				19AB507120419ECE000C8DCB /* Finance.swift in Sources */,
 				196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */,
 				19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */,
 				196C4AF42041457A00C7BFAF /* ResearchViewController.swift in Sources */,
+				19AB507D2041AC32000C8DCB /* Research3ViewController.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,
+				19AB50772041A3AE000C8DCB /* GoalSettingViewController.swift in Sources */,
 				196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */,
 				19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */,
+				19AB507B2041AC28000C8DCB /* Research2ViewController.swift in Sources */,
+				19AB507F2041AC3F000C8DCB /* Research4ViewController.swift in Sources */,
 				196C4AEC204144FD00C7BFAF /* AddViewController.swift in Sources */,
 				196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */,
 				196C4AEE2041450300C7BFAF /* FinanceViewController.swift in Sources */,
@@ -693,6 +725,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H79MF628K3;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DaumMap.embeddedframework",
@@ -718,6 +751,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H79MF628K3;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DaumMap.embeddedframework",

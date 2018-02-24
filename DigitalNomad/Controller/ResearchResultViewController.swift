@@ -26,7 +26,9 @@ class ResearchResultViewController: UIViewController {
     }
     
     @IBAction func start(_ sender: UIButton) {
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "GoalSetting", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "GoalSettingViewController") as! GoalSettingViewController
+        present(controller, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

@@ -1,5 +1,5 @@
 //
-//  TutorialDetailViewController.swift
+//  Research1ViewController.swift
 //  DigitalNomad
 //
 //  Created by Presto on 2018. 2. 24..
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialDetailViewController: UIViewController {
+class Research1ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +21,7 @@ class TutorialDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func start(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        //controller.modalTransitionStyle = .crossDissolve
-        present(controller, animated: true, completion: nil)
-    }
-    
+
     /*
     // MARK: - Navigation
 
