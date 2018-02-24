@@ -18,6 +18,10 @@ class ResearchViewController: UIPageViewController {
         appearance.pageIndicatorTintColor = .gray
         appearance.currentPageIndicatorTintColor = .red
         appearance.backgroundColor = .white
+        
+        if let firstViewController = orderedResearchViewControllers.first {
+            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -63,7 +67,7 @@ extension ResearchViewController: UIPageViewControllerDataSource {
         return orderedResearchViewControllers[nextIndex]
     }
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return 3
+        return 5
     }
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0

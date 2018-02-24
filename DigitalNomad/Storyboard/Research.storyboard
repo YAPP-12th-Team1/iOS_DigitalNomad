@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="724" y="-448"/>
         </scene>
-        <!--View Controller-->
+        <!--Research5 View Controller-->
         <scene sceneID="khE-58-JwW">
             <objects>
-                <viewController storyboardIdentifier="Research5ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1Sl-aH-gwh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Research5ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1Sl-aH-gwh" customClass="Research5ViewController" customModule="DigitalNomad" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d7B-DG-dFw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +109,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Skip"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsr-hW-TBj">
+                                <rect key="frame" x="0.0" y="434" width="375" height="115"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="설문 마무리"/>
+                                <connections>
+                                    <action selector="researchEnd:" destination="1Sl-aH-gwh" eventType="touchUpInside" id="CI9-MO-4SX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vmr-Ew-h5o"/>
@@ -116,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFY-ZZ-mIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-34" y="900"/>
+            <point key="canvasLocation" x="-34" y="899"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fT3-wL-fdP">
@@ -190,25 +198,43 @@
             </objects>
             <point key="canvasLocation" x="1441" y="96"/>
         </scene>
-        <!--View Controller-->
+        <!--Research Result View Controller-->
         <scene sceneID="giJ-BT-ejy">
             <objects>
-                <viewController storyboardIdentifier="ResearchResultViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZOm-C1-FWo" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResearchResultViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZOm-C1-FWo" customClass="ResearchResultViewController" customModule="DigitalNomad" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RRq-vw-m8r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHz-ff-lib">
+                                <rect key="frame" x="16" y="376" width="343" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="더 알아보기"/>
+                                <connections>
+                                    <action selector="findMoreInfo:" destination="ZOm-C1-FWo" eventType="touchUpInside" id="9Er-5f-DTC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnM-mF-xFQ">
+                                <rect key="frame" x="16" y="447" width="343" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="시작하기"/>
+                                <connections>
+                                    <action selector="start:" destination="ZOm-C1-FWo" eventType="touchUpInside" id="2Ec-mn-hhv"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="EYY-tC-cku"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xX3-O3-mFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2550" y="96"/>
+            <point key="canvasLocation" x="2549.5999999999999" y="95.802098950524751"/>
         </scene>
         <!--Research View Controller-->
         <scene sceneID="OG8-aK-EyH">
             <objects>
-                <pageViewController storyboardIdentifier="ResearchViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="0Ww-bT-9BP" customClass="ResearchViewController" customModule="DigitalNomad" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="ResearchViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="0Ww-bT-9BP" customClass="ResearchViewController" customModule="DigitalNomad" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iES-gv-GCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-34" y="96"/>

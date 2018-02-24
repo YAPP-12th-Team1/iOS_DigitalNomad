@@ -16,14 +16,21 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if(user != nil){
-                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-            }
-        }
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if(user != nil){
+                let storyboard = UIStoryboard(name: "Research", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "ResearchViewController") as! ResearchViewController
+                controller.modalTransitionStyle = .crossDissolve
+                self.present(controller, animated: true, completion: nil)
+                //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

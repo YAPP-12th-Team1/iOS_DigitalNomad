@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19384ECF204191A30003CC12 /* Research5ViewController.swift */; };
+		19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19384ED1204192590003CC12 /* ResearchResultViewController.swift */; };
 		196C4AE1204143DA00C7BFAF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */; };
 		196C4AE42041440100C7BFAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE32041440100C7BFAF /* Login.storyboard */; };
 		196C4AE62041440A00C7BFAF /* Research.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE52041440A00C7BFAF /* Research.storyboard */; };
@@ -35,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		127FCB1B722A87C86E4884FD /* Pods-DigitalNomad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalNomad.release.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalNomad/Pods-DigitalNomad.release.xcconfig"; sourceTree = "<group>"; };
+		19384ECF204191A30003CC12 /* Research5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research5ViewController.swift; sourceTree = "<group>"; };
+		19384ED1204192590003CC12 /* ResearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchResultViewController.swift; sourceTree = "<group>"; };
 		196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		196C4AE32041440100C7BFAF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		196C4AE52041440A00C7BFAF /* Research.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Research.storyboard; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				196C4AF72041483200C7BFAF /* TabBarController.swift */,
 				196C4AF12041455500C7BFAF /* LoginViewController.swift */,
 				196C4AF32041457A00C7BFAF /* ResearchViewController.swift */,
+				19384ECF204191A30003CC12 /* Research5ViewController.swift */,
+				19384ED1204192590003CC12 /* ResearchResultViewController.swift */,
 				196C4AE7204144DF00C7BFAF /* MapViewController.swift */,
 				196C4AE9204144F600C7BFAF /* ScheduleViewController.swift */,
 				196C4AEB204144FD00C7BFAF /* AddViewController.swift */,
@@ -377,9 +383,11 @@
 				196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */,
 				196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */,
 				196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */,
+				19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */,
 				196C4AF42041457A00C7BFAF /* ResearchViewController.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,
 				196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */,
+				19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */,
 				196C4AEC204144FD00C7BFAF /* AddViewController.swift in Sources */,
 				196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */,
 				196C4AEE2041450300C7BFAF /* FinanceViewController.swift in Sources */,
