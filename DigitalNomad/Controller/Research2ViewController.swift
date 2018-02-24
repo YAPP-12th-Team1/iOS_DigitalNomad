@@ -12,7 +12,7 @@ class Research2ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false
         // Do any additional setup after loading the view.
     }
 
@@ -20,16 +20,12 @@ class Research2ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func changeSliderValue(_ sender: UISlider) {
+        let value = Int(sender.value.rounded())
+        UserDefaults.standard.set(value, forKey: "nomadPeriod")
     }
-    */
-
+    @IBAction func next(_ sender: UIButton) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "Research3ViewController") as! Research3ViewController
+        self.navigationController?.show(controller, sender: self)
+    }
 }

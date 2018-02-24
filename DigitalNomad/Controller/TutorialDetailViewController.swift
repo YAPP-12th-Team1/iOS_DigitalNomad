@@ -24,7 +24,7 @@ class TutorialDetailViewController: UIViewController {
     @IBAction func start(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        //controller.modalTransitionStyle = .crossDissolve
+        controller.modalTransitionStyle = .crossDissolve
         present(controller, animated: true, completion: nil)
     }
     

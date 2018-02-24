@@ -10,9 +10,16 @@ import UIKit
 
 class Research3ViewController: UIViewController {
 
+    @IBOutlet var stackSea: UIStackView!
+    @IBOutlet var stackMountain: UIStackView!
+    @IBOutlet var stackIsland: UIStackView!
+    @IBOutlet var stackAround: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        stackSea.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(clickSea)))
+        stackMountain.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(clickMountain)))
+        stackIsland.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(clickIsland)))
+        stackAround.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(clickAround)))
         // Do any additional setup after loading the view.
     }
 
@@ -20,16 +27,23 @@ class Research3ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
+    @IBAction func next(_ sender: UIButton) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "Research4ViewController") as! Research4ViewController
+        self.navigationController?.show(controller, sender: self)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
+    @objc func clickSea() {
+        UserDefaults.standard.set("sea", forKey: "nomadFavorite")
+    }
+    @objc func clickMountain() {
+        UserDefaults.standard.set("mountain", forKey: "nomadFavorite")
+    }
+    @objc func clickIsland() {
+        UserDefaults.standard.set("island", forKey: "nomadFavorite")
+    }
+    @objc func clickAround() {
+        UserDefaults.standard.set("around", forKey: "nomadFavorite")
+    }
 }

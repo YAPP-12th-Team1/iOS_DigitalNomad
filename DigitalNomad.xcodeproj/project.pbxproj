@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19384ECF204191A30003CC12 /* Research5ViewController.swift */; };
 		19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19384ED1204192590003CC12 /* ResearchResultViewController.swift */; };
+		195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFAE2041AF140062A26C /* UITextField+.swift */; };
+		195CFFB12041CC1A0062A26C /* GoalRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFB02041CC1A0062A26C /* GoalRealm.swift */; };
 		196C4AE1204143DA00C7BFAF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */; };
 		196C4AE42041440100C7BFAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE32041440100C7BFAF /* Login.storyboard */; };
 		196C4AE62041440A00C7BFAF /* Research.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE52041440A00C7BFAF /* Research.storyboard */; };
@@ -27,8 +29,8 @@
 		196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4B012041497500C7BFAF /* MyPage.storyboard */; };
 		196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B0320414AE500C7BFAF /* TutorialViewController.swift */; };
 		196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */; };
-		19AB507120419ECE000C8DCB /* Finance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507020419ECE000C8DCB /* Finance.swift */; };
-		19AB507320419ED6000C8DCB /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507220419ED6000C8DCB /* Schedule.swift */; };
+		19AB507120419ECE000C8DCB /* FinanceRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507020419ECE000C8DCB /* FinanceRealm.swift */; };
+		19AB507320419ED6000C8DCB /* ScheduleRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507220419ED6000C8DCB /* ScheduleRealm.swift */; };
 		19AB50752041A100000C8DCB /* GoalSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AB50742041A100000C8DCB /* GoalSetting.storyboard */; };
 		19AB50772041A3AE000C8DCB /* GoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */; };
 		19AB50792041AC1E000C8DCB /* Research1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB50782041AC1E000C8DCB /* Research1ViewController.swift */; };
@@ -82,6 +84,8 @@
 		127FCB1B722A87C86E4884FD /* Pods-DigitalNomad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalNomad.release.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalNomad/Pods-DigitalNomad.release.xcconfig"; sourceTree = "<group>"; };
 		19384ECF204191A30003CC12 /* Research5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research5ViewController.swift; sourceTree = "<group>"; };
 		19384ED1204192590003CC12 /* ResearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchResultViewController.swift; sourceTree = "<group>"; };
+		195CFFAE2041AF140062A26C /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		195CFFB02041CC1A0062A26C /* GoalRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRealm.swift; sourceTree = "<group>"; };
 		196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		196C4AE32041440100C7BFAF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		196C4AE52041440A00C7BFAF /* Research.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Research.storyboard; sourceTree = "<group>"; };
@@ -102,8 +106,8 @@
 		196C4B012041497500C7BFAF /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		196C4B0320414AE500C7BFAF /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailViewController.swift; sourceTree = "<group>"; };
-		19AB507020419ECE000C8DCB /* Finance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finance.swift; sourceTree = "<group>"; };
-		19AB507220419ED6000C8DCB /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		19AB507020419ECE000C8DCB /* FinanceRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceRealm.swift; sourceTree = "<group>"; };
+		19AB507220419ED6000C8DCB /* ScheduleRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRealm.swift; sourceTree = "<group>"; };
 		19AB50742041A100000C8DCB /* GoalSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalSetting.storyboard; sourceTree = "<group>"; };
 		19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingViewController.swift; sourceTree = "<group>"; };
 		19AB50782041AC1E000C8DCB /* Research1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research1ViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +181,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		195CFFAD2041AF010062A26C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				195CFFAE2041AF140062A26C /* UITextField+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		19F2CDD42041419B00CB113B = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +214,7 @@
 				19F2CDF5204141B500CB113B /* View */,
 				19F2CDF6204141BA00CB113B /* Controller */,
 				19F2CDF7204141BD00CB113B /* Storyboard */,
+				195CFFAD2041AF010062A26C /* Extension */,
 				19F2CDFA204141CD00CB113B /* Supporting Files */,
 				19F2CDEE2041419C00CB113B /* Info.plist */,
 				19E63EE020416D4D003D3155 /* GoogleService-Info.plist */,
@@ -212,8 +225,9 @@
 		19F2CDF4204141B000CB113B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				19AB507020419ECE000C8DCB /* Finance.swift */,
-				19AB507220419ED6000C8DCB /* Schedule.swift */,
+				19AB507020419ECE000C8DCB /* FinanceRealm.swift */,
+				19AB507220419ED6000C8DCB /* ScheduleRealm.swift */,
+				195CFFB02041CC1A0062A26C /* GoalRealm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -566,11 +580,12 @@
 				196C4AEA204144F600C7BFAF /* ScheduleViewController.swift in Sources */,
 				196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */,
 				19AB50792041AC1E000C8DCB /* Research1ViewController.swift in Sources */,
-				19AB507320419ED6000C8DCB /* Schedule.swift in Sources */,
+				19AB507320419ED6000C8DCB /* ScheduleRealm.swift in Sources */,
 				196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */,
-				19AB507120419ECE000C8DCB /* Finance.swift in Sources */,
+				19AB507120419ECE000C8DCB /* FinanceRealm.swift in Sources */,
 				196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */,
 				19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */,
+				195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */,
 				196C4AF42041457A00C7BFAF /* ResearchViewController.swift in Sources */,
 				19AB507D2041AC32000C8DCB /* Research3ViewController.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,
@@ -581,6 +596,7 @@
 				19AB507F2041AC3F000C8DCB /* Research4ViewController.swift in Sources */,
 				196C4AEC204144FD00C7BFAF /* AddViewController.swift in Sources */,
 				196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */,
+				195CFFB12041CC1A0062A26C /* GoalRealm.swift in Sources */,
 				196C4AEE2041450300C7BFAF /* FinanceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
