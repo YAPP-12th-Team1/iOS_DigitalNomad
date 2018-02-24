@@ -10,7 +10,6 @@
 		19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19384ECF204191A30003CC12 /* Research5ViewController.swift */; };
 		19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19384ED1204192590003CC12 /* ResearchResultViewController.swift */; };
 		195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFAE2041AF140062A26C /* UITextField+.swift */; };
-		195CFFB12041CC1A0062A26C /* GoalRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFB02041CC1A0062A26C /* GoalRealm.swift */; };
 		196C4AE1204143DA00C7BFAF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */; };
 		196C4AE42041440100C7BFAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE32041440100C7BFAF /* Login.storyboard */; };
 		196C4AE62041440A00C7BFAF /* Research.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE52041440A00C7BFAF /* Research.storyboard */; };
@@ -29,8 +28,6 @@
 		196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4B012041497500C7BFAF /* MyPage.storyboard */; };
 		196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B0320414AE500C7BFAF /* TutorialViewController.swift */; };
 		196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */; };
-		19AB507120419ECE000C8DCB /* FinanceRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507020419ECE000C8DCB /* FinanceRealm.swift */; };
-		19AB507320419ED6000C8DCB /* ScheduleRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507220419ED6000C8DCB /* ScheduleRealm.swift */; };
 		19AB50752041A100000C8DCB /* GoalSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AB50742041A100000C8DCB /* GoalSetting.storyboard */; };
 		19AB50772041A3AE000C8DCB /* GoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */; };
 		19AB50792041AC1E000C8DCB /* Research1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB50782041AC1E000C8DCB /* Research1ViewController.swift */; };
@@ -40,6 +37,11 @@
 		19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19E63EE020416D4D003D3155 /* GoogleService-Info.plist */; };
 		19E6FCC52041E601006E76EC /* ScheduleDaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCC32041E601006E76EC /* ScheduleDaysCell.swift */; };
 		19E6FCC62041E601006E76EC /* ScheduleDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19E6FCC42041E601006E76EC /* ScheduleDaysCell.xib */; };
+		19E6FCC820420E51006E76EC /* ProjectRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCC720420E51006E76EC /* ProjectRealm.swift */; };
+		19E6FCCA20420E71006E76EC /* GoalListRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCC920420E71006E76EC /* GoalListRealm.swift */; };
+		19E6FCCC20420EB4006E76EC /* WishListRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCB20420EB4006E76EC /* WishListRealm.swift */; };
+		19E6FCCE20420EE3006E76EC /* FinancialRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCD20420EE3006E76EC /* FinancialRealm.swift */; };
+		19E6FCD020420F12006E76EC /* MyLocationRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCF20420F12006E76EC /* MyLocationRealm.swift */; };
 		19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2CDE02041419C00CB113B /* AppDelegate.swift */; };
 		19F2CDE82041419C00CB113B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE62041419C00CB113B /* Main.storyboard */; };
 		19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE92041419C00CB113B /* Assets.xcassets */; };
@@ -87,7 +89,6 @@
 		19384ECF204191A30003CC12 /* Research5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research5ViewController.swift; sourceTree = "<group>"; };
 		19384ED1204192590003CC12 /* ResearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchResultViewController.swift; sourceTree = "<group>"; };
 		195CFFAE2041AF140062A26C /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		195CFFB02041CC1A0062A26C /* GoalRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRealm.swift; sourceTree = "<group>"; };
 		196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		196C4AE32041440100C7BFAF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		196C4AE52041440A00C7BFAF /* Research.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Research.storyboard; sourceTree = "<group>"; };
@@ -108,8 +109,6 @@
 		196C4B012041497500C7BFAF /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		196C4B0320414AE500C7BFAF /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailViewController.swift; sourceTree = "<group>"; };
-		19AB507020419ECE000C8DCB /* FinanceRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceRealm.swift; sourceTree = "<group>"; };
-		19AB507220419ED6000C8DCB /* ScheduleRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRealm.swift; sourceTree = "<group>"; };
 		19AB50742041A100000C8DCB /* GoalSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalSetting.storyboard; sourceTree = "<group>"; };
 		19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingViewController.swift; sourceTree = "<group>"; };
 		19AB50782041AC1E000C8DCB /* Research1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research1ViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +118,11 @@
 		19E63EE020416D4D003D3155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19E6FCC32041E601006E76EC /* ScheduleDaysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysCell.swift; sourceTree = "<group>"; };
 		19E6FCC42041E601006E76EC /* ScheduleDaysCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleDaysCell.xib; sourceTree = "<group>"; };
+		19E6FCC720420E51006E76EC /* ProjectRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectRealm.swift; sourceTree = "<group>"; };
+		19E6FCC920420E71006E76EC /* GoalListRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListRealm.swift; sourceTree = "<group>"; };
+		19E6FCCB20420EB4006E76EC /* WishListRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListRealm.swift; sourceTree = "<group>"; };
+		19E6FCCD20420EE3006E76EC /* FinancialRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialRealm.swift; sourceTree = "<group>"; };
+		19E6FCCF20420F12006E76EC /* MyLocationRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationRealm.swift; sourceTree = "<group>"; };
 		19F2CDDD2041419B00CB113B /* DigitalNomad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalNomad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F2CDE02041419C00CB113B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19F2CDE72041419C00CB113B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -229,9 +233,11 @@
 		19F2CDF4204141B000CB113B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				19AB507020419ECE000C8DCB /* FinanceRealm.swift */,
-				19AB507220419ED6000C8DCB /* ScheduleRealm.swift */,
-				195CFFB02041CC1A0062A26C /* GoalRealm.swift */,
+				19E6FCC720420E51006E76EC /* ProjectRealm.swift */,
+				19E6FCC920420E71006E76EC /* GoalListRealm.swift */,
+				19E6FCCB20420EB4006E76EC /* WishListRealm.swift */,
+				19E6FCCD20420EE3006E76EC /* FinancialRealm.swift */,
+				19E6FCCF20420F12006E76EC /* MyLocationRealm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -587,24 +593,26 @@
 				196C4AEA204144F600C7BFAF /* ScheduleViewController.swift in Sources */,
 				196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */,
 				19AB50792041AC1E000C8DCB /* Research1ViewController.swift in Sources */,
-				19AB507320419ED6000C8DCB /* ScheduleRealm.swift in Sources */,
 				196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */,
-				19AB507120419ECE000C8DCB /* FinanceRealm.swift in Sources */,
 				196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */,
+				19E6FCCA20420E71006E76EC /* GoalListRealm.swift in Sources */,
 				19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */,
 				195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */,
 				196C4AF42041457A00C7BFAF /* ResearchViewController.swift in Sources */,
 				19AB507D2041AC32000C8DCB /* Research3ViewController.swift in Sources */,
 				19E6FCC52041E601006E76EC /* ScheduleDaysCell.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,
+				19E6FCCE20420EE3006E76EC /* FinancialRealm.swift in Sources */,
 				19AB50772041A3AE000C8DCB /* GoalSettingViewController.swift in Sources */,
 				196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */,
+				19E6FCC820420E51006E76EC /* ProjectRealm.swift in Sources */,
+				19E6FCCC20420EB4006E76EC /* WishListRealm.swift in Sources */,
 				19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */,
+				19E6FCD020420F12006E76EC /* MyLocationRealm.swift in Sources */,
 				19AB507B2041AC28000C8DCB /* Research2ViewController.swift in Sources */,
 				19AB507F2041AC3F000C8DCB /* Research4ViewController.swift in Sources */,
 				196C4AEC204144FD00C7BFAF /* AddViewController.swift in Sources */,
 				196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */,
-				195CFFB12041CC1A0062A26C /* GoalRealm.swift in Sources */,
 				196C4AEE2041450300C7BFAF /* FinanceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

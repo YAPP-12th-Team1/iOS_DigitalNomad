@@ -22,11 +22,11 @@ class GoalSettingViewController: UIViewController {
     @IBOutlet var textFieldOneDayExpense: UITextField!
     
     let realm = try! Realm()
-    var object: Results<GoalRealm>! = nil
+    var object: Results<GoalListRealm>! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        object = realm.objects(GoalRealm.self)
+        object = realm.objects(GoalListRealm.self)
         textFieldNomadPlace.addBorderBottom(height: 1.0)
         textFieldNomadDays.addBorderBottom(height: 1.0)
         textFieldNomadWorkingDays.addBorderBottom(height: 1.0)
@@ -49,7 +49,12 @@ class GoalSettingViewController: UIViewController {
         }
         let yesAction = UIAlertAction(title: "확인", style: .default) { (action) in
             if let text = alert.textFields?.first?.text {
-                self.addGoal(text)
+                if(self.realm.objects(ProjectRealm.self).count == 0){
+                    addGoalList(text, 0, Date(), 0)
+                } else {
+                    let pid = (self.realm.objects(ProjectRealm.self).last?.id)! + 1
+                    addGoalList(text, 0, Date(), pid)
+                }
             }
         }
         let noAction = UIAlertAction(title: "취소", style: .default, handler: nil)
@@ -59,16 +64,8 @@ class GoalSettingViewController: UIViewController {
     }
     
     @IBAction func finishGoalSetting(_ sender: UIButton) {
+        //ProjectRealm 저장
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    func addGoal(_ goal: String){
-        let object = GoalRealm()
-        object.goal = goal
-        try! realm.write{
-            realm.add(object)
-        }
-        tableView.reloadData()
     }
 }
 
@@ -76,7 +73,7 @@ class GoalSettingViewController: UIViewController {
 extension GoalSettingViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "goalSettingCell")!
-        cell.textLabel?.text = object[indexPath.row].goal
+        cell.textLabel?.text = object[indexPath.row].name
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,7 +82,7 @@ extension GoalSettingViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let buttonDelete = UITableViewRowAction(style: .default, title: "삭제") { (action, indexPath) in
             let result = self.object[indexPath.row]
-            let deleteRow = self.object.filter("goal = '"+result.goal+"'")
+            let deleteRow = self.object.filter("goal = '"+result.name+"'")
             try! self.realm.write{
                 self.realm.delete(deleteRow)
                 tableView.reloadData()

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import RealmSwift
 typealias JSON = [String:Any]
 
 class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegate {
@@ -21,6 +22,8 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     var xArr = [String]()
     var yArr = [String]()
     var categoryNameArr = [String]()
+    
+    let realm = try! Realm()
     
     var mapView: MTMapView?
     
@@ -87,6 +90,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
                     self.xArr.append(placeIndex["x"] as! String)
                     self.yArr.append(placeIndex["y"] as! String)
                     self.categoryNameArr.append(placeIndex["category_group_name"] as! String)
+                    addMyLocation(Double(self.xArr.last!)!, Double(self.yArr.last!)!, getCategory(self.categoryNameArr.last!), self.placeNameArr.last!, self.addressNameArr.last!, self.placeUriArr.last!, Date())
                 }
 
                 var items = [MTMapPOIItem]()
