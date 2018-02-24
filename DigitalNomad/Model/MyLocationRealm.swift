@@ -37,41 +37,77 @@ func addMyLocation(_ longitude: Double, _ latitude: Double, _ category: Int, _ n
 
 func getCategory(_ string: String) -> Int{
     switch(string){
-    case "MT1":
+    case "MT1" :
+        return 0
+    case "대형마트":
         return 0
     case "CS2":
         return 1
+    case "편의점":
+        return 1
     case "PS3":
+        return 2
+    case "어린이집, 유치원":
         return 2
     case "SC4":
         return 3
+    case "학교":
+        return 3
     case "AC5":
+        return 4
+    case "학원":
         return 4
     case "PK6":
         return 5
+    case "주차장":
+        return 5
     case "OL7":
+        return 6
+    case "주유소, 충전소":
         return 6
     case "SW8":
         return 7
+    case "지하철역":
+        return 7
     case "BK9":
+        return 8
+    case "은행":
         return 8
     case "CT1":
         return 9
+    case "문화시설":
+        return 9
     case "AG2":
+        return 10
+    case "중개업소":
         return 10
     case "PO3":
         return 11
+    case "공공기관":
+        return 11
     case "AT4":
+        return 12
+    case "관광명소":
         return 12
     case "AD5":
         return 13
+    case "숙박":
+        return 13
     case "FD6":
+        return 14
+    case "음식점":
         return 14
     case "CE7":
         return 15
+    case "카페":
+        return 15
     case "HP8":
         return 16
+    case "병원":
+        return 16
     case "PM9":
+        return 17
+    case "약국":
         return 17
     default:
         return -1
