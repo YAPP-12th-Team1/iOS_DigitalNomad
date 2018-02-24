@@ -16,6 +16,7 @@ class ScheduleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        days.register(UINib(nibName: "ScheduleDaysCell", bundle: nil), forCellWithReuseIdentifier: "scheduleDaysCell")
         setViewBorder(graph)
         setViewBorder(totalSchedule)
         // Do any additional setup after loading the view.
@@ -32,3 +33,23 @@ func setViewBorder(_ view: UIView) {
     view.layer.borderWidth = 2
     view.layer.cornerRadius = 20
 }
+extension ScheduleViewController: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "scheduleDaysCell", for: indexPath) as! ScheduleDaysCell
+        if(indexPath.row == 3){
+            cell.day.layer.backgroundColor = UIColor.lightGray.cgColor
+        }
+        return cell
+        
+    }
+    
+    
+}
+extension ScheduleViewController: UICollectionViewDelegate{
+    
+}
+

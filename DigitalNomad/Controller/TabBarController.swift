@@ -10,6 +10,8 @@ import UIKit
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
+    let button = UIButton(type: .custom)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
@@ -47,6 +49,21 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             UserDefaults.standard.set(true, forKey: "isFirst")
         }
         
+        
+        button.setTitle("Cam", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.yellow, for: .highlighted)
+        button.frame = CGRect(x: 100, y: 0, width: 44, height: 44)
+        button.backgroundColor = .orange
+        button.layer.borderWidth = 4
+        button.layer.borderColor = UIColor.yellow.cgColor
+        self.view.insertSubview(button, aboveSubview: self.tabBar)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        button.frame = CGRect(x: self.tabBar.center.x - 32, y: self.view.bounds.height - 74, width: 64, height: 64)
+        button.layer.cornerRadius = 32
     }
 
     override func didReceiveMemoryWarning() {
