@@ -65,6 +65,7 @@ class GoalSettingViewController: UIViewController {
     
     @IBAction func finishGoalSetting(_ sender: UIButton) {
         //ProjectRealm 저장
+        addProject(textFieldNomadPlace.text!, Int(textFieldNomadWorkingDays.text!)!, Int(textFieldNomadDays.text!)!)
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
 }
