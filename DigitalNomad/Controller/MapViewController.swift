@@ -100,9 +100,8 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
                 }
 
                 self.mapView?.addPOIItems(items)
-                print(self.xArr)
-                print(self.yArr)
                 print(self.placeNameArr)
+                print(self.categoryNameArr)
                 self.mapView?.fitAreaToShowAllPOIItems()
         }
     }
