@@ -15,6 +15,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
+        button.addTarget(self, action: #selector(clickCenterButton), for: .touchUpInside)
         // Do any additional setup after loading the view.
     }
     
@@ -70,6 +71,10 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func clickCenterButton() {
+        
     }
     
     func loadTutorialScreen() {
