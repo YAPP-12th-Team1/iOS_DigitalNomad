@@ -42,8 +42,58 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         self.mapView!.delegate = self
         self.mapView!.baseMapType = .standard
         self.view.addSubview(self.mapView!)
-        
         // Do any additional setup after loading the view.
+        
+        var str: String
+        var items = [MTMapPOIItem]()
+        let obj = self.realm.objects(MyLocationRealm.self)
+        for index in 0..<obj.count {
+            switch(obj[index].category) {
+            case 0:
+                str = "대형마트"
+            case 1:
+                str = "편의점"
+            case 2:
+                str = "어린이집, 유치원"
+            case 3:
+                str = "학교"
+            case 4:
+                str = "학원"
+            case 5:
+                str = "주차장"
+            case 6:
+                str = "주유소, 충전소"
+            case 7:
+                str = "지하철역"
+            case 8:
+                str = "은행"
+            case 9:
+                str = "문화시설"
+            case 10:
+                str = "중개업소"
+            case 11:
+                str = "공공기관"
+            case 12:
+                str = "관광명소"
+            case 13:
+                str = "숙박"
+            case 14:
+                str = "음식점"
+            case 15:
+                str = "카페"
+            case 16:
+                str = "병원"
+            case 17:
+                str = "약국"
+            default:
+                str = "Error"
+            }
+            
+            items.append(storedPoiItem(name: obj[index].name, address: obj[index].address, uri: obj[index].uri, latitude: String(obj[index].latitude), longitude: String(obj[index].longitude), category: str))
+        }
+        
+        self.mapView!.addPOIItems(items)
+        self.mapView?.fitAreaToShowAllPOIItems()
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,7 +140,6 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
                     self.xArr.append(placeIndex["x"] as! String)
                     self.yArr.append(placeIndex["y"] as! String)
                     self.categoryNameArr.append(placeIndex["category_group_name"] as! String)
-                    addMyLocation(Double(self.xArr.last!)!, Double(self.yArr.last!)!, getCategory(self.categoryNameArr.last!), self.placeNameArr.last!, self.addressNameArr.last!, self.placeUriArr.last!, Date())
                 }
 
                 var items = [MTMapPOIItem]()
@@ -100,10 +149,21 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
                 }
 
                 self.mapView?.addPOIItems(items)
+                
                 print(self.placeNameArr)
                 print(self.categoryNameArr)
                 self.mapView?.fitAreaToShowAllPOIItems()
         }
+    }
+    
+    func mapView(_ mapView: MTMapView!, selectedPOIItem poiItem: MTMapPOIItem!) -> Bool {
+        for index in 0..<self.placeNameArr.count {
+            if(placeNameArr[index] == poiItem.itemName) {
+                addMyLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], self.placeUriArr[index], Date())
+                break;
+            }
+        }
+        return true
     }
 
     func poiItem(name: String, address: String, uri: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
@@ -117,8 +177,19 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
 
         return item
     }
+    
+    func storedPoiItem(name: String, address: String, uri: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
+        let item = MTMapPOIItem()
+        item.itemName = name
+        item.markerType = .yellowPin
+        item.markerSelectedType = .yellowPin
+        item.mapPoint = MTMapPoint(geoCoord: .init(latitude: Double(latitude)!, longitude: Double(longitude)!))
+        item.showAnimationType = .noAnimation
+        item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
+        
+        return item
+    }
 
     override func viewDidAppear(_ animated: Bool) {
-
     }
 }
