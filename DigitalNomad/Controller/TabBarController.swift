@@ -29,8 +29,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         tabTwo.tabBarItem = tabTwoBarItem
         
         let tabThree = UIStoryboard(name: "Add", bundle: nil).instantiateViewController(withIdentifier: "AddViewController") as! AddViewController
-        let tabThreeBarItem = UITabBarItem(title: "+", image: UIImage(), tag: 2)
+        let tabThreeBarItem = UITabBarItem(title: "", image: UIImage(), tag: 2)
         tabThree.tabBarItem = tabThreeBarItem
+        tabThree.tabBarItem.isEnabled = false
         
         let tabFour = UIStoryboard(name: "Finance", bundle: nil).instantiateViewController(withIdentifier: "FinanceViewController") as! FinanceViewController
         let tabFourBarItem = UITabBarItem(title: "재정", image: UIImage(), tag: 3)
