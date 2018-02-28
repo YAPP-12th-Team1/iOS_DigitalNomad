@@ -9,9 +9,11 @@
 import UIKit
 import Alamofire
 import RealmSwift
+import MapKit
+import CoreLocation
 typealias JSON = [String:Any]
 
-class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegate {
+class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
     @IBOutlet var searchBar: UISearchBar!
     var filteredData: [String]!
     var loctaion_name_array = [String]()
@@ -25,10 +27,20 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     
     let realm = try! Realm()
     
+    let locationManager = CLLocationManager()
+    
     var mapView: MTMapView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        isAuthorizedtoGetUserLocation()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         
         self.navigationController?.navigationBar.isHidden = true
         searchBar.layer.zPosition = 1
@@ -37,13 +49,122 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         self.filteredData = self.loctaion_name_array
 
         mapView = MTMapView(frame: CGRect(x: 0, y: 100, width: self.view.frame.size.width, height: self.view.frame.size.height))
-
+        
         //mapView.daumMapApiKey = "YOUR_DAUM_API_KEY"
         self.mapView!.delegate = self
         self.mapView!.baseMapType = .standard
         self.view.addSubview(self.mapView!)
         // Do any additional setup after loading the view.
         
+        self.loadStoredItems()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("search : ", self.searchBar.text!)
+
+
+        let baseUrl: String = "https://dapi.kakao.com/v2/local/search/keyword.json?query="
+        let query: String = self.searchBar.text!
+        let encode = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let modi = encode?.replacingOccurrences(of: "%25", with: "%")
+
+        Alamofire.request(baseUrl+modi!+"&radius=5000", method: .get ,headers: ["Authorization": "KakaoAK 8add144f51d5e214bb8d9008445c817d"])
+            .responseJSON { response in
+                // check for errors
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on /todos/1")
+                    print(response.result.error!)
+                    return
+                }
+
+                // make sure we got some JSON since that's what we expect
+                guard let json = response.result.value as? [String: Any] else {
+                    print("didn't get todo object as JSON from API")
+                    print("Error: \(String(describing: response.result.error))")
+                    return
+                }
+
+                // get and print the title
+                guard let searchedPlace = json["documents"] as? [[String: Any]] else {
+                    print("Could not get todo title from JSON")
+                    return
+                }
+
+                for placeIndex in searchedPlace {
+                    self.placeNameArr.append(placeIndex["place_name"] as! String)
+                    self.addressNameArr.append(placeIndex["address_name"] as! String)
+                    self.placeUriArr.append(placeIndex["place_url"] as! String)
+                    self.xArr.append(placeIndex["x"] as! String)
+                    self.yArr.append(placeIndex["y"] as! String)
+                    self.categoryNameArr.append(placeIndex["category_group_name"] as! String)
+                }
+
+                var items = [MTMapPOIItem]()
+
+                for index in 0..<self.placeNameArr.count {
+                    items.append(self.poiItem(name: self.placeNameArr[index], address: self.addressNameArr[index], uri: self.placeUriArr[index], latitude: self.yArr[index], longitude: self.xArr[index], category: self.categoryNameArr[index]))
+                }
+
+                self.mapView?.addPOIItems(items)
+                
+                print(self.placeNameArr)
+                print(self.categoryNameArr)
+                self.mapView?.fitAreaToShowAllPOIItems()
+        }
+    }
+    
+    func mapView(_ mapView: MTMapView!, selectedPOIItem poiItem: MTMapPOIItem!) -> Bool {
+        let alertController = UIAlertController(title: "마커를 추가하시겠습니까??", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "YES", style: .default) { (_) in
+            for index in 0..<self.placeNameArr.count {
+                if(self.placeNameArr[index] == poiItem.itemName) {
+                    addMyLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], self.placeUriArr[index], Date())
+                    self.mapView?.removeAllPOIItems()
+                    self.loadStoredItems()
+                    break;
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "NO", style: .cancel) { (_) in }
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    
+        return true
+    }
+
+    func poiItem(name: String, address: String, uri: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
+        let item = MTMapPOIItem()
+        item.itemName = name
+        item.markerType = .redPin
+        item.markerSelectedType = .redPin
+        item.mapPoint = MTMapPoint(geoCoord: .init(latitude: Double(latitude)!, longitude: Double(longitude)!))
+        item.showAnimationType = .noAnimation
+        item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
+
+        return item
+    }
+    
+    func storedPoiItem(name: String, address: String, uri: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
+        let item = MTMapPOIItem()
+        item.itemName = name
+        item.markerType = .yellowPin
+        item.markerSelectedType = .yellowPin
+        item.mapPoint = MTMapPoint(geoCoord: .init(latitude: Double(latitude)!, longitude: Double(longitude)!))
+        item.showAnimationType = .noAnimation
+        item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
+        
+        return item
+    }
+    
+    func loadStoredItems() -> Void {
         var str: String
         var items = [MTMapPOIItem]()
         let obj = self.realm.objects(MyLocationRealm.self)
@@ -95,101 +216,30 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         self.mapView!.addPOIItems(items)
         self.mapView?.fitAreaToShowAllPOIItems()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("search : ", self.searchBar.text!)
 
-
-        let baseUrl: String = "https://dapi.kakao.com/v2/local/search/keyword.json?query="
-        let query: String = self.searchBar.text!
-        let encode = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let modi = encode?.replacingOccurrences(of: "%25", with: "%")
-
-        Alamofire.request(baseUrl+modi!+"&x=126.969599&y=37.546782&radius=5000", method: .get ,headers: ["Authorization": "KakaoAK 8add144f51d5e214bb8d9008445c817d"])
-            .responseJSON { response in
-                // check for errors
-                guard response.result.error == nil else {
-                    // got an error in getting the data, need to handle it
-                    print("error calling GET on /todos/1")
-                    print(response.result.error!)
-                    return
-                }
-
-                // make sure we got some JSON since that's what we expect
-                guard let json = response.result.value as? [String: Any] else {
-                    print("didn't get todo object as JSON from API")
-                    print("Error: \(String(describing: response.result.error))")
-                    return
-                }
-
-                // get and print the title
-                guard let searchedPlace = json["documents"] as? [[String: Any]] else {
-                    print("Could not get todo title from JSON")
-                    return
-                }
-
-                for placeIndex in searchedPlace {
-                    self.placeNameArr.append(placeIndex["place_name"] as! String)
-                    self.addressNameArr.append(placeIndex["address_name"] as! String)
-                    self.placeUriArr.append(placeIndex["place_url"] as! String)
-                    self.xArr.append(placeIndex["x"] as! String)
-                    self.yArr.append(placeIndex["y"] as! String)
-                    self.categoryNameArr.append(placeIndex["category_group_name"] as! String)
-                }
-
-                var items = [MTMapPOIItem]()
-
-                for index in 0..<self.placeNameArr.count {
-                    items.append(self.poiItem(name: self.placeNameArr[index], address: self.addressNameArr[index], uri: self.placeUriArr[index], latitude: self.yArr[index], longitude: self.xArr[index], category: self.categoryNameArr[index]))
-                }
-
-                self.mapView?.addPOIItems(items)
-                
-                print(self.placeNameArr)
-                print(self.categoryNameArr)
-                self.mapView?.fitAreaToShowAllPOIItems()
+    func isAuthorizedtoGetUserLocation() {
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse     {
+            locationManager.requestWhenInUseAuthorization()
         }
     }
     
-    func mapView(_ mapView: MTMapView!, selectedPOIItem poiItem: MTMapPOIItem!) -> Bool {
-        for index in 0..<self.placeNameArr.count {
-            if(placeNameArr[index] == poiItem.itemName) {
-                addMyLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], self.placeUriArr[index], Date())
-                break;
-            }
-        }
-        return true
-    }
-
-    func poiItem(name: String, address: String, uri: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
-        let item = MTMapPOIItem()
-        item.itemName = name
-        item.markerType = .redPin
-        item.markerSelectedType = .redPin
-        item.mapPoint = MTMapPoint(geoCoord: .init(latitude: Double(latitude)!, longitude: Double(longitude)!))
-        item.showAnimationType = .noAnimation
-        item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
-
-        return item
-    }
-    
-    func storedPoiItem(name: String, address: String, uri: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
-        let item = MTMapPOIItem()
-        item.itemName = name
-        item.markerType = .yellowPin
-        item.markerSelectedType = .yellowPin
-        item.mapPoint = MTMapPoint(geoCoord: .init(latitude: Double(latitude)!, longitude: Double(longitude)!))
-        item.showAnimationType = .noAnimation
-        item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let myLat : Double = locations[locations.count-1].coordinate.latitude
+        let myLong : Double = locations[locations.count-1].coordinate.longitude
+        print(myLat)
         
-        return item
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
+        let item = MTMapPOIItem()
+        item.itemName = "현 위치"
+        item.markerType = .bluePin
+        item.markerSelectedType = .bluePin
+        item.mapPoint = MTMapPoint(geoCoord: .init(latitude: myLat, longitude: myLong))
+        item.showAnimationType = .noAnimation
+        item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
+        self.mapView?.add(item)
+        
+        let mapPoint = MTMapPoint.init(geoCoord: MTMapPointGeo.init(latitude: myLat, longitude: myLong))
+        
+        self.mapView?.setMapCenter(mapPoint, animated: true)
+        self.mapView?.setZoomLevel(3, animated: true)
     }
 }
