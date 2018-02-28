@@ -10,7 +10,8 @@ import UIKit
 
 class ScheduleDaysCell: UICollectionViewCell {
 
-    @IBOutlet var day: UILabel!
+
+    @IBOutlet var day: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
