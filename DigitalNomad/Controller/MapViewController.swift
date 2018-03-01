@@ -13,8 +13,9 @@ import MapKit
 import CoreLocation
 typealias JSON = [String:Any]
 
-class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var tableView: UITableView!
     var filteredData: [String]!
     var loctaion_name_array = [String]()
     
@@ -28,6 +29,8 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     let realm = try! Realm()
     
     let locationManager = CLLocationManager()
+    var myLat : Double = 0.0
+    var myLong : Double = 0.0
     
     var mapView: MTMapView?
     
@@ -48,7 +51,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         self.searchBar.placeholder = "Search Keyword"
         self.filteredData = self.loctaion_name_array
 
-        mapView = MTMapView(frame: CGRect(x: 0, y: 100, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        mapView = MTMapView(frame: CGRect(x: 0, y: 115, width: self.view.frame.size.width, height: self.view.frame.size.height))
         
         //mapView.daumMapApiKey = "YOUR_DAUM_API_KEY"
         self.mapView!.delegate = self
@@ -56,12 +59,21 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         self.view.addSubview(self.mapView!)
         // Do any additional setup after loading the view.
         
+        self.tableView?.delegate = self
+        self.tableView?.dataSource = self
+        self.tableView?.estimatedRowHeight = 44.0
+        self.tableView?.rowHeight = UITableViewAutomaticDimension
+        
         self.loadStoredItems()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.tableView.removeFromSuperview()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -73,7 +85,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         let encode = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let modi = encode?.replacingOccurrences(of: "%25", with: "%")
 
-        Alamofire.request(baseUrl+modi!+"&radius=5000", method: .get ,headers: ["Authorization": "KakaoAK 8add144f51d5e214bb8d9008445c817d"])
+        Alamofire.request(baseUrl+modi!+"&radius=20000&x=\(myLong)&y=\(myLat)", method: .get ,headers: ["Authorization": "KakaoAK 8add144f51d5e214bb8d9008445c817d"])
             .responseJSON { response in
                 // check for errors
                 guard response.result.error == nil else {
@@ -120,6 +132,10 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     }
     
     func mapView(_ mapView: MTMapView!, selectedPOIItem poiItem: MTMapPOIItem!) -> Bool {
+        if poiItem.markerType == .yellowPin {
+            return true
+        }
+        
         let alertController = UIAlertController(title: "마커를 추가하시겠습니까??", message: "", preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "YES", style: .default) { (_) in
             for index in 0..<self.placeNameArr.count {
@@ -127,6 +143,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
                     addMyLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], self.placeUriArr[index], Date())
                     self.mapView?.removeAllPOIItems()
                     self.loadStoredItems()
+                    self.tableView.reloadData()
                     break;
                 }
             }
@@ -156,7 +173,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         let item = MTMapPOIItem()
         item.itemName = name
         item.markerType = .yellowPin
-        item.markerSelectedType = .yellowPin
+        item.markerSelectedType = .bluePin
         item.mapPoint = MTMapPoint(geoCoord: .init(latitude: Double(latitude)!, longitude: Double(longitude)!))
         item.showAnimationType = .noAnimation
         item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
@@ -215,6 +232,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         
         self.mapView!.addPOIItems(items)
         self.mapView?.fitAreaToShowAllPOIItems()
+        self.view.addSubview(self.tableView!)
     }
 
     func isAuthorizedtoGetUserLocation() {
@@ -224,8 +242,8 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let myLat : Double = locations[locations.count-1].coordinate.latitude
-        let myLong : Double = locations[locations.count-1].coordinate.longitude
+        myLat = locations[locations.count-1].coordinate.latitude
+        myLong = locations[locations.count-1].coordinate.longitude
         print(myLat)
         
         let item = MTMapPOIItem()
@@ -241,5 +259,33 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         
         self.mapView?.setMapCenter(mapPoint, animated: true)
         self.mapView?.setZoomLevel(3, animated: true)
+    }
+    
+    internal func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let obj = self.realm.objects(MyLocationRealm.self)
+        return obj.count
+    }
+
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView!.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        
+        let obj = self.realm.objects(MyLocationRealm.self)
+        let placeName = obj[indexPath.row].name
+        print("rowText:"+placeName)
+        
+        cell.textLabel?.text = placeName
+        return cell
+    }
+
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let obj = self.realm.objects(MyLocationRealm.self)
+        let objClicked = obj[indexPath.row]
+        let objClickedMapPoint = MTMapPoint.init(geoCoord: MTMapPointGeo.init(latitude: objClicked.latitude-0.0015, longitude: objClicked.longitude))
+        self.mapView?.setMapCenter(objClickedMapPoint, animated: true)
     }
 }
