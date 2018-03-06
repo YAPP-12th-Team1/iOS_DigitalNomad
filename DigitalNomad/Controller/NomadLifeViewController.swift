@@ -1,14 +1,14 @@
 //
-//  FinanceViewController.swift
+//  NomadLifeViewController.swift
 //  DigitalNomad
 //
-//  Created by Presto on 2018. 2. 24..
+//  Created by Presto on 2018. 3. 6..
 //  Copyright © 2018년 MokMinSimSeo. All rights reserved.
 //
 
 import UIKit
 
-class FinanceViewController: UIViewController {
+class NomadLifeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

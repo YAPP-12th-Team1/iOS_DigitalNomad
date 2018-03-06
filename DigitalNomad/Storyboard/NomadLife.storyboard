@@ -10,20 +10,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add View Controller-->
-        <scene sceneID="Wev-hg-cES">
+        <!--Nomad Life View Controller-->
+        <scene sceneID="efI-1A-atw">
             <objects>
-                <viewController storyboardIdentifier="AddViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WEW-Nb-hNV" customClass="AddViewController" customModule="DigitalNomad" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1Iu-di-qg5">
+                <viewController storyboardIdentifier="NomadLifeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1ji-S9-LJ2" customClass="NomadLifeViewController" customModule="DigitalNomad" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dd2-VN-QNo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="1BB-E2-Owj"/>
+                        <viewLayoutGuide key="safeArea" id="T8S-02-eE6"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4GL-Nt-ulN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J8R-Dd-7C7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="125"/>
+            <point key="canvasLocation" x="-220" y="145"/>
         </scene>
     </scenes>
 </document>
