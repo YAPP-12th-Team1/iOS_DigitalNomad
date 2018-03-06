@@ -22,7 +22,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     
     var placeNameArr = [String]()
     var addressNameArr = [String]()
-    var placeUriArr = [String]()
+    var distance = [String]()
     var xArr = [String]()
     var yArr = [String]()
     var categoryNameArr = [String]()
@@ -116,7 +116,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
                 for placeIndex in searchedPlace {
                     self.placeNameArr.append(placeIndex["place_name"] as! String)
                     self.addressNameArr.append(placeIndex["address_name"] as! String)
-                    self.placeUriArr.append(placeIndex["place_url"] as! String)
+                    self.distance.append(placeIndex["distance"] as! String)
                     self.xArr.append(placeIndex["x"] as! String)
                     self.yArr.append(placeIndex["y"] as! String)
                     self.categoryNameArr.append(placeIndex["category_group_name"] as! String)
@@ -125,7 +125,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
                 var items = [MTMapPOIItem]()
 
                 for index in 0..<self.placeNameArr.count {
-                    items.append(self.poiItem(name: self.placeNameArr[index], address: self.addressNameArr[index], uri: self.placeUriArr[index], latitude: self.yArr[index], longitude: self.xArr[index], category: self.categoryNameArr[index]))
+                    items.append(self.poiItem(name: self.placeNameArr[index], address: self.addressNameArr[index], distance: self.distance[index], latitude: self.yArr[index], longitude: self.xArr[index], category: self.categoryNameArr[index]))
                 }
 
                 self.mapView?.addPOIItems(items)
@@ -145,7 +145,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         let okAction = UIAlertAction(title: "YES", style: .default) { (_) in
             for index in 0..<self.placeNameArr.count {
                 if(self.placeNameArr[index] == poiItem.itemName) {
-                    addMyLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], self.placeUriArr[index], Date())
+                    addMyLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], self.distance[index], Date())
                     self.mapView?.removeAllPOIItems()
                     self.loadStoredItems()
                     self.tableView.reloadData()
@@ -162,7 +162,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         return true
     }
 
-    func poiItem(name: String, address: String, uri: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
+    func poiItem(name: String, address: String, distance: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
         let item = MTMapPOIItem()
         item.itemName = name
         item.markerType = .redPin
@@ -174,7 +174,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         return item
     }
     
-    func storedPoiItem(name: String, address: String, uri: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
+    func storedPoiItem(name: String, address: String, distance: String, latitude: String, longitude: String, category: String) -> MTMapPOIItem {
         let item = MTMapPOIItem()
         item.itemName = name
         item.markerType = .yellowPin
@@ -232,7 +232,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
                 str = "Error"
             }
             
-            items.append(storedPoiItem(name: obj[index].name, address: obj[index].address, uri: obj[index].uri, latitude: String(obj[index].latitude), longitude: String(obj[index].longitude), category: str))
+            items.append(storedPoiItem(name: obj[index].name, address: obj[index].address, distance: obj[index].distance, latitude: String(obj[index].latitude), longitude: String(obj[index].longitude), category: str))
         }
         
         self.mapView!.addPOIItems(items)
@@ -277,13 +277,31 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     }
 
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView!.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        let cell = self.tableView!.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MapCustomCell
         
         let obj = self.realm.objects(MyLocationRealm.self)
         let placeName = obj[indexPath.row].name
+        let placeAddress = obj[indexPath.row].address
+        let placeCategory = obj[indexPath.row].category
+        var curDistance = Double(obj[indexPath.row].distance)
+        curDistance = curDistance!/1000
+        
         print("rowText:"+placeName)
         
-        cell.textLabel?.text = placeName
+        //cell.textLabel?.text = placeName
+        cell.placeName?.text = placeName
+        cell.placeAddress?.text = placeAddress
+        cell.distance?.text = "\(curDistance!)km"
+        
+        switch placeCategory {
+        case 15:
+            cell.imageview.image = #imageLiteral(resourceName: "cafe.png")
+        case 14:
+            cell.imageview.image = #imageLiteral(resourceName: "restaurant.png")
+        default:
+            cell.imageview.image = #imageLiteral(resourceName: "kamel.png")
+        }
+        
         return cell
     }
 

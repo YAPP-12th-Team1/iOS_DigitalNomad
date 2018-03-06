@@ -81,6 +81,10 @@
 		6B54121C2041900600DDB2D5 /* daum_th_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B5412002041900600DDB2D5 /* daum_th_line.png */; };
 		6B54121D2041900600DDB2D5 /* map_pin_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B5412012041900600DDB2D5 /* map_pin_shadow.png */; };
 		6B54121E2041900600DDB2D5 /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5412022041900600DDB2D5 /* DaumMap.framework */; };
+		6B90CB41204EE2CE008575E4 /* MapCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B90CB40204EE2CE008575E4 /* MapCustomCell.swift */; };
+		6B90CB45204EEDE0008575E4 /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B90CB43204EEDE0008575E4 /* restaurant.png */; };
+		6B90CB46204EEDE0008575E4 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B90CB44204EEDE0008575E4 /* cafe.png */; };
+		6B90CB49204EEF59008575E4 /* kamel.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B90CB48204EEF59008575E4 /* kamel.png */; };
 		CF98B968790711445E30E291 /* Pods_DigitalNomad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0981C7A15615E7D418FFE8 /* Pods_DigitalNomad.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +169,10 @@
 		6B5412002041900600DDB2D5 /* daum_th_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daum_th_line.png; sourceTree = "<group>"; };
 		6B5412012041900600DDB2D5 /* map_pin_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_shadow.png; sourceTree = "<group>"; };
 		6B5412022041900600DDB2D5 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
+		6B90CB40204EE2CE008575E4 /* MapCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCustomCell.swift; sourceTree = "<group>"; };
+		6B90CB43204EEDE0008575E4 /* restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant.png; sourceTree = "<group>"; };
+		6B90CB44204EEDE0008575E4 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
+		6B90CB48204EEF59008575E4 /* kamel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamel.png; sourceTree = "<group>"; };
 		7A260883956854A34CD972AD /* Pods-DigitalNomad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalNomad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalNomad/Pods-DigitalNomad.debug.xcconfig"; sourceTree = "<group>"; };
 		EF0981C7A15615E7D418FFE8 /* Pods_DigitalNomad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DigitalNomad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -200,6 +208,7 @@
 		19F2CDD42041419B00CB113B = {
 			isa = PBXGroup;
 			children = (
+				6B90CB42204EED5F008575E4 /* Images */,
 				19F2CDDF2041419C00CB113B /* DigitalNomad */,
 				19F2CDDE2041419B00CB113B /* Products */,
 				1FE3DE61D71977808C649D3B /* Pods */,
@@ -304,6 +313,7 @@
 		19F2CDF9204141C600CB113B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6B90CB40204EE2CE008575E4 /* MapCustomCell.swift */,
 				19E6FCC32041E601006E76EC /* ScheduleDaysCell.swift */,
 				19E6FCC42041E601006E76EC /* ScheduleDaysCell.xib */,
 			);
@@ -369,6 +379,16 @@
 				6B5412012041900600DDB2D5 /* map_pin_shadow.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6B90CB42204EED5F008575E4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				6B90CB48204EEF59008575E4 /* kamel.png */,
+				6B90CB44204EEDE0008575E4 /* cafe.png */,
+				6B90CB43204EEDE0008575E4 /* restaurant.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		DE9F4B44EC85F979CAFC25C7 /* Frameworks */ = {
@@ -465,11 +485,13 @@
 				196C4AFE2041495B00C7BFAF /* Add.storyboard in Resources */,
 				6B5412152041900600DDB2D5 /* info_box_tail.png in Resources */,
 				19AB50752041A100000C8DCB /* GoalSetting.storyboard in Resources */,
+				6B90CB45204EEDE0008575E4 /* restaurant.png in Resources */,
 				6B5412182041900600DDB2D5 /* map_pin.png in Resources */,
 				6B54121A2041900600DDB2D5 /* noimage.png in Resources */,
 				6B54121C2041900600DDB2D5 /* daum_th_line.png in Resources */,
 				6B54120B2041900600DDB2D5 /* copyright.png in Resources */,
 				6B54120F2041900600DDB2D5 /* map_pin@3x.png in Resources */,
+				6B90CB49204EEF59008575E4 /* kamel.png in Resources */,
 				196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */,
 				6B5412172041900600DDB2D5 /* map_present_direction.png in Resources */,
 				6B5412062041900600DDB2D5 /* map_pinup.png in Resources */,
@@ -483,6 +505,7 @@
 				6B5412112041900600DDB2D5 /* map_pin_red.png in Resources */,
 				6B54121D2041900600DDB2D5 /* map_pin_shadow.png in Resources */,
 				196C4AE42041440100C7BFAF /* Login.storyboard in Resources */,
+				6B90CB46204EEDE0008575E4 /* cafe.png in Resources */,
 				6B5412132041900600DDB2D5 /* point_sprite.png in Resources */,
 				19F2CDE82041419C00CB113B /* Main.storyboard in Resources */,
 				6B54120E2041900600DDB2D5 /* daum_copyright.png in Resources */,
@@ -608,6 +631,7 @@
 				19E6FCC820420E51006E76EC /* ProjectRealm.swift in Sources */,
 				19E6FCCC20420EB4006E76EC /* WishListRealm.swift in Sources */,
 				19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */,
+				6B90CB41204EE2CE008575E4 /* MapCustomCell.swift in Sources */,
 				19E6FCD020420F12006E76EC /* MyLocationRealm.swift in Sources */,
 				19AB507B2041AC28000C8DCB /* Research2ViewController.swift in Sources */,
 				19AB507F2041AC3F000C8DCB /* Research4ViewController.swift in Sources */,
