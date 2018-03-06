@@ -16,6 +16,7 @@ typealias JSON = [String:Any]
 class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var btnMore: UIButton!
     var filteredData: [String]!
     var loctaion_name_array = [String]()
     
@@ -34,6 +35,8 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     
     var mapView: MTMapView?
     
+    var flag : Bool = true // true : 더 보기, false : 지도 보기
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,8 +53,8 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         self.searchBar.delegate = self
         self.searchBar.placeholder = "Search Keyword"
         self.filteredData = self.loctaion_name_array
-
-        mapView = MTMapView(frame: CGRect(x: 0, y: 115, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        
+        mapView = MTMapView(frame: CGRect(x: 0, y: 115, width: self.view.frame.size.width, height: self.btnMore.frame.minY-115))
         
         //mapView.daumMapApiKey = "YOUR_DAUM_API_KEY"
         self.mapView!.delegate = self
@@ -73,7 +76,7 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.tableView.removeFromSuperview()
+        //self.tableView.removeFromSuperview()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -287,5 +290,33 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
         let objClicked = obj[indexPath.row]
         let objClickedMapPoint = MTMapPoint.init(geoCoord: MTMapPointGeo.init(latitude: objClicked.latitude-0.0015, longitude: objClicked.longitude))
         self.mapView?.setMapCenter(objClickedMapPoint, animated: true)
+    }
+    
+    @IBAction func btnMore(_ sender: UIButton) {
+        if (flag){
+            self.mapView!.removeFromSuperview()
+            
+            var frame = self.view.frame
+            frame.size.height = self.view.frame.height-97
+            
+            var point = self.view.layer.position
+            point.y = self.view.layer.position.y+97
+            
+            self.tableView.frame = frame
+            self.tableView.layer.position = point
+            
+            self.btnMore.setTitle("지도보기", for: .normal)
+            self.btnMore.layer.position = CGPoint(x: self.view.frame.width/2, y: 133)
+            flag = false
+        } else {
+            self.view.addSubview(self.mapView!)
+            
+            let btnFrame = CGRect(x: 0, y: 479, width: 375, height: 30)
+            let tableFrame = CGRect(x: 0, y: 517, width: 375, height: 150)
+            self.btnMore.frame = btnFrame
+            self.tableView.frame = tableFrame
+            self.btnMore.setTitle("더 보기", for: .normal)
+            flag = true
+        }
     }
 }
