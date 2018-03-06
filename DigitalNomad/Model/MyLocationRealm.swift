@@ -17,10 +17,10 @@ class MyLocationRealm: Object {
     @objc dynamic var category: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var address: String = ""
-    @objc dynamic var uri: String = ""
+    @objc dynamic var distance: String = ""
     @objc dynamic var update: Date = Date() 
 }
-func addMyLocation(_ longitude: Double, _ latitude: Double, _ category: Int, _ name: String, _ address: String, _ uri: String, _ update: Date){
+func addMyLocation(_ longitude: Double, _ latitude: Double, _ category: Int, _ name: String, _ address: String, _ distance: String, _ update: Date){
     let realm = try! Realm()
     let object = MyLocationRealm()
     object.longitude = longitude
@@ -28,7 +28,7 @@ func addMyLocation(_ longitude: Double, _ latitude: Double, _ category: Int, _ n
     object.category = category
     object.name = name
     object.address = address
-    object.uri = uri
+    object.distance = distance
     object.update = update
     try! realm.write {
         realm.add(object)
