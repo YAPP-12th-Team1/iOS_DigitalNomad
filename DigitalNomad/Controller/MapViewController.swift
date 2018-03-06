@@ -37,12 +37,14 @@ class MapViewController: UIViewController, MTMapViewDelegate, UISearchBarDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 위치 사용 동의 알람창 최초
         isAuthorizedtoGetUserLocation()
         
+        // 위치 동의 완료 위치 정보 사용
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
+            locationManager.startUpdatingLocation() // 위치 정보 받음
         }
         
         self.navigationController?.navigationBar.isHidden = true

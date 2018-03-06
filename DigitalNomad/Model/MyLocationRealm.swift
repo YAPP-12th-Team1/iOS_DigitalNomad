@@ -35,6 +35,7 @@ func addMyLocation(_ longitude: Double, _ latitude: Double, _ category: Int, _ n
     }
 }
 
+// 다음 api에서 parameter를 키로 넘길때도 있고 밸류로 넘길때가 있어서 두가지 경의 다 처리
 func getCategory(_ string: String) -> Int{
     switch(string){
     case "MT1" :
