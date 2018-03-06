@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This application uses your location information to show your location</string>
+	<string>애플리케이션은 사용자의 위치 정보를 사용할 수 있습니다.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>애플리케이션은 사용자의 사진 라이브러리에 접근할 수 있습니다.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
