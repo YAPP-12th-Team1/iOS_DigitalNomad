@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
         let tabOneBarItem = UITabBarItem(title: "유목지살펴보기", image: UIImage(), tag: 0)
         tabOne.tabBarItem = tabOneBarItem
         
-        let tabTwo = UIStoryboard(name: "NomadLife", bundle: nil).instantiateViewController(withIdentifier: "NomadLifeViewController") as! NomadLifeViewController
+        let tabTwo = UIStoryboard(name: "Nomad", bundle: nil).instantiateViewController(withIdentifier: "NomadViewController") as! NomadViewController
         let tabTwoBarItem = UITabBarItem(title: "유목생활노트", image: UIImage(), tag: 1)
         tabTwo.tabBarItem = tabTwoBarItem
         

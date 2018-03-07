@@ -36,7 +36,7 @@ class MyPageViewController: UIViewController {
         viewList.addSubview(list)
         viewCard.addSubview(card)
         viewMeetup.addSubview(meetup)
-        labelHashtag.applyGradient(colors: [UIColor.init(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor.init(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
+        labelHashtag.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +48,7 @@ class MyPageViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func clickSetting(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MyPageDetailViewController")

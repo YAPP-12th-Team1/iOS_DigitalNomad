@@ -20,6 +20,10 @@ class PopupView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         view.layer.cornerRadius = 5
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowRadius = 3
+        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowOpacity = 1
         button.layer.cornerRadius = 5
     }
     
@@ -30,9 +34,8 @@ class PopupView: UIView {
     @IBAction func sendEmail(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3, animations: {
             self.alpha = 0
-        }) { (value) in
+        }) { _ in
             self.removeFromSuperview()
         }
-        
     }
 }

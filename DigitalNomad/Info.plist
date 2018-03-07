@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>애플리케이션은 사용자의 위치 정보를 사용할 수 있습니다.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>애플리케이션은 사용자의 사진 라이브러리에 접근할 수 있습니다.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>유목민</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -37,6 +35,10 @@
 	<string>3d40b6ed4ced3246061284fa06c17c02</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>애플리케이션은 사용자의 위치 정보를 사용할 수 있습니다.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>애플리케이션은 사용자의 사진 라이브러리에 접근할 수 있습니다.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

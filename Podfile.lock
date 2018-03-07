@@ -1,6 +1,7 @@
 PODS:
   - ActionSheetPicker-3.0 (2.3.0)
   - Alamofire (4.6.0)
+  - BEMCheckBox (1.4.1)
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
@@ -76,6 +77,7 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (~> 4.5)
+  - BEMCheckBox
   - Charts
   - DZNEmptyDataSet
   - Firebase/Auth
@@ -92,6 +94,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
@@ -115,6 +118,6 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: a2b3ab999f77a9b863001e253db6935430774e25
+PODFILE CHECKSUM: 90a1303714d61549e4e619d7c1d2acd4c811a775
 
 COCOAPODS: 1.3.1

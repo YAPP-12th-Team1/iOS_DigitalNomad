@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MyPageDetailViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
+    var keyboardHeight: CGFloat = 0
+    var keyboardHideCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
         tableView.register(UINib(nibName: "MyPageDetailImageCell", bundle: nil), forCellReuseIdentifier: "myPageDetailImageCell")
         tableView.register(UINib(nibName: "MyPageDetailInfoCell", bundle: nil), forCellReuseIdentifier: "myPageDetailInfoCell")
         tableView.register(UINib(nibName: "MyPageDetailMailCell", bundle: nil), forCellReuseIdentifier: "myPageDetailMailCell")
-
         // Do any additional setup after loading the view.
     }
     
@@ -25,13 +29,46 @@ class MyPageDetailViewController: UIViewController {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        NotificationCenter.default.removeObserver(self)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func clickCancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func clickConfirm(_ sender: UIButton) {
+//        try! Realm().write {
+//            <#code#>
+//        }
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification){
+        if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            self.keyboardHeight = keyboardHeight
+            tableView.frame.size.height -= keyboardHeight
+        }
+    }
+    @objc func keyboardWillHide(_ notification: Notification){
+        self.keyboardHideCount += 1
+        if(self.keyboardHideCount == 1){
+            tableView.frame.size.height += self.keyboardHeight
+        } else {
+            self.keyboardHideCount = 0
+        }
+    }
+    
+    @objc func clickRefresh(){
+        //위치 정보 새로고침
+        print("click refresh")
     }
 }
 
@@ -56,6 +93,12 @@ extension MyPageDetailViewController: UITableViewDataSource{
                 cell.title.text = "유목 장소"
                 cell.textField.isUserInteractionEnabled = false
                 cell.textField.text = "서울특별시 광진구"
+                let refresh = UIButton(type: .custom)
+                refresh.addTarget(self, action: #selector(clickRefresh), for: .touchUpInside)
+                refresh.setTitle("R", for: .normal)
+                refresh.setTitleColor(.black, for: .normal)
+                refresh.frame = CGRect(x: tableView.frame.width - 60, y: cell.frame.height / 2 - 10, width: 40 , height: 20)
+                cell.addSubview(refresh)
             default:
                 break
             }
@@ -69,12 +112,12 @@ extension MyPageDetailViewController: UITableViewDataSource{
                 cell.textField.text = "개발자"
             case 1:
                 cell.title.text = "소개말"
+                cell.textField.isUserInteractionEnabled = true
                 cell.textField.placeholder = "소개말"
-                cell.textField.text = "저녁 식사 함께해요!"
             case 2:
                 cell.title.text = "밋업 목적"
+                cell.textField.isUserInteractionEnabled = true
                 cell.textField.placeholder = "밋업 목적"
-                cell.textField.text = "유목민친구 만들기"
             default:
                 break
             }

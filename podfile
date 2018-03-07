@@ -19,6 +19,7 @@ target 'DigitalNomad' do
   pod 'GoogleSignIn'
   pod 'NotificationBannerSwift'
   pod 'Charts'
+  pod 'BEMCheckBox'
 
   # Pods for DigitalNomad
  
