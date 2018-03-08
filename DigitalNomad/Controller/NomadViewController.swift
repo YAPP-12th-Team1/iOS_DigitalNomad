@@ -30,14 +30,14 @@ class NomadViewController: UIViewController {
         //아래 두 카테고리 중 한 부분만 실행해야 한다.
         
         //일 관련일 때는 테이블뷰
-//        workView = NomadWorkView.instanceFromXib() as! NomadWorkView
-//        workView.frame.size = centerView.frame.size
-//        centerView.addSubview(workView)
+        workView = NomadWorkView.instanceFromXib() as! NomadWorkView
+        workView.frame.size = centerView.frame.size
+        centerView.addSubview(workView)
         
         //삶 관련일 때는 컬렉션뷰
-        lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
-        lifeView.frame.size = centerView.frame.size
-        centerView.addSubview(lifeView)
+//        lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
+//        lifeView.frame.size = centerView.frame.size
+//        centerView.addSubview(lifeView)
         
         labelDays.layer.cornerRadius = 5
     }
@@ -76,6 +76,15 @@ class NomadViewController: UIViewController {
             if let firstContent = (workView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! NomadWorkCell).content.titleLabel?.text {
                 view.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
             }
+            //튜토리얼 스크린 디버깅용
+//            UserDefaults.standard.set(false, forKey: "isFirstNomadWorkExecute")
+            if(!UserDefaults.standard.bool(forKey: "isFirstNomadWorkExecute")){
+                let tutorial = NomadWorkTutorialView.instanceFromXib()
+                tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+                tutorial.frame = self.view.frame
+                self.view.addSubview(tutorial)
+                UserDefaults.standard.set(true, forKey: "isFirstNomadWorkExecute")
+            }
         } else {
             //보라색 계열 (색B, 삶)
             searchBar.barTintColor = UIColor(red: 194/255, green: 187/255, blue: 210/255, alpha: 1)
@@ -97,6 +106,16 @@ class NomadViewController: UIViewController {
             if let firstContent = (lifeView.collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! NomadLifeCell).content.text {
                 view.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
             }
+            //튜토리얼 스크린 디버깅용
+//            UserDefaults.standard.set(false, forKey: "isFirstNomadLifeExecute")
+            if(!UserDefaults.standard.bool(forKey: "isFirstNomadLifeExecute")){
+                let tutorial = NomadLifeTutorialView.instanceFromXib()
+                tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+                tutorial.frame = self.view.frame
+                self.view.addSubview(tutorial)
+                UserDefaults.standard.set(true, forKey: "isFirstNomadLifeExecute")
+            }
+            
         }
         underView.addSubview(view)
         let today = Date()
@@ -106,15 +125,18 @@ class NomadViewController: UIViewController {
         labelToday.text = "오늘 \(dateFormatter.string(from: today))"
         labelDays.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        if(self.view.subviews.last is NomadWorkTutorialView || self.view.subviews.last is NomadLifeTutorialView){
+            self.view.subviews.last?.removeFromSuperview()
+        }
+        NotificationCenter.default.removeObserver(self)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func keyboardWillShow(_ notification: Notification){

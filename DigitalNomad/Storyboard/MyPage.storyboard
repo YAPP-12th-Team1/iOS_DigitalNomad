@@ -28,7 +28,7 @@
                                         <real key="value" value="100"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rate">
-                                        <real key="value" value="50"/>
+                                        <real key="value" value="37"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="bgAlpha">
                                         <real key="value" value="0.10000000000000001"/>

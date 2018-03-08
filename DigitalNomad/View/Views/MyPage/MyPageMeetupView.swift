@@ -42,7 +42,6 @@ class MyPageMeetupView: UIView {
         }) { _ in
             self.parentViewController()?.view.addSubview(popup)
         }
-        
     }
     
     @IBAction func showNextPerson(_ sender: UIButton) {

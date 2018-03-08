@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import JTMaterialSwitch
 
 class MyPageDetailViewController: UIViewController {
 
@@ -69,6 +70,14 @@ class MyPageDetailViewController: UIViewController {
     @objc func clickRefresh(){
         //위치 정보 새로고침
         print("click refresh")
+    }
+    
+    @objc func switchValueChanged(_ sender: JTMaterialSwitch){
+        if(sender.isOn){
+            print("IsOn")
+        } else  {
+            print("IsOff")
+        }
     }
 }
 
@@ -165,8 +174,10 @@ extension MyPageDetailViewController: UITableViewDataSource{
         header.textLabel?.textColor = UIColor(red: 239/255, green: 144/255, blue: 130/255, alpha: 1)
         header.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         if(section == 2){
-            let coworkingAllowingSwitch = UISwitch(frame: CGRect(x: tableView.frame.width - 60, y: 0, width: 20, height: 20))
-            header.addSubview(coworkingAllowingSwitch)
+            let coworkingAllowingSwitch = JTMaterialSwitch(size: JTMaterialSwitchSizeSmall, style: JTMaterialSwitchStyleLight, state: JTMaterialSwitchStateOff)
+            coworkingAllowingSwitch?.frame = CGRect(x: tableView.frame.width - 60, y: 0, width: 20, height: header.frame.height)
+            coworkingAllowingSwitch?.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
+            header.addSubview(coworkingAllowingSwitch!)
         }
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -189,7 +200,6 @@ extension MyPageDetailViewController: UITableViewDataSource{
         }
     }
 }
-
 extension MyPageDetailViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

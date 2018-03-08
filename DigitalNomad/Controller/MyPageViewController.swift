@@ -37,6 +37,32 @@ class MyPageViewController: UIViewController {
         viewCard.addSubview(card)
         viewMeetup.addSubview(meetup)
         labelHashtag.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
+        
+        let lineWidth = gauge.lineWidth / 2
+        let percent = gauge.rate * 100 / gauge.maxValue
+        let radian = (percent * 18 / 5) * CGFloat.pi / 180
+        let gaugePosition = gauge.frame.origin
+        let centerX = gaugePosition.x + gauge.frame.width / 2
+        let centerY = gaugePosition.y + gauge.frame.height / 2
+        let radius = gauge.frame.width / 2
+        let labelX = centerX + radius * sin(radian)
+        let labelY = centerY - radius * cos(radian)
+        let label = UILabel(frame: CGRect(x: labelX, y: labelY, width: 40, height: 40))
+        label.frame.origin.x -= label.frame.width / 2
+        label.frame.origin.y -= label.frame.height / 2
+        let distanceX = label.frame.origin.x + (label.frame.width / 2) - (centerX + (radius - lineWidth) * sin(radian))
+        let distanceY = label.frame.origin.y + (label.frame.height / 2) - (centerY - (radius - lineWidth) * cos(radian))
+        label.frame.origin.x -= distanceX
+        label.frame.origin.y -= distanceY
+        label.layer.masksToBounds = false
+        label.layer.cornerRadius = label.frame.height / 2
+        label.clipsToBounds = true
+        label.backgroundColor = gauge.startColor
+        label.text = "\(Int(percent))%"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        view.addSubview(label)
     }
     
     override func viewWillAppear(_ animated: Bool) {

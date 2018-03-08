@@ -10,12 +10,19 @@ import UIKit
 
 class NomadWorkTutorialView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(clickView))
+        self.addGestureRecognizer(gesture)
+        
     }
-    */
+    
+    class func instanceFromXib() -> UIView {
+        return UINib(nibName: "NomadWorkTutorialView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
+    }
+    
+    @objc func clickView(){
+        self.removeFromSuperview()
+    }
 
 }
