@@ -9,15 +9,27 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //Realm 마이그레이션
+        let config = Realm.Configuration(
+            schemaVersion: 0,  //Increment this each time your schema changes
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    //If you need to transfer any data
+                    //(in your case you don't right now) you will transfer here
+                }
+        })
+        Realm.Configuration.defaultConfiguration = config
+        let _=try! Realm()
+        
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self

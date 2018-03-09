@@ -33,14 +33,15 @@ class MyPageMeetupView: UIView {
     }
     
     @IBAction func requestMeetup(_ sender: UIButton) {
-        let popup = PopupView.instanceFromXib()
+        let popup = PopupView.instanceFromXib() as! PopupView
         popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        //popup.frame = (self.parentViewController()?.view.frame)!
-        //아래부분 안됨
-        UIView.transition(with: self, duration: 0.5, options: .curveEaseIn, animations: {
+        popup.frame = (self.parentViewController()?.view.frame)!
+        popup.view.alpha = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            popup.view.alpha = 1
+        }) { _ in
             self.parentViewController()?.view.addSubview(popup)
-        }, completion: nil)
-        
+        }
     }
     
     @IBAction func showNextPerson(_ sender: UIButton) {
