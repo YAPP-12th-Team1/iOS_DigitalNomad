@@ -8,12 +8,12 @@
 
 import UIKit
 
-class MapCustomCell: UITableViewCell {
+class MapCell: UITableViewCell {
     
     @IBOutlet var imageview: UIImageView!
-    @IBOutlet var placeName: UITextField!
-    @IBOutlet var placeAddress: UITextField!
-    @IBOutlet var distance: UITextField!
+    @IBOutlet var placeName: UILabel!
+    @IBOutlet var placeAddress: UILabel!
+    @IBOutlet var distance: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
