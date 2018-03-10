@@ -21,7 +21,9 @@ class NomadAddView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.applyGradient([UIColor(red: 251/255, green: 242/255, blue: 241/255, alpha: 1), UIColor(red: 238/255, green: 195/255, blue: 191/255, alpha: 1)])
+        textField.autocorrectionType = .no
+        textField.addTarget(self, action: #selector(clickReturnButton), for: .editingDidEndOnExit)
+        textField.addTarget(self, action: #selector(textFieldEditing), for: .editingChanged)
         subView.layer.borderColor = UIColor.lightGray.cgColor
         subView.layer.borderWidth = 1
         addButton.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
@@ -35,6 +37,10 @@ class NomadAddView: UIView {
         timer.invalidate()
     }
     
+    class func instanceFromXib() -> UIView {
+        return UINib(nibName: "NomadAddView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
+    }
+    
     @objc func getTimeOfDate(){
         //리스트 완료 시각...
         //지금은 현재시각 뜨게 해놓음
@@ -45,8 +51,23 @@ class NomadAddView: UIView {
         endTime.text = dateFormatter.string(from: today)
     }
     
-    class func instanceFromXib() -> UIView {
-        return UINib(nibName: "NomadAddView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
+    @objc func clickReturnButton(){
+        textField.resignFirstResponder()
+    }
+    
+    @objc func textFieldEditing(){
+        //# 후에 공백 안됨
+        //아 귀찮다
+        let text = textField.text!
+        guard let lastChar = text.last else { return }
+        if(lastChar == " "){
+            if(text.count == 1){
+                textField.text = ""
+                return
+            }
+        }
+            
+        
     }
     
     @IBAction func clickAdd(_ sender: UIButton) {
@@ -55,9 +76,18 @@ class NomadAddView: UIView {
 //        parentViewController.tableView.reloadData()
     }
     @IBAction func clickCalendar(_ sender: UIButton) {
+        
     }
+    
     @IBAction func clickHashtag(_ sender: UIButton) {
+        //# 중복입력 안됨
         let currentText = textField.text!
-        textField.text = currentText + "#"
+        guard let lastChar = currentText.last else {
+            textField.text! = "#"
+            return
+        }
+        if(lastChar != "#"){
+            textField.text! += "#"
+        }
     }
 }

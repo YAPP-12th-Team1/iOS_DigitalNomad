@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //Realm 마이그레이션
+        //개발 중엔 그냥 앱을 삭제하고 다시 실행하세요
         let config = Realm.Configuration(
             schemaVersion: 0,  //Increment this each time your schema changes
             migrationBlock: { migration, oldSchemaVersion in
@@ -37,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         window?.rootViewController = UINavigationController(rootViewController: TabBarController())
         window?.makeKeyAndVisible()
         UIApplication.shared.isStatusBarHidden = false
-        
+        (UIApplication.shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = .white
         return true
     }
     

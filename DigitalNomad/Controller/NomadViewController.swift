@@ -20,10 +20,6 @@ class NomadViewController: UIViewController {
     var workView: NomadWorkView! = nil
     var lifeView: NomadLifeView! = nil
     
-    var keyboardHeight: CGFloat = 0
-    var keyboardHideCount = 0
-    var keyboardShowCount = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +42,6 @@ class NomadViewController: UIViewController {
         super.viewWillAppear(true)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
-        keyboardShowCount = 0
         if(underView.layer.sublayers != nil){
             underView.layer.sublayers?.removeFirst()
         }
@@ -140,33 +135,33 @@ class NomadViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification){
-        if(keyboardShowCount >= 1) { return }
-        if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            self.keyboardHeight = keyboardHeight
-            if(centerView.subviews.first is NomadWorkView){
-                workView.tableView.frame.size.height -= keyboardHeight
-            } else {
-                lifeView.collectionView.frame.size.height -= keyboardHeight
+        if(searchBar.isFirstResponder){
+            return
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= (keyboardSize.height - 49)
             }
-            underView.frame.origin.y -= keyboardHeight
-            self.keyboardShowCount += 1
         }
     }
     @objc func keyboardWillHide(_ notification: Notification){
-        self.keyboardHideCount += 1
-        if(self.keyboardHideCount == 1){
-            if(centerView.subviews.first is NomadWorkView){
-                workView.tableView.frame.size.height += self.keyboardHeight
-                
-            } else {
-                lifeView.collectionView.frame.size.height += self.keyboardHeight
-            }
-            underView.frame.origin.y += self.keyboardHeight
-        } else {
-            self.keyboardHideCount = 0
+        if(searchBar.isFirstResponder){
+            return
         }
-        self.keyboardShowCount = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += (keyboardSize.height - 49)
+            }
+        }
+    }
+}
+
+extension NomadViewController: UISearchBarDelegate{
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        return
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
 

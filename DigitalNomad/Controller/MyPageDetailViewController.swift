@@ -52,18 +52,17 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification){
-        if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            self.keyboardHeight = keyboardHeight
-            tableView.frame.size.height -= keyboardHeight
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
+            if(self.view.frame.origin.y == 0){
+                self.view.frame.origin.y -= keyboardSize.height
+            }
         }
     }
     @objc func keyboardWillHide(_ notification: Notification){
-        self.keyboardHideCount += 1
-        if(self.keyboardHideCount == 1){
-            tableView.frame.size.height += self.keyboardHeight
-        } else {
-            self.keyboardHideCount = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
+            if(self.view.frame.origin.y != 0){
+                self.view.frame.origin.y += keyboardSize.height
+            }
         }
     }
     

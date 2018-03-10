@@ -55,7 +55,7 @@ extension NomadWorkView: DZNEmptyDataSetSource{
         return nil
     }
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return nil
+        return NSAttributedString(string: "추가하세요!")
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         return nil

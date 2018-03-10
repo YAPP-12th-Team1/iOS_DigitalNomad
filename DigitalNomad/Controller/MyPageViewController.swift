@@ -38,6 +38,8 @@ class MyPageViewController: UIViewController {
         viewMeetup.addSubview(meetup)
         labelHashtag.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
         
+        gauge.rate = 86
+        
         let lineWidth = gauge.lineWidth / 2
         let percent = gauge.rate * 100 / gauge.maxValue
         let radian = (percent * 18 / 5) * CGFloat.pi / 180

@@ -42,7 +42,7 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchBar.layer.zPosition = 1
         btnMore.layer.cornerRadius = 5
         btnMore.setTitleColor(.white, for: .normal)
         btnMore.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
@@ -163,20 +163,31 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func btnMore(_ sender: UIButton) {
-        if (flag){
-            self.mapView!.removeFromSuperview()
-            btnMore.frame.origin.y = searchBar.frame.origin.y + searchBar.frame.height + 5
-            tableView.frame.origin.y = btnMore.frame.origin.y + btnMore.frame.height + 5
-            tableView.frame.size.height = self.view.frame.height - btnMore.frame.origin.y - btnMore.frame.height - 49
-            self.btnMore.setTitle("지도보기", for: .normal)
-            flag = false
+        if flag {
+            //self.mapView!.removeFromSuperview()
+            UIView.animate(withDuration: 0.4, animations: {
+                //self.mapView.frame.size.height = 0
+                self.mapView.frame.origin.y -= self.mapView.frame.height
+                self.btnMore.frame.origin.y = self.searchBar.frame.origin.y + self.searchBar.frame.height + 5
+                self.tableView.frame.origin.y = self.btnMore.frame.origin.y + self.btnMore.frame.height + 5
+                self.tableView.frame.size.height = self.view.frame.height - self.btnMore.frame.origin.y - self.btnMore.frame.height - 49
+            }, completion: { _ in
+                self.btnMore.setTitle("지도보기", for: .normal)
+                self.flag = false
+                self.view.bringSubview(toFront: self.searchBar)
+            })
         } else {
-            self.view.addSubview(self.mapView!)
-            btnMore.frame.origin.y =  mapView.frame.origin.y + mapView.frame.height + 5
-            tableView.frame.origin = CGPoint(x: 0, y: btnMore.frame.origin.y + btnMore.frame.height + 5)
-            tableView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - tableView.frame.origin.y - 49)
-            self.btnMore.setTitle("더 보기", for: .normal)
-            flag = true
+            //self.view.addSubview(self.mapView!)
+            UIView.animate(withDuration: 0.4, animations: {
+                //self.mapView.frame.size.height = self.mapView.frame.width
+                self.mapView.frame.origin.y += self.mapView.frame.height
+                self.btnMore.frame.origin.y =  self.mapView.frame.origin.y + self.mapView.frame.height + 5
+                self.tableView.frame.origin = CGPoint(x: 0, y: self.btnMore.frame.origin.y + self.btnMore.frame.height + 5)
+                self.tableView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - self.tableView.frame.origin.y - 49)
+            }, completion: { _ in
+                self.btnMore.setTitle("더 보기", for: .normal)
+                self.flag = true
+            })
         }
     }
 }
@@ -342,7 +353,6 @@ extension MapViewController: MTMapViewDelegate{
         
         return true
     }
-
 }
 
 extension MapViewController: DZNEmptyDataSetSource{
