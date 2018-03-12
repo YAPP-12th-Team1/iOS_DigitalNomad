@@ -29,7 +29,7 @@ class NomadLifeView: UIView {
     }
     @objc func clickCheckBox(_ sender: BEMCheckBox) {
         if(sender.on){
-            sender.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
+            sender.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
             sender.layer.sublayers?.first?.cornerRadius = sender.frame.height / 2
         } else {
             sender.layer.sublayers?.removeFirst()

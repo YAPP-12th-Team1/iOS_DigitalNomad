@@ -26,7 +26,7 @@ class NomadAddView: UIView {
         textField.addTarget(self, action: #selector(textFieldEditing), for: .editingChanged)
         subView.layer.borderColor = UIColor.lightGray.cgColor
         subView.layer.borderWidth = 1
-        addButton.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
+        addButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
         addButton.layer.cornerRadius = 5
         getTimeOfDate()
         timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(getTimeOfDate), userInfo: nil, repeats: true)

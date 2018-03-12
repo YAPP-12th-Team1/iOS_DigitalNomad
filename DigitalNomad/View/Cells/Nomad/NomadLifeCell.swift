@@ -30,7 +30,7 @@ class NomadLifeCell: UICollectionViewCell {
     @IBAction func clickCheckBox(_ sender: BEMCheckBox) {
         let parentViewController = self.parentViewController() as! NomadViewController
         if(sender.on){
-            checkBox.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
+            checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
             checkBox.layer.sublayers?.first?.cornerRadius = checkBox.frame.height / 2
             
         } else {

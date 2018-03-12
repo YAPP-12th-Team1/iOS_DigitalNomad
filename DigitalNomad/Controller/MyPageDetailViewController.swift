@@ -78,6 +78,7 @@ class MyPageDetailViewController: UIViewController {
     
     @objc func switchValueChanged(_ sender: JTMaterialSwitch){
         tableView.reloadData()
+        tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
 }
 
@@ -156,9 +157,6 @@ extension MyPageDetailViewController: UITableViewDataSource{
             return 0
         }
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return nil
-    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 5
     }
@@ -181,7 +179,7 @@ extension MyPageDetailViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.backgroundView?.backgroundColor = .clear
-        header.textLabel?.textColor = UIColor(red: 239/255, green: 144/255, blue: 130/255, alpha: 1)
+        header.textLabel?.textColor = #colorLiteral(red: 0.937254902, green: 0.5647058824, blue: 0.5098039216, alpha: 1)
         header.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         if(section == 1){
             coworkingAllowingSwitch.frame = CGRect(x: tableView.frame.width - 60, y: 0, width: 20, height: header.frame.height)

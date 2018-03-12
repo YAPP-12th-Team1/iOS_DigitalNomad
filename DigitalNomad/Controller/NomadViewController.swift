@@ -26,14 +26,14 @@ class NomadViewController: UIViewController {
         //아래 두 카테고리 중 한 부분만 실행해야 한다.
         
         //일 관련일 때는 테이블뷰
-        workView = NomadWorkView.instanceFromXib() as! NomadWorkView
-        workView.frame.size = centerView.frame.size
-        centerView.addSubview(workView)
+//        workView = NomadWorkView.instanceFromXib() as! NomadWorkView
+//        workView.frame.size = centerView.frame.size
+//        centerView.addSubview(workView)
         
         //삶 관련일 때는 컬렉션뷰
-//        lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
-//        lifeView.frame.size = centerView.frame.size
-//        centerView.addSubview(lifeView)
+        lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
+        lifeView.frame.size = centerView.frame.size
+        centerView.addSubview(lifeView)
         
         labelDays.layer.cornerRadius = 5
     }
@@ -52,8 +52,9 @@ class NomadViewController: UIViewController {
         view.frame.size = underView.frame.size
         if(centerView.subviews.first is NomadWorkView) {
             //분홍색 계열 (색A, 일)
-            searchBar.barTintColor = UIColor(red: 243/255, green: 171/255, blue: 160/255, alpha: 1)
-            view.applyGradient([UIColor(red: 251/255, green: 242/255, blue: 241/255, alpha: 1), UIColor(red: 238/255, green: 195/255, blue: 191/255, alpha: 1)])
+            
+            searchBar.barTintColor = #colorLiteral(red: 0.9529411765, green: 0.6705882353, blue: 0.6274509804, alpha: 1)
+            view.applyGradient([#colorLiteral(red: 0.9843137255, green: 0.9490196078, blue: 0.9450980392, alpha: 1), #colorLiteral(red: 0.9333333333, green: 0.7647058824, blue: 0.7490196078, alpha: 1)])
             let rows = workView.tableView.numberOfRows(inSection: 0)
             let completeRows = { () -> Int in
                 var completes = 0
@@ -82,8 +83,8 @@ class NomadViewController: UIViewController {
             }
         } else {
             //보라색 계열 (색B, 삶)
-            searchBar.barTintColor = UIColor(red: 194/255, green: 187/255, blue: 210/255, alpha: 1)
-            view.applyGradient([UIColor(red: 251/255, green: 244/255, blue: 243/255, alpha: 1), UIColor(red: 201/255, green: 195/255, blue: 215/255, alpha: 1)])
+            searchBar.barTintColor = #colorLiteral(red: 0.7607843137, green: 0.7333333333, blue: 0.8235294118, alpha: 1)
+            view.applyGradient([#colorLiteral(red: 0.9843137255, green: 0.9568627451, blue: 0.9529411765, alpha: 1), #colorLiteral(red: 0.7882352941, green: 0.7647058824, blue: 0.8431372549, alpha: 1)])
             let rows = lifeView.collectionView.numberOfItems(inSection: 0) - 1
             let completeRows = { () -> Int in
                 var completes = 0
@@ -118,7 +119,8 @@ class NomadViewController: UIViewController {
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy년 M월 d일 eeee"
         labelToday.text = "오늘 \(dateFormatter.string(from: today))"
-        labelDays.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
+        labelDays.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
