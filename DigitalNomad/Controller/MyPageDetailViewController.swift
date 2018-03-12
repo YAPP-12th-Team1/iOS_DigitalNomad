@@ -29,6 +29,11 @@ class MyPageDetailViewController: UIViewController {
         buttonRefresh.addTarget(self, action: #selector(clickRefresh), for: .touchUpInside)
         buttonRefresh.setTitle("R", for: .normal)
         buttonRefresh.setTitleColor(.black, for: .normal)
+        if(UserDefaults.standard.bool(forKey: "isCoworkingAllowed")){
+            coworkingAllowingSwitch.isOn = true
+        } else {
+            coworkingAllowingSwitch.isOn = false
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -77,6 +82,11 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @objc func switchValueChanged(_ sender: JTMaterialSwitch){
+        if(sender.isOn){
+            UserDefaults.standard.set(true, forKey: "isCoworkingAllowed")
+        } else {
+            UserDefaults.standard.set(false, forKey: "isCoworkingAllowed")
+        }
         tableView.reloadData()
         tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }

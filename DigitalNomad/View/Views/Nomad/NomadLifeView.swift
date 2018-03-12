@@ -45,7 +45,7 @@ extension NomadLifeView: UICollectionViewDataSource{
         cell.frame.size = CGSize(width: width / 4, height: width / 4)
         cell.containerView.layer.cornerRadius = cell.containerView.frame.height / 2
         //더미데이터
-        switch(indexPath.row){
+        switch(indexPath.item){
         case 0:
             cell.content.text = "캠핑"
         case 1:
@@ -59,7 +59,7 @@ extension NomadLifeView: UICollectionViewDataSource{
             return cell
         }
         return cell
-     }
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //전체 요소 + 1
         return 3
@@ -70,7 +70,7 @@ extension NomadLifeView: UICollectionViewDataSource{
 }
 extension NomadLifeView: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch(indexPath.row){
+        switch(indexPath.item){
         default:
             break
         }

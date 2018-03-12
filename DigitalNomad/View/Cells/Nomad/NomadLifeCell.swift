@@ -36,10 +36,18 @@ class NomadLifeCell: UICollectionViewCell {
         } else {
             checkBox.layer.sublayers?.removeFirst()
         }
-        reloadContentSummaryValue(controller: parentViewController)
+        let isFinished = reloadContentSummaryValue(controller: parentViewController)
+        if(isFinished){
+            //변경 화면
+            let parentViewController = self.parentViewController() as! NomadViewController
+            let changeView = NomadChangeView.instanceFromXib()
+            changeView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+            changeView.frame = parentViewController.view.frame
+            parentViewController.view.addSubview(changeView)
+        }
     }
     
-    func reloadContentSummaryValue(controller: NomadViewController){
+    func reloadContentSummaryValue(controller: NomadViewController) -> Bool{
         if(controller.centerView.subviews.first is NomadWorkView){
             let workView = controller.centerView.subviews.first as! NomadWorkView
             let rows = workView.tableView.numberOfRows(inSection: 0)
@@ -57,13 +65,14 @@ class NomadLifeCell: UICollectionViewCell {
             if let underView = controller.underView.subviews.first as? NomadAddView{
                 underView.contentSummaryValue.text = "\(completeRows)/\(rows)"
             }
+            return rows == completeRows
         } else {
             let lifeView = controller.centerView.subviews.first as! NomadLifeView
             let rows = lifeView.collectionView.numberOfItems(inSection: 0) - 1
             let completeRows = { () -> Int in
                 var completes = 0
                 var row = 0
-                while let cell = lifeView.collectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? NomadLifeCell {
+                while let cell = lifeView.collectionView.cellForItem(at: IndexPath(item: row, section: 0)) as? NomadLifeCell {
                     if(cell.checkBox.on){
                         completes += 1
                     }
@@ -74,6 +83,7 @@ class NomadLifeCell: UICollectionViewCell {
             if let underView = controller.underView.subviews.first as? NomadAddView{
                 underView.contentSummaryValue.text = "\(completeRows)/\(rows)"
             }
+            return rows == completeRows
         }
     }
 }
