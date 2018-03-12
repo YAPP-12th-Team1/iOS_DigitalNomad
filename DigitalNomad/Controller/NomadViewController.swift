@@ -76,8 +76,6 @@ class NomadViewController: UIViewController {
             if let firstContent = (workView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! NomadWorkCell).content.titleLabel?.text {
                 view.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
             }
-            //튜토리얼 스크린 디버깅용
-//            UserDefaults.standard.set(false, forKey: "isFirstNomadWorkExecute")
             if(!UserDefaults.standard.bool(forKey: "isFirstNomadWorkExecute")){
                 let tutorial = NomadWorkTutorialView.instanceFromXib()
                 tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
@@ -108,8 +106,6 @@ class NomadViewController: UIViewController {
             if let firstContent = (lifeView.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! NomadLifeCell).content.text {
                 view.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
             }
-            //튜토리얼 스크린 디버깅용
-//            UserDefaults.standard.set(false, forKey: "isFirstNomadLifeExecute")
             if(!UserDefaults.standard.bool(forKey: "isFirstNomadLifeExecute")){
                 let tutorial = NomadLifeTutorialView.instanceFromXib()
                 tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
