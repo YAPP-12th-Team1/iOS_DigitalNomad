@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 class MyPageMeetupView: UIView {
 
@@ -20,6 +21,7 @@ class MyPageMeetupView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        ToastView.appearance().bottomOffsetPortrait = 49 + 20
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 2
         imageView.layer.masksToBounds = false
@@ -33,14 +35,19 @@ class MyPageMeetupView: UIView {
     }
     
     @IBAction func requestMeetup(_ sender: UIButton) {
-        let popup = PopupView.instanceFromXib() as! PopupView
-        popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        popup.frame = (self.parentViewController()?.view.frame)!
-        popup.view.alpha = 0
-        UIView.animate(withDuration: 0.3, animations: {
-            popup.view.alpha = 1
-        }) { _ in
-            self.parentViewController()?.view.addSubview(popup)
+        //마이페이지 디테일에서 코워킹 설정이 off되어 있으면 토스터를 띄움, 그렇지 않으면 팝업을 띄움
+        if(UserDefaults.standard.bool(forKey: "isCoworkingAllowed")){
+            let popup = PopupView.instanceFromXib() as! PopupView
+            popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+            popup.frame = (self.parentViewController()?.view.frame)!
+            popup.view.alpha = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                popup.view.alpha = 1
+            }) { _ in
+                self.parentViewController()?.view.addSubview(popup)
+            }
+        } else {
+            Toast(text: "코워킹 공개를 허용해 주세요. (설정 -> Co-working)", duration: Delay.short).show()
         }
     }
     

@@ -16,8 +16,13 @@ class MyPageDetailMailCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        title.autocorrectionType = .no
+        message.autocorrectionType = .no
+        title.addTarget(self, action: #selector(clickReturnButton), for: .editingDidEndOnExit)
+        message.addTarget(self, action: #selector(clickReturnButton), for: .editingDidEndOnExit)
         view.layer.cornerRadius = 5
-        view.layer.borderColor = UIColor(red: 87/255, green: 83/255, blue: 83/255, alpha: 1).cgColor
+        view.layer.borderColor = #colorLiteral(red: 0.3411764706, green: 0.3254901961, blue: 0.3254901961, alpha: 1)
+        
         view.layer.borderWidth = 1
         title.addBorderBottom(height: 1.0)
         // Initialization code
@@ -27,6 +32,14 @@ class MyPageDetailMailCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @objc func clickReturnButton(){
+        if(title.isFirstResponder){
+            title.resignFirstResponder()
+        } else if(message.isFirstResponder){
+            message.resignFirstResponder()
+        }
     }
     
 }

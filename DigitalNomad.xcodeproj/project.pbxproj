@@ -43,6 +43,8 @@
 		196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4B012041497500C7BFAF /* MyPage.storyboard */; };
 		196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B0320414AE500C7BFAF /* TutorialViewController.swift */; };
 		196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */; };
+		196C77B8205425F200A45E89 /* NomadChangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196C77B7205425F200A45E89 /* NomadChangeView.xib */; };
+		196C77BA2054260100A45E89 /* NomadChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C77B92054260100A45E89 /* NomadChangeView.swift */; };
 		19A94FC6204EBECE003A1D23 /* humanSample2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FC5204EBECD003A1D23 /* humanSample2.png */; };
 		19A94FC9204EC19D003A1D23 /* MyPageDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FC7204EC19D003A1D23 /* MyPageDetailImageCell.swift */; };
 		19A94FCA204EC19D003A1D23 /* MyPageDetailImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FC8204EC19D003A1D23 /* MyPageDetailImageCell.xib */; };
@@ -157,6 +159,8 @@
 		196C4B012041497500C7BFAF /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		196C4B0320414AE500C7BFAF /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailViewController.swift; sourceTree = "<group>"; };
+		196C77B7205425F200A45E89 /* NomadChangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadChangeView.xib; sourceTree = "<group>"; };
+		196C77B92054260100A45E89 /* NomadChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadChangeView.swift; sourceTree = "<group>"; };
 		19A94FC5204EBECD003A1D23 /* humanSample2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanSample2.png; sourceTree = "<group>"; };
 		19A94FC7204EC19D003A1D23 /* MyPageDetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailImageCell.swift; sourceTree = "<group>"; };
 		19A94FC8204EC19D003A1D23 /* MyPageDetailImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageDetailImageCell.xib; sourceTree = "<group>"; };
@@ -323,10 +327,12 @@
 				1949DD0B204FD5220062D8EF /* NomadLifeView.swift */,
 				1949DCFF204FA91F0062D8EF /* NomadAddView.xib */,
 				1949DD01204FA9340062D8EF /* NomadAddView.swift */,
+				196C77B7205425F200A45E89 /* NomadChangeView.xib */,
+				196C77B92054260100A45E89 /* NomadChangeView.swift */,
 				19BA8272204FF31100C095C1 /* NomadWorkTutorialView.xib */,
-				19BA8274204FF31B00C095C1 /* NomadWorkTutorialView.swift */,
-				19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */,
 				19BA8278204FF33200C095C1 /* NomadLifeTutorialView.swift */,
+				19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */,
+				19BA8274204FF31B00C095C1 /* NomadWorkTutorialView.swift */,
 			);
 			path = Nomad;
 			sourceTree = "<group>";
@@ -608,6 +614,7 @@
 				19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */,
 				191DFEC3204EA9520095E9C1 /* Nomad.storyboard in Resources */,
 				6B54121B2041900600DDB2D5 /* map_present_background_update.png in Resources */,
+				196C77B8205425F200A45E89 /* NomadChangeView.xib in Resources */,
 				6B634A47204EF79F00A59EEF /* restaurant.png in Resources */,
 				1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */,
 				1949DD06204FD5030062D8EF /* NomadWorkView.xib in Resources */,
@@ -704,7 +711,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DigitalNomad/Pods-DigitalNomad-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
@@ -715,19 +721,16 @@
 				"${BUILT_PRODUCTS_DIR}/GaugeKit/GaugeKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JTMaterialSwitch/JTMaterialSwitch.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
-				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
@@ -738,13 +741,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GaugeKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTMaterialSwitch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -798,6 +799,7 @@
 				19BA8279204FF33200C095C1 /* NomadLifeTutorialView.swift in Sources */,
 				19A94FDC204EDD5C003A1D23 /* PopupView.swift in Sources */,
 				19AB507B2041AC28000C8DCB /* Research2ViewController.swift in Sources */,
+				196C77BA2054260100A45E89 /* NomadChangeView.swift in Sources */,
 				19AB507F2041AC3F000C8DCB /* Research4ViewController.swift in Sources */,
 				196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */,
 			);

@@ -1,5 +1,4 @@
 PODS:
-  - ActionSheetPicker-3.0 (2.3.0)
   - Alamofire (4.6.0)
   - BEMCheckBox (1.4.1)
   - Charts (3.0.5):
@@ -59,25 +58,20 @@ PODS:
   - JTMaterialSwitch (1.1)
   - leveldb-library (1.20)
   - MarqueeLabel/Swift (3.1.4)
-  - MBProgressHUD (1.1.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - NotificationBannerSwift (1.6.1):
-    - MarqueeLabel/Swift
-    - SnapKit (~> 4.0)
   - Realm (3.1.1):
     - Realm/Headers (= 3.1.1)
   - Realm/Headers (3.1.1)
   - RealmSwift (3.1.1):
     - Realm (= 3.1.1)
-  - SnapKit (4.0.0)
   - SwiftyJSON (4.0.0)
+  - Toaster (2.1.1)
 
 DEPENDENCIES:
-  - ActionSheetPicker-3.0
   - Alamofire (~> 4.5)
   - BEMCheckBox
   - Charts
@@ -90,13 +84,11 @@ DEPENDENCIES:
   - GoogleSignIn
   - JTMaterialSwitch
   - MarqueeLabel/Swift
-  - MBProgressHUD (~> 1.1.0)
-  - NotificationBannerSwift
   - RealmSwift
   - SwiftyJSON
+  - Toaster
 
 SPEC CHECKSUMS:
-  ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
@@ -116,14 +108,12 @@ SPEC CHECKSUMS:
   JTMaterialSwitch: cad8093c3773ff9f6c60005c98d269eb869b5e04
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
-  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  NotificationBannerSwift: 1fc2955381e6eb26d958ba32160fc41721b9b689
   Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
   RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: dabd9fe1c3d39cd41d67dc9e11f0018c0f5b6aeb
+PODFILE CHECKSUM: 771d7e3cad5513baecce491f7c07a3b7f2ae2c57
 
 COCOAPODS: 1.3.1

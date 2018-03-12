@@ -13,8 +13,8 @@ import JTMaterialSwitch
 class MyPageDetailViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
-    var keyboardHeight: CGFloat = 0
-    var keyboardHideCount = 0
+    var coworkingAllowingSwitch: JTMaterialSwitch = JTMaterialSwitch()
+    var buttonRefresh: UIButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,17 @@ class MyPageDetailViewController: UIViewController {
         tableView.register(UINib(nibName: "MyPageDetailImageCell", bundle: nil), forCellReuseIdentifier: "myPageDetailImageCell")
         tableView.register(UINib(nibName: "MyPageDetailInfoCell", bundle: nil), forCellReuseIdentifier: "myPageDetailInfoCell")
         tableView.register(UINib(nibName: "MyPageDetailMailCell", bundle: nil), forCellReuseIdentifier: "myPageDetailMailCell")
+        coworkingAllowingSwitch = JTMaterialSwitch(size: JTMaterialSwitchSizeSmall, style: JTMaterialSwitchStyleLight, state: JTMaterialSwitchStateOff)
+        coworkingAllowingSwitch.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
+        buttonRefresh = UIButton(type: .custom)
+        buttonRefresh.addTarget(self, action: #selector(clickRefresh), for: .touchUpInside)
+        buttonRefresh.setTitle("R", for: .normal)
+        buttonRefresh.setTitleColor(.black, for: .normal)
+        if(UserDefaults.standard.bool(forKey: "isCoworkingAllowed")){
+            coworkingAllowingSwitch.isOn = true
+        } else {
+            coworkingAllowingSwitch.isOn = false
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -52,32 +63,32 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification){
-        if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            self.keyboardHeight = keyboardHeight
-            tableView.frame.size.height -= keyboardHeight
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
+            if(self.view.frame.origin.y == 0){
+                self.view.frame.origin.y -= keyboardSize.height
+            }
         }
     }
     @objc func keyboardWillHide(_ notification: Notification){
-        self.keyboardHideCount += 1
-        if(self.keyboardHideCount == 1){
-            tableView.frame.size.height += self.keyboardHeight
-        } else {
-            self.keyboardHideCount = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
+            if(self.view.frame.origin.y != 0){
+                self.view.frame.origin.y += keyboardSize.height
+            }
         }
     }
     
     @objc func clickRefresh(){
         //위치 정보 새로고침
-        print("click refresh")
     }
     
     @objc func switchValueChanged(_ sender: JTMaterialSwitch){
         if(sender.isOn){
-            print("IsOn")
-        } else  {
-            print("IsOff")
+            UserDefaults.standard.set(true, forKey: "isCoworkingAllowed")
+        } else {
+            UserDefaults.standard.set(false, forKey: "isCoworkingAllowed")
         }
+        tableView.reloadData()
+        tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
 }
 
@@ -102,12 +113,8 @@ extension MyPageDetailViewController: UITableViewDataSource{
                 cell.title.text = "유목 장소"
                 cell.textField.isUserInteractionEnabled = false
                 cell.textField.text = "서울특별시 광진구"
-                let refresh = UIButton(type: .custom)
-                refresh.addTarget(self, action: #selector(clickRefresh), for: .touchUpInside)
-                refresh.setTitle("R", for: .normal)
-                refresh.setTitleColor(.black, for: .normal)
-                refresh.frame = CGRect(x: tableView.frame.width - 60, y: cell.frame.height / 2 - 10, width: 40 , height: 20)
-                cell.addSubview(refresh)
+                buttonRefresh.frame = CGRect(x: tableView.frame.width - 60, y: cell.frame.height / 2 - 10, width: 40 , height: 20)
+                cell.addSubview(buttonRefresh)
             default:
                 break
             }
@@ -140,7 +147,11 @@ extension MyPageDetailViewController: UITableViewDataSource{
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        if(coworkingAllowingSwitch.isOn){
+            return 4
+        } else {
+            return 2
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(section){
@@ -156,36 +167,34 @@ extension MyPageDetailViewController: UITableViewDataSource{
             return 0
         }
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(section == 2){
-            return "Co-working"
-        }
-        return nil
-    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if(section == 2){
-            return 20
-        }
         return 5
     }
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.backgroundView?.backgroundColor = .clear
-        header.textLabel?.textColor = UIColor(red: 239/255, green: 144/255, blue: 130/255, alpha: 1)
-        header.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        if(section == 2){
-            let coworkingAllowingSwitch = JTMaterialSwitch(size: JTMaterialSwitchSizeSmall, style: JTMaterialSwitchStyleLight, state: JTMaterialSwitchStateOff)
-            coworkingAllowingSwitch?.frame = CGRect(x: tableView.frame.width - 60, y: 0, width: 20, height: header.frame.height)
-            coworkingAllowingSwitch?.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
-            header.addSubview(coworkingAllowingSwitch!)
+    }
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if(section == 1){
+            return "Co-working"
         }
+        return nil
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if(section == 1){
+            return 20
+        }
         return 5
     }
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.backgroundView?.backgroundColor = .clear
+        header.textLabel?.textColor = #colorLiteral(red: 0.937254902, green: 0.5647058824, blue: 0.5098039216, alpha: 1)
+        header.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        if(section == 1){
+            coworkingAllowingSwitch.frame = CGRect(x: tableView.frame.width - 60, y: 0, width: 20, height: header.frame.height)
+            header.addSubview(coworkingAllowingSwitch)
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch(indexPath.section){

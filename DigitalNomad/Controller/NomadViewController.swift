@@ -20,45 +20,45 @@ class NomadViewController: UIViewController {
     var workView: NomadWorkView! = nil
     var lifeView: NomadLifeView! = nil
     
-    var keyboardHeight: CGFloat = 0
-    var keyboardHideCount = 0
-    var keyboardShowCount = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //아래 두 카테고리 중 한 부분만 실행해야 한다.
         
-        //일 관련일 때는 테이블뷰
-        workView = NomadWorkView.instanceFromXib() as! NomadWorkView
-        workView.frame.size = centerView.frame.size
-        centerView.addSubview(workView)
+//        일 관련일 때는 테이블뷰
+//        workView = NomadWorkView.instanceFromXib() as! NomadWorkView
+//        workView.frame.size = centerView.frame.size
+//        centerView.addSubview(workView)
         
         //삶 관련일 때는 컬렉션뷰
-//        lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
-//        lifeView.frame.size = centerView.frame.size
-//        centerView.addSubview(lifeView)
+        lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
+        lifeView.frame.size = centerView.frame.size
+        centerView.addSubview(lifeView)
         
         labelDays.layer.cornerRadius = 5
+        labelDays.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
-        keyboardShowCount = 0
         if(underView.layer.sublayers != nil){
             underView.layer.sublayers?.removeFirst()
         }
-        if(underView.subviews.count == 1){
+        if(!underView.subviews.isEmpty){
             underView.subviews.first?.removeFromSuperview()
         }
         let view = NomadAddView.instanceFromXib() as! NomadAddView
         view.frame.size = underView.frame.size
-        if(centerView.subviews.first is NomadWorkView) {
+        
+        
+        
+        if(centerView.subviews.last is NomadWorkView) {
             //분홍색 계열 (색A, 일)
-            searchBar.barTintColor = UIColor(red: 243/255, green: 171/255, blue: 160/255, alpha: 1)
-            view.applyGradient([UIColor(red: 251/255, green: 242/255, blue: 241/255, alpha: 1), UIColor(red: 238/255, green: 195/255, blue: 191/255, alpha: 1)])
+            workView = centerView.subviews.last as! NomadWorkView
+            searchBar.barTintColor = #colorLiteral(red: 0.9529411765, green: 0.6705882353, blue: 0.6274509804, alpha: 1)
+            self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.6705882353, blue: 0.6274509804, alpha: 1)
+            view.applyGradient([#colorLiteral(red: 0.9843137255, green: 0.9490196078, blue: 0.9450980392, alpha: 1), #colorLiteral(red: 0.9333333333, green: 0.7647058824, blue: 0.7490196078, alpha: 1)])
             let rows = workView.tableView.numberOfRows(inSection: 0)
             let completeRows = { () -> Int in
                 var completes = 0
@@ -87,13 +87,15 @@ class NomadViewController: UIViewController {
             }
         } else {
             //보라색 계열 (색B, 삶)
-            searchBar.barTintColor = UIColor(red: 194/255, green: 187/255, blue: 210/255, alpha: 1)
-            view.applyGradient([UIColor(red: 251/255, green: 244/255, blue: 243/255, alpha: 1), UIColor(red: 201/255, green: 195/255, blue: 215/255, alpha: 1)])
+            lifeView = centerView.subviews.last as! NomadLifeView
+            searchBar.barTintColor = #colorLiteral(red: 0.7607843137, green: 0.7333333333, blue: 0.8235294118, alpha: 1)
+            self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.7607843137, green: 0.7333333333, blue: 0.8235294118, alpha: 1)
+            view.applyGradient([#colorLiteral(red: 0.9843137255, green: 0.9568627451, blue: 0.9529411765, alpha: 1), #colorLiteral(red: 0.7882352941, green: 0.7647058824, blue: 0.8431372549, alpha: 1)])
             let rows = lifeView.collectionView.numberOfItems(inSection: 0) - 1
             let completeRows = { () -> Int in
                 var completes = 0
                 var row = 0
-                while let cell = lifeView.collectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? NomadLifeCell {
+                while let cell = lifeView.collectionView.cellForItem(at: IndexPath(item: row, section: 0)) as? NomadLifeCell {
                     if(cell.checkBox.on){
                         completes += 1
                     }
@@ -103,7 +105,7 @@ class NomadViewController: UIViewController {
             }()
             view.contentSummaryValue.text = "\(completeRows)/\(rows)"
             view.textField.placeholder = "하고 싶은 카드를 추가해보세요"
-            if let firstContent = (lifeView.collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as! NomadLifeCell).content.text {
+            if let firstContent = (lifeView.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! NomadLifeCell).content.text {
                 view.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
             }
             //튜토리얼 스크린 디버깅용
@@ -115,7 +117,6 @@ class NomadViewController: UIViewController {
                 self.view.addSubview(tutorial)
                 UserDefaults.standard.set(true, forKey: "isFirstNomadLifeExecute")
             }
-            
         }
         underView.addSubview(view)
         let today = Date()
@@ -123,7 +124,6 @@ class NomadViewController: UIViewController {
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy년 M월 d일 eeee"
         labelToday.text = "오늘 \(dateFormatter.string(from: today))"
-        labelDays.applyGradient([UIColor(red: 128/255, green: 184/255, blue: 223/255, alpha: 1), UIColor(red: 178/255, green: 216/255, blue: 197/255, alpha: 1)])
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -140,33 +140,33 @@ class NomadViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification){
-        if(keyboardShowCount >= 1) { return }
-        if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            self.keyboardHeight = keyboardHeight
-            if(centerView.subviews.first is NomadWorkView){
-                workView.tableView.frame.size.height -= keyboardHeight
-            } else {
-                lifeView.collectionView.frame.size.height -= keyboardHeight
+        if(searchBar.isFirstResponder){
+            return
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= (keyboardSize.height - 49)
             }
-            underView.frame.origin.y -= keyboardHeight
-            self.keyboardShowCount += 1
         }
     }
     @objc func keyboardWillHide(_ notification: Notification){
-        self.keyboardHideCount += 1
-        if(self.keyboardHideCount == 1){
-            if(centerView.subviews.first is NomadWorkView){
-                workView.tableView.frame.size.height += self.keyboardHeight
-                
-            } else {
-                lifeView.collectionView.frame.size.height += self.keyboardHeight
-            }
-            underView.frame.origin.y += self.keyboardHeight
-        } else {
-            self.keyboardHideCount = 0
+        if(searchBar.isFirstResponder){
+            return
         }
-        self.keyboardShowCount = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += (keyboardSize.height - 49)
+            }
+        }
+    }
+}
+
+extension NomadViewController: UISearchBarDelegate{
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        return
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
 
