@@ -39,6 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         window?.makeKeyAndVisible()
         UIApplication.shared.isStatusBarHidden = false
         (UIApplication.shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = .white
+        
+        //튜토리얼 스크린 디버깅용
+//        UserDefaults.standard.set(false, forKey: "isFirstNomadWorkExecute")
+//        UserDefaults.standard.set(false, forKey: "isFirstNomadLifeExecute")
+        
         return true
     }
     

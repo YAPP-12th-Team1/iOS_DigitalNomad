@@ -9,12 +9,11 @@
 import UIKit
 
 class NomadWorkTutorialView: UIView {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         let gesture = UITapGestureRecognizer(target: self, action: #selector(clickView))
         self.addGestureRecognizer(gesture)
-        
     }
     
     class func instanceFromXib() -> UIView {
@@ -24,5 +23,4 @@ class NomadWorkTutorialView: UIView {
     @objc func clickView(){
         self.removeFromSuperview()
     }
-
 }
