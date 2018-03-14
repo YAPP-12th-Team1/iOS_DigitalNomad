@@ -45,6 +45,13 @@
 		196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */; };
 		196C77B8205425F200A45E89 /* NomadChangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196C77B7205425F200A45E89 /* NomadChangeView.xib */; };
 		196C77BA2054260100A45E89 /* NomadChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C77B92054260100A45E89 /* NomadChangeView.swift */; };
+		199A930D2058E58B007509A1 /* ProjectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A930C2058E58B007509A1 /* ProjectInfo.swift */; };
+		199A930F2058E595007509A1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A930E2058E595007509A1 /* UserInfo.swift */; };
+		199A93112058E59E007509A1 /* UserLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93102058E59E007509A1 /* UserLocationInfo.swift */; };
+		199A93132058E5A6007509A1 /* EmailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93122058E5A6007509A1 /* EmailInfo.swift */; };
+		199A93152058E5AF007509A1 /* GoalListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93142058E5AF007509A1 /* GoalListInfo.swift */; };
+		199A93172058E5B8007509A1 /* WishListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93162058E5B8007509A1 /* WishListInfo.swift */; };
+		199A93192058F2DA007509A1 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93182058F2DA007509A1 /* DummyData.swift */; };
 		19A94FC6204EBECE003A1D23 /* humanSample2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FC5204EBECD003A1D23 /* humanSample2.png */; };
 		19A94FC9204EC19D003A1D23 /* MyPageDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FC7204EC19D003A1D23 /* MyPageDetailImageCell.swift */; };
 		19A94FCA204EC19D003A1D23 /* MyPageDetailImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FC8204EC19D003A1D23 /* MyPageDetailImageCell.xib */; };
@@ -68,11 +75,7 @@
 		19BA8277204FF32500C095C1 /* NomadLifeTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */; };
 		19BA8279204FF33200C095C1 /* NomadLifeTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA8278204FF33200C095C1 /* NomadLifeTutorialView.swift */; };
 		19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19E63EE020416D4D003D3155 /* GoogleService-Info.plist */; };
-		19E6FCC820420E51006E76EC /* ProjectRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCC720420E51006E76EC /* ProjectRealm.swift */; };
-		19E6FCCA20420E71006E76EC /* GoalListRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCC920420E71006E76EC /* GoalListRealm.swift */; };
-		19E6FCCC20420EB4006E76EC /* WishListRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCB20420EB4006E76EC /* WishListRealm.swift */; };
-		19E6FCCE20420EE3006E76EC /* FinancialRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCD20420EE3006E76EC /* FinancialRealm.swift */; };
-		19E6FCD020420F12006E76EC /* MyLocationRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCF20420F12006E76EC /* MyLocationRealm.swift */; };
+		19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */; };
 		19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2CDE02041419C00CB113B /* AppDelegate.swift */; };
 		19F2CDE82041419C00CB113B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE62041419C00CB113B /* Main.storyboard */; };
 		19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE92041419C00CB113B /* Assets.xcassets */; };
@@ -161,6 +164,13 @@
 		196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailViewController.swift; sourceTree = "<group>"; };
 		196C77B7205425F200A45E89 /* NomadChangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadChangeView.xib; sourceTree = "<group>"; };
 		196C77B92054260100A45E89 /* NomadChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadChangeView.swift; sourceTree = "<group>"; };
+		199A930C2058E58B007509A1 /* ProjectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfo.swift; sourceTree = "<group>"; };
+		199A930E2058E595007509A1 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		199A93102058E59E007509A1 /* UserLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationInfo.swift; sourceTree = "<group>"; };
+		199A93122058E5A6007509A1 /* EmailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInfo.swift; sourceTree = "<group>"; };
+		199A93142058E5AF007509A1 /* GoalListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListInfo.swift; sourceTree = "<group>"; };
+		199A93162058E5B8007509A1 /* WishListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListInfo.swift; sourceTree = "<group>"; };
+		199A93182058F2DA007509A1 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		19A94FC5204EBECD003A1D23 /* humanSample2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanSample2.png; sourceTree = "<group>"; };
 		19A94FC7204EC19D003A1D23 /* MyPageDetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailImageCell.swift; sourceTree = "<group>"; };
 		19A94FC8204EC19D003A1D23 /* MyPageDetailImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageDetailImageCell.xib; sourceTree = "<group>"; };
@@ -184,11 +194,7 @@
 		19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeTutorialView.xib; sourceTree = "<group>"; };
 		19BA8278204FF33200C095C1 /* NomadLifeTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeTutorialView.swift; sourceTree = "<group>"; };
 		19E63EE020416D4D003D3155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		19E6FCC720420E51006E76EC /* ProjectRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectRealm.swift; sourceTree = "<group>"; };
-		19E6FCC920420E71006E76EC /* GoalListRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListRealm.swift; sourceTree = "<group>"; };
-		19E6FCCB20420EB4006E76EC /* WishListRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListRealm.swift; sourceTree = "<group>"; };
-		19E6FCCD20420EE3006E76EC /* FinancialRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialRealm.swift; sourceTree = "<group>"; };
-		19E6FCCF20420F12006E76EC /* MyLocationRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationRealm.swift; sourceTree = "<group>"; };
+		19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationInfo.swift; sourceTree = "<group>"; };
 		19F2CDDD2041419B00CB113B /* DigitalNomad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalNomad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F2CDE02041419C00CB113B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19F2CDE72041419C00CB113B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -369,6 +375,7 @@
 		19F2CDDF2041419C00CB113B /* DigitalNomad */ = {
 			isa = PBXGroup;
 			children = (
+				199A93182058F2DA007509A1 /* DummyData.swift */,
 				19F2CDF4204141B000CB113B /* Model */,
 				19F2CDF5204141B500CB113B /* View */,
 				19F2CDF6204141BA00CB113B /* Controller */,
@@ -384,11 +391,13 @@
 		19F2CDF4204141B000CB113B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				19E6FCC720420E51006E76EC /* ProjectRealm.swift */,
-				19E6FCC920420E71006E76EC /* GoalListRealm.swift */,
-				19E6FCCB20420EB4006E76EC /* WishListRealm.swift */,
-				19E6FCCD20420EE3006E76EC /* FinancialRealm.swift */,
-				19E6FCCF20420F12006E76EC /* MyLocationRealm.swift */,
+				199A930E2058E595007509A1 /* UserInfo.swift */,
+				199A93122058E5A6007509A1 /* EmailInfo.swift */,
+				199A93102058E59E007509A1 /* UserLocationInfo.swift */,
+				199A930C2058E58B007509A1 /* ProjectInfo.swift */,
+				199A93142058E5AF007509A1 /* GoalListInfo.swift */,
+				199A93162058E5B8007509A1 /* WishListInfo.swift */,
+				19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -768,12 +777,12 @@
 				196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */,
 				19AB50792041AC1E000C8DCB /* Research1ViewController.swift in Sources */,
 				196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */,
+				199A93152058E5AF007509A1 /* GoalListInfo.swift in Sources */,
 				19BA8275204FF31B00C095C1 /* NomadWorkTutorialView.swift in Sources */,
 				19BA826C204FEF9900C095C1 /* NomadLifeCell.swift in Sources */,
 				196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */,
 				6B634A41204EF73300A59EEF /* MapCell.swift in Sources */,
 				19A94FD5204EC1CE003A1D23 /* MyPageDetailMailCell.swift in Sources */,
-				19E6FCCA20420E71006E76EC /* GoalListRealm.swift in Sources */,
 				19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */,
 				195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */,
 				191DFEC1204EA9490095E9C1 /* MyPageDetailViewController.swift in Sources */,
@@ -781,26 +790,29 @@
 				1949DD08204FD50F0062D8EF /* NomadWorkView.swift in Sources */,
 				1949DCFC204F8E2C0062D8EF /* StrikethroughView.swift in Sources */,
 				191DFECD204EACEE0095E9C1 /* MyPageMeetupView.swift in Sources */,
+				199A93192058F2DA007509A1 /* DummyData.swift in Sources */,
+				199A93112058E59E007509A1 /* UserLocationInfo.swift in Sources */,
 				196C4AF42041457A00C7BFAF /* ResearchViewController.swift in Sources */,
 				19AB507D2041AC32000C8DCB /* Research3ViewController.swift in Sources */,
+				199A930D2058E58B007509A1 /* ProjectInfo.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,
+				199A93172058E5B8007509A1 /* WishListInfo.swift in Sources */,
 				19A94FCD204EC1AE003A1D23 /* MyPageDetailInfoCell.swift in Sources */,
 				19A94FC9204EC19D003A1D23 /* MyPageDetailImageCell.swift in Sources */,
 				191DFED4204EB32B0095E9C1 /* UIView+.swift in Sources */,
-				19E6FCCE20420EE3006E76EC /* FinancialRealm.swift in Sources */,
 				19AB50772041A3AE000C8DCB /* GoalSettingViewController.swift in Sources */,
 				196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */,
 				191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */,
-				19E6FCC820420E51006E76EC /* ProjectRealm.swift in Sources */,
 				1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */,
-				19E6FCCC20420EB4006E76EC /* WishListRealm.swift in Sources */,
 				19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */,
-				19E6FCD020420F12006E76EC /* MyLocationRealm.swift in Sources */,
+				19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */,
 				19BA8279204FF33200C095C1 /* NomadLifeTutorialView.swift in Sources */,
 				19A94FDC204EDD5C003A1D23 /* PopupView.swift in Sources */,
+				199A93132058E5A6007509A1 /* EmailInfo.swift in Sources */,
 				19AB507B2041AC28000C8DCB /* Research2ViewController.swift in Sources */,
 				196C77BA2054260100A45E89 /* NomadChangeView.swift in Sources */,
 				19AB507F2041AC3F000C8DCB /* Research4ViewController.swift in Sources */,
+				199A930F2058E595007509A1 /* UserInfo.swift in Sources */,
 				196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

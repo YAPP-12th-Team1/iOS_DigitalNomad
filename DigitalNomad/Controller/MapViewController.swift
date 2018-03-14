@@ -105,7 +105,7 @@ class MapViewController: UIViewController {
     func loadStoredItems() -> Void {
         var str: String
         var items = [MTMapPOIItem]()
-        let obj = self.realm.objects(MyLocationRealm.self)
+        let obj = self.realm.objects(MapLocationInfo.self)
         for index in 0..<obj.count {
             switch(obj[index].category) {
             case 0:
@@ -198,14 +198,14 @@ extension MapViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let obj = self.realm.objects(MyLocationRealm.self)
+        let obj = self.realm.objects(MapLocationInfo.self)
         return obj.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView!.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath) as! MapCell
         
-        let obj = self.realm.objects(MyLocationRealm.self)
+        let obj = self.realm.objects(MapLocationInfo.self)
         let placeName = obj[indexPath.row].name
         let placeAddress = obj[indexPath.row].address
         let placeCategory = obj[indexPath.row].category
@@ -234,7 +234,7 @@ extension MapViewController: UITableViewDataSource{
 
 extension MapViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let obj = self.realm.objects(MyLocationRealm.self)
+        let obj = self.realm.objects(MapLocationInfo.self)
         let objClicked = obj[indexPath.row]
         let objClickedMapPoint = MTMapPoint.init(geoCoord: MTMapPointGeo.init(latitude: objClicked.latitude-0.0015, longitude: objClicked.longitude))
         self.mapView?.setMapCenter(objClickedMapPoint, animated: true)
@@ -337,7 +337,7 @@ extension MapViewController: MTMapViewDelegate{
         let okAction = UIAlertAction(title: "YES", style: .default) { (_) in
             for index in 0..<self.placeNameArr.count {
                 if(self.placeNameArr[index] == poiItem.itemName) {
-                    addMyLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], self.distance[index], Date())
+                    addMapLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], self.distance[index], Date())
                     self.mapView?.removeAllPOIItems()
                     self.loadStoredItems()
                     self.tableView.reloadData()

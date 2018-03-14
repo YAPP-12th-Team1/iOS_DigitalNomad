@@ -11,7 +11,7 @@ import RealmSwift
 
 let categoryDictionary: [String: String] = ["MT1": "대형마트", "CS2": "편의점", "PS3": "어린이집,유치원", "SC4": "학교", "AC5": "학원", "PK6": "주차장", "OL7": "주유소,충전소", "SW8": "지하철역", "BK9": "은행", "CT1": "문화시설", "AG2": "중개업소", "PO3": "공공기관", "AT4": "관광명소", "AD5": "숙박", "FD6": "음식점", "CE7": "카페", "HP8": "병원", "PM9": "약국"]
 
-class MyLocationRealm: Object {
+class MapLocationInfo: Object {
     @objc dynamic var longitude: Double = 0
     @objc dynamic var latitude: Double = 0
     @objc dynamic var category: Int = 0
@@ -20,9 +20,9 @@ class MyLocationRealm: Object {
     @objc dynamic var distance: String = ""
     @objc dynamic var update: Date = Date() 
 }
-func addMyLocation(_ longitude: Double, _ latitude: Double, _ category: Int, _ name: String, _ address: String, _ distance: String, _ update: Date){
+func addMapLocation(_ longitude: Double, _ latitude: Double, _ category: Int, _ name: String, _ address: String, _ distance: String, _ update: Date){
     let realm = try! Realm()
-    let object = MyLocationRealm()
+    let object = MapLocationInfo()
     object.longitude = longitude
     object.latitude = latitude
     object.category = category
