@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         //Realm 마이그레이션
         //개발 중엔 그냥 앱을 삭제하고 다시 실행하세요
         let config = Realm.Configuration(
@@ -29,9 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 }
         })
         Realm.Configuration.defaultConfiguration = config
-        let _=try! Realm()
+        let _ = try! Realm()
         
-        FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         window = UIWindow(frame: UIScreen.main.bounds)

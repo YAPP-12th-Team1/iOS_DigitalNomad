@@ -16,7 +16,7 @@ class NomadViewController: UIViewController {
     @IBOutlet var centerView: UIView!
     @IBOutlet var labelToday: UILabel!
     @IBOutlet var labelDays: UILabel!
-    @IBOutlet var underView: NomadAddView!
+    @IBOutlet var underView: UIView!
     var workView: NomadWorkView! = nil
     var lifeView: NomadLifeView! = nil
     
@@ -116,7 +116,7 @@ class NomadViewController: UIViewController {
                 self.view.addSubview(tutorial)
                 UserDefaults.standard.set(true, forKey: "isFirstNomadLifeExecute")
             }
-            underView.frame.origin.y = self.view.frame.height - 49 - (underView.frame.height - 119)
+            underView.frame.origin.y = self.view.frame.height - (self.tabBarController?.tabBar.frame.height)! - (underView.frame.height - addView.subView.frame.height)
             underView.addSubview(addView)
         }
         
@@ -143,10 +143,11 @@ class NomadViewController: UIViewController {
         }
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= (keyboardSize.height - 49)
+                self.view.frame.origin.y -= (keyboardSize.height - (self.tabBarController?.tabBar.frame.height)!)
             }
             if(centerView.subviews.last is NomadLifeView){
-                underView.frame.origin.y -= 119
+                let addView = underView.subviews.last as! NomadAddView
+                underView.frame.origin.y -= addView.subView.frame.height
             }
         }
     }
@@ -156,10 +157,11 @@ class NomadViewController: UIViewController {
         }
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += (keyboardSize.height - 49)
+                self.view.frame.origin.y += (keyboardSize.height - (self.tabBarController?.tabBar.frame.height)!)
             }
             if(centerView.subviews.last is NomadLifeView){
-                underView.frame.origin.y += 119
+                let addView = underView.subviews.last as! NomadAddView
+                underView.frame.origin.y += addView.subView.frame.height
             }
         }
     }
