@@ -8,6 +8,7 @@
 
 import UIKit
 import Toaster
+import RealmSwift
 
 class MyPageMeetupView: UIView {
 
@@ -18,9 +19,13 @@ class MyPageMeetupView: UIView {
     @IBOutlet var days: UILabel!
     @IBOutlet var message: UILabel!
     @IBOutlet var distance: UILabel!
+    var realm: Realm!
+    var userInfo: UserInfo!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        realm = try! Realm()
+        userInfo = realm.objects(UserInfo.self).first!
         ToastView.appearance().bottomOffsetPortrait = 49 + 20
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 2
@@ -36,7 +41,7 @@ class MyPageMeetupView: UIView {
     
     @IBAction func requestMeetup(_ sender: UIButton) {
         //마이페이지 디테일에서 코워킹 설정이 off되어 있으면 토스터를 띄움, 그렇지 않으면 팝업을 띄움
-        if(UserDefaults.standard.bool(forKey: "isCoworkingAllowed")){
+        if(userInfo.cowork){
             let popup = PopupView.instanceFromXib() as! PopupView
             popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             popup.frame = (self.parentViewController()?.view.frame)!

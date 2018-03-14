@@ -16,6 +16,8 @@ class GoalListInfo: Object{
     @objc dynamic var status: Bool = false  //default: false
     @objc dynamic var importance: Int = 0   //default: 0, 0/1/2
     
+    let projects = LinkingObjects(fromType: ProjectInfo.self, property: "goalLists")
+    
     func incrementID() -> Int {
         let realm = try! Realm()
         return (realm.objects(GoalListInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1

@@ -22,16 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //Realm 마이그레이션
         //개발 중엔 그냥 앱을 삭제하고 다시 실행하세요
         
-        let config = Realm.Configuration(
-            schemaVersion: 0,  //Increment this each time your schema changes
-            migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {
-                    //If you need to transfer any data
-                    //(in your case you don't right now) you will transfer here
-                }
-        })
-        Realm.Configuration.defaultConfiguration = config
-        let _ = try! Realm()
+//        let config = Realm.Configuration(
+//            schemaVersion: 0,  //Increment this each time your schema changes
+//            migrationBlock: { migration, oldSchemaVersion in
+//                if (oldSchemaVersion < 1) {
+//                    //If you need to transfer any data
+//                    //(in your case you don't right now) you will transfer here
+//                }
+//        })
+//        Realm.Configuration.defaultConfiguration = config
+//        let _ = try! Realm()
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self

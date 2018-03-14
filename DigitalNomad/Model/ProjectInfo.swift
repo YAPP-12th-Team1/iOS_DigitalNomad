@@ -15,6 +15,9 @@ class ProjectInfo: Object{
     @objc dynamic var period: Date = Date()     //Not Null
     @objc dynamic var day: Int = 5              //default: 5
     
+    let wishLists = List<WishListInfo>()
+    let goalLists = List<GoalListInfo>()
+    
     func incrementId() -> Int{
         let realm = try! Realm()
         return (realm.objects(ProjectInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1

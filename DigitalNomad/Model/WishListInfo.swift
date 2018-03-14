@@ -15,6 +15,8 @@ class WishListInfo: Object{
     @objc dynamic var todo: String = ""     //Not Null
     @objc dynamic var status: Bool = false  //default: false
     
+    let projects = LinkingObjects(fromType: ProjectInfo.self, property: "wishLists")
+    
     func incrementID() -> Int {
         let realm = try! Realm()
         return (realm.objects(WishListInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1

@@ -8,6 +8,7 @@
 
 import UIKit
 import GaugeKit
+import RealmSwift
 
 class MyPageViewController: UIViewController {
 
@@ -17,9 +18,11 @@ class MyPageViewController: UIViewController {
     @IBOutlet var viewList: UIView!
     @IBOutlet var viewCard: UIView!
     @IBOutlet var viewMeetup: UIView!
+    var realm: Realm!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        realm = try! Realm()
         let list = MyPageListView.instanceFromXib()
         let card = MyPageCardView.instanceFromXib()
         let meetup = MyPageMeetupView.instanceFromXib()
@@ -36,10 +39,22 @@ class MyPageViewController: UIViewController {
         viewList.addSubview(list)
         viewCard.addSubview(card)
         viewMeetup.addSubview(meetup)
-        
         labelHashtag.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
         
         gauge.rate = 86
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.isHidden = true
+        let imageData = realm.objects(UserInfo.self).last!.image
+        imageView.image = UIImage(data: imageData)
+        
+        if(self.view.subviews.last is UILabel){
+            self.view.subviews.last?.removeFromSuperview()
+        }
         
         let lineWidth = gauge.lineWidth / 2
         let percent = gauge.rate * 100 / gauge.maxValue
@@ -66,11 +81,6 @@ class MyPageViewController: UIViewController {
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         view.addSubview(label)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController?.navigationBar.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {

@@ -15,10 +15,10 @@ class UserInfo: Object{
     @objc dynamic var id: Int = 0                                                           //Primary Key
     @objc dynamic var email: String = Auth.auth().currentUser?.email ?? "NoEmail"
     @objc dynamic var nickname: String = Auth.auth().currentUser?.displayName ?? "Noname"   //Not Null
-    @objc dynamic var image: Data?
+    @objc dynamic var image: Data = UIImagePNGRepresentation(#imageLiteral(resourceName: "humanSample.png"))!
     @objc dynamic var address: String?
     @objc dynamic var cowork: Bool = false                                                  //default: false
-    @objc dynamic var job: String?
+    @objc dynamic var job: String = ""
     @objc dynamic var introducing: String?
     @objc dynamic var purpose: String?
     
@@ -28,16 +28,12 @@ class UserInfo: Object{
     }
 }
 
-func addUser(_ nickname: String, _ image: Data, _ address: String, _ job: String, _ introducing: String, _ purpose: String){
+func addUser(_ address: String?, _ job: String){
     let realm = try! Realm()
     let object = UserInfo()
     object.id = object.incrementID()
-    object.nickname = nickname
-    object.image = image
     object.address = address
     object.job = job
-    object.introducing = introducing
-    object.purpose = purpose
     try! realm.write{
         realm.add(object)
     }

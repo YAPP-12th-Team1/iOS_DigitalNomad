@@ -22,14 +22,19 @@ class NomadViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(UserDefaults.standard.bool(forKey: "isNomadWorkView")){
-            workView = NomadWorkView.instanceFromXib() as! NomadWorkView
-            workView.frame.size = centerView.frame.size
-            centerView.addSubview(workView)
-        } else {
+        //더미데이터 쌓는 코드 어느정도 완료되면 아래 줄을 없애자
+        let _ = DummyData()
+        
+        //앱 실행 시 일하는 중인지 삶하는 중인지 구분함
+        if(UserDefaults.standard.bool(forKey: "isNomadLifeView")){
             lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
             lifeView.frame.size = centerView.frame.size
             centerView.addSubview(lifeView)
+            
+        } else {
+            workView = NomadWorkView.instanceFromXib() as! NomadWorkView
+            workView.frame.size = centerView.frame.size
+            centerView.addSubview(workView)
         }
         labelDays.layer.cornerRadius = 5
         labelDays.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
@@ -48,7 +53,7 @@ class NomadViewController: UIViewController {
         }
         if(centerView.subviews.last is NomadWorkView) {
             //분홍색 계열 (색A, 일)
-            UserDefaults.standard.set(true, forKey: "isNomadWorkView")
+            UserDefaults.standard.set(false, forKey: "isNomadLifeView")
             let addView = NomadAddView.instanceFromXib() as! NomadAddView
             addView.frame.size = underView.frame.size
             
@@ -84,7 +89,7 @@ class NomadViewController: UIViewController {
             underView.addSubview(addView)
         } else {
             //보라색 계열 (색B, 삶)
-            UserDefaults.standard.set(false, forKey: "isNomadWorkView")
+            UserDefaults.standard.set(true, forKey: "isNomadLifeView")
             let addView = NomadAddView.instanceFromXib() as! NomadAddView
             addView.frame.size = underView.frame.size
             
@@ -110,6 +115,7 @@ class NomadViewController: UIViewController {
                 addView.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
             }
             if(!UserDefaults.standard.bool(forKey: "isFirstNomadLifeExecute")){
+                print("왜안나옴")
                 let tutorial = NomadLifeTutorialView.instanceFromXib()
                 tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
                 tutorial.frame = self.view.frame

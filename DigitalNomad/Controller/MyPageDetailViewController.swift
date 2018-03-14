@@ -9,17 +9,23 @@
 import UIKit
 import RealmSwift
 import JTMaterialSwitch
+import Toaster
 
 class MyPageDetailViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     var coworkingAllowingSwitch: JTMaterialSwitch = JTMaterialSwitch()
     var buttonRefresh: UIButton = UIButton()
+    var realm: Realm!
+    var userInfo: UserInfo!
+    var userLocationInfo: UserLocationInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        realm = try! Realm()
+        userInfo = realm.objects(UserInfo.self).last
+        let userId = userInfo.id
+        userLocationInfo = realm.objects(UserLocationInfo.self).filter("userId = \(userId)").first
         tableView.register(UINib(nibName: "MyPageDetailImageCell", bundle: nil), forCellReuseIdentifier: "myPageDetailImageCell")
         tableView.register(UINib(nibName: "MyPageDetailInfoCell", bundle: nil), forCellReuseIdentifier: "myPageDetailInfoCell")
         tableView.register(UINib(nibName: "MyPageDetailMailCell", bundle: nil), forCellReuseIdentifier: "myPageDetailMailCell")
@@ -29,7 +35,7 @@ class MyPageDetailViewController: UIViewController {
         buttonRefresh.addTarget(self, action: #selector(clickRefresh), for: .touchUpInside)
         buttonRefresh.setTitle("R", for: .normal)
         buttonRefresh.setTitleColor(.black, for: .normal)
-        if(UserDefaults.standard.bool(forKey: "isCoworkingAllowed")){
+        if(userInfo.cowork){
             coworkingAllowingSwitch.isOn = true
         } else {
             coworkingAllowingSwitch.isOn = false
@@ -40,6 +46,8 @@ class MyPageDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,9 +65,32 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @IBAction func clickConfirm(_ sender: UIButton) {
-//        try! Realm().write {
-//            <#code#>
-//        }
+        if(tableView.numberOfSections == 4){
+            let userId = realm.objects(UserInfo.self).last!.id
+            let introducingCell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! MyPageDetailInfoCell
+            let purposeCell = tableView.cellForRow(at: IndexPath(row: 2, section: 2)) as! MyPageDetailInfoCell
+            let mailCell = tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! MyPageDetailMailCell
+            if let email = realm.objects(EmailInfo.self).filter("userId = \(userId)").first {
+                if let title = mailCell.title.text{
+                    try! realm.write {
+                        email.title = title
+                    }
+                }
+                if let message = mailCell.message.text{
+                    try! realm.write{
+                        email.context = message
+                    }
+                }
+            } else {
+                addEmail(userId, mailCell.title.text ?? "", mailCell.message.text ?? "")
+            }
+            try! realm.write{
+                userInfo.introducing = introducingCell.textField.text
+                userInfo.purpose = purposeCell.textField.text
+            }
+        }
+        Toast(text: "저장했습니다.", duration: Delay.short).show()
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func keyboardWillShow(_ notification: Notification){
@@ -79,13 +110,20 @@ class MyPageDetailViewController: UIViewController {
     
     @objc func clickRefresh(){
         //위치 정보 새로고침
+        //위치 정보 UserLocationInfo에 업데이트
+        //좌표 값에 따라서 위치 나오면 UserInfo에 업데이트
+        //tableView.reloadData()
     }
     
     @objc func switchValueChanged(_ sender: JTMaterialSwitch){
         if(sender.isOn){
-            UserDefaults.standard.set(true, forKey: "isCoworkingAllowed")
+            try! realm.write {
+                userInfo.cowork = true
+            }
         } else {
-            UserDefaults.standard.set(false, forKey: "isCoworkingAllowed")
+            try! realm.write{
+                userInfo.cowork = false
+            }
         }
         tableView.reloadData()
         tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
@@ -104,15 +142,24 @@ extension MyPageDetailViewController: UITableViewDataSource{
             case 0:
                 cell.title.text = "사용자 이름"
                 cell.textField.isUserInteractionEnabled = false
-                cell.textField.text = "유목민"
+                cell.textField.text = userInfo.nickname
+                //cell.textField.text = "유목민"
             case 1:
                 cell.title.text = "이메일"
                 cell.textField.isUserInteractionEnabled = false
-                cell.textField.text = "umokmin@gmail.com"
+                cell.textField.text = userInfo.email
+                //cell.textField.text = "umokmin@gmail.com"
             case 2:
                 cell.title.text = "유목 장소"
                 cell.textField.isUserInteractionEnabled = false
-                cell.textField.text = "서울특별시 광진구"
+                cell.textField.text = { () in
+                    if let address = userInfo.address {
+                        return address
+                    } else {
+                        return "No Info"
+                    }
+                }()
+                //cell.textField.text = "서울특별시 광진구"
                 buttonRefresh.frame = CGRect(x: tableView.frame.width - 60, y: cell.frame.height / 2 - 10, width: 40 , height: 20)
                 cell.addSubview(buttonRefresh)
             default:
@@ -125,15 +172,30 @@ extension MyPageDetailViewController: UITableViewDataSource{
             case 0:
                 cell.title.text = "직업"
                 cell.textField.isUserInteractionEnabled = false
-                cell.textField.text = "개발자"
+                cell.textField.text = userInfo.job
+                //cell.textField.text = "개발자"
             case 1:
                 cell.title.text = "소개말"
                 cell.textField.isUserInteractionEnabled = true
                 cell.textField.placeholder = "소개말"
+                cell.textField.text = { () in
+                    if let introducing = userInfo.introducing {
+                        return introducing
+                    } else {
+                        return nil
+                    }
+                }()
             case 2:
                 cell.title.text = "밋업 목적"
                 cell.textField.isUserInteractionEnabled = true
                 cell.textField.placeholder = "밋업 목적"
+                cell.textField.text = { () in
+                    if let purpose = userInfo.purpose {
+                        return purpose
+                    } else {
+                        return nil
+                    }
+                }()
             default:
                 break
             }
