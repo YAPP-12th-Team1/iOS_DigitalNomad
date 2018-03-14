@@ -60,7 +60,6 @@ class MapViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.filteredData = self.loctaion_name_array
         
-
         mapView = MTMapView(frame: CGRect(x: 0, y: searchBar.frame.origin.y + searchBar.frame.height, width: self.view.frame.width, height: self.view.frame.width))
         btnMore.frame.origin.y =  mapView.frame.origin.y + mapView.frame.height + 5
         tableView.frame.origin = CGPoint(x: 0, y: btnMore.frame.origin.y + btnMore.frame.height + 5)
@@ -100,6 +99,31 @@ class MapViewController: UIViewController {
         item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
         
         return item
+    }
+    
+    // 구 삼각법을 기준으로 대원거리(m단위) 요청
+    func distance(lat1: Double, lng1: Double, lat2: Double, lng2: Double) -> Double {
+        
+        // 위도,경도를 라디안으로 변환
+        let rlat1 = lat1 * .pi / 180
+        let rlng1 = lng1 * .pi / 180
+        let rlat2 = lat2 * .pi / 180
+        let rlng2 = lng2 * .pi / 180
+        
+        // 2점의 중심각(라디안) 요청
+        let a =
+            sin(rlat1) * sin(rlat2) +
+                cos(rlat1) * cos(rlat2) *
+                cos(rlng1 - rlng2)
+        let rr = acos(a)
+        
+        // 지구 적도 반경(m단위)
+        let earth_radius = 6378140.0
+        
+        // 두 점 사이의 거리 (m단위)
+        let distance = earth_radius * rr
+        
+        return distance/1000
     }
     
     func loadStoredItems() -> Void {
@@ -205,19 +229,17 @@ extension MapViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView!.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath) as! MapCell
         
-        let obj = self.realm.objects(MapLocationInfo.self)
+        var obj = self.realm.objects(MapLocationInfo.self)
+        obj = obj.sorted(byKeyPath: "distance", ascending: true)
         let placeName = obj[indexPath.row].name
         let placeAddress = obj[indexPath.row].address
         let placeCategory = obj[indexPath.row].category
-        var curDistance = Double(obj[indexPath.row].distance)
-        curDistance = curDistance!/1000
-        
-        print("rowText:"+placeName)
+        let curDistance = Double(obj[indexPath.row].distance)
         
         //cell.textLabel?.text = placeName
         cell.placeName?.text = placeName
         cell.placeAddress?.text = placeAddress
-        cell.distance?.text = "\(curDistance!)km"
+        cell.distance?.text = "\(round(100*curDistance!)/100)km"
         
         switch placeCategory {
         case 15:
@@ -312,18 +334,30 @@ extension MapViewController: CLLocationManagerDelegate{
         print(myLat)
         
         let item = MTMapPOIItem()
+        item.tag = -1
         item.itemName = "현 위치"
         item.markerType = .bluePin
         item.markerSelectedType = .bluePin
         item.mapPoint = MTMapPoint(geoCoord: .init(latitude: myLat, longitude: myLong))
         item.showAnimationType = .noAnimation
         item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
+        self.mapView?.remove(self.mapView.findPOIItem(byTag: -1))
         self.mapView?.add(item)
         
         let mapPoint = MTMapPoint.init(geoCoord: MTMapPointGeo.init(latitude: myLat, longitude: myLong))
         
         self.mapView?.setMapCenter(mapPoint, animated: true)
         self.mapView?.setZoomLevel(3, animated: true)
+        
+        //distance 배열을 갱신하자.
+        let obj = self.realm.objects(MapLocationInfo.self)
+        for index in 0..<obj.count {
+            try! realm.write {
+                obj[index].distance = "\(distance(lat1: myLat, lng1: myLong, lat2: obj[index].latitude, lng2: obj[index].longitude))"
+            }
+        }
+        
+        self.tableView.reloadData()
     }
 }
 
