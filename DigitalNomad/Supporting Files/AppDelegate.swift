@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FirebaseApp.configure()
         //Realm 마이그레이션
         //개발 중엔 그냥 앱을 삭제하고 다시 실행하세요
-        FirebaseApp.configure()
         
         let config = Realm.Configuration(
             schemaVersion: 0,  //Increment this each time your schema changes
