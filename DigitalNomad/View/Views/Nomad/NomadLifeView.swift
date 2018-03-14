@@ -70,9 +70,10 @@ extension NomadLifeView: UICollectionViewDataSource{
 }
 extension NomadLifeView: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch(indexPath.item){
-        default:
-            break
+        if(indexPath.item == collectionView.numberOfItems(inSection: 0) - 1){
+            let parentViewController = self.parentViewController() as! NomadViewController
+            let addView = parentViewController.underView.subviews.last as! NomadAddView
+            addView.textField.becomeFirstResponder()
         }
     }
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {

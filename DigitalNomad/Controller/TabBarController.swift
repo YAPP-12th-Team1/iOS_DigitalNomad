@@ -29,7 +29,7 @@ class TabBarController: UITabBarController {
         
         leftButton.frame.size = centerButton.frame.size
         let leftX = centerButton.frame.origin.x / 2
-        leftButton.frame.origin.x = leftX
+        leftButton.frame.origin.x = leftX - leftButton.frame.width / 2
         leftButton.frame.origin.y = centerY
         leftButton.layer.cornerRadius = leftButton.frame.height / 2
         leftButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
@@ -37,7 +37,7 @@ class TabBarController: UITabBarController {
         
         rightButton.frame.size = centerButton.frame.size
         let rightX = centerButton.frame.origin.x * 1.5
-        rightButton.frame.origin.x = rightX
+        rightButton.frame.origin.x = rightX + rightButton.frame.width / 2
         rightButton.frame.origin.y = centerY
         rightButton.layer.cornerRadius = rightButton.frame.height / 2
         rightButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
