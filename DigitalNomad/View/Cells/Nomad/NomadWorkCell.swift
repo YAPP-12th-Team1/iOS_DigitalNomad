@@ -8,14 +8,17 @@
 
 import UIKit
 import BEMCheckBox
+import RealmSwift
 
 class NomadWorkCell: UITableViewCell {
 
     @IBOutlet var checkBox: BEMCheckBox!
     @IBOutlet var content: UIButton!
+    var realm: Realm!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        realm = try! Realm()
         checkBox.onAnimationType = .fill
         checkBox.offAnimationType = .fill
         checkBox.onCheckColor = .white
@@ -30,18 +33,31 @@ class NomadWorkCell: UITableViewCell {
     }
     
     @IBAction func clickContent(_ sender: UIButton) {
+        let object = (realm.objects(ProjectInfo.self).last?.goalLists)!
+        let query = NSPredicate(format: "todo = %@", (sender.titleLabel?.text)!)
+        let result = object.filter(query).first!
         let textColor = sender.titleColor(for: .normal)
         if(textColor == .black){
             sender.setTitleColor(.blue, for: .normal)
+            try! realm.write {
+                result.importance = 1
+            }
         } else if(textColor == .blue){
             sender.setTitleColor(.red, for: .normal)
+            try! realm.write {
+                result.importance = 2
+            }
         } else if(textColor == .red){
             sender.setTitleColor(.black, for: .normal)
+            try! realm.write {
+                result.importance = 0
+            }
         }
     }
     
     @IBAction func clickCheckBox(_ sender: BEMCheckBox) {
         let parentViewController = self.parentViewController() as! NomadViewController
+        let object = (realm.objects(ProjectInfo.self).last?.goalLists)!
         if(sender.on){
             checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
             checkBox.layer.sublayers?.first?.cornerRadius = checkBox.frame.height / 2
@@ -50,13 +66,36 @@ class NomadWorkCell: UITableViewCell {
             content.sizeToFit()
             strikethrough.frame.size = content.frame.size
             content.addSubview(strikethrough)
+            for i in 0..<object.count {
+                let cell = (parentViewController.centerView.subviews.last as! NomadWorkView).tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! NomadWorkCell
+                if(cell.checkBox == sender){
+                    let todo = (cell.content.titleLabel?.text)!
+                    let query = NSPredicate(format: "todo = %@", todo)
+                    let result = object.filter(query).first!
+                    try! realm.write{
+                        result.status = true
+                    }
+                    break
+                }
+            }
         } else {
             checkBox.layer.sublayers?.removeFirst()
             content.viewWithTag(100)?.removeFromSuperview()
+            for i in 0..<object.count {
+                let cell = (parentViewController.centerView.subviews.last as! NomadWorkView).tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! NomadWorkCell
+                if(cell.checkBox == sender){
+                    let todo = (cell.content.titleLabel?.text)!
+                    let query = NSPredicate(format: "todo = %@", todo)
+                    let result = object.filter(query).first!
+                    try! realm.write{
+                        result.status = false
+                    }
+                    break
+                }
+            }
         }
         let isFinished = reloadContentSummaryValue(controller: parentViewController)
         if(isFinished){
-            //변경 화면
             let parentViewController = self.parentViewController() as! NomadViewController
             let changeView = NomadChangeView.instanceFromXib()
             changeView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
@@ -83,10 +122,6 @@ class NomadWorkCell: UITableViewCell {
             }()
             if let underView = controller.underView.subviews.first as? NomadAddView{
                 underView.contentSummaryValue.text = "\(completeRows)/\(rows)"
-//                underView.textField.placeholder = "할 일, #해시태그"
-//                if let firstContent = (workView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! NomadWorkCell).content.titleLabel?.text {
-//                    underView.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
-//                }
             }
             return rows == completeRows
         } else {
@@ -105,10 +140,6 @@ class NomadWorkCell: UITableViewCell {
             }()
             if let underView = controller.underView.subviews.first as? NomadAddView{
                 underView.contentSummaryValue.text = "\(completeRows)/\(rows)"
-//                underView.textField.placeholder = "하고 싶은 카드를 추가해보세요"
-//                if let firstContent = (lifeView.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! NomadLifeCell).content.text {
-//                    underView.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
-//                }
             }
             return rows == completeRows
         }

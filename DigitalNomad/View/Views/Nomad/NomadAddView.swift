@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NomadAddView: UIView {
 
@@ -16,11 +17,13 @@ class NomadAddView: UIView {
     @IBOutlet var contentSummaryValue: UILabel!
     @IBOutlet var textField: UITextField!
     @IBOutlet var addButton: UIButton!
+    var realm: Realm!
     
     var timer: Timer!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        realm = try! Realm()
         textField.autocorrectionType = .no
         textField.addTarget(self, action: #selector(clickReturnButton), for: .editingDidEndOnExit)
         textField.addTarget(self, action: #selector(textFieldEditing), for: .editingChanged)
@@ -66,14 +69,30 @@ class NomadAddView: UIView {
                 return
             }
         }
-            
-        
     }
     
     @IBAction func clickAdd(_ sender: UIButton) {
-//        if(textField.text?.isEmpty)! { return }
-//        let parentViewController = self.parentViewController() as! NomadViewController
-//        parentViewController.tableView.reloadData()
+        //GoalListInfo나 WishListInfo에 내용 추가하는 코드
+        //부모 뷰 컨트롤러의 centerView의 subview의 타입을 검사해서 일과 삶을 구분하자
+        if(textField.text?.isEmpty)! { return }
+        let parentViewController = self.parentViewController() as! NomadViewController
+        if(parentViewController.centerView.subviews.last is NomadWorkView){
+            addGoalList(textField.text!)
+            try! realm.write{
+                realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
+            }
+            (parentViewController.centerView.subviews.last as! NomadWorkView).tableView.reloadData()
+        } else {
+            addWishList(textField.text!)
+            try! realm.write{
+                realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
+            }
+            (parentViewController.centerView.subviews.last as! NomadLifeView).collectionView.reloadData()
+        }
+        textField.text = nil
+        textField.resignFirstResponder()
+        parentViewController.viewWillAppear(true)
+        textField.becomeFirstResponder()
     }
     @IBAction func clickCalendar(_ sender: UIButton) {
         

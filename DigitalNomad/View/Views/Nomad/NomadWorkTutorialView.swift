@@ -21,6 +21,7 @@ class NomadWorkTutorialView: UIView {
     }
     
     @objc func clickView(){
+        UserDefaults.standard.set(true, forKey: "isFirstNomadWorkExecute")
         self.removeFromSuperview()
     }
 }

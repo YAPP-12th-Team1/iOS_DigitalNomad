@@ -72,10 +72,10 @@ class TabBarController: UITabBarController {
         self.navigationController?.navigationBar.isHidden = true
         
      
-        if(!UserDefaults.standard.bool(forKey: "isFirst")){
-            loadTutorialScreen()
-            UserDefaults.standard.set(true, forKey: "isFirst")
-        }
+//        if(!UserDefaults.standard.bool(forKey: "isFirst")){
+//            loadTutorialScreen()
+//            UserDefaults.standard.set(true, forKey: "isFirst")
+//        }
         self.view.insertSubview(leftButton, aboveSubview: self.tabBar)
         self.view.insertSubview(centerButton, aboveSubview: self.tabBar)
         self.view.insertSubview(rightButton, aboveSubview: self.tabBar)

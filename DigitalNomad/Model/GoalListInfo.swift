@@ -24,12 +24,10 @@ class GoalListInfo: Object{
     }
 }
 
-func addGoalList(_ todo: String, _ status: Bool, _ importance: Int){
+func addGoalList(_ todo: String){
     let realm = try! Realm()
     let object = GoalListInfo()
     object.todo = todo
-    object.status = status
-    object.importance = importance
     try! realm.write{
         realm.add(object)
     }

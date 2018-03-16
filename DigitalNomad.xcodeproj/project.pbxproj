@@ -74,6 +74,7 @@
 		19BA8275204FF31B00C095C1 /* NomadWorkTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA8274204FF31B00C095C1 /* NomadWorkTutorialView.swift */; };
 		19BA8277204FF32500C095C1 /* NomadLifeTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */; };
 		19BA8279204FF33200C095C1 /* NomadLifeTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA8278204FF33200C095C1 /* NomadLifeTutorialView.swift */; };
+		19C899CB205A007B0044D8A0 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C899CA205A007B0044D8A0 /* profile.png */; };
 		19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19E63EE020416D4D003D3155 /* GoogleService-Info.plist */; };
 		19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */; };
 		19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2CDE02041419C00CB113B /* AppDelegate.swift */; };
@@ -193,6 +194,7 @@
 		19BA8274204FF31B00C095C1 /* NomadWorkTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkTutorialView.swift; sourceTree = "<group>"; };
 		19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeTutorialView.xib; sourceTree = "<group>"; };
 		19BA8278204FF33200C095C1 /* NomadLifeTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeTutorialView.swift; sourceTree = "<group>"; };
+		19C899CA205A007B0044D8A0 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		19E63EE020416D4D003D3155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationInfo.swift; sourceTree = "<group>"; };
 		19F2CDDD2041419B00CB113B /* DigitalNomad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalNomad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				19A94FD7204EDB8D003A1D23 /* launchScreen.png */,
+				19C899CA205A007B0044D8A0 /* profile.png */,
 				191DFED1204EAFBF0095E9C1 /* humanSample.png */,
 				19A94FC5204EBECD003A1D23 /* humanSample2.png */,
 				6B634A43204EF79F00A59EEF /* cafe.png */,
@@ -648,6 +651,7 @@
 				6B5412122041900600DDB2D5 /* info_box.png in Resources */,
 				6B54120C2041900600DDB2D5 /* th_line.png in Resources */,
 				6B5412082041900600DDB2D5 /* map_pin_custom@3x.png in Resources */,
+				19C899CB205A007B0044D8A0 /* profile.png in Resources */,
 				6B634A46204EF79F00A59EEF /* cafe.png in Resources */,
 				193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */,
 				19BA8273204FF31100C095C1 /* NomadWorkTutorialView.xib in Resources */,

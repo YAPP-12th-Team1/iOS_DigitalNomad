@@ -23,11 +23,10 @@ class WishListInfo: Object{
     }
 }
 
-func addWishList(_ todo: String, _ status: Bool){
+func addWishList(_ todo: String){
     let realm = try! Realm()
     let object = WishListInfo()
     object.todo = todo
-    object.status = status
     try! realm.write{
         realm.add(object)
     }

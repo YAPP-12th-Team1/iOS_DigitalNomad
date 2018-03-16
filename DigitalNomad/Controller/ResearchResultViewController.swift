@@ -25,8 +25,8 @@ class ResearchResultViewController: UIViewController {
     }
     
     @IBAction func start(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "GoalSetting", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "GoalSettingViewController") as! GoalSettingViewController
+        let storyboard = UIStoryboard(name: "Nomad", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "NomadViewController") as! NomadViewController
         present(controller, animated: true, completion: nil)
     }
 }

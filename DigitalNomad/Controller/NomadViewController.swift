@@ -19,9 +19,11 @@ class NomadViewController: UIViewController {
     @IBOutlet var underView: UIView!
     var workView: NomadWorkView! = nil
     var lifeView: NomadLifeView! = nil
+    var realm: Realm!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        realm = try! Realm()
         //더미데이터 쌓는 코드 어느정도 완료되면 아래 줄을 없애자
         let _ = DummyData()
         
@@ -45,6 +47,14 @@ class NomadViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        
+        let today = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy년 M월 d일 eeee"
+        labelToday.text = "오늘 \(dateFormatter.string(from: today))"
+        labelDays.text = "n일차"
+        
         if(underView.layer.sublayers != nil){
             underView.layer.sublayers?.removeFirst()
         }
@@ -75,15 +85,21 @@ class NomadViewController: UIViewController {
             }()
             addView.contentSummaryValue.text = "\(completeRows)/\(rows)"
             addView.textField.placeholder = "할 일, #해시태그"
-            if let firstContent = (workView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! NomadWorkCell).content.titleLabel?.text {
-                addView.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
+            if let firstCell = (workView.tableView.cellForRow(at: IndexPath(row: 0, section: 0))) {
+                let realCell = firstCell as! NomadWorkCell
+                if(rows == 1){
+                    addView.contentSummary.text = (realCell.content.titleLabel?.text)!
+                } else {
+                    addView.contentSummary.text = "\((realCell.content.titleLabel?.text)!) 외 \(rows-1)개"
+                }
+            } else {
+                addView.contentSummary.text = "추가해주세요."
             }
             if(!UserDefaults.standard.bool(forKey: "isFirstNomadWorkExecute")){
                 let tutorial = NomadWorkTutorialView.instanceFromXib()
                 tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
                 tutorial.frame = self.view.frame
                 self.view.addSubview(tutorial)
-                UserDefaults.standard.set(true, forKey: "isFirstNomadWorkExecute")
             }
             underView.frame.origin.y = self.view.frame.height - 49 - underView.frame.height
             underView.addSubview(addView)
@@ -120,17 +136,10 @@ class NomadViewController: UIViewController {
                 tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
                 tutorial.frame = self.view.frame
                 self.view.addSubview(tutorial)
-                UserDefaults.standard.set(true, forKey: "isFirstNomadLifeExecute")
             }
             underView.frame.origin.y = self.view.frame.height - (self.tabBarController?.tabBar.frame.height)! - (underView.frame.height - addView.subView.frame.height)
             underView.addSubview(addView)
         }
-        
-        let today = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy년 M월 d일 eeee"
-        labelToday.text = "오늘 \(dateFormatter.string(from: today))"
     }
     
     override func viewWillDisappear(_ animated: Bool) {

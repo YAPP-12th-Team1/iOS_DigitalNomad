@@ -15,8 +15,8 @@ class ProjectInfo: Object{
     @objc dynamic var period: Date = Date()     //Not Null
     @objc dynamic var day: Int = 5              //default: 5
     
-    let wishLists = List<WishListInfo>()
-    let goalLists = List<GoalListInfo>()
+    var wishLists = List<WishListInfo>()
+    var goalLists = List<GoalListInfo>()
     
     func incrementId() -> Int{
         let realm = try! Realm()

@@ -72,6 +72,9 @@ extension NomadLifeView: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.item == collectionView.numberOfItems(inSection: 0) - 1){
             let parentViewController = self.parentViewController() as! NomadViewController
+            if(parentViewController.searchBar.isFirstResponder){
+                parentViewController.searchBar.resignFirstResponder()
+            }
             let addView = parentViewController.underView.subviews.last as! NomadAddView
             addView.textField.becomeFirstResponder()
         }
