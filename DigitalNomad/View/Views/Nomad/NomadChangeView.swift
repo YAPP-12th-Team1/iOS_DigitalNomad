@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class NomadChangeView: UIView {
 
@@ -20,6 +21,7 @@ class NomadChangeView: UIView {
     
     @IBAction func clickChange(_ sender: UIButton) {
         let parentViewController = self.parentViewController() as! NomadViewController
+        parentViewController.hero.isEnabled = true
         if(parentViewController.centerView.subviews.last is NomadWorkView){
             parentViewController.centerView.subviews.last?.removeFromSuperview()
             let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
