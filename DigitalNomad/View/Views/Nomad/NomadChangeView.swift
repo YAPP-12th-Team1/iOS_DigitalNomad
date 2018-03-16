@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Hero
 
 class NomadChangeView: UIView {
 
@@ -21,8 +20,16 @@ class NomadChangeView: UIView {
     
     @IBAction func clickChange(_ sender: UIButton) {
         let parentViewController = self.parentViewController() as! NomadViewController
-        parentViewController.hero.isEnabled = true
+        
+        let animation = CATransition()
+        animation.duration = 0.5
+        animation.type = kCATransitionPush
+        animation.subtype = kCATransitionFromRight
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
         if(parentViewController.centerView.subviews.last is NomadWorkView){
+            parentViewController.centerView.layer.add(animation, forKey: "SwitchToView")
+            
             parentViewController.centerView.subviews.last?.removeFromSuperview()
             let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
             lifeView.frame.size = parentViewController.centerView.frame.size
@@ -31,6 +38,8 @@ class NomadChangeView: UIView {
             lifeView.layoutIfNeeded()
             
         } else {
+            parentViewController.centerView.layer.add(animation, forKey: "SwitchToView")
+            
             parentViewController.centerView.subviews.last?.removeFromSuperview()
             let workView = NomadWorkView.instanceFromXib() as! NomadWorkView
             workView.frame.size = parentViewController.centerView.frame.size
