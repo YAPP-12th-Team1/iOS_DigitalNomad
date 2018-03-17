@@ -13,8 +13,8 @@ class NomadAddView: UIView {
 
     @IBOutlet var subView: UIView!
     @IBOutlet var endTime: UILabel!
-    @IBOutlet var contentSummary: UILabel!
-    @IBOutlet var contentSummaryValue: UILabel!
+    @IBOutlet var contentSummary: UIButton!
+    @IBOutlet var yesterday: UILabel!
     @IBOutlet var textField: UITextField!
     @IBOutlet var addButton: UIButton!
     var realm: Realm!
@@ -60,7 +60,6 @@ class NomadAddView: UIView {
     
     @objc func textFieldEditing(){
         //# 후에 공백 안됨
-        //아 귀찮다
         let text = textField.text!
         guard let lastChar = text.last else { return }
         if(lastChar == " "){
@@ -69,6 +68,7 @@ class NomadAddView: UIView {
                 return
             }
         }
+        //해시태그 이후 공백
     }
     
     @IBAction func clickAdd(_ sender: UIButton) {
@@ -94,8 +94,13 @@ class NomadAddView: UIView {
         parentViewController.viewWillAppear(true)
         textField.becomeFirstResponder()
     }
+    
+    @IBAction func clickContentSummary(_ sender: UIButton) {
+        //어제자 일들을 보여주자
+    }
+    
     @IBAction func clickCalendar(_ sender: UIButton) {
-        
+        //달력을 띄우자
     }
     
     @IBAction func clickHashtag(_ sender: UIButton) {
@@ -108,5 +113,8 @@ class NomadAddView: UIView {
         if(lastChar != "#"){
             textField.text! += "#"
         }
+    }
+    @IBAction func clickUnderScore(_ sender: UIButton) {
+        textField.text! += "_"
     }
 }

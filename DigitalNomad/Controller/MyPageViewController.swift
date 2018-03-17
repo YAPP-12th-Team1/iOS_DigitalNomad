@@ -14,6 +14,7 @@ class MyPageViewController: UIViewController {
 
     @IBOutlet var gauge: Gauge!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var viewHashtag: UIView!
     @IBOutlet var labelHashtag: UILabel!
     @IBOutlet var viewList: UIView!
     @IBOutlet var viewCard: UIView!
@@ -29,7 +30,8 @@ class MyPageViewController: UIViewController {
         list.frame.size = viewList.frame.size
         card.frame.size = viewCard.frame.size
         meetup.frame.size = viewMeetup.frame.size
-        labelHashtag.layer.cornerRadius = 5
+//        labelHashtag.layer.cornerRadius = 5
+        viewHashtag.layer.cornerRadius = 5
         list.layer.cornerRadius = 5
         card.layer.cornerRadius = 5
         meetup.layer.cornerRadius = 5
@@ -39,7 +41,8 @@ class MyPageViewController: UIViewController {
         viewList.addSubview(list)
         viewCard.addSubview(card)
         viewMeetup.addSubview(meetup)
-        labelHashtag.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])  
+//        labelHashtag.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+        viewHashtag.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
     }
     
     override func viewWillAppear(_ animated: Bool) {

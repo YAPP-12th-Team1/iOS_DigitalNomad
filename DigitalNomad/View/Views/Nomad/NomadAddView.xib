@@ -58,6 +58,16 @@
                                 <action selector="clickAdd:" destination="iN0-l3-epB" eventType="touchUpInside" id="yoI-rV-4Sm"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJe-Ya-4ma">
+                            <rect key="frame" x="106" y="74" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <state key="normal" title="_">
+                                <color key="titleColor" red="0.3411764706" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="clickUnderScore:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZLR-3k-r7y"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
@@ -75,24 +85,27 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이메일 수신확인 외 2개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="XAX-an-H8Y">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPG-1S-2Se">
                     <rect key="frame" x="66" y="9" width="233" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <state key="normal" title="이메일 수신확인 및 2개">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickContentSummary:" destination="iN0-l3-epB" eventType="touchUpInside" id="1mF-Az-8Hl"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.96862745100000003" green="0.77647058820000003" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="EP5-4M-IYN"/>
             <connections>
                 <outlet property="addButton" destination="Irv-1d-F6o" id="J9S-vx-k2c"/>
-                <outlet property="contentSummary" destination="XAX-an-H8Y" id="7tA-Lu-GNF"/>
-                <outlet property="contentSummaryValue" destination="Kz8-ag-M1R" id="u2E-O4-bYY"/>
+                <outlet property="contentSummary" destination="bPG-1S-2Se" id="mZB-AM-dm9"/>
                 <outlet property="endTime" destination="3RN-wx-xQz" id="PfL-N9-mRY"/>
                 <outlet property="subView" destination="Kk0-Xb-PYY" id="o8k-MF-t8h"/>
                 <outlet property="textField" destination="8Xu-uG-E5b" id="nd8-ai-at4"/>
+                <outlet property="yesterday" destination="Kz8-ag-M1R" id="euu-Xz-itV"/>
             </connections>
             <point key="canvasLocation" x="2.5" y="49.5"/>
         </view>

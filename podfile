@@ -14,12 +14,11 @@ target 'DigitalNomad' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
-  pod 'Charts'
   pod 'BEMCheckBox'
   pod 'JTMaterialSwitch'
   pod 'DropDown'
   pod 'Toaster'
-  pod 'Hero', '~> 1.1'
+
   # Pods for DigitalNomad
  
 end

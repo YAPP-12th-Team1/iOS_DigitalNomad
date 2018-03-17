@@ -32,7 +32,7 @@ class TabBarController: UITabBarController {
         leftButton.frame.origin.x = leftX - leftButton.frame.width / 2
         leftButton.frame.origin.y = centerY
         leftButton.layer.cornerRadius = leftButton.frame.height / 2
-        leftButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+        leftButton.applyGradient([#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
         leftButton.layer.sublayers?.first?.cornerRadius = leftButton.frame.height / 2
         
         rightButton.frame.size = centerButton.frame.size
@@ -40,7 +40,7 @@ class TabBarController: UITabBarController {
         rightButton.frame.origin.x = rightX + rightButton.frame.width / 2
         rightButton.frame.origin.y = centerY
         rightButton.layer.cornerRadius = rightButton.frame.height / 2
-        rightButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+        rightButton.applyGradient([#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
         rightButton.layer.sublayers?.first?.cornerRadius = rightButton.frame.height / 2
         
         
@@ -71,7 +71,7 @@ class TabBarController: UITabBarController {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
         
-     
+     //튜토리얼 -> 로그인 -> 설문조사 -> 목표설정
 //        if(!UserDefaults.standard.bool(forKey: "isFirst")){
 //            loadTutorialScreen()
 //            UserDefaults.standard.set(true, forKey: "isFirst")
@@ -92,12 +92,53 @@ class TabBarController: UITabBarController {
     
     @objc func clickLeftButton() {
         self.selectedIndex = 0
+        let subViews = self.view.subviews
+        let leftButton = subViews[4]
+        let centerButton = subViews[3]
+        let rightButton = subViews[2]
+        centerButton.layer.sublayers?.first?.removeFromSuperlayer()
+        leftButton.layer.sublayers?.first?.removeFromSuperlayer()
+        rightButton.layer.sublayers?.first?.removeFromSuperlayer()
+        centerButton.applyGradient([#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
+        leftButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+        rightButton.applyGradient([#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
+        centerButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
+        leftButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
+        rightButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
     }
+    
     @objc func clickCenterButton() {
         self.selectedIndex = 1
+        let subViews = self.view.subviews
+        let leftButton = subViews[4]
+        let centerButton = subViews[3]
+        let rightButton = subViews[2]
+        centerButton.layer.sublayers?.first?.removeFromSuperlayer()
+        leftButton.layer.sublayers?.first?.removeFromSuperlayer()
+        rightButton.layer.sublayers?.first?.removeFromSuperlayer()
+        centerButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+        leftButton.applyGradient([#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
+        rightButton.applyGradient([#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
+        centerButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
+        leftButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
+        rightButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
     }
+    
     @objc func clickRightButton() {
         self.selectedIndex = 2
+        let subViews = self.view.subviews
+        let leftButton = subViews[4]
+        let centerButton = subViews[3]
+        let rightButton = subViews[2]
+        centerButton.layer.sublayers?.first?.removeFromSuperlayer()
+        leftButton.layer.sublayers?.first?.removeFromSuperlayer()
+        rightButton.layer.sublayers?.first?.removeFromSuperlayer()
+        centerButton.applyGradient([#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
+        leftButton.applyGradient([#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)])
+        rightButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+        centerButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
+        leftButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
+        rightButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
     }
     
     func loadTutorialScreen() {

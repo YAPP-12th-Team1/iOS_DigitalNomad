@@ -22,6 +22,7 @@ class NomadLifeView: UIView {
         layout.itemSize = CGSize(width: width / 4, height: width / 4)
         layout.minimumLineSpacing = 5
         collectionView.collectionViewLayout = layout
+        collectionView.alwaysBounceVertical = true
     }
     
     class func instanceFromXib() -> UIView {

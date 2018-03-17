@@ -38,13 +38,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#가장많이쓴해시태그 #두번째 #삼 #해시태그나열" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="1T5-if-YtP">
-                                <rect key="frame" x="16" y="249" width="343" height="35"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3lo-He-nZ1">
                                 <rect key="frame" x="16" y="302" width="163" height="61"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -74,6 +67,34 @@
                                     <action selector="clickSetting:" destination="wV0-gJ-tBc" eventType="touchUpInside" id="T63-a8-uS7"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFl-7R-oif">
+                                <rect key="frame" x="16" y="249" width="343" height="35"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#가장많이쓴해시태그 #두번째 #삼 #해시태그나열" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4m-Qi-Mpr" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                        <rect key="frame" x="8" y="7" width="327" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leadingBuffer">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="o7o-OB-4sk"/>
@@ -82,8 +103,9 @@
                     <connections>
                         <outlet property="gauge" destination="Zd6-La-bsw" id="g8n-6w-Val"/>
                         <outlet property="imageView" destination="Xna-jI-Q6p" id="kmj-WQ-31V"/>
-                        <outlet property="labelHashtag" destination="1T5-if-YtP" id="0qb-mg-Mpi"/>
+                        <outlet property="labelHashtag" destination="h4m-Qi-Mpr" id="Rar-f1-Prp"/>
                         <outlet property="viewCard" destination="BSh-CT-j2h" id="bBw-ql-3fa"/>
+                        <outlet property="viewHashtag" destination="rFl-7R-oif" id="Svs-n5-dj7"/>
                         <outlet property="viewList" destination="3lo-He-nZ1" id="owa-bK-KAX"/>
                         <outlet property="viewMeetup" destination="ydT-42-Ydc" id="WXg-N4-hov"/>
                     </connections>

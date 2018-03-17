@@ -42,7 +42,6 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.layer.zPosition = 1
         btnMore.layer.cornerRadius = 5
         btnMore.setTitleColor(.white, for: .normal)
         btnMore.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
@@ -188,26 +187,33 @@ class MapViewController: UIViewController {
 
     @IBAction func btnMore(_ sender: UIButton) {
         if flag {
-            //self.mapView!.removeFromSuperview()
             UIView.animate(withDuration: 0.4, animations: {
-                //self.mapView.frame.size.height = 0
-                self.mapView.frame.origin.y -= self.mapView.frame.height
-                self.btnMore.frame.origin.y = self.searchBar.frame.origin.y + self.searchBar.frame.height + 5
+                self.mapView.frame.origin.y = UIApplication.shared.statusBarFrame.height - self.view.frame.width
+                self.searchBar.frame.origin.y = self.mapView.frame.origin.y - self.searchBar.frame.height
+//                self.btnMore.frame.origin.y = self.searchBar.frame.origin.y + self.searchBar.frame.height + 5
+                self.btnMore.frame.origin.y = UIApplication.shared.statusBarFrame.height + 5
+//                self.tableView.frame.origin.y = self.btnMore.frame.origin.y + self.btnMore.frame.height + 5
+//                self.tableView.frame.size.height = self.view.frame.height - self.btnMore.frame.origin.y - self.btnMore.frame.height - 49
                 self.tableView.frame.origin.y = self.btnMore.frame.origin.y + self.btnMore.frame.height + 5
                 self.tableView.frame.size.height = self.view.frame.height - self.btnMore.frame.origin.y - self.btnMore.frame.height - 49
             }, completion: { _ in
                 self.btnMore.setTitle("지도보기", for: .normal)
                 self.flag = false
-                self.view.bringSubview(toFront: self.searchBar)
             })
         } else {
-            //self.view.addSubview(self.mapView!)
             UIView.animate(withDuration: 0.4, animations: {
-                //self.mapView.frame.size.height = self.mapView.frame.width
-                self.mapView.frame.origin.y += self.mapView.frame.height
-                self.btnMore.frame.origin.y =  self.mapView.frame.origin.y + self.mapView.frame.height + 5
-                self.tableView.frame.origin = CGPoint(x: 0, y: self.btnMore.frame.origin.y + self.btnMore.frame.height + 5)
-                self.tableView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - self.tableView.frame.origin.y - 49)
+//                self.searchBar.frame.origin.y = UIApplication.shared.statusBarFrame.height
+//                self.mapView.frame.origin.y += self.view.frame.width
+//                self.btnMore.frame.origin.y =  self.mapView.frame.origin.y + self.mapView.frame.height + 5
+//                self.tableView.frame.origin = CGPoint(x: 0, y: self.btnMore.frame.origin.y + self.btnMore.frame.height + 5)
+//                self.tableView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - self.tableView.frame.origin.y - 49)
+                self.searchBar.frame.origin.y = UIApplication.shared.statusBarFrame.height
+                self.mapView.frame.origin.y = self.searchBar.frame.origin.y + self.searchBar.frame.height
+                self.btnMore.frame.origin.y = self.mapView.frame.origin.y + self.mapView.frame.height + 5
+                self.tableView.frame.origin.y = self.btnMore.frame.origin.y + self.btnMore.frame.height + 5
+                self.tableView.frame.size.height = self.view.frame.height - (self.mapView.frame.origin.y + self.mapView.frame.height + 49)
+                
+                
             }, completion: { _ in
                 self.btnMore.setTitle("더 보기", for: .normal)
                 self.flag = true
@@ -251,6 +257,15 @@ extension MapViewController: UITableViewDataSource{
         }
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .default, title: "삭제") { (action, index) in
+            //해당 셀의 정보를 Realm에서 삭제하는 코드
+        }
+        return [delete]
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }
 
@@ -357,7 +372,7 @@ extension MapViewController: CLLocationManagerDelegate{
             }
         }
         
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
     }
 }
 
@@ -394,7 +409,7 @@ extension MapViewController: DZNEmptyDataSetSource{
         return nil
     }
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "검색 결과가 없습니다.")
+        return NSAttributedString(string: "원하는 장소를 추가해 주세요.")
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         return nil
