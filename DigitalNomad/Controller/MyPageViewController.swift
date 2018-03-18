@@ -26,56 +26,45 @@ class MyPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = try! Realm()
-        let list = MyPageListView.instanceFromXib()
-        let card = MyPageCardView.instanceFromXib()
-        let meetup = MyPageMeetupView.instanceFromXib()
-        list.frame.size = viewList.frame.size
-        card.frame.size = viewCard.frame.size
-        meetup.frame.size = viewMeetup.frame.size
-//        labelHashtag.layer.cornerRadius = 5
         viewHashtag.layer.cornerRadius = 5
-        list.layer.cornerRadius = 5
-        card.layer.cornerRadius = 5
-        meetup.layer.cornerRadius = 5
+        viewHashtag.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
         imageView.layer.masksToBounds = false
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.clipsToBounds = true
-        viewList.addSubview(list)
-        viewCard.addSubview(card)
+        let meetup = MyPageMeetupView.instanceFromXib()
+        meetup.frame.size = viewMeetup.frame.size
+        meetup.layer.cornerRadius = 5
         viewMeetup.addSubview(meetup)
-//        labelHashtag.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
-        viewHashtag.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
     }
     
-    func gaugeRate() -> Int{
-        realm = try! Realm()
-        projectInfo = realm.objects(ProjectInfo.self).last
-        let startStr = projectInfo.period
-        let todayStr = projectInfo.todayDate()
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let startDate = dateFormatter.date(from: startStr)!
-        let todayDate = dateFormatter.date(from: todayStr)!
-        let interval = todayDate.timeIntervalSince(startDate)
-        let days = Int(interval / 86400)
-        
-        return days
-    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
         
-        gauge.rate = CGFloat(gaugeRate())
-        let imageData = realm.objects(UserInfo.self).last!.image
-        imageView.image = UIImage(data: imageData)
-        
         if(self.view.subviews.last is UILabel){
             self.view.subviews.last?.removeFromSuperview()
         }
+        if(viewList.subviews.count != 0){
+            viewList.subviews.last?.removeFromSuperview()
+        }
+        if(viewCard.subviews.count != 0){
+            viewCard.subviews.last?.removeFromSuperview()
+        }
+        
+        let list = MyPageListView.instanceFromXib()
+        let card = MyPageCardView.instanceFromXib()
+        list.frame.size = viewList.frame.size
+        card.frame.size = viewCard.frame.size
+        list.layer.cornerRadius = 5
+        card.layer.cornerRadius = 5
+        viewList.addSubview(list)
+        viewCard.addSubview(card)
+        
+        gauge.rate = CGFloat(gaugeRate())
+        let imageData = realm.objects(UserInfo.self).last!.image
+        imageView.image = UIImage(data: imageData)
         
         let lineWidth = gauge.lineWidth / 2
         let percent = gauge.rate * 100 / gauge.maxValue
@@ -113,5 +102,23 @@ class MyPageViewController: UIViewController {
         let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MyPageDetailViewController")
         present(controller, animated: true)
+    }
+    
+    func gaugeRate() -> Int{
+        realm = try! Realm()
+        projectInfo = realm.objects(ProjectInfo.self).last
+        let startStr = projectInfo.period
+        let todayStr = projectInfo.todayDate()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let startDate = dateFormatter.date(from: startStr)!
+        let todayDate = dateFormatter.date(from: todayStr)!
+        let interval = todayDate.timeIntervalSince(startDate)
+        let days = Int(interval / 86400)
+        
+        return days
     }
 }

@@ -16,6 +16,7 @@ class PopupView: UIView {
     @IBOutlet var sender: UILabel!
     @IBOutlet var title: UILabel!
     @IBOutlet var message: UILabel!
+    @IBOutlet var cancelButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +26,7 @@ class PopupView: UIView {
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowOpacity = 1
         button.layer.cornerRadius = 5
+        cancelButton.layer.cornerRadius = 5
     }
     
     class func instanceFromXib() -> UIView {
@@ -32,6 +34,13 @@ class PopupView: UIView {
     }
     
     @IBAction func sendEmail(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.alpha = 0
+        }) { _ in
+            self.removeFromSuperview()
+        }
+    }
+    @IBAction func clickCancel(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3, animations: {
             self.alpha = 0
         }) { _ in
