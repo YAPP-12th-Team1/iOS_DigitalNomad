@@ -25,7 +25,11 @@ class DummyData{
         addProject("서울특별시 노원구", 5)
         
         //[일] 추가할 때 아래 세 줄처럼
-        addGoalList("일하자일해")
+        addGoalList("#일하자일해")
+        try! realm.write{
+            realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
+        }
+        addGoalList("#일하자일해22")
         try! realm.write{
             realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
         }

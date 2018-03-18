@@ -20,8 +20,10 @@ class MyPageViewController: UIViewController {
     @IBOutlet var viewCard: UIView!
     @IBOutlet var viewMeetup: UIView!
     var realm: Realm!
+   
     var userInfo: UserInfo!
     var projectInfo: ProjectInfo!
+    var goalListInfo: GoalListInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +33,12 @@ class MyPageViewController: UIViewController {
         imageView.layer.masksToBounds = false
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.clipsToBounds = true
+        
         let meetup = MyPageMeetupView.instanceFromXib()
         meetup.frame.size = viewMeetup.frame.size
         meetup.layer.cornerRadius = 5
         viewMeetup.addSubview(meetup)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +67,6 @@ class MyPageViewController: UIViewController {
         gauge.rate = CGFloat(gaugeRate())
         let imageData = realm.objects(UserInfo.self).last!.image
         imageView.image = UIImage(data: imageData)
-        
         let lineWidth = gauge.lineWidth / 2
         let percent = gauge.rate * 100 / gauge.maxValue
         let radian = (percent * 18 / 5) * CGFloat.pi / 180
@@ -89,6 +92,8 @@ class MyPageViewController: UIViewController {
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         view.addSubview(label)
+        
+        labelHashtag.text = getHashTags()
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,5 +123,17 @@ class MyPageViewController: UIViewController {
         let days = Int(interval / 86400)
         
         return days
+    }
+    
+    func getHashTags() -> String {
+        realm = try! Realm()
+        let tagList = realm.objects(GoalListInfo.self).filter("todo contains '#'")
+        let cnt = tagList.count-1
+        var tags = ""
+        
+        for var i in 0...cnt {
+            tags += tagList[i].todo + " "
+        }
+        return tags
     }
 }
