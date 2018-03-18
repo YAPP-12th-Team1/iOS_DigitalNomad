@@ -20,6 +20,8 @@ class MyPageViewController: UIViewController {
     @IBOutlet var viewCard: UIView!
     @IBOutlet var viewMeetup: UIView!
     var realm: Realm!
+    var userInfo: UserInfo!
+    var projectInfo: ProjectInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +47,29 @@ class MyPageViewController: UIViewController {
         viewHashtag.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
     }
     
+    func gaugeRate() -> Int{
+        realm = try! Realm()
+        projectInfo = realm.objects(ProjectInfo.self).last
+        let startStr = projectInfo.period
+        let todayStr = projectInfo.todayDate()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let startDate = dateFormatter.date(from: startStr)!
+        let todayDate = dateFormatter.date(from: todayStr)!
+        let interval = todayDate.timeIntervalSince(startDate)
+        let days = Int(interval / 86400)
+        
+        return days
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
         
-        gauge.rate = 86
+        gauge.rate = CGFloat(gaugeRate())
         let imageData = realm.objects(UserInfo.self).last!.image
         imageView.image = UIImage(data: imageData)
         

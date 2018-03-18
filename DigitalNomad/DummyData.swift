@@ -22,7 +22,7 @@ class DummyData{
         }
         //아래에 create 함수들을 넣으세요
         addUser("서울특별시 노원구", "개발자")
-        addProject("서울특별시 노원구", Date(), 5)
+        addProject("서울특별시 노원구", 5)
         //[일] 추가할 때 아래 세 줄처럼
 //        addGoalList("일하자일해")
 //        try! realm.write{
