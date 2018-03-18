@@ -37,8 +37,6 @@ class MyPageViewController: UIViewController {
         viewMeetup.addSubview(meetup)
     }
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
