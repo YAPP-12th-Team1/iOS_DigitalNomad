@@ -128,11 +128,22 @@ class MyPageViewController: UIViewController {
     func getHashTags() -> String {
         realm = try! Realm()
         let tagList = realm.objects(GoalListInfo.self).filter("todo contains '#'")
-        let cnt = tagList.count-1
+        var cnt = tagList.count-1
         var tags = ""
+        var tagDict: [String:Int] = [:]
         
         for var i in 0...cnt {
-            tags += tagList[i].todo + " "
+            if let freq = tagDict[tagList[i].todo] {
+               tagDict[tagList[i].todo] = freq+1
+            } else {
+                tagDict[tagList[i].todo] = 0
+            }
+        }
+        let sortedArr = tagDict.sorted(by: { $0.1 > $1.1 })
+        cnt = sortedArr.count-1
+        
+        for i in 0...cnt {
+            tags += sortedArr[i].key + " "
         }
         return tags
     }
