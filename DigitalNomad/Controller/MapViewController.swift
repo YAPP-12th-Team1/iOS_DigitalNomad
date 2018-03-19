@@ -36,7 +36,7 @@ class MapViewController: UIViewController {
     
     var mapView: MTMapView!
     
-    var flag : Bool = true // true : 더 보기, false : 지도 보기
+    var flag : Int = 0 // 0 : 더 보기(거리순), 1 : 더 보기(최신순) ,2 : 지도 보기
     
     var isFirstExecuted: Bool = false
     
@@ -186,7 +186,7 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func btnMore(_ sender: UIButton) {
-        if flag {
+        if flag==0 {
             UIView.animate(withDuration: 0.4, animations: {
                 self.mapView.frame.origin.y = UIApplication.shared.statusBarFrame.height - self.view.frame.width
                 self.searchBar.frame.origin.y = self.mapView.frame.origin.y - self.searchBar.frame.height
@@ -197,10 +197,15 @@ class MapViewController: UIViewController {
                 self.tableView.frame.origin.y = self.btnMore.frame.origin.y + self.btnMore.frame.height + 5
                 self.tableView.frame.size.height = self.view.frame.height - self.btnMore.frame.origin.y - self.btnMore.frame.height - 49
             }, completion: { _ in
-                self.btnMore.setTitle("지도보기", for: .normal)
-                self.flag = false
+                self.btnMore.setTitle("최신순보기", for: .normal)
+                self.tableView.reloadData()
+                self.flag = 1
             })
-        } else {
+        } else if flag==1 {
+            self.btnMore.setTitle("지도보기", for: .normal)
+            self.tableView.reloadData()
+            self.flag = 2
+        } else if flag==2 {
             UIView.animate(withDuration: 0.4, animations: {
 //                self.searchBar.frame.origin.y = UIApplication.shared.statusBarFrame.height
 //                self.mapView.frame.origin.y += self.view.frame.width
@@ -215,8 +220,8 @@ class MapViewController: UIViewController {
                 
                 
             }, completion: { _ in
-                self.btnMore.setTitle("더 보기", for: .normal)
-                self.flag = true
+                self.btnMore.setTitle("거리순보기", for: .normal)
+                self.flag = 0
             })
         }
     }
@@ -236,7 +241,8 @@ extension MapViewController: UITableViewDataSource{
         let cell = self.tableView!.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath) as! MapCell
         
         var obj = self.realm.objects(MapLocationInfo.self)
-        obj = obj.sorted(byKeyPath: "distance", ascending: true)
+        if flag == 1 { obj = obj.sorted(byKeyPath: "distance", ascending: true) }
+        else { obj = obj.sorted(byKeyPath: "update", ascending: false) }
         let placeName = obj[indexPath.row].name
         let placeAddress = obj[indexPath.row].address
         let placeCategory = obj[indexPath.row].category
