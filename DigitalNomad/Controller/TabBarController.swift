@@ -71,9 +71,9 @@ class TabBarController: UITabBarController {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
         
-     //튜토리얼 -> 로그인 -> 설문조사 -> 목표설정
+     //로그인 -> 설문조사 -> 사용자 등록
 //        if(!UserDefaults.standard.bool(forKey: "isFirst")){
-//            loadTutorialScreen()
+//            loadLoginScreen()
 //            UserDefaults.standard.set(true, forKey: "isFirst")
 //        }
         self.view.insertSubview(leftButton, aboveSubview: self.tabBar)
@@ -141,9 +141,9 @@ class TabBarController: UITabBarController {
         rightButton.layer.sublayers?.first?.cornerRadius = centerButton.frame.height / 2
     }
     
-    func loadTutorialScreen() {
-        let storyboard = UIStoryboard(name: "Tutorial", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
+    func loadLoginScreen() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         controller.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         present(controller, animated: true, completion: nil)
     }

@@ -18,6 +18,7 @@ target 'DigitalNomad' do
   pod 'JTMaterialSwitch'
   pod 'DropDown'
   pod 'Toaster'
+  pod 'DLRadioButton', '~> 1.4'
 
   # Pods for DigitalNomad
  

@@ -20,8 +20,6 @@
 		191DFED4204EB32B0095E9C1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFED3204EB32B0095E9C1 /* UIView+.swift */; };
 		193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193627E3204F863F006F4081 /* NomadWorkCell.swift */; };
 		193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 193627E4204F863F006F4081 /* NomadWorkCell.xib */; };
-		19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19384ECF204191A30003CC12 /* Research5ViewController.swift */; };
-		19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19384ED1204192590003CC12 /* ResearchResultViewController.swift */; };
 		1949DCFC204F8E2C0062D8EF /* StrikethroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DCFB204F8E2C0062D8EF /* StrikethroughView.swift */; };
 		1949DCFE204F8E490062D8EF /* StrikethroughView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1949DCFD204F8E490062D8EF /* StrikethroughView.xib */; };
 		1949DD00204FA91F0062D8EF /* NomadAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1949DCFF204FA91F0062D8EF /* NomadAddView.xib */; };
@@ -31,20 +29,18 @@
 		1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1949DD09204FD5170062D8EF /* NomadLifeView.xib */; };
 		1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD0B204FD5220062D8EF /* NomadLifeView.swift */; };
 		195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFAE2041AF140062A26C /* UITextField+.swift */; };
-		196C4AE1204143DA00C7BFAF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */; };
 		196C4AE42041440100C7BFAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE32041440100C7BFAF /* Login.storyboard */; };
-		196C4AE62041440A00C7BFAF /* Research.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE52041440A00C7BFAF /* Research.storyboard */; };
 		196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AE7204144DF00C7BFAF /* MapViewController.swift */; };
 		196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AEF2041450F00C7BFAF /* MyPageViewController.swift */; };
 		196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AF12041455500C7BFAF /* LoginViewController.swift */; };
-		196C4AF42041457A00C7BFAF /* ResearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AF32041457A00C7BFAF /* ResearchViewController.swift */; };
 		196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AF72041483200C7BFAF /* TabBarController.swift */; };
 		196C4AFA2041493600C7BFAF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AF92041493600C7BFAF /* Map.storyboard */; };
 		196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4B012041497500C7BFAF /* MyPage.storyboard */; };
-		196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B0320414AE500C7BFAF /* TutorialViewController.swift */; };
-		196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */; };
 		196C77B8205425F200A45E89 /* NomadChangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196C77B7205425F200A45E89 /* NomadChangeView.xib */; };
 		196C77BA2054260100A45E89 /* NomadChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C77B92054260100A45E89 /* NomadChangeView.swift */; };
+		198D92CB2061447E001325DD /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198D92CA2061447E001325DD /* Start.storyboard */; };
+		198D92CD206144A7001325DD /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D92CC206144A7001325DD /* StartViewController.swift */; };
+		198D92CF206147B9001325DD /* EnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D92CE206147B9001325DD /* EnrollmentViewController.swift */; };
 		199A930D2058E58B007509A1 /* ProjectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A930C2058E58B007509A1 /* ProjectInfo.swift */; };
 		199A930F2058E595007509A1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A930E2058E595007509A1 /* UserInfo.swift */; };
 		199A93112058E59E007509A1 /* UserLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93102058E59E007509A1 /* UserLocationInfo.swift */; };
@@ -62,12 +58,6 @@
 		19A94FD8204EDB8D003A1D23 /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FD7204EDB8D003A1D23 /* launchScreen.png */; };
 		19A94FDA204EDD4E003A1D23 /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FD9204EDD4E003A1D23 /* PopupView.xib */; };
 		19A94FDC204EDD5C003A1D23 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FDB204EDD5C003A1D23 /* PopupView.swift */; };
-		19AB50752041A100000C8DCB /* GoalSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AB50742041A100000C8DCB /* GoalSetting.storyboard */; };
-		19AB50772041A3AE000C8DCB /* GoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */; };
-		19AB50792041AC1E000C8DCB /* Research1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB50782041AC1E000C8DCB /* Research1ViewController.swift */; };
-		19AB507B2041AC28000C8DCB /* Research2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507A2041AC28000C8DCB /* Research2ViewController.swift */; };
-		19AB507D2041AC32000C8DCB /* Research3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507C2041AC32000C8DCB /* Research3ViewController.swift */; };
-		19AB507F2041AC3F000C8DCB /* Research4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB507E2041AC3F000C8DCB /* Research4ViewController.swift */; };
 		19BA826C204FEF9900C095C1 /* NomadLifeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA826A204FEF9900C095C1 /* NomadLifeCell.swift */; };
 		19BA826D204FEF9900C095C1 /* NomadLifeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BA826B204FEF9900C095C1 /* NomadLifeCell.xib */; };
 		19BA8273204FF31100C095C1 /* NomadWorkTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BA8272204FF31100C095C1 /* NomadWorkTutorialView.xib */; };
@@ -138,8 +128,6 @@
 		191DFED3204EB32B0095E9C1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		193627E3204F863F006F4081 /* NomadWorkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkCell.swift; sourceTree = "<group>"; };
 		193627E4204F863F006F4081 /* NomadWorkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadWorkCell.xib; sourceTree = "<group>"; };
-		19384ECF204191A30003CC12 /* Research5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research5ViewController.swift; sourceTree = "<group>"; };
-		19384ED1204192590003CC12 /* ResearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchResultViewController.swift; sourceTree = "<group>"; };
 		1949DCFB204F8E2C0062D8EF /* StrikethroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikethroughView.swift; sourceTree = "<group>"; };
 		1949DCFD204F8E490062D8EF /* StrikethroughView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StrikethroughView.xib; sourceTree = "<group>"; };
 		1949DCFF204FA91F0062D8EF /* NomadAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadAddView.xib; sourceTree = "<group>"; };
@@ -149,22 +137,20 @@
 		1949DD09204FD5170062D8EF /* NomadLifeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeView.xib; sourceTree = "<group>"; };
 		1949DD0B204FD5220062D8EF /* NomadLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeView.swift; sourceTree = "<group>"; };
 		195CFFAE2041AF140062A26C /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		196C4AE32041440100C7BFAF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		196C4AE52041440A00C7BFAF /* Research.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Research.storyboard; sourceTree = "<group>"; };
 		196C4AE7204144DF00C7BFAF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		196C4AEF2041450F00C7BFAF /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		196C4AF12041455500C7BFAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		196C4AF32041457A00C7BFAF /* ResearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchViewController.swift; sourceTree = "<group>"; };
 		196C4AF5204145B200C7BFAF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		196C4AF6204145B200C7BFAF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		196C4AF72041483200C7BFAF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		196C4AF92041493600C7BFAF /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		196C4B012041497500C7BFAF /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
-		196C4B0320414AE500C7BFAF /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
-		196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailViewController.swift; sourceTree = "<group>"; };
 		196C77B7205425F200A45E89 /* NomadChangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadChangeView.xib; sourceTree = "<group>"; };
 		196C77B92054260100A45E89 /* NomadChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadChangeView.swift; sourceTree = "<group>"; };
+		198D92CA2061447E001325DD /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		198D92CC206144A7001325DD /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		198D92CE206147B9001325DD /* EnrollmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentViewController.swift; sourceTree = "<group>"; };
 		199A930C2058E58B007509A1 /* ProjectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfo.swift; sourceTree = "<group>"; };
 		199A930E2058E595007509A1 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		199A93102058E59E007509A1 /* UserLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationInfo.swift; sourceTree = "<group>"; };
@@ -182,12 +168,6 @@
 		19A94FD7204EDB8D003A1D23 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchScreen.png; sourceTree = "<group>"; };
 		19A94FD9204EDD4E003A1D23 /* PopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
 		19A94FDB204EDD5C003A1D23 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
-		19AB50742041A100000C8DCB /* GoalSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalSetting.storyboard; sourceTree = "<group>"; };
-		19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingViewController.swift; sourceTree = "<group>"; };
-		19AB50782041AC1E000C8DCB /* Research1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research1ViewController.swift; sourceTree = "<group>"; };
-		19AB507A2041AC28000C8DCB /* Research2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research2ViewController.swift; sourceTree = "<group>"; };
-		19AB507C2041AC32000C8DCB /* Research3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research3ViewController.swift; sourceTree = "<group>"; };
-		19AB507E2041AC3F000C8DCB /* Research4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Research4ViewController.swift; sourceTree = "<group>"; };
 		19BA826A204FEF9900C095C1 /* NomadLifeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCell.swift; sourceTree = "<group>"; };
 		19BA826B204FEF9900C095C1 /* NomadLifeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeCell.xib; sourceTree = "<group>"; };
 		19BA8272204FF31100C095C1 /* NomadWorkTutorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadWorkTutorialView.xib; sourceTree = "<group>"; };
@@ -418,17 +398,9 @@
 			isa = PBXGroup;
 			children = (
 				6B5411E220418F3000DDB2D5 /* DigitalNomad-Bridging-Header.h */,
-				196C4B0320414AE500C7BFAF /* TutorialViewController.swift */,
-				196C4B052041669F00C7BFAF /* TutorialDetailViewController.swift */,
 				196C4AF12041455500C7BFAF /* LoginViewController.swift */,
-				196C4AF32041457A00C7BFAF /* ResearchViewController.swift */,
-				19AB50782041AC1E000C8DCB /* Research1ViewController.swift */,
-				19AB507A2041AC28000C8DCB /* Research2ViewController.swift */,
-				19AB507C2041AC32000C8DCB /* Research3ViewController.swift */,
-				19AB507E2041AC3F000C8DCB /* Research4ViewController.swift */,
-				19384ECF204191A30003CC12 /* Research5ViewController.swift */,
-				19384ED1204192590003CC12 /* ResearchResultViewController.swift */,
-				19AB50762041A3AE000C8DCB /* GoalSettingViewController.swift */,
+				198D92CC206144A7001325DD /* StartViewController.swift */,
+				198D92CE206147B9001325DD /* EnrollmentViewController.swift */,
 				196C4AF72041483200C7BFAF /* TabBarController.swift */,
 				196C4AE7204144DF00C7BFAF /* MapViewController.swift */,
 				191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */,
@@ -442,10 +414,8 @@
 			isa = PBXGroup;
 			children = (
 				19F2CDEB2041419C00CB113B /* LaunchScreen.storyboard */,
-				196C4AE0204143DA00C7BFAF /* Tutorial.storyboard */,
 				196C4AE32041440100C7BFAF /* Login.storyboard */,
-				196C4AE52041440A00C7BFAF /* Research.storyboard */,
-				19AB50742041A100000C8DCB /* GoalSetting.storyboard */,
+				198D92CA2061447E001325DD /* Start.storyboard */,
 				19F2CDE62041419C00CB113B /* Main.storyboard */,
 				196C4AF92041493600C7BFAF /* Map.storyboard */,
 				191DFEC2204EA9520095E9C1 /* Nomad.storyboard */,
@@ -630,15 +600,14 @@
 				6B634A47204EF79F00A59EEF /* restaurant.png in Resources */,
 				1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */,
 				1949DD06204FD5030062D8EF /* NomadWorkView.xib in Resources */,
+				198D92CB2061447E001325DD /* Start.storyboard in Resources */,
 				6B5412072041900600DDB2D5 /* detail_button.png in Resources */,
 				19A94FD6204EC1CE003A1D23 /* MyPageDetailMailCell.xib in Resources */,
-				196C4AE62041440A00C7BFAF /* Research.storyboard in Resources */,
 				19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */,
 				191DFED2204EAFBF0095E9C1 /* humanSample.png in Resources */,
 				6B54120D2041900600DDB2D5 /* map_pin_red@3x.png in Resources */,
 				6B5412152041900600DDB2D5 /* info_box_tail.png in Resources */,
 				1949DCFE204F8E490062D8EF /* StrikethroughView.xib in Resources */,
-				19AB50752041A100000C8DCB /* GoalSetting.storyboard in Resources */,
 				6B5412182041900600DDB2D5 /* map_pin.png in Resources */,
 				6B54121A2041900600DDB2D5 /* noimage.png in Resources */,
 				6B54121C2041900600DDB2D5 /* daum_th_line.png in Resources */,
@@ -656,7 +625,6 @@
 				193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */,
 				19BA8273204FF31100C095C1 /* NomadWorkTutorialView.xib in Resources */,
 				6B5412092041900600DDB2D5 /* map_pinup@3x.png in Resources */,
-				196C4AE1204143DA00C7BFAF /* Tutorial.storyboard in Resources */,
 				191DFEC5204EACBB0095E9C1 /* MyPageListView.xib in Resources */,
 				6B5412142041900600DDB2D5 /* map_pinup_custom.png in Resources */,
 				6B5412102041900600DDB2D5 /* map_present_tracking.png in Resources */,
@@ -726,6 +694,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-DigitalNomad/Pods-DigitalNomad-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
+				"${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
@@ -745,6 +714,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLRadioButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
@@ -772,12 +742,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				198D92CF206147B9001325DD /* EnrollmentViewController.swift in Sources */,
 				193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */,
 				196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */,
 				191DFECB204EACE00095E9C1 /* MyPageCardView.swift in Sources */,
 				191DFEC7204EACCB0095E9C1 /* MyPageListView.swift in Sources */,
-				196C4B0420414AE500C7BFAF /* TutorialViewController.swift in Sources */,
-				19AB50792041AC1E000C8DCB /* Research1ViewController.swift in Sources */,
 				196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */,
 				199A93152058E5AF007509A1 /* GoalListInfo.swift in Sources */,
 				19BA8275204FF31B00C095C1 /* NomadWorkTutorialView.swift in Sources */,
@@ -785,35 +754,28 @@
 				196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */,
 				6B634A41204EF73300A59EEF /* MapCell.swift in Sources */,
 				19A94FD5204EC1CE003A1D23 /* MyPageDetailMailCell.swift in Sources */,
-				19384ED2204192590003CC12 /* ResearchResultViewController.swift in Sources */,
 				195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */,
 				191DFEC1204EA9490095E9C1 /* MyPageDetailViewController.swift in Sources */,
 				1949DD02204FA9340062D8EF /* NomadAddView.swift in Sources */,
 				1949DD08204FD50F0062D8EF /* NomadWorkView.swift in Sources */,
+				198D92CD206144A7001325DD /* StartViewController.swift in Sources */,
 				1949DCFC204F8E2C0062D8EF /* StrikethroughView.swift in Sources */,
 				191DFECD204EACEE0095E9C1 /* MyPageMeetupView.swift in Sources */,
 				199A93192058F2DA007509A1 /* DummyData.swift in Sources */,
 				199A93112058E59E007509A1 /* UserLocationInfo.swift in Sources */,
-				196C4AF42041457A00C7BFAF /* ResearchViewController.swift in Sources */,
-				19AB507D2041AC32000C8DCB /* Research3ViewController.swift in Sources */,
 				199A930D2058E58B007509A1 /* ProjectInfo.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,
 				199A93172058E5B8007509A1 /* WishListInfo.swift in Sources */,
 				19A94FCD204EC1AE003A1D23 /* MyPageDetailInfoCell.swift in Sources */,
 				19A94FC9204EC19D003A1D23 /* MyPageDetailImageCell.swift in Sources */,
 				191DFED4204EB32B0095E9C1 /* UIView+.swift in Sources */,
-				19AB50772041A3AE000C8DCB /* GoalSettingViewController.swift in Sources */,
-				196C4B062041669F00C7BFAF /* TutorialDetailViewController.swift in Sources */,
 				191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */,
 				1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */,
-				19384ED0204191A30003CC12 /* Research5ViewController.swift in Sources */,
 				19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */,
 				19BA8279204FF33200C095C1 /* NomadLifeTutorialView.swift in Sources */,
 				19A94FDC204EDD5C003A1D23 /* PopupView.swift in Sources */,
 				199A93132058E5A6007509A1 /* EmailInfo.swift in Sources */,
-				19AB507B2041AC28000C8DCB /* Research2ViewController.swift in Sources */,
 				196C77BA2054260100A45E89 /* NomadChangeView.swift in Sources */,
-				19AB507F2041AC3F000C8DCB /* Research4ViewController.swift in Sources */,
 				199A930F2058E595007509A1 /* UserInfo.swift in Sources */,
 				196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */,
 			);
@@ -958,7 +920,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HPCHS5M63;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -984,7 +946,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HPCHS5M63;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

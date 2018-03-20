@@ -22,8 +22,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         super.viewWillAppear(true)
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if(user != nil){
-                let storyboard = UIStoryboard(name: "Research", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "ResearchViewController") as! ResearchViewController
+                let storyboard = UIStoryboard(name: "Start", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
                 //controller.modalTransitionStyle = .crossDissolve
                 self.present(controller, animated: true, completion: nil)
             }
