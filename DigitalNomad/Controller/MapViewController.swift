@@ -12,12 +12,15 @@ import RealmSwift
 import MapKit
 import CoreLocation
 import DZNEmptyDataSet
+import DLRadioButton
 typealias JSON = [String:Any]
 
 class MapViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var btnMore: UIButton!
+    @IBOutlet var radioButton: DLRadioButton!
+    @IBOutlet var radioButton2: DLRadioButton!
     var filteredData: [String]!
     var loctaion_name_array = [String]()
     
@@ -36,7 +39,7 @@ class MapViewController: UIViewController {
     
     var mapView: MTMapView!
     
-    var flag : Int = 0 // 0 : 더 보기(거리순), 1 : 더 보기(최신순) ,2 : 지도 보기
+    var flag : Int = 0 // 0,3 : 더 보기(거리순), 1,4 : 더 보기(최신순) ,2 : 지도 보기
     
     var isFirstExecuted: Bool = false
     
@@ -186,26 +189,28 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func btnMore(_ sender: UIButton) {
-        if flag==0 {
+        if flag==0 || flag==1 {
             UIView.animate(withDuration: 0.4, animations: {
                 self.mapView.frame.origin.y = UIApplication.shared.statusBarFrame.height - self.view.frame.width
                 self.searchBar.frame.origin.y = self.mapView.frame.origin.y - self.searchBar.frame.height
 //                self.btnMore.frame.origin.y = self.searchBar.frame.origin.y + self.searchBar.frame.height + 5
                 self.btnMore.frame.origin.y = UIApplication.shared.statusBarFrame.height + 5
+                self.btnMore.frame.origin.x = 10
+                self.radioButton.frame.origin.y = UIApplication.shared.statusBarFrame.height + 5
+                self.radioButton2.frame.origin.y = UIApplication.shared.statusBarFrame.height + 5
+                self.radioButton.isSelected = true
 //                self.tableView.frame.origin.y = self.btnMore.frame.origin.y + self.btnMore.frame.height + 5
 //                self.tableView.frame.size.height = self.view.frame.height - self.btnMore.frame.origin.y - self.btnMore.frame.height - 49
                 self.tableView.frame.origin.y = self.btnMore.frame.origin.y + self.btnMore.frame.height + 5
                 self.tableView.frame.size.height = self.view.frame.height - self.btnMore.frame.origin.y - self.btnMore.frame.height - 49
-            }, completion: { _ in
-                self.btnMore.setTitle("최신순보기", for: .normal)
                 self.tableView.reloadData()
-                self.flag = 1
+            }, completion: { _ in
+                self.btnMore.setTitle("지도보기", for: .normal)
+                self.view.addSubview(self.radioButton)
+                self.view.addSubview(self.radioButton2)
+                self.flag = 2
             })
-        } else if flag==1 {
-            self.btnMore.setTitle("지도보기", for: .normal)
-            self.tableView.reloadData()
-            self.flag = 2
-        } else if flag==2 {
+        } else if flag==2 || flag==3 || flag==4 {
             UIView.animate(withDuration: 0.4, animations: {
 //                self.searchBar.frame.origin.y = UIApplication.shared.statusBarFrame.height
 //                self.mapView.frame.origin.y += self.view.frame.width
@@ -215,15 +220,27 @@ class MapViewController: UIViewController {
                 self.searchBar.frame.origin.y = UIApplication.shared.statusBarFrame.height
                 self.mapView.frame.origin.y = self.searchBar.frame.origin.y + self.searchBar.frame.height
                 self.btnMore.frame.origin.y = self.mapView.frame.origin.y + self.mapView.frame.height + 5
+                self.btnMore.layer.position.x = self.view.frame.width/2
+                self.radioButton.removeFromSuperview()
+                self.radioButton2.removeFromSuperview()
                 self.tableView.frame.origin.y = self.btnMore.frame.origin.y + self.btnMore.frame.height + 5
                 self.tableView.frame.size.height = self.view.frame.height - (self.mapView.frame.origin.y + self.mapView.frame.height + 49)
                 
                 
             }, completion: { _ in
-                self.btnMore.setTitle("거리순보기", for: .normal)
+                self.btnMore.setTitle("더 보기", for: .normal)
                 self.flag = 0
             })
         }
+    }
+    
+    @IBAction func sortByDistance(_ sender: DLRadioButton) {
+        self.flag = 4
+        self.tableView.reloadData()
+    }
+    @IBAction func sortByRecent(_ sender: DLRadioButton) {
+        self.flag = 3
+        self.tableView.reloadData()
     }
 }
 
@@ -241,8 +258,8 @@ extension MapViewController: UITableViewDataSource{
         let cell = self.tableView!.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath) as! MapCell
         
         var obj = self.realm.objects(MapLocationInfo.self)
-        if flag == 1 { obj = obj.sorted(byKeyPath: "distance", ascending: true) }
-        else { obj = obj.sorted(byKeyPath: "update", ascending: false) }
+        if flag == 1 || flag == 4 { obj = obj.sorted(byKeyPath: "distance", ascending: true) }
+        else if flag == 0 || flag == 3 { obj = obj.sorted(byKeyPath: "update", ascending: false) }
         let placeName = obj[indexPath.row].name
         let placeAddress = obj[indexPath.row].address
         let placeCategory = obj[indexPath.row].category
@@ -261,6 +278,10 @@ extension MapViewController: UITableViewDataSource{
         default:
             cell.imageview.image = #imageLiteral(resourceName: "kamel.png")
         }
+        
+//        if(indexPath.row == obj.count-1) {
+//            self.flag = 2
+//        }
         
         return cell
     }
