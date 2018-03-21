@@ -42,7 +42,7 @@ class MyPageMeetupView: UIView {
     @IBAction func requestMeetup(_ sender: UIButton) {
         //마이페이지 디테일에서 코워킹 설정이 off되어 있으면 토스터를 띄움, 그렇지 않으면 팝업을 띄움
         if(userInfo.cowork){
-            let popup = PopupView.instanceFromXib() as! PopupView
+            let popup = PopupMeetupView.instanceFromXib() as! PopupMeetupView
             popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             popup.frame = (self.parentViewController()?.view.frame)!
             popup.view.alpha = 0

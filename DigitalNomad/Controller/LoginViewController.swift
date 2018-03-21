@@ -24,7 +24,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             if(user != nil){
                 let storyboard = UIStoryboard(name: "Start", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
-                //controller.modalTransitionStyle = .crossDissolve
                 self.present(controller, animated: true, completion: nil)
             }
         }

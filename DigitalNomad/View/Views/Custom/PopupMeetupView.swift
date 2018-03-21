@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopupView: UIView {
+class PopupMeetupView: UIView {
 
     @IBOutlet var view: UIView!
     @IBOutlet var button: UIButton!
@@ -30,7 +30,7 @@ class PopupView: UIView {
     }
     
     class func instanceFromXib() -> UIView {
-        return UINib(nibName: "PopupView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
+        return UINib(nibName: "PopupMeetupView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
     }
     
     @IBAction func sendEmail(_ sender: UIButton) {

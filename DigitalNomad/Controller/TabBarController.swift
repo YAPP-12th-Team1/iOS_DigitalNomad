@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 class TabBarController: UITabBarController {
 
@@ -70,15 +72,18 @@ class TabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
-        
-     //로그인 -> 설문조사 -> 사용자 등록
-//        if(!UserDefaults.standard.bool(forKey: "isFirst")){
-//            loadLoginScreen()
-//            UserDefaults.standard.set(true, forKey: "isFirst")
-//        }
         self.view.insertSubview(leftButton, aboveSubview: self.tabBar)
         self.view.insertSubview(centerButton, aboveSubview: self.tabBar)
         self.view.insertSubview(rightButton, aboveSubview: self.tabBar)
+        
+        //로그인 -> 설문조사 -> 사용자 등록
+        if(Auth.auth().currentUser == nil){
+            loadLoginScreen()
+        } else if(!UserDefaults.standard.bool(forKey: "isEnrolled")) {
+            let storyboard = UIStoryboard(name: "Start", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
+            present(controller, animated: true)
+        }
     }
     
     override func viewDidLayoutSubviews() {

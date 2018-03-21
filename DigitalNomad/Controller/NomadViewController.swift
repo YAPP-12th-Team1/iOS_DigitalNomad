@@ -9,6 +9,7 @@
 import UIKit
 import DZNEmptyDataSet
 import RealmSwift
+import Firebase
 
 class NomadViewController: UIViewController {
     
@@ -77,6 +78,7 @@ class NomadViewController: UIViewController {
         if(underView.layer.sublayers != nil){
             underView.layer.sublayers?.removeFirst()
         }
+
         if(!underView.subviews.isEmpty){
             underView.subviews.first?.removeFromSuperview()
         }
@@ -91,6 +93,7 @@ class NomadViewController: UIViewController {
             
             let refresh = UIRefreshControl()
             workView.tableView.refreshControl = refresh
+            refresh.attributedTitle = NSAttributedString(string: "더 당기면 카드형 노트로 전환됩니다")
             refresh.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
             
             searchBar.barTintColor = #colorLiteral(red: 0.9529411765, green: 0.6705882353, blue: 0.6274509804, alpha: 1)
@@ -121,6 +124,9 @@ class NomadViewController: UIViewController {
 //                addView.contentSummary.text = "추가해주세요."
 //            }
             if(!UserDefaults.standard.bool(forKey: "isFirstNomadWorkExecute")){
+                if(self.view.subviews.last is NomadWorkTutorialView){
+                    self.view.subviews.last?.removeFromSuperview()
+                }
                 let tutorial = NomadWorkTutorialView.instanceFromXib()
                 tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
                 tutorial.frame = self.view.frame
@@ -139,6 +145,7 @@ class NomadViewController: UIViewController {
             lifeView = centerView.subviews.last as! NomadLifeView
             
             let refresh = UIRefreshControl()
+            refresh.attributedTitle = NSAttributedString(string: "더 당기면 리스트형 노트로 전환됩니다")
             refresh.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
             lifeView.collectionView.refreshControl = refresh
             
@@ -162,12 +169,15 @@ class NomadViewController: UIViewController {
 //            if let firstContent = (lifeView.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! NomadLifeCell).content.text {
 //                addView.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
 //            }
-//            if(!UserDefaults.standard.bool(forKey: "isFirstNomadLifeExecute")){
-//                let tutorial = NomadLifeTutorialView.instanceFromXib()
-//                tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-//                tutorial.frame = self.view.frame
-//                self.view.addSubview(tutorial)
-//            }
+            if(!UserDefaults.standard.bool(forKey: "isFirstNomadLifeExecute")){
+                if(self.view.subviews.last is NomadLifeTutorialView){
+                    self.view.subviews.last?.removeFromSuperview()
+                }
+                let tutorial = NomadLifeTutorialView.instanceFromXib()
+                tutorial.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+                tutorial.frame = self.view.frame
+                self.view.addSubview(tutorial)
+            }
             UIView.animate(withDuration: 0.5, animations: {
                 self.underView.frame.origin.y = self.view.frame.height - (self.tabBarController?.tabBar.frame.height)! - (self.underView.frame.height - addView.subView.frame.height)
             })
@@ -186,12 +196,6 @@ class NomadViewController: UIViewController {
     }
     
     @objc func refresh(){
-//        let animation = CATransition()
-//        animation.duration = 0.5
-//        animation.type = kCATransitionPush
-//        animation.subtype = kCATransitionFromBottom
-//        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-//        centerView.layer.add(animation, forKey: "swipeRefresh")
         if(centerView.subviews.last is NomadWorkView){
             centerView.subviews.last?.removeFromSuperview()
             let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
@@ -211,84 +215,35 @@ class NomadViewController: UIViewController {
         if(searchBar.isFirstResponder || (underView.subviews.last! as! NomadAddView).textField.isFirstResponder){
             return
         }
+        let animation = CATransition()
+        animation.duration = 0.5
+        animation.type = kCATransitionPush
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         if(gesture.direction == .left){
-            let animation = CATransition()
-            animation.duration = 0.5
-            animation.type = kCATransitionPush
             animation.subtype = kCATransitionFromRight
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             centerView.layer.add(animation, forKey: "swipeLeft")
-            if(centerView.subviews.last is NomadWorkView){
-                centerView.subviews.last?.removeFromSuperview()
-                let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
-                lifeView.frame.size = centerView.frame.size
-                centerView.addSubview(lifeView)
-                lifeView.layoutIfNeeded()
-            } else {
-                centerView.subviews.last?.removeFromSuperview()
-                let workView = NomadWorkView.instanceFromXib() as! NomadWorkView
-                workView.frame.size = centerView.frame.size
-                centerView.addSubview(workView)
-            }
         } else if(gesture.direction == .right){
-            let animation = CATransition()
-            animation.duration = 0.5
-            animation.type = kCATransitionPush
             animation.subtype = kCATransitionFromLeft
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             centerView.layer.add(animation, forKey: "swipeUp")
-            if(centerView.subviews.last is NomadWorkView){
-                centerView.subviews.last?.removeFromSuperview()
-                let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
-                lifeView.frame.size = centerView.frame.size
-                centerView.addSubview(lifeView)
-                lifeView.layoutIfNeeded()
-            } else {
-                centerView.subviews.last?.removeFromSuperview()
-                let workView = NomadWorkView.instanceFromXib() as! NomadWorkView
-                workView.frame.size = centerView.frame.size
-                centerView.addSubview(workView)
-            }
         } else if(gesture.direction == .up){
-            let animation = CATransition()
-            animation.duration = 0.5
-            animation.type = kCATransitionPush
             animation.subtype = kCATransitionFromTop
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             centerView.layer.add(animation, forKey: "swipeDown")
-            if(centerView.subviews.last is NomadWorkView){
-                centerView.subviews.last?.removeFromSuperview()
-                let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
-                lifeView.frame.size = centerView.frame.size
-                centerView.addSubview(lifeView)
-                lifeView.layoutIfNeeded()
-            } else {
-                centerView.subviews.last?.removeFromSuperview()
-                let workView = NomadWorkView.instanceFromXib() as! NomadWorkView
-                workView.frame.size = centerView.frame.size
-                centerView.addSubview(workView)
-            }
         } else if(gesture.direction == .down){
-            let animation = CATransition()
-            animation.duration = 0.5
-            animation.type = kCATransitionPush
             animation.subtype = kCATransitionFromBottom
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             centerView.layer.add(animation, forKey: "swipeRight")
-            if(centerView.subviews.last is NomadWorkView){
-                centerView.subviews.last?.removeFromSuperview()
-                let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
-                lifeView.frame.size = centerView.frame.size
-                centerView.addSubview(lifeView)
-                lifeView.layoutIfNeeded()
-            } else {
-                centerView.subviews.last?.removeFromSuperview()
-                let workView = NomadWorkView.instanceFromXib() as! NomadWorkView
-                workView.frame.size = centerView.frame.size
-                centerView.addSubview(workView)
-            }
         }
-        //정리되면 코드 정리좀 해야겠다ㅠ
+        if(centerView.subviews.last is NomadWorkView){
+            centerView.subviews.last?.removeFromSuperview()
+            let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
+            lifeView.frame.size = centerView.frame.size
+            centerView.addSubview(lifeView)
+            lifeView.layoutIfNeeded()
+        } else {
+            centerView.subviews.last?.removeFromSuperview()
+            let workView = NomadWorkView.instanceFromXib() as! NomadWorkView
+            workView.frame.size = centerView.frame.size
+            centerView.addSubview(workView)
+        }
         viewWillAppear(true)
     }
     
@@ -323,11 +278,31 @@ class NomadViewController: UIViewController {
 }
 
 extension NomadViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(centerView.subviews.last is NomadWorkView){
+            let workView = centerView.subviews.last as! NomadWorkView
+            if(!searchText.isEmpty){
+                let temps = realm.objects(ProjectInfo.self).last!.goalLists.filter("todo CONTAINS[c] '" + searchText + "'")
+                let result = List<GoalListInfo>()
+                for temp in temps{
+                    result.append(temp)
+                }
+                workView.object = result
+            } else {
+                workView.object = realm.objects(ProjectInfo.self).last!.goalLists
+            }
+            workView.tableView.reloadData()
+        } else {
+//            let lifeView = centerView.subviews.last as! NomadLifeView
+//            lifeView.object = realm.objects(ProjectInfo.self).last!.wishLists.filter("todo CONTAINS[c] '" + searchText + "'")
+//            lifeView.collectionView.reloadData()
+        }
+    }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         return
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
     }
 }
 

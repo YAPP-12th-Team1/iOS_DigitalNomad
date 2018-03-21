@@ -19,8 +19,6 @@ class NomadAddView: UIView {
     @IBOutlet var addButton: UIButton!
     var realm: Realm!
     
-    var timer: Timer!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         realm = try! Realm()
@@ -32,12 +30,6 @@ class NomadAddView: UIView {
         addButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
         addButton.layer.cornerRadius = 5
         getTimeOfDate()
-        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(getTimeOfDate), userInfo: nil, repeats: true)
-    }
-    
-    override func removeFromSuperview() {
-        super.removeFromSuperview()
-        timer.invalidate()
     }
     
     class func instanceFromXib() -> UIView {

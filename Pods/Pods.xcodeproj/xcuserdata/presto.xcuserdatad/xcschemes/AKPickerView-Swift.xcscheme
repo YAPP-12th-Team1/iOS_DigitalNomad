@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5CA0396D53200417FC0FCB2ADD74B26E"
-               BuildableName = "Pods_DigitalNomad.framework"
-               BlueprintName = "Pods-DigitalNomad"
+               BlueprintIdentifier = "CBE2FC3D9C7576EFC5658710A956091D"
+               BuildableName = "AKPickerView_Swift.framework"
+               BlueprintName = "AKPickerView-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5CA0396D53200417FC0FCB2ADD74B26E"
-            BuildableName = "Pods_DigitalNomad.framework"
-            BlueprintName = "Pods-DigitalNomad"
+            BlueprintIdentifier = "CBE2FC3D9C7576EFC5658710A956091D"
+            BuildableName = "AKPickerView_Swift.framework"
+            BlueprintName = "AKPickerView-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
