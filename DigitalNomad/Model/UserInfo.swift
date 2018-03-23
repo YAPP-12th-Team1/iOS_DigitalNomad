@@ -33,12 +33,25 @@ class UserInfo: Object{
 func addUser(_ address: String?, _ job: String){
     let realm = try! Realm()
     let object = UserInfo()
-    object.id = object.incrementID()
+    let id = object.incrementID()
+    object.id = id
     object.address = address
     object.job = job
+    
+    
+    // firebase
+    Database.database().reference().child("users").setValue([
+        "id": id,
+        "userId": Auth.auth().currentUser?.email,
+        "address": object.address,
+        "job": object.job
+        ])
+    
     try! realm.write{
         realm.add(object)
     }
+    
+    
 }
 
 // 로그인 완료 직후 addUser 메소드 불러서 유저 정보 저장
