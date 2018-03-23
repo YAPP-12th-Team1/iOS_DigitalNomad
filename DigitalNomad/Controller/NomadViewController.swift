@@ -80,7 +80,7 @@ class NomadViewController: UIViewController {
         }
 
         if(!underView.subviews.isEmpty){
-            underView.subviews.first?.removeFromSuperview()
+            //underView.subviews.first?.removeFromSuperview()
         }
         
         if(centerView.subviews.last is NomadWorkView) {
