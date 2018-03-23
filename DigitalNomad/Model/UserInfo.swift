@@ -21,6 +21,8 @@ class UserInfo: Object{
     @objc dynamic var job: String = ""
     @objc dynamic var introducing: String?
     @objc dynamic var purpose: String?
+    @objc dynamic var emailInfo: EmailInfo?
+    @objc dynamic var userLocation: UserLocationInfo?
     
     func incrementID() -> Int {
         let realm = try! Realm()
