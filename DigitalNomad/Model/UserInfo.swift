@@ -37,21 +37,21 @@ func addUser(_ address: String?, _ job: String){
     object.id = id
     object.address = address
     object.job = job
-    
-    
+
     // firebase
-    Database.database().reference().child("users").setValue([
+    Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).setValue([
         "id": id,
-        "userId": Auth.auth().currentUser?.email,
+        "email": Auth.auth().currentUser?.email,
+        "nickname": Auth.auth().currentUser?.displayName,
         "address": object.address,
-        "job": object.job
-        ])
+        "cowrk": false,
+        "job": object.job,
+        "emailInfo" : object.emailInfo
+    ])
     
     try! realm.write{
         realm.add(object)
     }
-    
-    
 }
 
 // 로그인 완료 직후 addUser 메소드 불러서 유저 정보 저장

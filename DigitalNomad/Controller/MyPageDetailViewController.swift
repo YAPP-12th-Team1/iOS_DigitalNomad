@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import Firebase
+import GoogleSignIn
 import JTMaterialSwitch
 import Toaster
 
@@ -65,29 +67,60 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @IBAction func clickConfirm(_ sender: UIButton) {
+        /*
+          이쪽에서 저장되는 사항
+          UserInfo = inroducing, purpose
+          EamilInfo title, context
+         */
+        
+        
         if(tableView.numberOfSections == 4){
-            let userId = realm.objects(UserInfo.self).last!.id
             let introducingCell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! MyPageDetailInfoCell
             let purposeCell = tableView.cellForRow(at: IndexPath(row: 2, section: 2)) as! MyPageDetailInfoCell
             let mailCell = tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! MyPageDetailMailCell
-            if let email = realm.objects(EmailInfo.self).filter("userId = \(userId)").first {
+ 
+            /** User 관련 정보 **/
+            let userId = realm.objects(UserInfo.self).last!.id
+            let introducing = introducingCell.textField.text
+            let purpose = purposeCell.textField.text
+            
+            /** Email 관련 정보 **/
+            if let emailInfo = realm.objects(EmailInfo.self).filter("userId = \(userId)").first {
                 if let title = mailCell.title.text{
                     try! realm.write {
-                        email.title = title
+                        emailInfo.title = title
                     }
                 }
                 if let message = mailCell.message.text{
                     try! realm.write{
-                        email.context = message
+                        emailInfo.context = message
                     }
                 }
+                
             } else {
                 addEmail(userId, mailCell.title.text ?? "", mailCell.message.text ?? "")
             }
+            
             try! realm.write{
-                userInfo.introducing = introducingCell.textField.text
-                userInfo.purpose = purposeCell.textField.text
+                userInfo.cowork = true
+                userInfo.introducing = introducing
+                userInfo.purpose = purpose
             }
+            
+            /** firebase emailInfo Update **/
+            Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("emailInfo").setValue([
+                "title": mailCell.title.text,
+                "context": mailCell.message.text
+            ])
+            
+            /** firebase User Update **/
+            Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
+                "introducing" : introducing,
+                "purpose" : purpose,
+                "cowrk": true
+            ])
+            
+
         }
         Toast(text: "저장했습니다.", duration: Delay.short).show()
         dismiss(animated: true, completion: nil)
