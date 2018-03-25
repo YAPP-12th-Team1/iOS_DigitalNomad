@@ -23,6 +23,7 @@ class MyPageDetailViewController: UIViewController {
     var userLocationInfo: UserLocationInfo?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         realm = try! Realm()
         userInfo = realm.objects(UserInfo.self).last
@@ -44,6 +45,7 @@ class MyPageDetailViewController: UIViewController {
             coworkingAllowingSwitch.isOn = false
         }
         // Do any additional setup after loading the view.
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

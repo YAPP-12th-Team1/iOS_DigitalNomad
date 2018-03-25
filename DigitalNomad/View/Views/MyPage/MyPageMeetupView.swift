@@ -34,7 +34,7 @@ class MyPageMeetupView: UIView {
         imageView.clipsToBounds = true
         buttonMeetup.layer.cornerRadius = 5
         
-        
+        setUserData()
     }
     class func instanceFromXib() -> UIView {
         return UINib(nibName: "MyPageMeetupView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
@@ -68,12 +68,12 @@ class MyPageMeetupView: UIView {
         
         realm = try! Realm()
         userInfo = realm.objects(UserInfo.self).first!
-        emailInfo = realm.objects(EmailInfo.self).first!
+//        emailInfo = realm.objects(EmailInfo.self).first!
         
         name.text = userInfo.nickname
         occupation.text = userInfo.job
         days.text = "10" // 일단 디폴트로 10
-        message.text = emailInfo.context
+//        message.text = emailInfo.context
         message.text = "dd"
         distance.text = "10" // 일단 디폴트로 10
     }

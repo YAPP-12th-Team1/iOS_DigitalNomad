@@ -42,7 +42,7 @@ func addUser(_ address: String?, _ job: String){
         "email": Auth.auth().currentUser?.email,
         "nickname": Auth.auth().currentUser?.displayName,
         "address": object.address,
-        "cowrk": false,
+        "cowork": false,
         "job": object.job
     ])
     
@@ -51,18 +51,37 @@ func addUser(_ address: String?, _ job: String){
     }
 }
 
-// 본인을 제외한 유저 id List
-func usersList() {
+/** user의 uid 로 리스트를 만들어서 반환 **/
+/** 이슈 : 본인은 빼고, coworking on 되어있는 사람 **/
+func usersList() -> [String] {
+    print("usersList 실행")
+    
+    let realm: Realm!
+    realm = try! Realm()
+    var userInfo: UserInfo!
+    userInfo = realm.objects(UserInfo.self).first!
+    
     var ref: DatabaseReference!
     ref = Database.database().reference()
-    ref.child("users").observeSingleEvent(of: .value, with: { (user) in
-        // Get user value
-        let value = user.value as? NSDictionary
-        let username = value?["username"] as? String ?? ""
-        print("value", value)
-        print("username", username)
+    var list: Array<String> = []
+    
+    ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+        let key = snapshot.value as? NSDictionary
         
-    }) { (error) in
-        print(error.localizedDescription)
-    }
+        for i in key! {
+            let newKey = i.key as? String
+            if((newKey != Auth.auth().currentUser?.uid)){
+                
+                var newValue =  i.value as! NSMutableDictionary
+//                print("newValue: ", newValue["cowork"])
+                if let isCowork = newValue["cowork"]{
+                    list.append(newKey as! String)
+//                    print("저장@")
+                }
+            }
+        }
+//        print(list)
+    })
+    return list
 }
+
