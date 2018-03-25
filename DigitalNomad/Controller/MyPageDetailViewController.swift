@@ -26,8 +26,9 @@ class MyPageDetailViewController: UIViewController {
         super.viewDidLoad()
         realm = try! Realm()
         userInfo = realm.objects(UserInfo.self).last
-        let userId = userInfo.id
-        userLocationInfo = realm.objects(UserLocationInfo.self).filter("userId = \(userId)").first
+        
+        userLocationInfo = realm.objects(UserLocationInfo.self).first
+        
         tableView.register(UINib(nibName: "MyPageDetailImageCell", bundle: nil), forCellReuseIdentifier: "myPageDetailImageCell")
         tableView.register(UINib(nibName: "MyPageDetailInfoCell", bundle: nil), forCellReuseIdentifier: "myPageDetailInfoCell")
         tableView.register(UINib(nibName: "MyPageDetailMailCell", bundle: nil), forCellReuseIdentifier: "myPageDetailMailCell")
@@ -67,25 +68,16 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @IBAction func clickConfirm(_ sender: UIButton) {
-        /*
-          이쪽에서 저장되는 사항
-          UserInfo = inroducing, purpose
-          EamilInfo title, context
-         */
-        
-        
+
         if(tableView.numberOfSections == 4){
             let introducingCell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! MyPageDetailInfoCell
             let purposeCell = tableView.cellForRow(at: IndexPath(row: 2, section: 2)) as! MyPageDetailInfoCell
             let mailCell = tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! MyPageDetailMailCell
- 
-            /** User 관련 정보 **/
-            let userId = realm.objects(UserInfo.self).last!.id
+            
             let introducing = introducingCell.textField.text
             let purpose = purposeCell.textField.text
             
-            /** Email 관련 정보 **/
-            if let emailInfo = realm.objects(EmailInfo.self).filter("userId = \(userId)").first {
+            if let emailInfo = realm.objects(EmailInfo.self).first {
                 if let title = mailCell.title.text{
                     try! realm.write {
                         emailInfo.title = title
@@ -96,9 +88,8 @@ class MyPageDetailViewController: UIViewController {
                         emailInfo.context = message
                     }
                 }
-                
             } else {
-                addEmail(userId, mailCell.title.text ?? "", mailCell.message.text ?? "")
+                addEmail(mailCell.title.text ?? "", mailCell.message.text ?? "")
             }
             
             try! realm.write{
@@ -119,7 +110,6 @@ class MyPageDetailViewController: UIViewController {
                 "purpose" : purpose,
                 "cowrk": true
             ])
-            
 
         }
         Toast(text: "저장했습니다.", duration: Delay.short).show()

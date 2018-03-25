@@ -21,7 +21,7 @@ class MyPageDetailMailCell: UITableViewCell {
         super.awakeFromNib()
         realm = try! Realm()
         let userId = realm.objects(UserInfo.self).last!.id
-        emailInfo = realm.objects(EmailInfo.self).filter("userId = \(userId)").first
+        emailInfo = realm.objects(EmailInfo.self).first
         title.autocorrectionType = .no
         message.autocorrectionType = .no
         title.addTarget(self, action: #selector(clickReturnButton), for: .editingDidEndOnExit)

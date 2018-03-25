@@ -21,9 +21,7 @@ class UserInfo: Object{
     @objc dynamic var job: String = ""
     @objc dynamic var introducing: String?
     @objc dynamic var purpose: String?
-    @objc dynamic var emailInfo: EmailInfo?
-    @objc dynamic var userLocation: UserLocationInfo?
-    
+
     func incrementID() -> Int {
         let realm = try! Realm()
         return (realm.objects(UserInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
@@ -45,8 +43,7 @@ func addUser(_ address: String?, _ job: String){
         "nickname": Auth.auth().currentUser?.displayName,
         "address": object.address,
         "cowrk": false,
-        "job": object.job,
-        "emailInfo" : object.emailInfo
+        "job": object.job
     ])
     
     try! realm.write{
@@ -54,5 +51,18 @@ func addUser(_ address: String?, _ job: String){
     }
 }
 
-// 로그인 완료 직후 addUser 메소드 불러서 유저 정보 저장
-//
+// 본인을 제외한 유저 id List
+func usersList() {
+    var ref: DatabaseReference!
+    ref = Database.database().reference()
+    ref.child("users").observeSingleEvent(of: .value, with: { (user) in
+        // Get user value
+        let value = user.value as? NSDictionary
+        let username = value?["username"] as? String ?? ""
+        print("value", value)
+        print("username", username)
+        
+    }) { (error) in
+        print(error.localizedDescription)
+    }
+}

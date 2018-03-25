@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalNomad/Model/UserInfo.swift"
-            timestampString = "543601366.8285021"
+            timestampString = "543685232.273693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "addUser(_:_:)"
             landmarkType = "9">
          </BreakpointContent>

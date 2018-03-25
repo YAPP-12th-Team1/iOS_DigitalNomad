@@ -10,15 +10,14 @@ import Foundation
 import RealmSwift
 
 class UserLocationInfo: Object{
-    @objc dynamic var userId: Int = 0           //Foriegn Key
+
     @objc dynamic var longitude: Double = 0     //Not Null
     @objc dynamic var latitude: Double = 0      //Not Null
 }
 
-func addUserLocation(_ userId: Int, _ longitude: Double, _ latitude: Double){
+func addUserLocation(_ longitude: Double, _ latitude: Double){
     let realm = try! Realm()
     let object = UserLocationInfo()
-    object.userId = userId
     object.longitude = longitude
     object.latitude = latitude
     try! realm.write{
