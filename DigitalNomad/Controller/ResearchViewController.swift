@@ -31,10 +31,12 @@ class ResearchViewController: UIViewController {
                    000420015]
     
     var status : UInt64 = 0
+    var index = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.imageView.image = #imageLiteral(resourceName: "1.jpg")
         // Do any additional setup after loading the view.
     }
 
@@ -43,16 +45,88 @@ class ResearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func clickLike(_ sender: UIButton) {
-        
+        chPic(index)
+        index += 1;
     }
     
     @IBAction func clickNext(_ sender: UIButton) {
-        
+        chPic(index)
+        index += 1;
     }
     
     @IBAction func clickSkip(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "ResearchResultViewController")
         present(controller, animated: true, completion: nil)
+    }
+    
+    func chPic(_ index: Int) {
+        switch index {
+        case 1:
+            self.imageView.image = #imageLiteral(resourceName: "2.jpg")
+        case 2:
+            self.imageView.image = #imageLiteral(resourceName: "3.jpg")
+        case 3:
+            self.imageView.image = #imageLiteral(resourceName: "4.jpg")
+        case 4:
+            self.imageView.image = #imageLiteral(resourceName: "5.jpg")
+        case 5:
+            self.imageView.image = #imageLiteral(resourceName: "6.jpg")
+        case 6:
+            self.imageView.image = #imageLiteral(resourceName: "7.jpg")
+        case 7:
+            self.imageView.image = #imageLiteral(resourceName: "8.jpg")
+        case 8:
+            self.imageView.image = #imageLiteral(resourceName: "9.jpg")
+        case 9:
+            self.imageView.image = #imageLiteral(resourceName: "10.jpg")
+        case 10:
+            self.imageView.image = #imageLiteral(resourceName: "11.bmp")
+        case 11:
+            self.imageView.image = #imageLiteral(resourceName: "12.jpeg")
+        case 12:
+            self.imageView.image = #imageLiteral(resourceName: "13.jpg")
+        case 13:
+            self.imageView.image = #imageLiteral(resourceName: "14.jpg")
+        case 14:
+            self.imageView.image = #imageLiteral(resourceName: "15.jpg")
+        case 15:
+            self.imageView.image = #imageLiteral(resourceName: "26.jpg")
+        case 16:
+            self.imageView.image = #imageLiteral(resourceName: "17.jpeg")
+        case 17:
+            self.imageView.image = #imageLiteral(resourceName: "18.jpg")
+        case 18:
+            self.imageView.image = #imageLiteral(resourceName: "19.jpg")
+        case 19:
+            self.imageView.image = #imageLiteral(resourceName: "20.jpg")
+        case 20:
+            self.imageView.image = #imageLiteral(resourceName: "21.jpg")
+        case 21:
+            self.imageView.image = #imageLiteral(resourceName: "22.jpeg")
+        case 22:
+            self.imageView.image = #imageLiteral(resourceName: "23.jpg")
+        case 23:
+            self.imageView.image = #imageLiteral(resourceName: "24.jpg")
+        case 24:
+            self.imageView.image = #imageLiteral(resourceName: "25.jpeg")
+        case 25:
+            self.imageView.image = #imageLiteral(resourceName: "26.jpg")
+        case 26:
+            self.imageView.image = #imageLiteral(resourceName: "27.jpeg")
+        case 27:
+            self.imageView.image = #imageLiteral(resourceName: "28.jpeg")
+        case 28:
+            self.imageView.image = #imageLiteral(resourceName: "29.jpeg")
+        case 29:
+            self.imageView.image = #imageLiteral(resourceName: "30.jpeg")
+        case 30:
+            self.imageView.image = #imageLiteral(resourceName: "31.jpeg")
+            let storyboard = UIStoryboard(name: "Start", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "ResearchResultViewController")
+            present(controller, animated: true, completion: nil)
+        default:
+            self.imageView.image = #imageLiteral(resourceName: "kamel.png")
+        }
     }
 }
