@@ -28,7 +28,7 @@ class NomadViewController: UIViewController {
         //더미데이터 쌓는 코드 어느정도 완료되면 아래 줄을 없애자
         let _ = DummyData()
         
-        //앱 실행 시 일하는 중인지 삶하는 중인지 구분함
+        //앱 실행 시 화면이 GoalList인지 WishList인지 구분함
         if(UserDefaults.standard.bool(forKey: "isNomadLifeView")){
             lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
             lifeView.frame.size = centerView.frame.size
@@ -42,17 +42,8 @@ class NomadViewController: UIViewController {
         labelDays.layer.cornerRadius = 5
         labelDays.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
         
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
-        leftSwipe.direction = .left
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
-        rightSwipe.direction = .right
-        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
-        upSwipe.direction = .up
         let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
         downSwipe.direction = .down
-        centerView.addGestureRecognizer(leftSwipe)
-        centerView.addGestureRecognizer(rightSwipe)
-        centerView.addGestureRecognizer(upSwipe)
         centerView.addGestureRecognizer(downSwipe)
     }
     
@@ -62,6 +53,7 @@ class NomadViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
         
+        //오늘 날짜와 일차 계산 후 뿌려줌
         let calendar = Calendar(identifier: .gregorian)
         let today = Date()
         let todayFormatter = DateFormatter()
@@ -71,26 +63,29 @@ class NomadViewController: UIViewController {
         yesterdayFormatter.locale = Locale(identifier: "ko_KR")
         yesterdayFormatter.dateFormat = "M/d"
         let yesterday = yesterdayFormatter.string(from: calendar.date(byAdding: DateComponents(day: -1), to: today)!)
-        
         labelToday.text = "오늘 \(todayFormatter.string(from: today))"
         labelDays.text = "n일차"
         
         if(underView.layer.sublayers != nil){
             underView.layer.sublayers?.removeFirst()
         }
-
-        if(!underView.subviews.isEmpty){
-            underView.subviews.first?.removeFromSuperview()
-        }
         
+        //다른 곳에서 viewWillAppear() 호출 시 센터뷰가 GoalList이냐 WishList이냐에 따라 동작하는 것을 구분함
         if(centerView.subviews.last is NomadWorkView) {
             //분홍색 계열 (색A, 일)
+            
+            if(self.view.subviews.last is NomadLifeCardView){
+                self.view.subviews.last?.removeFromSuperview()
+            }
             UserDefaults.standard.set(false, forKey: "isNomadLifeView")
+            
             let addView = NomadAddView.instanceFromXib() as! NomadAddView
             addView.frame.size = underView.frame.size
+            addView.buttonCard.isHidden = true
             
             workView = centerView.subviews.last as! NomadWorkView
             
+            //화면 전환 인터렉션
             let refresh = UIRefreshControl()
             workView.tableView.refreshControl = refresh
             refresh.attributedTitle = NSAttributedString(string: "더 당기면 카드형 노트로 전환됩니다")
@@ -99,30 +94,10 @@ class NomadViewController: UIViewController {
             searchBar.barTintColor = #colorLiteral(red: 0.9529411765, green: 0.6705882353, blue: 0.6274509804, alpha: 1)
             self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.6705882353, blue: 0.6274509804, alpha: 1)
             addView.applyGradient([#colorLiteral(red: 0.9843137255, green: 0.9490196078, blue: 0.9450980392, alpha: 1), #colorLiteral(red: 0.9333333333, green: 0.7647058824, blue: 0.7490196078, alpha: 1)])
-//            let rows = workView.tableView.numberOfRows(inSection: 0)
-//            let completeRows = { () -> Int in
-//                var completes = 0
-//                var row = 0
-//                while let cell = workView.tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NomadWorkCell {
-//                    if(cell.checkBox.on){
-//                        completes += 1
-//                    }
-//                    row += 1
-//                }
-//                return completes
-//            }()
             addView.yesterday.text = yesterday
             addView.textField.placeholder = "할 일, #해시태그"
-//            if let firstCell = (workView.tableView.cellForRow(at: IndexPath(row: 0, section: 0))) {
-//                let realCell = firstCell as! NomadWorkCell
-//                if(rows == 1){
-//                    addView.contentSummary.text = (realCell.content.titleLabel?.text)!
-//                } else {
-//                    addView.contentSummary.text = "\((realCell.content.titleLabel?.text)!) 외 \(rows-1)개"
-//                }
-//            } else {
-//                addView.contentSummary.text = "추가해주세요."
-//            }
+            
+            //처음 뷰가 보여질 때 튜토리얼을 띄움, 관련 초기화 코드는 AppDelegate에.
             if(!UserDefaults.standard.bool(forKey: "isFirstNomadWorkExecute")){
                 if(self.view.subviews.last is NomadWorkTutorialView){
                     self.view.subviews.last?.removeFromSuperview()
@@ -132,6 +107,7 @@ class NomadViewController: UIViewController {
                 tutorial.frame = self.view.frame
                 self.view.addSubview(tutorial)
             }
+            
             UIView.animate(withDuration: 0.5, animations: {
                 self.underView.frame.origin.y = self.view.frame.height - 49 - self.underView.frame.height
             })
@@ -144,6 +120,7 @@ class NomadViewController: UIViewController {
             
             lifeView = centerView.subviews.last as! NomadLifeView
             
+            //화면 전환 인터렉션
             let refresh = UIRefreshControl()
             refresh.attributedTitle = NSAttributedString(string: "더 당기면 리스트형 노트로 전환됩니다")
             refresh.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
@@ -152,23 +129,10 @@ class NomadViewController: UIViewController {
             searchBar.barTintColor = #colorLiteral(red: 0.7607843137, green: 0.7333333333, blue: 0.8235294118, alpha: 1)
             self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.7607843137, green: 0.7333333333, blue: 0.8235294118, alpha: 1)
             addView.applyGradient([#colorLiteral(red: 0.9843137255, green: 0.9568627451, blue: 0.9529411765, alpha: 1), #colorLiteral(red: 0.7882352941, green: 0.7647058824, blue: 0.8431372549, alpha: 1)])
-//            let rows = lifeView.collectionView.numberOfItems(inSection: 0) - 1
-//            let completeRows = { () -> Int in
-//                var completes = 0
-//                var row = 0
-//                while let cell = lifeView.collectionView.cellForItem(at: IndexPath(item: row, section: 0)) as? NomadLifeCell {
-//                    if(cell.checkBox.on){
-//                        completes += 1
-//                    }
-//                    row += 1
-//                }
-//                return completes
-//            }()
             addView.yesterday.text = yesterday
             addView.textField.placeholder = "하고 싶은 카드를 추가해보세요"
-//            if let firstContent = (lifeView.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! NomadLifeCell).content.text {
-//                addView.contentSummary.text = "\(firstContent) 외 \(rows-1)개"
-//            }
+            
+            //처음 뷰가 보여질 때 튜토리얼을 띄움, 관련 초기화 코드는 AppDelegate에.
             if(!UserDefaults.standard.bool(forKey: "isFirstNomadLifeExecute")){
                 if(self.view.subviews.last is NomadLifeTutorialView){
                     self.view.subviews.last?.removeFromSuperview()
@@ -180,6 +144,8 @@ class NomadViewController: UIViewController {
             }
             UIView.animate(withDuration: 0.5, animations: {
                 self.underView.frame.origin.y = self.view.frame.height - (self.tabBarController?.tabBar.frame.height)! - (self.underView.frame.height - addView.subView.frame.height)
+            }, completion: { _ in
+                addView.buttonCard.isHidden = false
             })
             underView.addSubview(addView)
         }
@@ -219,19 +185,8 @@ class NomadViewController: UIViewController {
         animation.duration = 0.5
         animation.type = kCATransitionPush
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        if(gesture.direction == .left){
-            animation.subtype = kCATransitionFromRight
-            centerView.layer.add(animation, forKey: "swipeLeft")
-        } else if(gesture.direction == .right){
-            animation.subtype = kCATransitionFromLeft
-            centerView.layer.add(animation, forKey: "swipeUp")
-        } else if(gesture.direction == .up){
-            animation.subtype = kCATransitionFromTop
-            centerView.layer.add(animation, forKey: "swipeDown")
-        } else if(gesture.direction == .down){
-            animation.subtype = kCATransitionFromBottom
-            centerView.layer.add(animation, forKey: "swipeRight")
-        }
+        animation.subtype = kCATransitionFromTop
+        centerView.layer.add(animation, forKey: "swipeDown")
         if(centerView.subviews.last is NomadWorkView){
             centerView.subviews.last?.removeFromSuperview()
             let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView

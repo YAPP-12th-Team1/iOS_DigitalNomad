@@ -68,6 +68,16 @@
                                 <action selector="clickUnderScore:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZLR-3k-r7y"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqo-Bp-P9y">
+                            <rect key="frame" x="144" y="74" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <state key="normal" title="카드">
+                                <color key="titleColor" red="0.3411764706" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="clickCard:" destination="iN0-l3-epB" eventType="touchUpInside" id="9kK-GO-sG7"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
@@ -101,6 +111,7 @@
             <viewLayoutGuide key="safeArea" id="EP5-4M-IYN"/>
             <connections>
                 <outlet property="addButton" destination="Irv-1d-F6o" id="J9S-vx-k2c"/>
+                <outlet property="buttonCard" destination="Gqo-Bp-P9y" id="uBS-Ry-LEx"/>
                 <outlet property="contentSummary" destination="bPG-1S-2Se" id="mZB-AM-dm9"/>
                 <outlet property="endTime" destination="3RN-wx-xQz" id="PfL-N9-mRY"/>
                 <outlet property="subView" destination="Kk0-Xb-PYY" id="o8k-MF-t8h"/>

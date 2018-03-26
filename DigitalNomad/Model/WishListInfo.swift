@@ -13,6 +13,7 @@ class WishListInfo: Object{
     @objc dynamic var id: Int = 0           //Primary Key
     @objc dynamic var pid: Int = 0          //Foreign Key
     @objc dynamic var todo: String = ""     //Not Null
+    @objc dynamic var day: String = "0000000"        //반복 요일 설정
     @objc dynamic var status: Bool = false  //default: false
     
     let projects = LinkingObjects(fromType: ProjectInfo.self, property: "wishLists")

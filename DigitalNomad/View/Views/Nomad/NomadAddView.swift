@@ -17,6 +17,7 @@ class NomadAddView: UIView {
     @IBOutlet var yesterday: UILabel!
     @IBOutlet var textField: UITextField!
     @IBOutlet var addButton: UIButton!
+    @IBOutlet var buttonCard: UIButton!
     var realm: Realm!
     
     override func awakeFromNib() {
@@ -47,6 +48,9 @@ class NomadAddView: UIView {
     }
     
     @objc func clickReturnButton(){
+        if(self.parentViewController()?.view.subviews.last is NomadLifeCardView){
+            self.parentViewController()?.view.subviews.last?.removeFromSuperview()
+        }
         textField.resignFirstResponder()
     }
     
@@ -93,6 +97,13 @@ class NomadAddView: UIView {
     
     @IBAction func clickCalendar(_ sender: UIButton) {
         //달력을 띄우자
+    }
+    @IBAction func clickCard(_ sender: UIButton) {
+        //카드를 띄우자
+        let cardView = NomadLifeCardView.instanceFromXib() as! NomadLifeCardView
+        cardView.frame.size = CGSize(width: UIScreen.main.bounds.width, height: 100)
+        cardView.frame.origin.y = UIScreen.main.bounds.height - 49 - self.frame.height - 100
+        self.parentViewController()?.view.addSubview(cardView)
     }
     
     @IBAction func clickHashtag(_ sender: UIButton) {
