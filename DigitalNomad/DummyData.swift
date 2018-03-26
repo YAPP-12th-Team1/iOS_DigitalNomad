@@ -39,7 +39,11 @@ class DummyData{
         }
         
         //[삶] 추가할 때 아래 세 줄처럼
-        addWishList("쉬자")
+        addWishList("캠핑")
+        try! realm.write{
+            realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
+        }
+        addWishList("수영")
         try! realm.write{
             realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
         }

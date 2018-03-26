@@ -29,6 +29,10 @@
 		1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1949DD09204FD5170062D8EF /* NomadLifeView.xib */; };
 		1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD0B204FD5220062D8EF /* NomadLifeView.swift */; };
 		195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFAE2041AF140062A26C /* UITextField+.swift */; };
+		196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */; };
+		196BABB62063BB7900422D2B /* NomadLifeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196BABB52063BB7900422D2B /* NomadLifeCardView.xib */; };
+		196BABB92063BC1E00422D2B /* NomadLifeCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB72063BC1E00422D2B /* NomadLifeCardCell.swift */; };
+		196BABBA2063BC1E00422D2B /* NomadLifeCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196BABB82063BC1E00422D2B /* NomadLifeCardCell.xib */; };
 		196C4AE42041440100C7BFAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE32041440100C7BFAF /* Login.storyboard */; };
 		196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AE7204144DF00C7BFAF /* MapViewController.swift */; };
 		196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AEF2041450F00C7BFAF /* MyPageViewController.swift */; };
@@ -143,6 +147,10 @@
 		1949DD09204FD5170062D8EF /* NomadLifeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeView.xib; sourceTree = "<group>"; };
 		1949DD0B204FD5220062D8EF /* NomadLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeView.swift; sourceTree = "<group>"; };
 		195CFFAE2041AF140062A26C /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCardView.swift; sourceTree = "<group>"; };
+		196BABB52063BB7900422D2B /* NomadLifeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeCardView.xib; sourceTree = "<group>"; };
+		196BABB72063BC1E00422D2B /* NomadLifeCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCardCell.swift; sourceTree = "<group>"; };
+		196BABB82063BC1E00422D2B /* NomadLifeCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeCardCell.xib; sourceTree = "<group>"; };
 		196C4AE32041440100C7BFAF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		196C4AE7204144DF00C7BFAF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		196C4AEF2041450F00C7BFAF /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +299,8 @@
 				19BA826B204FEF9900C095C1 /* NomadLifeCell.xib */,
 				19A5780A206264A500240B87 /* EnrollmentCell.swift */,
 				19A5780B206264A500240B87 /* EnrollmentCell.xib */,
+				196BABB72063BC1E00422D2B /* NomadLifeCardCell.swift */,
+				196BABB82063BC1E00422D2B /* NomadLifeCardCell.xib */,
 			);
 			path = Nomad;
 			sourceTree = "<group>";
@@ -336,6 +346,8 @@
 				19BA8274204FF31B00C095C1 /* NomadWorkTutorialView.swift */,
 				19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */,
 				19BA8278204FF33200C095C1 /* NomadLifeTutorialView.swift */,
+				196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */,
+				196BABB52063BB7900422D2B /* NomadLifeCardView.xib */,
 			);
 			path = Nomad;
 			sourceTree = "<group>";
@@ -616,6 +628,7 @@
 				191DFEC3204EA9520095E9C1 /* Nomad.storyboard in Resources */,
 				6B54121B2041900600DDB2D5 /* map_present_background_update.png in Resources */,
 				196C77B8205425F200A45E89 /* NomadFinalView.xib in Resources */,
+				196BABB62063BB7900422D2B /* NomadLifeCardView.xib in Resources */,
 				6B634A47204EF79F00A59EEF /* restaurant.png in Resources */,
 				1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */,
 				1949DD06204FD5030062D8EF /* NomadWorkView.xib in Resources */,
@@ -636,6 +649,7 @@
 				196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */,
 				6B5412172041900600DDB2D5 /* map_present_direction.png in Resources */,
 				1949DD00204FA91F0062D8EF /* NomadAddView.xib in Resources */,
+				196BABBA2063BC1E00422D2B /* NomadLifeCardCell.xib in Resources */,
 				6B5412062041900600DDB2D5 /* map_pinup.png in Resources */,
 				6B5412122041900600DDB2D5 /* info_box.png in Resources */,
 				6B54120C2041900600DDB2D5 /* th_line.png in Resources */,
@@ -766,6 +780,8 @@
 			files = (
 				198D92CF206147B9001325DD /* EnrollmentViewController.swift in Sources */,
 				193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */,
+				196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */,
+				196BABB92063BC1E00422D2B /* NomadLifeCardCell.swift in Sources */,
 				196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */,
 				191DFECB204EACE00095E9C1 /* MyPageCardView.swift in Sources */,
 				198A4D2A20614D7A00A78E83 /* ResearchResultViewController.swift in Sources */,
