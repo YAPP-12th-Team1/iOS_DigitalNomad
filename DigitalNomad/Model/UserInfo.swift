@@ -21,7 +21,7 @@ class UserInfo: Object{
     @objc dynamic var job: String = ""
     @objc dynamic var introducing: String?
     @objc dynamic var purpose: String?
-    
+
     func incrementID() -> Int {
         let realm = try! Realm()
         return (realm.objects(UserInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
@@ -31,13 +31,57 @@ class UserInfo: Object{
 func addUser(_ address: String?, _ job: String){
     let realm = try! Realm()
     let object = UserInfo()
-    object.id = object.incrementID()
+    let id = object.incrementID()
+    object.id = id
     object.address = address
     object.job = job
+
+    // firebase
+    Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).setValue([
+        "id": id,
+        "email": Auth.auth().currentUser?.email,
+        "nickname": Auth.auth().currentUser?.displayName,
+        "address": object.address,
+        "cowork": false,
+        "job": object.job
+    ])
+    
     try! realm.write{
         realm.add(object)
     }
 }
 
-// 로그인 완료 직후 addUser 메소드 불러서 유저 정보 저장
-//
+/** user의 uid 로 리스트를 만들어서 반환 **/
+/** 이슈 : 본인은 빼고, coworking on 되어있는 사람 **/
+func usersList() -> [String] {
+    print("usersList 실행")
+    
+    let realm: Realm!
+    realm = try! Realm()
+    var userInfo: UserInfo!
+    userInfo = realm.objects(UserInfo.self).first!
+    
+    var ref: DatabaseReference!
+    ref = Database.database().reference()
+    var list: Array<String> = []
+    
+    ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+        let key = snapshot.value as? NSDictionary
+        
+        for i in key! {
+            let newKey = i.key as? String
+            if((newKey != Auth.auth().currentUser?.uid)){
+                
+                var newValue =  i.value as! NSMutableDictionary
+//                print("newValue: ", newValue["cowork"])
+                if let isCowork = newValue["cowork"]{
+                    list.append(newKey as! String)
+//                    print("저장@")
+                }
+            }
+        }
+//        print(list)
+    })
+    return list
+}
+
