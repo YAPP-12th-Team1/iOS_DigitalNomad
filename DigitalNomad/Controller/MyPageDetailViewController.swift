@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import Firebase
+import GoogleSignIn
 import JTMaterialSwitch
 import Toaster
 
@@ -21,11 +23,13 @@ class MyPageDetailViewController: UIViewController {
     var userLocationInfo: UserLocationInfo?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         realm = try! Realm()
         userInfo = realm.objects(UserInfo.self).last
-        let userId = userInfo.id
-        userLocationInfo = realm.objects(UserLocationInfo.self).filter("userId = \(userId)").first
+        
+        userLocationInfo = realm.objects(UserLocationInfo.self).first
+        
         tableView.register(UINib(nibName: "MyPageDetailImageCell", bundle: nil), forCellReuseIdentifier: "myPageDetailImageCell")
         tableView.register(UINib(nibName: "MyPageDetailInfoCell", bundle: nil), forCellReuseIdentifier: "myPageDetailInfoCell")
         tableView.register(UINib(nibName: "MyPageDetailMailCell", bundle: nil), forCellReuseIdentifier: "myPageDetailMailCell")
@@ -41,6 +45,7 @@ class MyPageDetailViewController: UIViewController {
             coworkingAllowingSwitch.isOn = false
         }
         // Do any additional setup after loading the view.
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,29 +70,49 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @IBAction func clickConfirm(_ sender: UIButton) {
+
         if(tableView.numberOfSections == 4){
-            let userId = realm.objects(UserInfo.self).last!.id
             let introducingCell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! MyPageDetailInfoCell
             let purposeCell = tableView.cellForRow(at: IndexPath(row: 2, section: 2)) as! MyPageDetailInfoCell
             let mailCell = tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! MyPageDetailMailCell
-            if let email = realm.objects(EmailInfo.self).filter("userId = \(userId)").first {
+            
+            let introducing = introducingCell.textField.text
+            let purpose = purposeCell.textField.text
+            
+            if let emailInfo = realm.objects(EmailInfo.self).first {
                 if let title = mailCell.title.text{
                     try! realm.write {
-                        email.title = title
+                        emailInfo.title = title
                     }
                 }
                 if let message = mailCell.message.text{
                     try! realm.write{
-                        email.context = message
+                        emailInfo.context = message
                     }
                 }
             } else {
-                addEmail(userId, mailCell.title.text ?? "", mailCell.message.text ?? "")
+                addEmail(mailCell.title.text ?? "", mailCell.message.text ?? "")
             }
+            
             try! realm.write{
-                userInfo.introducing = introducingCell.textField.text
-                userInfo.purpose = purposeCell.textField.text
+                userInfo.cowork = true
+                userInfo.introducing = introducing
+                userInfo.purpose = purpose
             }
+            
+            /** firebase emailInfo Update **/
+            Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("emailInfo").setValue([
+                "title": mailCell.title.text,
+                "context": mailCell.message.text
+            ])
+            
+            /** firebase User Update **/
+            Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
+                "introducing" : introducing,
+                "purpose" : purpose,
+                "cowrk": true
+            ])
+
         }
         Toast(text: "저장했습니다.", duration: Delay.short).show()
         dismiss(animated: true, completion: nil)
