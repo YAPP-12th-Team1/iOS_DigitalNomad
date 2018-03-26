@@ -29,6 +29,7 @@
 		1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1949DD09204FD5170062D8EF /* NomadLifeView.xib */; };
 		1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD0B204FD5220062D8EF /* NomadLifeView.swift */; };
 		195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFAE2041AF140062A26C /* UITextField+.swift */; };
+		196638BA2068871700C00791 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B5877C32064BBEA0001FAB5 /* 2.jpg */; };
 		196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */; };
 		196BABB62063BB7900422D2B /* NomadLifeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196BABB52063BB7900422D2B /* NomadLifeCardView.xib */; };
 		196BABB92063BC1E00422D2B /* NomadLifeCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB72063BC1E00422D2B /* NomadLifeCardCell.swift */; };
@@ -142,7 +143,6 @@
 		6B5877DF2064BBEA0001FAB5 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B5877C02064BBEA0001FAB5 /* 7.jpg */; };
 		6B5877E02064BBEA0001FAB5 /* 11.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 6B5877C12064BBEA0001FAB5 /* 11.bmp */; };
 		6B5877E12064BBEA0001FAB5 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B5877C22064BBEA0001FAB5 /* 6.jpg */; };
-		6B5877E22064BBEA0001FAB5 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B5877C32064BBEA0001FAB5 /* 2.jpg */; };
 		6B5877E32064BBEA0001FAB5 /* 25.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6B5877C42064BBEA0001FAB5 /* 25.jpeg */; };
 		6B5877E42064BBEA0001FAB5 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B5877C52064BBEA0001FAB5 /* 3.jpg */; };
 		6B5877E52064BBEA0001FAB5 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B5877C62064BBEA0001FAB5 /* 1.jpg */; };
@@ -737,11 +737,7 @@
 				191DFEC3204EA9520095E9C1 /* Nomad.storyboard in Resources */,
 				6B54121B2041900600DDB2D5 /* map_present_background_update.png in Resources */,
 				196C77B8205425F200A45E89 /* NomadFinalView.xib in Resources */,
-<<<<<<< HEAD
 				196BABB62063BB7900422D2B /* NomadLifeCardView.xib in Resources */,
-=======
-				6B5877E22064BBEA0001FAB5 /* 2.jpg in Resources */,
->>>>>>> b21007d4098e760a423b6945dd8735278b4940ae
 				6B634A47204EF79F00A59EEF /* restaurant.png in Resources */,
 				1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */,
 				1949DD06204FD5030062D8EF /* NomadWorkView.xib in Resources */,
@@ -811,6 +807,7 @@
 				6B5877D32064BBEA0001FAB5 /* 21.jpg in Resources */,
 				6B5877DE2064BBEA0001FAB5 /* 5.jpg in Resources */,
 				6B5412042041900600DDB2D5 /* map_pin_custom.png in Resources */,
+				196638BA2068871700C00791 /* 2.jpg in Resources */,
 				19A94FC6204EBECE003A1D23 /* humanSample2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1097,7 +1094,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HPCHS5M63;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1123,7 +1120,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HPCHS5M63;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
