@@ -219,6 +219,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wzg-Gn-6zL"/>
                     </view>
+                    <connections>
+                        <outlet property="researchResult" destination="b1S-dY-RyL" id="zu5-nV-3Y1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ob-N7-4ub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

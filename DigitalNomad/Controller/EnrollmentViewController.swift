@@ -10,13 +10,26 @@ import UIKit
 import AKPickerView_Swift
 
 class EnrollmentViewController: UIViewController {
-
+    var str: String = ""
+    let titles = ["1일", "2일", "3일", "Aichi", "Saitama", "Chiba", "Hyogo", "Hokkaido", "Fukuoka", "Shizuoka"]
+    
     @IBOutlet var tableView: UITableView!
+    
     var pickerView: AKPickerView! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerView = AKPickerView()
+        pickerView.frame = CGRect(x: 0, y: 40, width: self.view.frame.width, height: 50)
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        self.pickerView.font = UIFont(name: "HelveticaNeue-Light", size: 15)!
+        self.pickerView.highlightedFont = UIFont(name: "HelveticaNeue", size: 15)!
+        self.pickerView.pickerViewStyle = .wheel
+        self.pickerView.maskDisabled = false
+        self.pickerView.reloadData()
+        
         tableView.register(UINib(nibName: "EnrollmentCell", bundle: nil), forCellReuseIdentifier: "enrollmentCell")
         // Do any additional setup after loading the view.
     }
@@ -36,9 +49,13 @@ extension EnrollmentViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "enrollmentCell") as! EnrollmentCell
         switch(indexPath.row){
         case 0:
-            cell.textField.placeholder = "유목지"
+            if str == "" {
+                cell.textField.placeholder = "유목지"
+            } else {
+                cell.textField.text! = str
+            }
         case 1:
-            
+            cell.addSubview(self.pickerView)
             cell.textField.isHidden = true
         case 2:
             cell.textField.placeholder = "유목 목적"
@@ -93,12 +110,14 @@ extension EnrollmentViewController: UITableViewDelegate{
 }
 
 extension EnrollmentViewController: AKPickerViewDataSource{
+    
+    
     func numberOfItemsInPickerView(_ pickerView: AKPickerView) -> Int {
         //7~35
-        return 29
+        return 30
     }
     func pickerView(_ pickerView: AKPickerView, titleForItem item: Int) -> String {
-        return String(item + 1)
+        return " \(item+1)일 "
     }
 }
 extension EnrollmentViewController: AKPickerViewDelegate{

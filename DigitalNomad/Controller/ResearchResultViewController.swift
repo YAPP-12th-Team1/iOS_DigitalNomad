@@ -9,7 +9,8 @@
 import UIKit
 
 class ResearchResultViewController: UIViewController {
-
+    @IBOutlet var researchResult: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +25,8 @@ class ResearchResultViewController: UIViewController {
     @IBAction func clickRecommendedPlace(_ sender: UIButton) {
         //다음 뷰컨트롤러에 장소 스트링을 같이 보내주기
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollmentViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollmentViewController") as! EnrollmentViewController
+        controller.str = researchResult.text!
         present(controller, animated: true, completion: nil)
     }
     
