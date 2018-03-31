@@ -9,6 +9,7 @@
 import UIKit
 import Toaster
 import RealmSwift
+import Firebase
 
 class MyPageMeetupView: UIView {
     
@@ -60,20 +61,95 @@ class MyPageMeetupView: UIView {
         }
     }
     
+    /** user의 uid 로 리스트를 만들어서 반환 **/
+    /** 이슈 : 본인은 빼고, coworking on 되어있는 사람 **/
+    var list: Array<String> = []
+    func usersList(){
+        print("usersList 실행")
+        
+        let realm: Realm!
+        realm = try! Realm()
+        var userInfo: UserInfo!
+        userInfo = realm.objects(UserInfo.self).first!
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            let key = snapshot.value as? NSDictionary
+            
+            for i in key! {
+                
+                let newKey = i.key as? String
+                if((newKey != Auth.auth().currentUser?.uid)){
+                    
+                    var newValue =  i.value as! NSMutableDictionary
+                    if let isCowork = newValue["cowork"]{
+                        self.list.append(newKey as! String)
+                    }
+                }
+            }
+            print("test: ", self.list)
+        })
+    }
+    
+    
     // 보여줘야할 사람 세팅
     func setUserData() {
-        let users = usersList()
         
-        realm = try! Realm()
-        userInfo = realm.objects(UserInfo.self).first!
-//        emailInfo = realm.objects(EmailInfo.self).first!
+        //        var users = list
+        //        print("setUserData(): ", users)
+        //        위에서 데이터를 못받아오므로, 일단 데이터 박아두기
         
-        name.text = userInfo.nickname
-        occupation.text = userInfo.job
-        days.text = "10" // 일단 디폴트로 10
-//        message.text = emailInfo.context
-        message.text = "dd"
-        distance.text = "10" // 일단 디폴트로 10
+        let users = ["U2IENRkXiJWNkBAPqJaW3hLJk4e2", "9KSKbVtLegNxrtvXjn6WfJieL8J3"]
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        for i in users {
+            ref.child("users/\(i)").observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                
+                let nickname = value?["nickname"] as? String ?? ""
+                let job = value?["job"] as? String ?? ""
+                let day = value?["day"] as? String ?? ""
+                let address = value?["address"] as? String ?? ""
+                
+                print(value)
+                print(job, ", ", day, ", ", nickname )
+
+                self.name.text = nickname
+                self.occupation.text = job
+                self.days.text = day
+                self.distance.text = address
+                self.message.text = "반가워용"
+
+            })
+        }
+    }
+    
+    func distance(lat1: Double, lng1: Double, lat2: Double, lng2: Double) -> Double {
+        
+        // 위도,경도를 라디안으로 변환
+        let rlat1 = lat1 * .pi / 180
+        let rlng1 = lng1 * .pi / 180
+        let rlat2 = lat2 * .pi / 180
+        let rlng2 = lng2 * .pi / 180
+        
+        // 2점의 중심각(라디안) 요청
+        let a =
+            sin(rlat1) * sin(rlat2) +
+                cos(rlat1) * cos(rlat2) *
+                cos(rlng1 - rlng2)
+        let rr = acos(a)
+        
+        // 지구 적도 반경(m단위)
+        let earth_radius = 6378140.0
+        
+        // 두 점 사이의 거리 (m단위)
+        let distance = earth_radius * rr
+        
+        return distance/1000
     }
     
 }
