@@ -82,7 +82,17 @@
 		19F2CDE82041419C00CB113B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE62041419C00CB113B /* Main.storyboard */; };
 		19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE92041419C00CB113B /* Assets.xcassets */; };
 		19F2CDED2041419C00CB113B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDEB2041419C00CB113B /* LaunchScreen.storyboard */; };
-		4A8AC33420702BC6002F6B32 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC33320702BC6002F6B32 /* testImage.png */; };
+		4A8AC33020701415002F6B32 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC32F20701415002F6B32 /* testImage.png */; };
+		6B3EF81720701F5800BFA87C /* gwanju.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81420701F5700BFA87C /* gwanju.jpg */; };
+		6B3EF81820701F5800BFA87C /* seoul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81520701F5700BFA87C /* seoul.jpg */; };
+		6B3EF81920701F5800BFA87C /* daejun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81620701F5800BFA87C /* daejun.jpg */; };
+		6B3EF82120701F6700BFA87C /* hamhae.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81A20701F6600BFA87C /* hamhae.JPG */; };
+		6B3EF82220701F6700BFA87C /* jaeju.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81B20701F6600BFA87C /* jaeju.jpg */; };
+		6B3EF82320701F6700BFA87C /* gangwon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81C20701F6600BFA87C /* gangwon.jpg */; };
+		6B3EF82420701F6700BFA87C /* junju.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81D20701F6600BFA87C /* junju.jpg */; };
+		6B3EF82520701F6700BFA87C /* busan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81E20701F6700BFA87C /* busan.jpg */; };
+		6B3EF82620701F6700BFA87C /* incheon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81F20701F6700BFA87C /* incheon.jpg */; };
+		6B3EF82720701F6700BFA87C /* daegu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF82020701F6700BFA87C /* daegu.jpg */; };
 		6B3FDE5D206FECFA0081332B /* coworking(3)_111115.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */; };
 		6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */; };
 		6B3FDE5F206FECFA0081332B /* coworking(1)_111111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE42206FECEE0081332B /* coworking(1)_111111.jpg */; };
@@ -743,7 +753,6 @@
 				19BA8277204FF32500C095C1 /* NomadLifeTutorialView.xib in Resources */,
 				6B54120A2041900600DDB2D5 /* map_pin_shadow@3x.png in Resources */,
 				6B5412052041900600DDB2D5 /* shadow_balloon.png in Resources */,
-				4A8AC33420702BC6002F6B32 /* testImage.png in Resources */,
 				6B3FDE78206FECFA0081332B /* coworking_111115.jpg in Resources */,
 				19F2CDED2041419C00CB113B /* LaunchScreen.storyboard in Resources */,
 				19A94FCA204EC19D003A1D23 /* MyPageDetailImageCell.xib in Resources */,
