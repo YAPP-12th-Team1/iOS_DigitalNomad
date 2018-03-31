@@ -67,7 +67,6 @@
 		19A94FCE204EC1AE003A1D23 /* MyPageDetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FCC204EC1AE003A1D23 /* MyPageDetailInfoCell.xib */; };
 		19A94FD5204EC1CE003A1D23 /* MyPageDetailMailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FD3204EC1CE003A1D23 /* MyPageDetailMailCell.swift */; };
 		19A94FD6204EC1CE003A1D23 /* MyPageDetailMailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FD4204EC1CE003A1D23 /* MyPageDetailMailCell.xib */; };
-		19A94FD8204EDB8D003A1D23 /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FD7204EDB8D003A1D23 /* launchScreen.png */; };
 		19A94FDA204EDD4E003A1D23 /* PopupMeetupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FD9204EDD4E003A1D23 /* PopupMeetupView.xib */; };
 		19A94FDC204EDD5C003A1D23 /* PopupMeetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FDB204EDD5C003A1D23 /* PopupMeetupView.swift */; };
 		19BA826C204FEF9900C095C1 /* NomadLifeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA826A204FEF9900C095C1 /* NomadLifeCell.swift */; };
@@ -219,7 +218,6 @@
 		19A94FCC204EC1AE003A1D23 /* MyPageDetailInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageDetailInfoCell.xib; sourceTree = "<group>"; };
 		19A94FD3204EC1CE003A1D23 /* MyPageDetailMailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailMailCell.swift; sourceTree = "<group>"; };
 		19A94FD4204EC1CE003A1D23 /* MyPageDetailMailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageDetailMailCell.xib; sourceTree = "<group>"; };
-		19A94FD7204EDB8D003A1D23 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchScreen.png; sourceTree = "<group>"; };
 		19A94FD9204EDD4E003A1D23 /* PopupMeetupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMeetupView.xib; sourceTree = "<group>"; };
 		19A94FDB204EDD5C003A1D23 /* PopupMeetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMeetupView.swift; sourceTree = "<group>"; };
 		19BA826A204FEF9900C095C1 /* NomadLifeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCell.swift; sourceTree = "<group>"; };
@@ -337,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				6B5877A82064BBEA0001FAB5 /* researchData */,
-				19A94FD7204EDB8D003A1D23 /* launchScreen.png */,
 				19C899CA205A007B0044D8A0 /* profile.png */,
 				191DFED1204EAFBF0095E9C1 /* humanSample.png */,
 				19A94FC5204EBECD003A1D23 /* humanSample2.png */,
@@ -796,7 +793,6 @@
 				6B5412102041900600DDB2D5 /* map_present_tracking.png in Resources */,
 				19BA826D204FEF9900C095C1 /* NomadLifeCell.xib in Resources */,
 				6B5412112041900600DDB2D5 /* map_pin_red.png in Resources */,
-				19A94FD8204EDB8D003A1D23 /* launchScreen.png in Resources */,
 				6B54121D2041900600DDB2D5 /* map_pin_shadow.png in Resources */,
 				6B5877D92064BBEA0001FAB5 /* 24.jpg in Resources */,
 				196C4AE42041440100C7BFAF /* Login.storyboard in Resources */,
