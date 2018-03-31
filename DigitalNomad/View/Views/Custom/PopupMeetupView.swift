@@ -9,8 +9,9 @@
 import UIKit
 import RealmSwift
 import Firebase
+import MessageUI
 
-class PopupMeetupView: UIView {
+class PopupMeetupView: UIView,  MFMailComposeViewControllerDelegate {
 
     @IBOutlet var view: UIView!
     @IBOutlet var button: UIButton!
@@ -20,7 +21,8 @@ class PopupMeetupView: UIView {
     @IBOutlet var message: UILabel!
     @IBOutlet var cancelButton: UIButton!
     var name: String = ""
-    
+    var email: String = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         view.layer.cornerRadius = 5
@@ -47,6 +49,7 @@ class PopupMeetupView: UIView {
         ref.child("users/\(name)").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let nickname = value?["nickname"] as? String ?? ""
+            self.email = value?["email"] as? String ?? ""
             
             self.sender.text = userInfo.nickname
             self.receiver.text = nickname
@@ -59,13 +62,44 @@ class PopupMeetupView: UIView {
         return UINib(nibName: "PopupMeetupView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
     }
     
-    @IBAction func sendEmail(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.alpha = 0
-        }) { _ in
-            self.removeFromSuperview()
+    //////*******************************************************************////////
+    @IBAction func sendEmail(_ sender: Any) {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.parentViewController()?.present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
         }
     }
+
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients([email])
+        mailComposerVC.setSubject("Sending you an in-app e-mail...")
+        
+        let image = UIImage(named:"testImage") // Your Image
+        let imageData = UIImagePNGRepresentation(image!) ?? nil
+        let base64String = imageData?.base64EncodedString() ?? "" // Your String Image
+        let emailBody = "<html><body><p>Header: Hello Test Email</p><p><b><img src='data:image/png;base64,\(String(describing: base64String) )'></b></p></body></html>"
+        
+        mailComposerVC.setMessageBody(emailBody, isHTML:true)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+
     @IBAction func clickCancel(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3, animations: {
             self.alpha = 0
