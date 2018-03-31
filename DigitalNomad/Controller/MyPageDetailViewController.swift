@@ -198,7 +198,7 @@ class MyPageDetailViewController: UIViewController {
             
             Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
                 "address" : str
-                ])
+            ])
         }
         
     }
@@ -239,11 +239,13 @@ extension MyPageDetailViewController: UITableViewDataSource{
                 cell.title.text = "유목 장소"
                 cell.textField.isUserInteractionEnabled = false
                 cell.textField.text = { () in
-                    if let address = userInfo.address {
-                        return address
-                    } else {
-                        return "No Info"
-                    }
+                    
+                if let address = userInfo.address {
+                    return address
+                } else {
+                    return "No Info"
+                }
+                    
                 }()
                 buttonRefresh.frame = CGRect(x: tableView.frame.width - 60, y: cell.frame.height / 2 - 10, width: 40 , height: 20)
                 cell.addSubview(buttonRefresh)
