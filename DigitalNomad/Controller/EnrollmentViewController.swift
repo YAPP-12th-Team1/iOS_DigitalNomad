@@ -11,7 +11,6 @@ import AKPickerView_Swift
 
 class EnrollmentViewController: UIViewController {
     var str: String = ""
-    let titles = ["1일", "2일", "3일", "Aichi", "Saitama", "Chiba", "Hyogo", "Hokkaido", "Fukuoka", "Shizuoka"]
     
     @IBOutlet var tableView: UITableView!
     
