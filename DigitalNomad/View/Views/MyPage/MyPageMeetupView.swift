@@ -33,19 +33,21 @@ class MyPageMeetupView: UIView {
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.clipsToBounds = true
         buttonMeetup.layer.cornerRadius = 5
-        
         setUserData()
     }
+
+    
     class func instanceFromXib() -> UIView {
         return UINib(nibName: "MyPageMeetupView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
     }
     
     @IBAction func showNextPerson(_ sender: UIButton) {
-        
+        setUserData()
     }
     
     @IBAction func requestMeetup(_ sender: UIButton) {
         //마이페이지 디테일에서 코워킹 설정이 off되어 있으면 토스터를 띄움, 그렇지 않으면 팝업을 띄움
+        
         if(userInfo.cowork){
             
             let popup = PopupMeetupView.instanceFromXib() as! PopupMeetupView
@@ -79,10 +81,8 @@ class MyPageMeetupView: UIView {
             let key = snapshot.value as? NSDictionary
             
             for i in key! {
-                
                 let newKey = i.key as? String
                 if((newKey != Auth.auth().currentUser?.uid)){
-                    
                     var newValue =  i.value as! NSMutableDictionary
                     if let isCowork = newValue["cowork"]{
                         self.list.append(newKey as! String)
@@ -92,11 +92,12 @@ class MyPageMeetupView: UIView {
             print("test: ", self.list)
         })
     }
-    
-    
-    // 보여줘야할 사람 세팅
+
+    var cardIndex = 0; // 첫번째 사람
     func setUserData() {
-        
+        realm = try! Realm()
+        userInfo = realm.objects(UserInfo.self).first!
+
         //        var users = list
         //        print("setUserData(): ", users)
         //        위에서 데이터를 못받아오므로, 일단 데이터 박아두기
@@ -106,51 +107,25 @@ class MyPageMeetupView: UIView {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
-        for i in users {
-            ref.child("users/\(i)").observeSingleEvent(of: .value, with: { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                
-                let nickname = value?["nickname"] as? String ?? ""
-                let job = value?["job"] as? String ?? ""
-                let day = value?["day"] as? String ?? ""
-                let address = value?["address"] as? String ?? ""
-                
-                print(value)
-                print(job, ", ", day, ", ", nickname )
-
-                self.name.text = nickname
-                self.occupation.text = job
-                self.days.text = day
-                self.distance.text = address
-                self.message.text = "반가워용"
-
-            })
-        }
+        ref.child("users/\(users[cardIndex])").observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            
+            let nickname = value?["nickname"] as? String ?? ""
+            let job = value?["job"] as? String ?? ""
+            let day = value?["day"] as? Int ?? 0
+            let address = value?["address"] as? String ?? ""
+            let introducing = value?["introducing"] as? String ?? ""
+            
+            print(value)
+            print(job, ", ", day, ", ", nickname)
+            
+            self.name.text = nickname
+            self.occupation.text = job
+            self.days.text = String(day)+"일째"
+            self.distance.text = address
+            self.message.text = introducing
+            self.cardIndex = self.cardIndex+1;
+        })
     }
-    
-    func distance(lat1: Double, lng1: Double, lat2: Double, lng2: Double) -> Double {
-        
-        // 위도,경도를 라디안으로 변환
-        let rlat1 = lat1 * .pi / 180
-        let rlng1 = lng1 * .pi / 180
-        let rlat2 = lat2 * .pi / 180
-        let rlng2 = lng2 * .pi / 180
-        
-        // 2점의 중심각(라디안) 요청
-        let a =
-            sin(rlat1) * sin(rlat2) +
-                cos(rlat1) * cos(rlat2) *
-                cos(rlng1 - rlng2)
-        let rr = acos(a)
-        
-        // 지구 적도 반경(m단위)
-        let earth_radius = 6378140.0
-        
-        // 두 점 사이의 거리 (m단위)
-        let distance = earth_radius * rr
-        
-        return distance/1000
-    }
-    
 }
 
