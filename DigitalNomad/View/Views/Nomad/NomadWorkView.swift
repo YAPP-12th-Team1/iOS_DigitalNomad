@@ -14,12 +14,12 @@ class NomadWorkView: UIView {
 
     @IBOutlet var tableView: UITableView!
     var realm: Realm!
-    var object: List<GoalListInfo>!
+    var object: Results<GoalListInfo>!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         realm = try! Realm()
-        object = realm.objects(ProjectInfo.self).last!.goalLists
+        object = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + todayDate() + "'")
         tableView.register(UINib(nibName: "NomadWorkCell", bundle: nil), forCellReuseIdentifier: "nomadWorkCell")
     }
     
@@ -78,7 +78,23 @@ extension NomadWorkView: UITableViewDataSource{
             tableView.reloadData()
             print("삭제")
         }
-        return [delete]
+        let postpone = UITableViewRowAction(style: .normal, title: "미루기") { (action, index) in
+            let todo = result.todo
+            let query = NSPredicate(format: "todo = %@", todo)
+            let postponeCell = self.object.filter(query).first!
+            let calendar = Calendar(identifier: .gregorian)
+            let today = Date()
+            let tomorrowFormatter = DateFormatter()
+            tomorrowFormatter.locale = Locale(identifier: "ko_KR")
+            tomorrowFormatter.dateFormat = "yyyy-MM-dd"
+            let tomorrow = tomorrowFormatter.string(from: calendar.date(byAdding: DateComponents(day: +1), to: today)!)
+            print(tomorrow)
+            try! self.realm.write{
+                postponeCell.date = tomorrow
+            }
+            tableView.reloadData()
+        }
+        return [delete, postpone]
     }
 }
 extension NomadWorkView: UITableViewDelegate{
