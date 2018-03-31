@@ -18,20 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4M2-AK-5aV">
-                                <rect key="frame" x="67" y="20" width="240" height="365"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_Background" translatesAutoresizingMaskIntoConstraints="NO" id="4M2-AK-5aV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCj-tt-sUO" customClass="GIDSignInButton">
-                                <rect key="frame" x="16" y="451" width="343" height="60"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3B-Ji-Dlj">
+                                <rect key="frame" x="67" y="474" width="240" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="login:" destination="DvR-rS-t7f" eventType="touchUpInside" id="OYa-fP-me9"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="centerY" secondItem="HqH-Rl-4ve" secondAttribute="centerY" id="JIJ-1y-2NU"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="centerX" secondItem="HqH-Rl-4ve" secondAttribute="centerX" id="MHW-xY-bD4"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="top" secondItem="HqH-Rl-4ve" secondAttribute="top" id="TGE-cV-NIp"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="leading" secondItem="ISf-SK-QiZ" secondAttribute="leading" id="XjM-xp-rrc"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="trailing" secondItem="ISf-SK-QiZ" secondAttribute="trailing" id="crk-Oh-aOX"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="bottom" secondItem="ISf-SK-QiZ" secondAttribute="bottom" id="lai-0m-LlE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ISf-SK-QiZ"/>
                     </view>
                 </viewController>
@@ -40,4 +44,7 @@
             <point key="canvasLocation" x="24.800000000000001" y="122.78860569715144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Login_Background" width="125" height="222"/>
+    </resources>
 </document>
