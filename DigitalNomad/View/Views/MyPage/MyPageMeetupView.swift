@@ -125,6 +125,9 @@ class MyPageMeetupView: UIView {
             self.distance.text = address
             self.message.text = introducing
             self.cardIndex = self.cardIndex+1;
+            if(self.cardIndex == users.count){
+                self.cardIndex = 0;
+            }
         })
     }
 }
