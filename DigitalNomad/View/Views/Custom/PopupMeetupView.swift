@@ -17,6 +17,7 @@ class PopupMeetupView: UIView {
     @IBOutlet var title: UILabel!
     @IBOutlet var message: UILabel!
     @IBOutlet var cancelButton: UIButton!
+    var name: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,11 @@ class PopupMeetupView: UIView {
         view.layer.shadowOpacity = 1
         button.layer.cornerRadius = 5
         cancelButton.layer.cornerRadius = 5
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        print("Hi", name)
     }
     
     class func instanceFromXib() -> UIView {

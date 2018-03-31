@@ -51,6 +51,10 @@ class MyPageMeetupView: UIView {
         if(userInfo.cowork){
             
             let popup = PopupMeetupView.instanceFromXib() as! PopupMeetupView
+            popup.name = userInfo.nickname
+            
+            
+            popup.setNeedsLayout()
             popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             popup.frame = (self.parentViewController()?.view.frame)!
             popup.view.alpha = 0
