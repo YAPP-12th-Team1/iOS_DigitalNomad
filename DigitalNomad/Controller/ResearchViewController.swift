@@ -62,6 +62,7 @@ class ResearchViewController: UIViewController {
         [2,2,2,5,2,2]
     ]
     var state = 0   // 0: citynatrue, 1: coworking1, 2: coworking2, 3: culture, 4: history, 5:leports, 6: nature
+    var preState = 0
     var visited = [
         [false, false, false],
         [false, false, false, false],
@@ -183,6 +184,8 @@ class ResearchViewController: UIViewController {
         
         count[state] += 1
         totalCount += 1
+        
+        preState = state
         
         if totalCount <= 11 {
             if count[state] == must[state] {
