@@ -174,7 +174,7 @@ class MapViewController: UIViewController {
                 str = "Error"
             }
             
-            items.append(storedPoiItem(name: obj[index].name, address: obj[index].address, distance: obj[index].distance, latitude: String(obj[index].latitude), longitude: String(obj[index].longitude), category: str))
+            items.append(storedPoiItem(name: obj[index].name, address: obj[index].address, distance: "\(self.distance(lat1: self.myLat, lng1: self.myLong, lat2: obj[index].latitude, lng2: obj[index].longitude))", latitude: String(obj[index].latitude), longitude: String(obj[index].longitude), category: str))
         }
         
         self.mapView!.addPOIItems(items)
@@ -269,12 +269,12 @@ extension MapViewController: UITableViewDataSource{
         let placeName = obj[indexPath.row].name
         let placeAddress = obj[indexPath.row].address
         let placeCategory = obj[indexPath.row].category
-        let curDistance = Double(obj[indexPath.row].distance)
+        let curDistance = self.distance(lat1: self.myLat, lng1: self.myLong, lat2: obj[indexPath.row].latitude, lng2: obj[indexPath.row].longitude)
         
         //cell.textLabel?.text = placeName
         cell.placeName?.text = placeName
         cell.placeAddress?.text = placeAddress
-        cell.distance?.text = "\(round(100*curDistance!)/100)km"
+        cell.distance?.text = "\(round(100*curDistance)/100)km"
         
         switch placeCategory {
         case 15:
@@ -291,12 +291,23 @@ extension MapViewController: UITableViewDataSource{
         
         return cell
     }
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .default, title: "삭제") { (action, index) in
-            //해당 셀의 정보를 Realm에서 삭제하는 코드
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let obj = self.realm.objects(MapLocationInfo.self)
+            do {
+                try self.realm.write {
+                    self.realm.delete(obj[indexPath.row])
+                }
+            } catch {
+                print("\(error)")
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.mapView.removeAllPOIItems()
+            self.loadStoredItems()
         }
-        return [delete]
     }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -321,6 +332,13 @@ extension MapViewController: UISearchBarDelegate{
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.placeNameArr.removeAll()
+        self.addressNameArr.removeAll()
+        self.distance.removeAll()
+        self.xArr.removeAll()
+        self.yArr.removeAll()
+        self.categoryNameArr.removeAll()
+        
         searchBar.resignFirstResponder()
         print("search : ", self.searchBar.text!)
         
@@ -365,13 +383,15 @@ extension MapViewController: UISearchBarDelegate{
                 var items = [MTMapPOIItem]()
                 
                 for index in 0..<self.placeNameArr.count {
-                    items.append(self.poiItem(name: self.placeNameArr[index], address: self.addressNameArr[index], distance: self.distance[index], latitude: self.yArr[index], longitude: self.xArr[index], category: self.categoryNameArr[index]))
+                    items.append(self.poiItem(name: self.placeNameArr[index], address: self.addressNameArr[index], distance: "\(self.distance(lat1: self.myLat, lng1: self.myLong, lat2: Double(self.yArr[index])!, lng2: Double(self.xArr[index])!))" , latitude: self.yArr[index], longitude: self.xArr[index], category: self.categoryNameArr[index]))
                 }
                 
+                self.mapView.removeAllPOIItems()
                 self.mapView?.addPOIItems(items)
                 
                 print(self.placeNameArr)
                 print(self.categoryNameArr)
+                
                 self.mapView?.fitAreaToShowAllPOIItems()
         }
     }
@@ -421,7 +441,7 @@ extension MapViewController: MTMapViewDelegate{
         let okAction = UIAlertAction(title: "YES", style: .default) { (_) in
             for index in 0..<self.placeNameArr.count {
                 if(self.placeNameArr[index] == poiItem.itemName) {
-                    addMapLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], self.distance[index], Date())
+                    addMapLocation(Double(self.xArr[index])!, Double(self.yArr[index])!, getCategory(self.categoryNameArr[index]), self.placeNameArr[index], self.addressNameArr[index], "\(self.distance(lat1: self.myLat, lng1: self.myLong, lat2: Double(self.xArr[index])!, lng2: Double(self.yArr[index])!))", Date())
                     self.mapView?.removeAllPOIItems()
                     self.loadStoredItems()
                     self.tableView.reloadData()
