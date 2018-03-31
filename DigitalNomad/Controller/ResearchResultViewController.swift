@@ -11,7 +11,6 @@ import UIKit
 class ResearchResultViewController: UIViewController {
     var city_f = -1
     @IBOutlet var researchResult: UILabel!
-    @IBOutlet var cityImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,34 +18,24 @@ class ResearchResultViewController: UIViewController {
         switch city_f {
         case 0:
             researchResult.text = "서울"
-            cityImage.image = #imageLiteral(resourceName: "seoul.jpg")
         case 1:
             researchResult.text = "광주"
-            cityImage.image = #imageLiteral(resourceName: "gwanju.jpg")
         case 2:
             researchResult.text = "대전"
-            cityImage.image = #imageLiteral(resourceName: "daejun.jpg")
         case 3:
             researchResult.text = "대구"
-            cityImage.image = #imageLiteral(resourceName: "daegu.jpg")
         case 4:
             researchResult.text = "부산"
-            cityImage.image = #imageLiteral(resourceName: "busan.jpg")
         case 5:
             researchResult.text = "제주"
-            cityImage.image = #imageLiteral(resourceName: "jaeju.jpg")
         case 6:
             researchResult.text = "인천"
-            cityImage.image = #imageLiteral(resourceName: "incheon.jpg")
         case 7:
             researchResult.text = "강원"
-            cityImage.image = #imageLiteral(resourceName: "gangwon.jpg")
         case 8:
             researchResult.text = "전주"
-            cityImage.image = #imageLiteral(resourceName: "junju.jpg")
         case 9:
             researchResult.text = "남해"
-            cityImage.image = #imageLiteral(resourceName: "hamhae.JPG")
         default:
             researchResult.text = "오류가 났어요..ㅠㅠ"
         }

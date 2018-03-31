@@ -82,17 +82,7 @@
 		19F2CDE82041419C00CB113B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE62041419C00CB113B /* Main.storyboard */; };
 		19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE92041419C00CB113B /* Assets.xcassets */; };
 		19F2CDED2041419C00CB113B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDEB2041419C00CB113B /* LaunchScreen.storyboard */; };
-		4A8AC33020701415002F6B32 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC32F20701415002F6B32 /* testImage.png */; };
-		6B3EF81720701F5800BFA87C /* gwanju.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81420701F5700BFA87C /* gwanju.jpg */; };
-		6B3EF81820701F5800BFA87C /* seoul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81520701F5700BFA87C /* seoul.jpg */; };
-		6B3EF81920701F5800BFA87C /* daejun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81620701F5800BFA87C /* daejun.jpg */; };
-		6B3EF82120701F6700BFA87C /* hamhae.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81A20701F6600BFA87C /* hamhae.JPG */; };
-		6B3EF82220701F6700BFA87C /* jaeju.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81B20701F6600BFA87C /* jaeju.jpg */; };
-		6B3EF82320701F6700BFA87C /* gangwon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81C20701F6600BFA87C /* gangwon.jpg */; };
-		6B3EF82420701F6700BFA87C /* junju.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81D20701F6600BFA87C /* junju.jpg */; };
-		6B3EF82520701F6700BFA87C /* busan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81E20701F6700BFA87C /* busan.jpg */; };
-		6B3EF82620701F6700BFA87C /* incheon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF81F20701F6700BFA87C /* incheon.jpg */; };
-		6B3EF82720701F6700BFA87C /* daegu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3EF82020701F6700BFA87C /* daegu.jpg */; };
+		4A8AC3322070221E002F6B32 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC3312070221E002F6B32 /* testImage.png */; };
 		6B3FDE5D206FECFA0081332B /* coworking(3)_111115.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */; };
 		6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */; };
 		6B3FDE5F206FECFA0081332B /* coworking(1)_111111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE42206FECEE0081332B /* coworking(1)_111111.jpg */; };
@@ -243,21 +233,7 @@
 		19F2CDE92041419C00CB113B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19F2CDEC2041419C00CB113B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19F2CDEE2041419C00CB113B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		4A8AC33320702BC6002F6B32 /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
-=======
-		4A8AC32F20701415002F6B32 /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
-		6B3EF81420701F5700BFA87C /* gwanju.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gwanju.jpg; sourceTree = "<group>"; };
-		6B3EF81520701F5700BFA87C /* seoul.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seoul.jpg; sourceTree = "<group>"; };
-		6B3EF81620701F5800BFA87C /* daejun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = daejun.jpg; sourceTree = "<group>"; };
-		6B3EF81A20701F6600BFA87C /* hamhae.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hamhae.JPG; sourceTree = "<group>"; };
-		6B3EF81B20701F6600BFA87C /* jaeju.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jaeju.jpg; sourceTree = "<group>"; };
-		6B3EF81C20701F6600BFA87C /* gangwon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gangwon.jpg; sourceTree = "<group>"; };
-		6B3EF81D20701F6600BFA87C /* junju.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = junju.jpg; sourceTree = "<group>"; };
-		6B3EF81E20701F6700BFA87C /* busan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = busan.jpg; sourceTree = "<group>"; };
-		6B3EF81F20701F6700BFA87C /* incheon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = incheon.jpg; sourceTree = "<group>"; };
-		6B3EF82020701F6700BFA87C /* daegu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = daegu.jpg; sourceTree = "<group>"; };
->>>>>>> 89341bdd0c0899fda5352a91bdb056cd7823e489
+		4A8AC3312070221E002F6B32 /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = testImage.png; path = ../../testImage.png; sourceTree = "<group>"; };
 		6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coworking(3)_111115.jpg"; sourceTree = "<group>"; };
 		6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nature(4)_111511.jpg"; sourceTree = "<group>"; };
 		6B3FDE42206FECEE0081332B /* coworking(1)_111111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coworking(1)_111111.jpg"; sourceTree = "<group>"; };
@@ -624,21 +600,7 @@
 		6B5877A82064BBEA0001FAB5 /* researchData */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				4A8AC33320702BC6002F6B32 /* testImage.png */,
-=======
-				6B3EF81E20701F6700BFA87C /* busan.jpg */,
-				6B3EF82020701F6700BFA87C /* daegu.jpg */,
-				6B3EF81C20701F6600BFA87C /* gangwon.jpg */,
-				6B3EF81A20701F6600BFA87C /* hamhae.JPG */,
-				6B3EF81F20701F6700BFA87C /* incheon.jpg */,
-				6B3EF81B20701F6600BFA87C /* jaeju.jpg */,
-				6B3EF81D20701F6600BFA87C /* junju.jpg */,
-				6B3EF81620701F5800BFA87C /* daejun.jpg */,
-				6B3EF81420701F5700BFA87C /* gwanju.jpg */,
-				6B3EF81520701F5700BFA87C /* seoul.jpg */,
-				4A8AC32F20701415002F6B32 /* testImage.png */,
->>>>>>> 89341bdd0c0899fda5352a91bdb056cd7823e489
+				4A8AC3312070221E002F6B32 /* testImage.png */,
 				6B3FDE4F206FECF30081332B /* citynature_111151.jpg */,
 				6B3FDE44206FECEF0081332B /* citynature(1)_111151.jpg */,
 				6B3FDE4E206FECF20081332B /* citynature(2)_111151.jpg */,
@@ -779,11 +741,8 @@
 				6B5412072041900600DDB2D5 /* detail_button.png in Resources */,
 				19A94FD6204EC1CE003A1D23 /* MyPageDetailMailCell.xib in Resources */,
 				19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */,
-				6B3EF82120701F6700BFA87C /* hamhae.JPG in Resources */,
 				191DFED2204EAFBF0095E9C1 /* humanSample.png in Resources */,
 				6B54120D2041900600DDB2D5 /* map_pin_red@3x.png in Resources */,
-				4A8AC33020701415002F6B32 /* testImage.png in Resources */,
-				6B3EF82520701F6700BFA87C /* busan.jpg in Resources */,
 				6B5412152041900600DDB2D5 /* info_box_tail.png in Resources */,
 				1949DCFE204F8E490062D8EF /* StrikethroughView.xib in Resources */,
 				6B5412182041900600DDB2D5 /* map_pin.png in Resources */,
@@ -802,14 +761,12 @@
 				196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */,
 				6B5412172041900600DDB2D5 /* map_present_direction.png in Resources */,
 				6B3FDE72206FECFA0081332B /* coworking(3)_111111.jpg in Resources */,
-				6B3EF82720701F6700BFA87C /* daegu.jpg in Resources */,
 				1949DD00204FA91F0062D8EF /* NomadAddView.xib in Resources */,
 				196BABBA2063BC1E00422D2B /* NomadLifeCardCell.xib in Resources */,
 				6B3FDE70206FECFA0081332B /* coworking(2)_111115.jpg in Resources */,
 				6B5412062041900600DDB2D5 /* map_pinup.png in Resources */,
 				6B3FDE61206FECFA0081332B /* citynature(1)_111151.jpg in Resources */,
 				6B3FDE6A206FECFA0081332B /* coworking_111111.jpg in Resources */,
-				6B3EF81820701F5800BFA87C /* seoul.jpg in Resources */,
 				195628B620701352004B3AF7 /* culture(3)_511111.jpg in Resources */,
 				6B3FDE69206FECFA0081332B /* leports_115111.jpg in Resources */,
 				6B3FDE65206FECFA0081332B /* nature(5)_111511.jpg in Resources */,
@@ -821,7 +778,6 @@
 				19C899CB205A007B0044D8A0 /* profile.png in Resources */,
 				6B634A46204EF79F00A59EEF /* cafe.png in Resources */,
 				193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */,
-				6B3EF82420701F6700BFA87C /* junju.jpg in Resources */,
 				19BA8273204FF31100C095C1 /* NomadWorkTutorialView.xib in Resources */,
 				6B5412092041900600DDB2D5 /* map_pinup@3x.png in Resources */,
 				191DFEC5204EACBB0095E9C1 /* MyPageListView.xib in Resources */,
@@ -830,18 +786,14 @@
 				19BA826D204FEF9900C095C1 /* NomadLifeCell.xib in Resources */,
 				6B5412112041900600DDB2D5 /* map_pin_red.png in Resources */,
 				6B54121D2041900600DDB2D5 /* map_pin_shadow.png in Resources */,
-				6B3EF82620701F6700BFA87C /* incheon.jpg in Resources */,
 				6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */,
 				196C4AE42041440100C7BFAF /* Login.storyboard in Resources */,
-				6B3EF82220701F6700BFA87C /* jaeju.jpg in Resources */,
 				6B5412132041900600DDB2D5 /* point_sprite.png in Resources */,
 				6B3FDE71206FECFA0081332B /* leports(1)_115111.jpg in Resources */,
 				191DFECF204EACF60095E9C1 /* MyPageMeetupView.xib in Resources */,
-				6B3EF82320701F6700BFA87C /* gangwon.jpg in Resources */,
 				19F2CDE82041419C00CB113B /* Main.storyboard in Resources */,
 				6B54120E2041900600DDB2D5 /* daum_copyright.png in Resources */,
 				19A94FCE204EC1AE003A1D23 /* MyPageDetailInfoCell.xib in Resources */,
-				6B3EF81920701F5800BFA87C /* daejun.jpg in Resources */,
 				6B3FDE63206FECFA0081332B /* nature_111511.jpg in Resources */,
 				6B3FDE76206FECFA0081332B /* nature(1)_111511.jpg in Resources */,
 				6B3FDE79206FECFA0081332B /* history(1)_151111.jpg in Resources */,
@@ -849,9 +801,9 @@
 				6B5412162041900600DDB2D5 /* noimage256.png in Resources */,
 				19A94FDA204EDD4E003A1D23 /* PopupMeetupView.xib in Resources */,
 				6B3FDE6B206FECFA0081332B /* citynature(2)_111151.jpg in Resources */,
+				4A8AC3322070221E002F6B32 /* testImage.png in Resources */,
 				6B5412042041900600DDB2D5 /* map_pin_custom.png in Resources */,
 				19A94FC6204EBECE003A1D23 /* humanSample2.png in Resources */,
-				6B3EF81720701F5800BFA87C /* gwanju.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

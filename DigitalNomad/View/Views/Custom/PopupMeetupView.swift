@@ -46,9 +46,11 @@ class PopupMeetupView: UIView,  MFMailComposeViewControllerDelegate {
         
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("users/\(name)").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("users/\(self.name)").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let nickname = value?["nickname"] as? String ?? ""
+            print("name: ", self.name)
+            print("nickname: ", nickname)
             self.email = value?["email"] as? String ?? ""
             
             self.sender.text = userInfo.nickname
@@ -77,12 +79,12 @@ class PopupMeetupView: UIView,  MFMailComposeViewControllerDelegate {
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
         mailComposerVC.setToRecipients([email])
-        mailComposerVC.setSubject("Sending you an in-app e-mail...")
+        mailComposerVC.setSubject("[유목민]Co-working 신청")
         
         let image = UIImage(named:"testImage") // Your Image
         let imageData = UIImagePNGRepresentation(image!) ?? nil
         let base64String = imageData?.base64EncodedString() ?? "" // Your String Image
-        let emailBody = "<html><body><p>Header: Hello Test Email</p><p><b><img src='data:image/png;base64,\(String(describing: base64String) )'></b></p></body></html>"
+        let emailBody = "<html><body><p>반가워요! Co-working을 실천하고 싶어서 메일 드렸습니다.</p><p>-이 메일은 유목민 App에서 발송되었습니다.-</p><p><b><img src='data:image/png;base64,\(String(describing: base64String) )'></b></p></body></html>"
         
         mailComposerVC.setMessageBody(emailBody, isHTML:true)
         

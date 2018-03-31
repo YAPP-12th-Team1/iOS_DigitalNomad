@@ -62,7 +62,6 @@ class ResearchViewController: UIViewController {
         [2,2,2,5,2,2]
     ]
     var state = 0   // 0: citynatrue, 1: coworking1, 2: coworking2, 3: culture, 4: history, 5:leports, 6: nature
-    var preState = 0
     var visited = [
         [false, false, false],
         [false, false, false, false],
@@ -97,10 +96,7 @@ class ResearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func clickLike(_ sender: UIButton) {
-        print(preState)
-        print(index)
-        
-        switch preState {
+        switch state {
         case 0:
             value[0] += citynature[Int(index)][0]
             value[1] += citynature[Int(index)][1]
@@ -180,14 +176,13 @@ class ResearchViewController: UIViewController {
         index = arc4random_uniform(UInt32(visited[state].count))
         while visited[state][Int(index)] == true {
             index = arc4random_uniform(UInt32(visited[state].count))
+            
         }
-    
+        
         loadImage(state, Int(index))
         
         count[state] += 1
         totalCount += 1
-        
-        preState = state
         
         if totalCount <= 11 {
             if count[state] == must[state] {
