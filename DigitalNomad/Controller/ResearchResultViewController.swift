@@ -9,11 +9,36 @@
 import UIKit
 
 class ResearchResultViewController: UIViewController {
+    var city_f = -1
     @IBOutlet var researchResult: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        switch city_f {
+        case 0:
+            researchResult.text = "서울"
+        case 1:
+            researchResult.text = "광주"
+        case 2:
+            researchResult.text = "대전"
+        case 3:
+            researchResult.text = "대구"
+        case 4:
+            researchResult.text = "부산"
+        case 5:
+            researchResult.text = "제주"
+        case 6:
+            researchResult.text = "인천"
+        case 7:
+            researchResult.text = "강원"
+        case 8:
+            researchResult.text = "전주"
+        case 9:
+            researchResult.text = "남해"
+        default:
+            researchResult.text = "오류가 났어요..ㅠㅠ"
+        }
         // Do any additional setup after loading the view.
     }
 
