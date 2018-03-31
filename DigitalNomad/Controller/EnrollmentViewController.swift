@@ -80,6 +80,7 @@ extension EnrollmentViewController: UITableViewDataSource{
                 cell.textField.placeholder = "유목지"
             } else {
                 cell.textField.text! = str
+                place = str
             }
         case 1:
             cell.addSubview(self.pickerView)
