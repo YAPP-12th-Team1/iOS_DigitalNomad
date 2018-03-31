@@ -39,8 +39,17 @@ class EnrollmentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func clickConfirm(_ sender: UIButton) {
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-        UserDefaults.standard.set(true, forKey: "isEnrolled")
+        //User 최초 생성, Project 최초 생성
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let next = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+        present(next, animated: true)
+    }
+    
+    @objc func clickYesButton(){
+        
+    }
+    @objc func clickNoButton(){
+        
     }
 }
 
@@ -64,14 +73,16 @@ extension EnrollmentViewController: UITableViewDataSource{
             cell.textField.text = "주변 유목민과의 연결을 원하시나요?"
             let yesButton = UIButton()
             let noButton = UIButton()
-            yesButton.frame.size.width = self.view.frame.width / 5
-            noButton.frame.size.width = self.view.frame.width / 5
-            yesButton.frame.size.height = self.view.frame.width / 6
-            noButton.frame.size.height = self.view.frame.width / 6
-            yesButton.frame.origin.x = self.view.frame.width / 2 - yesButton.frame.width - 30
-            noButton.frame.origin.x = self.view.frame.width / 2 + 30
-            yesButton.frame.origin.y = cell.textField.frame.origin.y + 20
-            noButton.frame.origin.y = cell.textField.frame.origin.y + 20
+            yesButton.setTitle("예", for: .normal)
+            noButton.setTitle("아니오", for: .normal)
+            yesButton.setTitleColor(.black, for: .normal)
+            noButton.setTitleColor(.black, for: .normal)
+            yesButton.frame.size = CGSize(width: 50, height: 30)
+            noButton.frame.size = CGSize(width: 50, height: 30)
+            yesButton.frame.origin.y = cell.textField.frame.origin.y + 30
+            noButton.frame.origin.y = cell.textField.frame.origin.y + 30
+            yesButton.frame.origin.x = self.view.frame.width / 2 - 50 - 30
+            noButton.frame.origin.x = self.view.frame.width / 2 + 50
             yesButton.addTarget(self, action: #selector(clickYesButton), for: .touchUpInside)
             noButton.addTarget(self, action: #selector(clickNoButton), for: .touchUpInside)
             yesButton.layer.cornerRadius = 5
@@ -95,12 +106,6 @@ extension EnrollmentViewController: UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
-    }
-    @objc func clickYesButton(){
-        
-    }
-    @objc func clickNoButton(){
-        
     }
 }
 extension EnrollmentViewController: UITableViewDelegate{

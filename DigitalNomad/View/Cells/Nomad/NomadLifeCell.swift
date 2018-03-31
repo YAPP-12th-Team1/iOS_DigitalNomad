@@ -20,6 +20,7 @@ class NomadLifeCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressCell)))
         realm = try! Realm()
         checkBox.onAnimationType = .fill
         checkBox.offAnimationType = .fill
@@ -47,5 +48,11 @@ class NomadLifeCell: UICollectionViewCell {
         } else {
             checkBox.layer.sublayers?.removeFirst()
         }
+    }
+    
+    @objc func longPressCell(_ sender: NomadLifeCell){
+        //WishList 삭제할까 물어보는 Alert 띄워야함
+        
+        print("길게 누름")
     }
 }

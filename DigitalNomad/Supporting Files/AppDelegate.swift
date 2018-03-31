@@ -17,28 +17,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
-        //Realm 마이그레이션
-        //개발 중엔 그냥 앱을 삭제하고 다시 실행하세요
+        let realm = try! Realm()
         
-//        let config = Realm.Configuration(
-//            schemaVersion: 0,  //Increment this each time your schema changes
-//            migrationBlock: { migration, oldSchemaVersion in
-//                if (oldSchemaVersion < 1) {
-//                    //If you need to transfer any data
-//                    //(in your case you don't right now) you will transfer here
-//                }
-//        })
-//        Realm.Configuration.defaultConfiguration = config
-//        let _ = try! Realm()
-        
+        //조건에 따라 첫 화면을 구분함
+//        if let _ = Auth.auth().currentUser {
+//            if(realm.objects(UserInfo.self).count == 0){
+//                let storyboard = UIStoryboard(name: "Start", bundle: nil)
+//                let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
+//                window?.rootViewController = controller
+//            } else {
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let controller = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+//                window?.rootViewController = controller
+//            }
+//        } else {
+//            let storyborad = UIStoryboard(name: "Login", bundle: nil)
+//            let controller = storyborad.instantiateViewController(withIdentifier: "LoginViewController")
+//            window?.rootViewController = controller
+//        }
+        let storyboard = UIStoryboard(name: "Start", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
+        window?.rootViewController = controller
+        window?.makeKeyAndVisible()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: TabBarController())
-        window?.makeKeyAndVisible()
         UIApplication.shared.isStatusBarHidden = false
         (UIApplication.shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = .white
         
