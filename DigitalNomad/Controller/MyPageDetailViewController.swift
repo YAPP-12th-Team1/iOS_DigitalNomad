@@ -12,6 +12,8 @@ import Firebase
 import GoogleSignIn
 import JTMaterialSwitch
 import Toaster
+import CoreLocation
+import Alamofire
 
 class MyPageDetailViewController: UIViewController {
 
@@ -27,11 +29,21 @@ class MyPageDetailViewController: UIViewController {
     var emailTitle = ""
     var emailMessage = ""
     
+    let locationManager = CLLocationManager()
+    var myLat : Double = 0.0
+    var myLong : Double = 0.0
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         realm = try! Realm()
         userInfo = realm.objects(UserInfo.self).last
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation() // 위치 정보 받음
+        }
         
         userLocationInfo = realm.objects(UserLocationInfo.self).first
         
@@ -151,6 +163,44 @@ class MyPageDetailViewController: UIViewController {
         //위치 정보 UserLocationInfo에 업데이트
         //좌표 값에 따라서 위치 String 나오면 UserInfo에 업데이트
         //tableView.reloadData()
+        
+        
+        
+        let baseUrl: String = "https://dapi.kakao.com/v2/local/geo/coord2address.json?"
+        Alamofire.request(baseUrl+"x=\(myLong)&y=\(myLat)", method: .get ,headers: ["Authorization": "KakaoAK 8add144f51d5e214bb8d9008445c817d"]).responseJSON {
+            response in
+            
+            guard response.result.error == nil else {
+                print("error calling GET on /todos/1")
+                print(response.result.error!)
+                return
+            }
+
+            guard let json = response.result.value as? [String: Any] else {
+                print("didn't get todo objecy as JSON from API")
+                print("Error: \(String(describing: response.result.error))")
+                return
+            }
+            
+            guard let doc = json["documents"] as? [[String: Any]] else {
+                print("Could not get documents from JSON")
+                return
+            }
+            
+            let addr = doc[0]["address"] as! [String:String]
+            let region1 = addr["region_1depth_name"]!
+            let region2 = addr["region_2depth_name"]!
+            
+            let str = region1+" "+region2
+            try! self.realm.write{
+                self.userInfo.address = str
+            }
+            
+            Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
+                "address" : str
+                ])
+        }
+        
     }
     
     @objc func switchValueChanged(_ sender: JTMaterialSwitch){
@@ -343,5 +393,15 @@ extension MyPageDetailViewController: UITextFieldDelegate{
 extension MyPageDetailViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension MyPageDetailViewController: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        myLat = locations[locations.count-1].coordinate.latitude
+        myLong = locations[locations.count-1].coordinate.longitude
+        
+        print(myLat)
+        print(myLong)
     }
 }
