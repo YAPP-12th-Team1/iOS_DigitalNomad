@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,18 +20,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGC-P0-3hJ">
-                        <rect key="frame" x="16" y="59" width="288" height="30"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGC-P0-3hJ">
+                        <rect key="frame" x="16" y="72" width="288" height="17"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wi7-9Q-iwR">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wi7-9Q-iwR">
                         <rect key="frame" x="140" y="11" width="40" height="40"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Yby-er-FQD"/>
+                            <constraint firstAttribute="height" constant="40" id="vIZ-tm-uAa"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="JGC-P0-3hJ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="52R-x0-VK8"/>
+                    <constraint firstItem="JGC-P0-3hJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Ch5-RM-t0N"/>
+                    <constraint firstItem="Wi7-9Q-iwR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="DHD-jk-GFw"/>
+                    <constraint firstItem="Wi7-9Q-iwR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="124" id="QXF-PA-yOB"/>
+                    <constraint firstItem="JGC-P0-3hJ" firstAttribute="top" secondItem="Wi7-9Q-iwR" secondAttribute="bottom" constant="21" id="UY2-1S-dZb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Wi7-9Q-iwR" secondAttribute="trailing" constant="124" id="Xjg-09-XEy"/>
+                    <constraint firstItem="Wi7-9Q-iwR" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="deq-ER-zs4"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

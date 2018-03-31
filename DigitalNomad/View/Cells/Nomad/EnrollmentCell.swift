@@ -15,7 +15,7 @@ class EnrollmentCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        textField.addBorderBottom(height: 1)
+//        textField.addBorderBottom(height: 1)
         textField.addTarget(self, action: #selector(clickReturn), for: .editingDidEndOnExit)
     }
 

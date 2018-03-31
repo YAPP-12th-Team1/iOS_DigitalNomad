@@ -52,10 +52,9 @@ class MyPageMeetupView: UIView {
             popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             popup.frame = (self.parentViewController()?.view.frame)!
             popup.view.alpha = 0
-            UIView.animate(withDuration: 0.3, animations: {
+            self.parentViewController()?.view.addSubview(popup)
+            UIView.animate(withDuration: 0.3) {
                 popup.view.alpha = 1
-            }) { _ in
-                self.parentViewController()?.view.addSubview(popup)
             }
         } else {
             Toast(text: "코워킹 공개를 허용해 주세요. (설정 -> Co-working)", duration: Delay.short).show()

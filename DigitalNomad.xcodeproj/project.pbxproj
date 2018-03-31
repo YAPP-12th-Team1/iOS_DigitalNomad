@@ -409,8 +409,8 @@
 				19BA8274204FF31B00C095C1 /* NomadWorkTutorialView.swift */,
 				19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */,
 				19BA8278204FF33200C095C1 /* NomadLifeTutorialView.swift */,
-				196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */,
 				196BABB52063BB7900422D2B /* NomadLifeCardView.xib */,
+				196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */,
 			);
 			path = Nomad;
 			sourceTree = "<group>";

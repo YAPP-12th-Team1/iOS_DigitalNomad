@@ -12,8 +12,6 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //일단 여기는 넘어감 바로 본 화면으로 넘어간다
-//        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -25,11 +23,10 @@ class StartViewController: UIViewController {
         let popup = PopupStartView.instanceFromXib() as! PopupStartView
         popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         popup.frame = self.view.frame
+        self.view.addSubview(popup)
         popup.view.alpha = 0
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.3) {
             popup.view.alpha = 1
-        }) { _ in
-            self.view.addSubview(popup)
         }
     }
     
