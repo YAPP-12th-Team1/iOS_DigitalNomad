@@ -16,27 +16,36 @@ class ResearchViewController: UIViewController {
     //하트 카운트를 세는 식으로 하면 될까나
     //일단 무조건 ResearchResultViewController로 넘어가게 함
 
-    // 1.서울, 2.제주, 3.부산, 4.안동, 5.김천, 6.창원, 7.대전, 8.경주, 9.청주, 10.김해, 11.전주, 12.과천, 13.여수, 14.강릉
-    let cityData = [555055555/*서울*/, 432532225/*제주*/, 551455453/*부산*/, 325022325/*안동*/, 313011113/*김천*/, 442444343/*창원*/,
-                    552033442/*대전*/, 315022225/*경주*/, 432033331/*청주*/, 432344441/*김해*/, 435043345/*전주*/,
-                    511022431/*과천*/,
-                    311442234/*여수*/]
+    // 1.서울, 2.광주, 3.대전, 4.대구, 5.부산, 6.제주, 7.인천, 8.강원, 9.전주, 10.남해
+    let cityData = [553155, 121233, 121253, 121233, 324514, 424515, 123424, 125512, 1512511, 125511]
     
-    // 1.Internet, 2.Sport, 3.Traditional, 4.Sea, 5.Fun(<->Calm), 6.NightLife, 7.Culture 8.City(<->Natural), 9.Tour
-    // 0.None, 1.Terrible, 2.Bad, 3.Normal, 4.Good, 5.Awesome
+    var state = 0   // 0: citynatrue, 1: coworking1, 2: coworking2, 3: culture, 4: history, 5:leports, 6: nature
+    var visited = [
+        [false, false, false],
+        [false, false, false, false],
+        [false, false, false, false],
+        [false, false, false, false],
+        [false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false, false]
+    ]
     
-    let picData = [050000000, 050000000, 005011010, 005000000, 000510010, 000555050, 000511010, 000503004, 050000010, 000500015,
-                   000500015, 500510010, 005010000, 000055550, 000055550, 000020500, 000010010, 000010010, 000010010, 500000550,
-                   500005550, 500020050, 000055050, 000055050, 005000005, 005000005, 000011010, 000311013, 000533033, 000010010,
-                   000420015]
+    var count = [0, 0, 0, 0, 0, 0, 0]
+    var must = [2, 1, 0, 2, 2, 2, 2]
+    var totalCount = 0
+    var value = [0, 0, 0, 0, 0, 0]
+    
     
     var status : UInt64 = 0
-    var index = 1
+    var index : UInt32 = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.imageView.image = #imageLiteral(resourceName: "1.jpg")
+        imageView.image = #imageLiteral(resourceName: "citynature_111151.jpg")
+        visited[0][0] = true
+        count[0] += 1
+        totalCount += 1
         // Do any additional setup after loading the view.
     }
 
@@ -45,88 +54,212 @@ class ResearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func clickLike(_ sender: UIButton) {
-        chPic(index)
-        index += 1;
+        switch state {
+        case 0:
+            value[0] += 1
+            value[1] += 1
+            value[2] += 1
+            value[3] += 1
+            value[4] += 5
+            value[5] += 1
+        case 1:
+            value[0] += 1
+            value[1] += 1
+            value[2] += 1
+            value[3] += 1
+            value[4] += 1
+            value[5] += 1
+        case 2:
+            value[0] += 1
+            value[1] += 1
+            value[2] += 1
+            value[3] += 1
+            value[4] += 1
+            value[5] += 5
+        case 3:
+            value[0] += 5
+            value[1] += 1
+            value[2] += 1
+            value[3] += 1
+            value[4] += 1
+            value[5] += 1
+        case 4:
+            value[0] += 1
+            value[1] += 5
+            value[2] += 1
+            value[3] += 1
+            value[4] += 1
+            value[5] += 1
+        case 5:
+            value[0] += 1
+            value[1] += 1
+            value[2] += 5
+            value[3] += 1
+            value[4] += 1
+            value[5] += 1
+        case 6:
+            value[0] += 1
+            value[1] += 1
+            value[2] += 1
+            value[3] += 5
+            value[4] += 1
+            value[5] += 1
+        default:
+            value[0] += 0
+            value[1] += 0
+            value[2] += 0
+            value[3] += 0
+            value[4] += 0
+            value[5] += 0
+        }
+        selectImage()
+        print(value)
     }
     
     @IBAction func clickNext(_ sender: UIButton) {
-        chPic(index)
-        index += 1;
+        selectImage()
     }
     
     @IBAction func clickSkip(_ sender: UIButton) {
+        let cityIndex = matchCity()
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ResearchResultViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "ResearchResultViewController") as! ResearchResultViewController
+        controller.city_f = cityIndex
         present(controller, animated: true, completion: nil)
     }
     
-    func chPic(_ index: Int) {
-        switch index {
-        case 1:
-            self.imageView.image = #imageLiteral(resourceName: "2.jpg")
-        case 2:
-            self.imageView.image = #imageLiteral(resourceName: "3.jpg")
-        case 3:
-            self.imageView.image = #imageLiteral(resourceName: "4.jpg")
-        case 4:
-            self.imageView.image = #imageLiteral(resourceName: "5.jpg")
-        case 5:
-            self.imageView.image = #imageLiteral(resourceName: "6.jpg")
-        case 6:
-            self.imageView.image = #imageLiteral(resourceName: "7.jpg")
-        case 7:
-            self.imageView.image = #imageLiteral(resourceName: "8.jpg")
-        case 8:
-            self.imageView.image = #imageLiteral(resourceName: "9.jpg")
-        case 9:
-            self.imageView.image = #imageLiteral(resourceName: "10.jpg")
-        case 10:
-            self.imageView.image = #imageLiteral(resourceName: "11.bmp")
-        case 11:
-            self.imageView.image = #imageLiteral(resourceName: "12.jpeg")
-        case 12:
-            self.imageView.image = #imageLiteral(resourceName: "13.jpg")
-        case 13:
-            self.imageView.image = #imageLiteral(resourceName: "14.jpg")
-        case 14:
-            self.imageView.image = #imageLiteral(resourceName: "15.jpg")
-        case 15:
-            self.imageView.image = #imageLiteral(resourceName: "26.jpg")
-        case 16:
-            self.imageView.image = #imageLiteral(resourceName: "17.jpeg")
-        case 17:
-            self.imageView.image = #imageLiteral(resourceName: "18.jpg")
-        case 18:
-            self.imageView.image = #imageLiteral(resourceName: "19.jpg")
-        case 19:
-            self.imageView.image = #imageLiteral(resourceName: "20.jpg")
-        case 20:
-            self.imageView.image = #imageLiteral(resourceName: "21.jpg")
-        case 21:
-            self.imageView.image = #imageLiteral(resourceName: "22.jpeg")
-        case 22:
-            self.imageView.image = #imageLiteral(resourceName: "23.jpg")
-        case 23:
-            self.imageView.image = #imageLiteral(resourceName: "24.jpg")
-        case 24:
-            self.imageView.image = #imageLiteral(resourceName: "25.jpeg")
-        case 25:
-            self.imageView.image = #imageLiteral(resourceName: "26.jpg")
-        case 26:
-            self.imageView.image = #imageLiteral(resourceName: "27.jpeg")
-        case 27:
-            self.imageView.image = #imageLiteral(resourceName: "28.jpeg")
-        case 28:
-            self.imageView.image = #imageLiteral(resourceName: "29.jpeg")
-        case 29:
-            self.imageView.image = #imageLiteral(resourceName: "30.jpeg")
-        case 30:
-            self.imageView.image = #imageLiteral(resourceName: "31.jpeg")
+    // 0: citynatrue, 1: coworking1(111111), 2: coworking2(111115), 3: culture, 4: history, 5:leports, 6: nature
+    
+    func selectImage() {
+        index = arc4random_uniform(UInt32(visited[state].count))
+        while visited[state][Int(index)] == true {
+            index = arc4random_uniform(UInt32(visited[state].count))
+            
+        }
+        
+        loadImage(state, Int(index))
+        
+        count[state] += 1
+        totalCount += 1
+        
+        if totalCount <= 11 {
+            if count[state] == must[state] {
+                if totalCount < 11 && state == 1 {
+                    state += 2
+                } else {
+                    state += 1
+                }
+            }
+        } else {
+            if count[state] == visited[state].count {
+                state += 1
+            }
+        }
+        
+        if state == 7 && totalCount == 11 {
+            state = 0
+        } else if state == 7 && totalCount == 29 {
+            let cityIndex = matchCity()
             let storyboard = UIStoryboard(name: "Start", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "ResearchResultViewController")
+            let controller = storyboard.instantiateViewController(withIdentifier: "ResearchResultViewController") as! ResearchResultViewController
+            controller.city_f = cityIndex
             present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func loadImage(_ category: Int, _ index: Int) {
+        visited[category][index] = true
+        
+        switch category {
+        case 0:
+            if index == 1 {
+                self.imageView.image = #imageLiteral(resourceName: "citynature(1)_111151.jpg")
+            } else if index == 2 {
+                self.imageView.image = #imageLiteral(resourceName: "citynature(2)_111151.jpg")
+            }
+        case 1:
+            if index == 0 {
+                self.imageView.image = #imageLiteral(resourceName: "coworking_111111.jpg")
+            } else if index == 1 {
+                self.imageView.image = #imageLiteral(resourceName: "coworking(1)_111111.jpg")
+            } else if index == 2 {
+                self.imageView.image = #imageLiteral(resourceName: "coworking(2)_111111.jpg")
+            } else if index == 3 {
+                self.imageView.image = #imageLiteral(resourceName: "coworking(3)_111111.jpg")
+            }
+        case 2:
+            if index == 0 {
+                self.imageView.image = #imageLiteral(resourceName: "coworking_111115.jpg")
+            } else if index == 1 {
+                self.imageView.image = #imageLiteral(resourceName: "coworking(1)_111115.jpg")
+            } else if index == 2 {
+                self.imageView.image = #imageLiteral(resourceName: "coworking(2)_111115.jpg")
+            } else if index == 3 {
+                self.imageView.image = #imageLiteral(resourceName: "coworking(3)_111115.jpg")
+            }
+        case 3:
+            if index == 0 {
+                self.imageView.image = #imageLiteral(resourceName: "culture_511111.jpg")
+            } else if index == 1 {
+                self.imageView.image = #imageLiteral(resourceName: "culture(1)_511111.jpg")
+            } else if index == 2 {
+                self.imageView.image = #imageLiteral(resourceName: "culture(2)_511111.jpg")
+            } else if index == 3 {
+                self.imageView.image = #imageLiteral(resourceName: "culture(3)_511111.jpg")
+            }
+        case 4:
+            if index == 0 {
+                self.imageView.image = #imageLiteral(resourceName: "history_151111.jpg")
+            } else if index == 1 {
+                self.imageView.image = #imageLiteral(resourceName: "history(1)_151111.jpg")
+            } else if index == 2 {
+                self.imageView.image = #imageLiteral(resourceName: "history(2)_151111.jpg")
+            }
+        case 5:
+            if index == 0 {
+                self.imageView.image = #imageLiteral(resourceName: "leports_115111.jpg")
+            } else if index == 1 {
+                self.imageView.image = #imageLiteral(resourceName: "leports(1)_115111.jpg")
+            } else if index == 2 {
+                self.imageView.image = #imageLiteral(resourceName: "leports(2)_115111.jpg")
+            } else if index == 3 {
+                self.imageView.image = #imageLiteral(resourceName: "leports(3)_115111.jpg")
+            } else if index == 4 {
+                self.imageView.image = #imageLiteral(resourceName: "leports(4)_115111.jpg")
+            }
+        case 6:
+            if index == 0 {
+                self.imageView.image = #imageLiteral(resourceName: "nature_111511.jpg")
+            } else if index == 1 {
+                self.imageView.image = #imageLiteral(resourceName: "nature(1)_111511.jpg")
+            } else if index == 2 {
+                self.imageView.image = #imageLiteral(resourceName: "nature(2)_111511.jpg")
+            } else if index == 3 {
+                self.imageView.image = #imageLiteral(resourceName: "nature(3)_111511.jpg")
+            } else if index == 4 {
+                self.imageView.image = #imageLiteral(resourceName: "nature(4)_111511.jpg")
+            } else if index == 5 {
+                self.imageView.image = #imageLiteral(resourceName: "nature(5)_111511.jpg")
+            }
         default:
             self.imageView.image = #imageLiteral(resourceName: "kamel.png")
         }
+    }
+    
+    func matchCity() -> Int {
+        let value_f: Int = (value[0]/totalCount)*100000 + (value[1]/totalCount)*10000 + (value[2]/totalCount)*1000 + (value[3]/totalCount)*100 + (value[4]/totalCount)*10 + (value[5]/totalCount)
+        
+        print(value_f)
+        
+        var min = 555555555
+        var minIndex = 10
+        for index in 0..<cityData.count {
+            if abs((value_f - cityData[index])) < min {
+                min = abs((value_f - cityData[index]))
+                minIndex = index
+            }
+        }
+        
+        return minIndex
     }
 }
