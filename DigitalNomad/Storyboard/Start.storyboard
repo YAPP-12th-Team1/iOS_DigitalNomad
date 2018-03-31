@@ -220,6 +220,7 @@
                         <viewLayoutGuide key="safeArea" id="wzg-Gn-6zL"/>
                     </view>
                     <connections>
+                        <outlet property="cityImage" destination="oxd-yb-ngd" id="tZA-pY-N5c"/>
                         <outlet property="researchResult" destination="b1S-dY-RyL" id="zu5-nV-3Y1"/>
                     </connections>
                 </viewController>
