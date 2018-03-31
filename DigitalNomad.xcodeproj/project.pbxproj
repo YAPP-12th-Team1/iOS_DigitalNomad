@@ -82,7 +82,7 @@
 		19F2CDE82041419C00CB113B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE62041419C00CB113B /* Main.storyboard */; };
 		19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE92041419C00CB113B /* Assets.xcassets */; };
 		19F2CDED2041419C00CB113B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDEB2041419C00CB113B /* LaunchScreen.storyboard */; };
-		4A8AC33020701415002F6B32 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC32F20701415002F6B32 /* testImage.png */; };
+		4A8AC3322070221E002F6B32 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC3312070221E002F6B32 /* testImage.png */; };
 		6B3FDE5D206FECFA0081332B /* coworking(3)_111115.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */; };
 		6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */; };
 		6B3FDE5F206FECFA0081332B /* coworking(1)_111111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE42206FECEE0081332B /* coworking(1)_111111.jpg */; };
@@ -150,6 +150,16 @@
 		6B634A46204EF79F00A59EEF /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B634A43204EF79F00A59EEF /* cafe.png */; };
 		6B634A47204EF79F00A59EEF /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B634A44204EF79F00A59EEF /* restaurant.png */; };
 		6B634A48204EF79F00A59EEF /* kamel.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B634A45204EF79F00A59EEF /* kamel.png */; };
+		6BA8A9C22070313500DD7B3B /* daejun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9B82070313300DD7B3B /* daejun.jpg */; };
+		6BA8A9C32070313500DD7B3B /* gangwon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9B92070313300DD7B3B /* gangwon.jpg */; };
+		6BA8A9C42070313500DD7B3B /* hamhae.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9BA2070313300DD7B3B /* hamhae.JPG */; };
+		6BA8A9C52070313500DD7B3B /* busan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9BB2070313400DD7B3B /* busan.jpg */; };
+		6BA8A9C62070313500DD7B3B /* jaeju.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9BC2070313400DD7B3B /* jaeju.jpg */; };
+		6BA8A9C72070313500DD7B3B /* junju.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9BD2070313400DD7B3B /* junju.jpg */; };
+		6BA8A9C82070313500DD7B3B /* daegu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9BE2070313400DD7B3B /* daegu.jpg */; };
+		6BA8A9C92070313500DD7B3B /* seoul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9BF2070313400DD7B3B /* seoul.jpg */; };
+		6BA8A9CA2070313500DD7B3B /* gwanju.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9C02070313400DD7B3B /* gwanju.jpg */; };
+		6BA8A9CB2070313500DD7B3B /* incheon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8A9C12070313500DD7B3B /* incheon.jpg */; };
 		CF98B968790711445E30E291 /* Pods_DigitalNomad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0981C7A15615E7D418FFE8 /* Pods_DigitalNomad.framework */; };
 /* End PBXBuildFile section */
 
@@ -233,7 +243,7 @@
 		19F2CDE92041419C00CB113B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19F2CDEC2041419C00CB113B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19F2CDEE2041419C00CB113B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A8AC32F20701415002F6B32 /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
+		4A8AC3312070221E002F6B32 /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
 		6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coworking(3)_111115.jpg"; sourceTree = "<group>"; };
 		6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nature(4)_111511.jpg"; sourceTree = "<group>"; };
 		6B3FDE42206FECEE0081332B /* coworking(1)_111111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coworking(1)_111111.jpg"; sourceTree = "<group>"; };
@@ -303,6 +313,16 @@
 		6B634A43204EF79F00A59EEF /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
 		6B634A44204EF79F00A59EEF /* restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant.png; sourceTree = "<group>"; };
 		6B634A45204EF79F00A59EEF /* kamel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamel.png; sourceTree = "<group>"; };
+		6BA8A9B82070313300DD7B3B /* daejun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = daejun.jpg; sourceTree = "<group>"; };
+		6BA8A9B92070313300DD7B3B /* gangwon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gangwon.jpg; sourceTree = "<group>"; };
+		6BA8A9BA2070313300DD7B3B /* hamhae.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hamhae.JPG; sourceTree = "<group>"; };
+		6BA8A9BB2070313400DD7B3B /* busan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = busan.jpg; sourceTree = "<group>"; };
+		6BA8A9BC2070313400DD7B3B /* jaeju.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jaeju.jpg; sourceTree = "<group>"; };
+		6BA8A9BD2070313400DD7B3B /* junju.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = junju.jpg; sourceTree = "<group>"; };
+		6BA8A9BE2070313400DD7B3B /* daegu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = daegu.jpg; sourceTree = "<group>"; };
+		6BA8A9BF2070313400DD7B3B /* seoul.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seoul.jpg; sourceTree = "<group>"; };
+		6BA8A9C02070313400DD7B3B /* gwanju.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gwanju.jpg; sourceTree = "<group>"; };
+		6BA8A9C12070313500DD7B3B /* incheon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = incheon.jpg; sourceTree = "<group>"; };
 		7A260883956854A34CD972AD /* Pods-DigitalNomad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalNomad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalNomad/Pods-DigitalNomad.debug.xcconfig"; sourceTree = "<group>"; };
 		EF0981C7A15615E7D418FFE8 /* Pods_DigitalNomad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DigitalNomad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -330,6 +350,7 @@
 		191DFED0204EAFB70095E9C1 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				4A8AC3312070221E002F6B32 /* testImage.png */,
 				6B5877A82064BBEA0001FAB5 /* researchData */,
 				19C899CA205A007B0044D8A0 /* profile.png */,
 				191DFED1204EAFBF0095E9C1 /* humanSample.png */,
@@ -600,7 +621,16 @@
 		6B5877A82064BBEA0001FAB5 /* researchData */ = {
 			isa = PBXGroup;
 			children = (
-				4A8AC32F20701415002F6B32 /* testImage.png */,
+				6BA8A9BB2070313400DD7B3B /* busan.jpg */,
+				6BA8A9BE2070313400DD7B3B /* daegu.jpg */,
+				6BA8A9B82070313300DD7B3B /* daejun.jpg */,
+				6BA8A9B92070313300DD7B3B /* gangwon.jpg */,
+				6BA8A9C02070313400DD7B3B /* gwanju.jpg */,
+				6BA8A9BA2070313300DD7B3B /* hamhae.JPG */,
+				6BA8A9C12070313500DD7B3B /* incheon.jpg */,
+				6BA8A9BC2070313400DD7B3B /* jaeju.jpg */,
+				6BA8A9BD2070313400DD7B3B /* junju.jpg */,
+				6BA8A9BF2070313400DD7B3B /* seoul.jpg */,
 				6B3FDE4F206FECF30081332B /* citynature_111151.jpg */,
 				6B3FDE44206FECEF0081332B /* citynature(1)_111151.jpg */,
 				6B3FDE4E206FECF20081332B /* citynature(2)_111151.jpg */,
@@ -714,6 +744,7 @@
 			files = (
 				19BA8277204FF32500C095C1 /* NomadLifeTutorialView.xib in Resources */,
 				6B54120A2041900600DDB2D5 /* map_pin_shadow@3x.png in Resources */,
+				6BA8A9C42070313500DD7B3B /* hamhae.JPG in Resources */,
 				6B5412052041900600DDB2D5 /* shadow_balloon.png in Resources */,
 				6B3FDE78206FECFA0081332B /* coworking_111115.jpg in Resources */,
 				19F2CDED2041419C00CB113B /* LaunchScreen.storyboard in Resources */,
@@ -728,6 +759,7 @@
 				19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */,
 				6B3FDE64206FECFA0081332B /* coworking(2)_111111.jpg in Resources */,
 				191DFEC3204EA9520095E9C1 /* Nomad.storyboard in Resources */,
+				6BA8A9C52070313500DD7B3B /* busan.jpg in Resources */,
 				6B54121B2041900600DDB2D5 /* map_present_background_update.png in Resources */,
 				196C77B8205425F200A45E89 /* NomadFinalView.xib in Resources */,
 				6B3FDE62206FECFA0081332B /* leports(2)_115111.jpg in Resources */,
@@ -738,12 +770,13 @@
 				1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */,
 				1949DD06204FD5030062D8EF /* NomadWorkView.xib in Resources */,
 				198D92CB2061447E001325DD /* Start.storyboard in Resources */,
+				6BA8A9C92070313500DD7B3B /* seoul.jpg in Resources */,
 				6B5412072041900600DDB2D5 /* detail_button.png in Resources */,
 				19A94FD6204EC1CE003A1D23 /* MyPageDetailMailCell.xib in Resources */,
 				19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */,
 				191DFED2204EAFBF0095E9C1 /* humanSample.png in Resources */,
+				6BA8A9C22070313500DD7B3B /* daejun.jpg in Resources */,
 				6B54120D2041900600DDB2D5 /* map_pin_red@3x.png in Resources */,
-				4A8AC33020701415002F6B32 /* testImage.png in Resources */,
 				6B5412152041900600DDB2D5 /* info_box_tail.png in Resources */,
 				1949DCFE204F8E490062D8EF /* StrikethroughView.xib in Resources */,
 				6B5412182041900600DDB2D5 /* map_pin.png in Resources */,
@@ -756,8 +789,10 @@
 				19A5780720622A5700240B87 /* PopupStartView.xib in Resources */,
 				6B3FDE6F206FECFA0081332B /* leports(4)_115111.jpg in Resources */,
 				6B3FDE6E206FECFA0081332B /* history_151111.jpg in Resources */,
+				6BA8A9C72070313500DD7B3B /* junju.jpg in Resources */,
 				6B54120F2041900600DDB2D5 /* map_pin@3x.png in Resources */,
 				6B3FDE75206FECFA0081332B /* leports(3)_115111.jpg in Resources */,
+				6BA8A9CB2070313500DD7B3B /* incheon.jpg in Resources */,
 				6B3FDE5F206FECFA0081332B /* coworking(1)_111111.jpg in Resources */,
 				196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */,
 				6B5412172041900600DDB2D5 /* map_present_direction.png in Resources */,
@@ -785,9 +820,11 @@
 				6B5412142041900600DDB2D5 /* map_pinup_custom.png in Resources */,
 				6B5412102041900600DDB2D5 /* map_present_tracking.png in Resources */,
 				19BA826D204FEF9900C095C1 /* NomadLifeCell.xib in Resources */,
+				6BA8A9C32070313500DD7B3B /* gangwon.jpg in Resources */,
 				6B5412112041900600DDB2D5 /* map_pin_red.png in Resources */,
 				6B54121D2041900600DDB2D5 /* map_pin_shadow.png in Resources */,
 				6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */,
+				6BA8A9C62070313500DD7B3B /* jaeju.jpg in Resources */,
 				196C4AE42041440100C7BFAF /* Login.storyboard in Resources */,
 				6B5412132041900600DDB2D5 /* point_sprite.png in Resources */,
 				6B3FDE71206FECFA0081332B /* leports(1)_115111.jpg in Resources */,
@@ -796,13 +833,16 @@
 				6B54120E2041900600DDB2D5 /* daum_copyright.png in Resources */,
 				19A94FCE204EC1AE003A1D23 /* MyPageDetailInfoCell.xib in Resources */,
 				6B3FDE63206FECFA0081332B /* nature_111511.jpg in Resources */,
+				6BA8A9CA2070313500DD7B3B /* gwanju.jpg in Resources */,
 				6B3FDE76206FECFA0081332B /* nature(1)_111511.jpg in Resources */,
 				6B3FDE79206FECFA0081332B /* history(1)_151111.jpg in Resources */,
 				6B5412032041900600DDB2D5 /* map_pinup_custom@3x.png in Resources */,
 				6B5412162041900600DDB2D5 /* noimage256.png in Resources */,
 				19A94FDA204EDD4E003A1D23 /* PopupMeetupView.xib in Resources */,
 				6B3FDE6B206FECFA0081332B /* citynature(2)_111151.jpg in Resources */,
+				4A8AC3322070221E002F6B32 /* testImage.png in Resources */,
 				6B5412042041900600DDB2D5 /* map_pin_custom.png in Resources */,
+				6BA8A9C82070313500DD7B3B /* daegu.jpg in Resources */,
 				19A94FC6204EBECE003A1D23 /* humanSample2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1090,7 +1130,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H79MF628K3;
+				DEVELOPMENT_TEAM = 8HPCHS5M63;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1116,7 +1156,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H79MF628K3;
+				DEVELOPMENT_TEAM = 8HPCHS5M63;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

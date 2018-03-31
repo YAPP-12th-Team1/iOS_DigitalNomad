@@ -230,9 +230,9 @@ extension NomadViewController: UISearchBarDelegate{
                 for temp in temps{
                     result.append(temp)
                 }
-                workView.object = result
+                workView.object = result.filter("date = '" + todayDate() + "'")
             } else {
-                workView.object = realm.objects(ProjectInfo.self).last!.goalLists
+                workView.object = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + todayDate() + "'")
             }
             workView.tableView.reloadData()
         } else {

@@ -18,8 +18,51 @@ class ResearchViewController: UIViewController {
 
     // 1.서울, 2.광주, 3.대전, 4.대구, 5.부산, 6.제주, 7.인천, 8.강원, 9.전주, 10.남해
     let cityData = [553155, 121233, 121253, 121233, 324514, 424515, 123424, 125512, 1512511, 125511]
-    
+    let citynature = [
+        [3,3,4,2,4,5],
+        [5,3,1,1,5,5],
+        [4,3,1,1,5,5]
+    ]
+    let coworking1 = [
+        [2,2,2,3,5,2],
+        [3,3,3,2,5,1],
+        [5,3,3,1,1,1],
+        [2,2,3,4,3,1]
+    ]
+    let coworking2 = [
+        [4,2,2,2,1,5],
+        [5,3,1,1,5,5],
+        [2,2,2,2,2,5],
+        [5,2,3,2,2,5]
+    ]
+    let culture = [
+        [5,2,2,4,2,1],
+        [5,2,2,2,2,1],
+        [4,2,3,2,2,5],
+        [5,2,2,3,4,1]
+    ]
+    let history = [
+        [3,5,2,4,3,2],
+        [2,5,2,5,3,1],
+        [2,5,2,4,3,3]
+    ]
+    let leports = [
+        [3,4,4,5,3,4],
+        [5,2,5,5,2,3],
+        [5,2,4,5,2,3],
+        [5,2,5,5,2,1],
+        [3,2,5,4,2,1],
+    ]
+    let nature = [
+        [4,3,5,4,3,4],
+        [3,3,5,4,2,3],
+        [2,2,5,5,2,3],
+        [3,3,4,5,3,4],
+        [2,2,4,5,4,2],
+        [2,2,2,5,2,2]
+    ]
     var state = 0   // 0: citynatrue, 1: coworking1, 2: coworking2, 3: culture, 4: history, 5:leports, 6: nature
+    var preState = 0
     var visited = [
         [false, false, false],
         [false, false, false, false],
@@ -56,54 +99,54 @@ class ResearchViewController: UIViewController {
     @IBAction func clickLike(_ sender: UIButton) {
         switch state {
         case 0:
-            value[0] += 1
-            value[1] += 1
-            value[2] += 1
-            value[3] += 1
-            value[4] += 5
-            value[5] += 1
+            value[0] += citynature[Int(index)][0]
+            value[1] += citynature[Int(index)][1]
+            value[2] += citynature[Int(index)][2]
+            value[3] += citynature[Int(index)][3]
+            value[4] += citynature[Int(index)][4]
+            value[5] += citynature[Int(index)][5]
         case 1:
-            value[0] += 1
-            value[1] += 1
-            value[2] += 1
-            value[3] += 1
-            value[4] += 1
-            value[5] += 1
+            value[0] += coworking1[Int(index)][0]
+            value[1] += coworking1[Int(index)][1]
+            value[2] += coworking1[Int(index)][2]
+            value[3] += coworking1[Int(index)][3]
+            value[4] += coworking1[Int(index)][4]
+            value[5] += coworking1[Int(index)][5]
         case 2:
-            value[0] += 1
-            value[1] += 1
-            value[2] += 1
-            value[3] += 1
-            value[4] += 1
-            value[5] += 5
+            value[0] += coworking2[Int(index)][0]
+            value[1] += coworking2[Int(index)][1]
+            value[2] += coworking2[Int(index)][2]
+            value[3] += coworking2[Int(index)][3]
+            value[4] += coworking2[Int(index)][4]
+            value[5] += coworking2[Int(index)][5]
         case 3:
-            value[0] += 5
-            value[1] += 1
-            value[2] += 1
-            value[3] += 1
-            value[4] += 1
-            value[5] += 1
+            value[0] += culture[Int(index)][0]
+            value[1] += culture[Int(index)][1]
+            value[2] += culture[Int(index)][2]
+            value[3] += culture[Int(index)][3]
+            value[4] += culture[Int(index)][4]
+            value[5] += culture[Int(index)][5]
         case 4:
-            value[0] += 1
-            value[1] += 5
-            value[2] += 1
-            value[3] += 1
-            value[4] += 1
-            value[5] += 1
+            value[0] += history[Int(index)][0]
+            value[1] += history[Int(index)][1]
+            value[2] += history[Int(index)][2]
+            value[3] += history[Int(index)][3]
+            value[4] += history[Int(index)][4]
+            value[5] += history[Int(index)][5]
         case 5:
-            value[0] += 1
-            value[1] += 1
-            value[2] += 5
-            value[3] += 1
-            value[4] += 1
-            value[5] += 1
+            value[0] += leports[Int(index)][0]
+            value[1] += leports[Int(index)][1]
+            value[2] += leports[Int(index)][2]
+            value[3] += leports[Int(index)][3]
+            value[4] += leports[Int(index)][4]
+            value[5] += leports[Int(index)][5]
         case 6:
-            value[0] += 1
-            value[1] += 1
-            value[2] += 1
-            value[3] += 5
-            value[4] += 1
-            value[5] += 1
+            value[0] += nature[Int(index)][0]
+            value[1] += nature[Int(index)][1]
+            value[2] += nature[Int(index)][2]
+            value[3] += nature[Int(index)][3]
+            value[4] += nature[Int(index)][4]
+            value[5] += nature[Int(index)][5]
         default:
             value[0] += 0
             value[1] += 0
@@ -141,6 +184,8 @@ class ResearchViewController: UIViewController {
         
         count[state] += 1
         totalCount += 1
+        
+        preState = state
         
         if totalCount <= 11 {
             if count[state] == must[state] {
