@@ -127,7 +127,7 @@ class MyPageMeetupView: UIView {
             
             self.name.text = nickname
             self.occupation.text = job
-            self.days.text = String(day)+"일째"
+            self.days.text = "유목 생활 " + String(day) + "일째"
             self.distance.text = address
             self.message.text = introducing
             self.popUser = users[self.cardIndex]
