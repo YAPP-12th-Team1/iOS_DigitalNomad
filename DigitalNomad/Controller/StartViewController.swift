@@ -31,6 +31,8 @@ class StartViewController: UIViewController {
     }
     
     @IBAction func clickExperiencedNomad(_ sender: UIButton) {
-        //위랑 이거랑 뭔 차이임
+        let storyboard = UIStoryboard(name: "Start", bundle: nil)
+        let next = storyboard.instantiateViewController(withIdentifier: "ResearchViewController")
+        present(next, animated: true)
     }
 }
