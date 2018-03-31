@@ -25,7 +25,6 @@ class MyPageMeetupView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         ToastView.appearance().bottomOffsetPortrait = 49 + 20
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 2

@@ -22,6 +22,10 @@ class NomadLifeTutorialView: UIView {
 
     @objc func clickView(){
         UserDefaults.standard.set(true, forKey: "isFirstNomadLifeExecute")
-        self.removeFromSuperview()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.alpha = 0
+        }) { _ in
+            self.removeFromSuperview()
+        }
     }
 }

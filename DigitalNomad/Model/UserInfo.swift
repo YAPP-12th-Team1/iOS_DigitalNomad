@@ -22,10 +22,11 @@ class UserInfo: Object{
     @objc dynamic var purpose: String?
 }
 
-func addUser(_ address: String){
+func addUser(_ address: String, _ day: Int, _ purpose: String){
     let realm = try! Realm()
     let object = UserInfo()
     object.address = address
+    object.purpose = purpose
 
     // firebase
     Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).setValue([
@@ -33,7 +34,9 @@ func addUser(_ address: String){
         "nickname": Auth.auth().currentUser?.displayName,
         "address": address,
         "cowork": false,
-        "job": object.job
+        "job": object.job,
+        "day" : day,
+        "purpose" : purpose
     ])
     
     try! realm.write{

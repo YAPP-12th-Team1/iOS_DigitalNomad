@@ -110,7 +110,11 @@ class NomadWorkCell: UITableViewCell {
             }
         }
         let finalView = NomadFinalView.instanceFromXib()
+        finalView.alpha = 0
         self.parentViewController()?.view.addSubview(finalView)
+        UIView.animate(withDuration: 0.5, animations: {
+            finalView.alpha = 1
+        })
         
     }
 }
