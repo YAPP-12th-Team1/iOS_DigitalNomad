@@ -4,7 +4,7 @@
 //
 //  Created by Presto on 2018. 3. 14..
 //  Copyright © 2018년 MokMinSimSeo. All rights reserved.
-//
+// *** castion *** hastag text -> bold function plz~~ ~ ~~ 
 
 import Foundation
 import RealmSwift

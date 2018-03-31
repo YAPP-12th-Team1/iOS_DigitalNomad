@@ -35,7 +35,6 @@ class MyPageMeetupView: UIView {
         buttonMeetup.layer.cornerRadius = 5
         setUserData()
     }
-
     
     class func instanceFromXib() -> UIView {
         return UINib(nibName: "MyPageMeetupView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
@@ -51,6 +50,11 @@ class MyPageMeetupView: UIView {
         if(userInfo.cowork){
             
             let popup = PopupMeetupView.instanceFromXib() as! PopupMeetupView
+            
+            // popup 으로 데이터 보내는 부분
+            popup.name = popUser
+            
+            popup.setNeedsLayout()
             popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             popup.frame = (self.parentViewController()?.view.frame)!
             popup.view.alpha = 0
@@ -66,6 +70,7 @@ class MyPageMeetupView: UIView {
     /** user의 uid 로 리스트를 만들어서 반환 **/
     /** 이슈 : 본인은 빼고, coworking on 되어있는 사람 **/
     var list: Array<String> = []
+    var popUser:String = ""
     func usersList(){
         print("usersList 실행")
         
@@ -124,7 +129,12 @@ class MyPageMeetupView: UIView {
             self.days.text = String(day)+"일째"
             self.distance.text = address
             self.message.text = introducing
+            self.popUser = users[self.cardIndex]
             self.cardIndex = self.cardIndex+1;
+            
+            if( self.cardIndex == users.count){
+                self.cardIndex = 0;
+            }
         })
     }
 }
