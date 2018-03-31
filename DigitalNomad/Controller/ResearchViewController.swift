@@ -97,7 +97,7 @@ class ResearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func clickLike(_ sender: UIButton) {
-        switch state {
+        switch preState {
         case 0:
             value[0] += citynature[Int(index)][0]
             value[1] += citynature[Int(index)][1]
