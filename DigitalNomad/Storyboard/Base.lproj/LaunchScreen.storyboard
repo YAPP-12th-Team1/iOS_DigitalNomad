@@ -14,24 +14,24 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="odX-Ba-oTb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="4Ht-5o-TDO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="2r4-T5-bsN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4Ht-5o-TDO" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="19d-1U-88a"/>
-                            <constraint firstItem="4Ht-5o-TDO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2FY-Zi-aCv"/>
-                            <constraint firstItem="4Ht-5o-TDO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4nF-mU-fnh"/>
-                            <constraint firstItem="4Ht-5o-TDO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="79u-nG-JTj"/>
-                            <constraint firstItem="4Ht-5o-TDO" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="aEH-p4-QBa"/>
-                            <constraint firstItem="4Ht-5o-TDO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rXa-WQ-lNW"/>
+                            <constraint firstItem="2r4-T5-bsN" firstAttribute="centerX" secondItem="odX-Ba-oTb" secondAttribute="centerX" id="2fd-ss-Qzz"/>
+                            <constraint firstItem="1FL-gN-HoM" firstAttribute="bottom" secondItem="2r4-T5-bsN" secondAttribute="bottom" id="4JO-Rs-XTz"/>
+                            <constraint firstItem="2r4-T5-bsN" firstAttribute="leading" secondItem="1FL-gN-HoM" secondAttribute="leading" id="7sQ-fG-RvD"/>
+                            <constraint firstItem="2r4-T5-bsN" firstAttribute="centerY" secondItem="odX-Ba-oTb" secondAttribute="centerY" id="J5W-af-8sM"/>
+                            <constraint firstItem="1FL-gN-HoM" firstAttribute="trailing" secondItem="2r4-T5-bsN" secondAttribute="trailing" id="JTC-OS-tfd"/>
+                            <constraint firstItem="2r4-T5-bsN" firstAttribute="top" secondItem="odX-Ba-oTb" secondAttribute="top" id="cmo-dj-oP4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="1FL-gN-HoM"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchScreen" width="375" height="667"/>
+        <image name="splash.png" width="375" height="667"/>
     </resources>
 </document>
