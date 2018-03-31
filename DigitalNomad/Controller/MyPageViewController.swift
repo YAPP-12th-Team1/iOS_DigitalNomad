@@ -111,40 +111,46 @@ class MyPageViewController: UIViewController {
         realm = try! Realm()
         projectInfo = realm.objects(ProjectInfo.self).last
         let startStr = projectInfo.period
-        let todayStr = projectInfo.todayDate()
+        let todayStr: String = todayDate()
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        let startDate = dateFormatter.date(from: startStr)!
-        let todayDate = dateFormatter.date(from: todayStr)!
-        let interval = todayDate.timeIntervalSince(startDate)
+        let start = dateFormatter.date(from: startStr)!
+        let today = dateFormatter.date(from: todayStr)!
+        let interval = today.timeIntervalSince(start)
         let days = Int(interval / 86400)
         
         return days
     }
     
     func getHashTags() -> String {
-        realm = try! Realm()
         let tagList = realm.objects(GoalListInfo.self).filter("todo contains '#'")
-        var cnt = tagList.count-1
-        var tags = ""
-        var tagDict: [String:Int] = [:]
+        var cnt = 0
+        if(tagList.count == 0){
+            cnt = 0
+            return ""
+        } else {
+            cnt = tagList.count - 1
         
-        for var i in 0...cnt {
-            if let freq = tagDict[tagList[i].todo] {
-               tagDict[tagList[i].todo] = freq+1
-            } else {
-                tagDict[tagList[i].todo] = 0
+            var tags = ""
+            var tagDict: [String:Int] = [:]
+            
+            for i in 0...cnt {
+                if let freq = tagDict[tagList[i].todo] {
+                   tagDict[tagList[i].todo] = freq+1
+                } else {
+                    tagDict[tagList[i].todo] = 0
+                }
             }
+            let sortedArr = tagDict.sorted(by: { $0.1 > $1.1 })
+            cnt = sortedArr.count-1
+            
+            for i in 0...cnt {
+                tags += sortedArr[i].key + " "
+            }
+            return tags
         }
-        let sortedArr = tagDict.sorted(by: { $0.1 > $1.1 })
-        cnt = sortedArr.count-1
-        
-        for i in 0...cnt {
-            tags += sortedArr[i].key + " "
-        }
-        return tags
     }
 }

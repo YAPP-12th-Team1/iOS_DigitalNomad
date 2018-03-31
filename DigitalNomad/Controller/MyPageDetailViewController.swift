@@ -40,9 +40,9 @@ class MyPageDetailViewController: UIViewController {
         buttonRefresh.setTitle("R", for: .normal)
         buttonRefresh.setTitleColor(.black, for: .normal)
         if(userInfo.cowork){
-            coworkingAllowingSwitch.isOn = true
+            coworkingAllowingSwitch.setOn(true, animated: false)
         } else {
-            coworkingAllowingSwitch.isOn = false
+            coworkingAllowingSwitch.setOn(false, animated: false)
         }
         // Do any additional setup after loading the view.
 

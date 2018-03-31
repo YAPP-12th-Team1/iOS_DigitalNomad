@@ -70,8 +70,13 @@ extension NomadWorkView: UITableViewDataSource{
         return true
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .default, title: "삭제") { (action, index) in
-            //해당 셀의 레코드를 Realm에서 삭제하고 tableView.reloadData().
+        let result = object[indexPath.row]
+        let delete = UITableViewRowAction(style: .destructive, title: "삭제") { action, index in
+            try! self.realm.write{
+                self.realm.delete(result)
+            }
+            tableView.reloadData()
+            print("삭제")
         }
         return [delete]
     }

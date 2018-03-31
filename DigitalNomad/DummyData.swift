@@ -21,31 +21,31 @@ class DummyData{
             realm.delete(realm.objects(WishListInfo.self))
         }
         //아래에 create 함수들을 넣으세요
-        addUser("서울특별시 노원구", "개발자")
-        addProject("서울특별시 노원구", 5)
+//        addUser("서울특별시 노원구", "개발자")
+//        addProject("서울특별시 노원구", 5)
         
-        //[일] 추가할 때 아래 세 줄처럼 (빈도수 체크를 위해 두번 넣은 데이터 있음)
-        addGoalList("#일하자일해")
-        try! realm.write{
-            realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
-        }
-        addGoalList("#일하자일해22")
-        try! realm.write{
-            realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
-        }
-        addGoalList("#일하자일해22")
-        try! realm.write{
-            realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
-        }
-        
-        //[삶] 추가할 때 아래 세 줄처럼
-        addWishList("캠핑")
-        try! realm.write{
-            realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
-        }
-        addWishList("수영")
-        try! realm.write{
-            realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
-        }
+//        //[일] 추가할 때 아래 세 줄처럼 (빈도수 체크를 위해 두번 넣은 데이터 있음)
+//        addGoalList("#일하자일해")
+//        try! realm.write{
+//            realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
+//        }
+//        addGoalList("#일하자일해2")
+//        try! realm.write{
+//            realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
+//        }
+//        addGoalList("#일하자일해3")
+//        try! realm.write{
+//            realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
+//        }
+//
+//        //[삶] 추가할 때 아래 세 줄처럼
+//        addWishList("캠핑")
+//        try! realm.write{
+//            realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
+//        }
+//        addWishList("수영")
+//        try! realm.write{
+//            realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
+//        }
     }
 }

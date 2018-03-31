@@ -25,8 +25,11 @@ class NomadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = try! Realm()
+        
+        //UserInfo의 location 필드를 현재위치로 업데이트하는 코드 위치
+        
         //더미데이터 쌓는 코드 어느정도 완료되면 아래 줄을 없애자
-        let _ = DummyData()
+        //let _ = DummyData()
         
         //앱 실행 시 화면이 GoalList인지 WishList인지 구분함
         if(UserDefaults.standard.bool(forKey: "isNomadLifeView")){
@@ -41,10 +44,6 @@ class NomadViewController: UIViewController {
         }
         labelDays.layer.cornerRadius = 5
         labelDays.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
-        
-        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
-        downSwipe.direction = .down
-        centerView.addGestureRecognizer(downSwipe)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,11 +63,17 @@ class NomadViewController: UIViewController {
         yesterdayFormatter.dateFormat = "M/d"
         let yesterday = yesterdayFormatter.string(from: calendar.date(byAdding: DateComponents(day: -1), to: today)!)
         labelToday.text = "오늘 \(todayFormatter.string(from: today))"
-        labelDays.text = "n일차"
-        
+        let savedDateString = realm.objects(ProjectInfo.self).first!.period
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let savedDate = dateFormatter.date(from: savedDateString)
+        let todayDate = dateFormatter.date(from: dateFormatter.string(from: Date()))
+        let interval = todayDate!.timeIntervalSince(savedDate!)
+        labelDays.text = "\(Int(interval) / 86400 + 1)일차"
         if(underView.layer.sublayers != nil){
             underView.layer.sublayers?.removeFirst()
         }
+        centerView.subviews.last?.isUserInteractionEnabled = false
         
         //다른 곳에서 viewWillAppear() 호출 시 센터뷰가 GoalList이냐 WishList이냐에 따라 동작하는 것을 구분함
         if(centerView.subviews.last is NomadWorkView) {
@@ -110,8 +115,11 @@ class NomadViewController: UIViewController {
             
             UIView.animate(withDuration: 0.5, animations: {
                 self.underView.frame.origin.y = self.view.frame.height - 49 - self.underView.frame.height
+            }, completion: { _ in
+                self.centerView.subviews.last?.isUserInteractionEnabled = true
             })
             underView.addSubview(addView)
+            centerView.frame.size.height = underView.frame.origin.y - centerView.frame.origin.y
         } else {
             //보라색 계열 (색B, 삶)
             UserDefaults.standard.set(true, forKey: "isNomadLifeView")
@@ -145,9 +153,11 @@ class NomadViewController: UIViewController {
             UIView.animate(withDuration: 0.5, animations: {
                 self.underView.frame.origin.y = self.view.frame.height - (self.tabBarController?.tabBar.frame.height)! - (self.underView.frame.height - addView.subView.frame.height)
             }, completion: { _ in
+                self.centerView.subviews.last?.isUserInteractionEnabled = true
                 addView.buttonCard.isHidden = false
             })
             underView.addSubview(addView)
+            centerView.frame.size.height = underView.frame.origin.y - centerView.frame.origin.y
         }
     }
     
@@ -177,31 +187,6 @@ class NomadViewController: UIViewController {
         viewWillAppear(true)
     }
     
-    @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer){
-        if(searchBar.isFirstResponder || (underView.subviews.last! as! NomadAddView).textField.isFirstResponder){
-            return
-        }
-        let animation = CATransition()
-        animation.duration = 0.5
-        animation.type = kCATransitionPush
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        animation.subtype = kCATransitionFromTop
-        centerView.layer.add(animation, forKey: "swipeDown")
-        if(centerView.subviews.last is NomadWorkView){
-            centerView.subviews.last?.removeFromSuperview()
-            let lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
-            lifeView.frame.size = centerView.frame.size
-            centerView.addSubview(lifeView)
-            lifeView.layoutIfNeeded()
-        } else {
-            centerView.subviews.last?.removeFromSuperview()
-            let workView = NomadWorkView.instanceFromXib() as! NomadWorkView
-            workView.frame.size = centerView.frame.size
-            centerView.addSubview(workView)
-        }
-        viewWillAppear(true)
-    }
-    
     @objc func keyboardWillShow(_ notification: Notification){
         if(searchBar.isFirstResponder){
             return
@@ -214,6 +199,7 @@ class NomadViewController: UIViewController {
                 let addView = underView.subviews.last as! NomadAddView
                 underView.frame.origin.y -= addView.subView.frame.height
             }
+            centerView.subviews.last?.isUserInteractionEnabled = false
         }
     }
     @objc func keyboardWillHide(_ notification: Notification){
@@ -228,6 +214,8 @@ class NomadViewController: UIViewController {
                 let addView = underView.subviews.last as! NomadAddView
                 underView.frame.origin.y += addView.subView.frame.height
             }
+            centerView.subviews.last?.isUserInteractionEnabled = true
+            
         }
     }
 }
@@ -237,7 +225,7 @@ extension NomadViewController: UISearchBarDelegate{
         if(centerView.subviews.last is NomadWorkView){
             let workView = centerView.subviews.last as! NomadWorkView
             if(!searchText.isEmpty){
-                let temps = realm.objects(ProjectInfo.self).last!.goalLists.filter("todo CONTAINS[c] '" + searchText + "'")
+                let temps = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + todayDate() + "'").filter("todo CONTAINS[c] '" + searchText + "'")
                 let result = List<GoalListInfo>()
                 for temp in temps{
                     result.append(temp)
@@ -248,15 +236,25 @@ extension NomadViewController: UISearchBarDelegate{
             }
             workView.tableView.reloadData()
         } else {
-//            let lifeView = centerView.subviews.last as! NomadLifeView
-//            lifeView.object = realm.objects(ProjectInfo.self).last!.wishLists.filter("todo CONTAINS[c] '" + searchText + "'")
-//            lifeView.collectionView.reloadData()
+            let lifeView = centerView.subviews.last as! NomadLifeView
+            if(!searchText.isEmpty){
+                let temps = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + todayDate() + "'").filter("todo CONTAINS[c] '" + searchText + "'")
+                let result = List<WishListInfo>()
+                for temp in temps{
+                    result.append(temp)
+                }
+                lifeView.object = result
+            } else {
+                lifeView.object = realm.objects(ProjectInfo.self).last!.wishLists
+            }
+            lifeView.collectionView.reloadData()
         }
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        return
+        centerView.subviews.last?.isUserInteractionEnabled = false
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        centerView.subviews.last?.isUserInteractionEnabled = true
         searchBar.endEditing(true)
     }
 }

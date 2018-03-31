@@ -69,7 +69,6 @@ class NomadAddView: UIView {
     
     @IBAction func clickAdd(_ sender: UIButton) {
         //GoalListInfo나 WishListInfo에 내용 추가하는 코드
-        //부모 뷰 컨트롤러의 centerView의 subview의 타입을 검사해서 일과 삶을 구분하자
         if(textField.text?.isEmpty)! { return }
         let parentViewController = self.parentViewController() as! NomadViewController
         if(parentViewController.centerView.subviews.last is NomadWorkView){
@@ -86,9 +85,8 @@ class NomadAddView: UIView {
             (parentViewController.centerView.subviews.last as! NomadLifeView).collectionView.reloadData()
         }
         textField.text = nil
-        textField.resignFirstResponder()
+        textField.endEditing(true)
         parentViewController.viewWillAppear(true)
-        textField.becomeFirstResponder()
     }
     
     @IBAction func clickContentSummary(_ sender: UIButton) {

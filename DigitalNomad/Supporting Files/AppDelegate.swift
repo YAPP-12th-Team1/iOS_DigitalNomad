@@ -25,24 +25,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let realm = try! Realm()
         
         //조건에 따라 첫 화면을 구분함
-//        if let _ = Auth.auth().currentUser {
-//            if(realm.objects(UserInfo.self).count == 0){
-//                let storyboard = UIStoryboard(name: "Start", bundle: nil)
-//                let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
-//                window?.rootViewController = controller
-//            } else {
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let controller = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-//                window?.rootViewController = controller
-//            }
-//        } else {
-//            let storyborad = UIStoryboard(name: "Login", bundle: nil)
-//            let controller = storyborad.instantiateViewController(withIdentifier: "LoginViewController")
-//            window?.rootViewController = controller
-//        }
-        let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
-        window?.rootViewController = controller
+        if let _ = Auth.auth().currentUser {
+            if(realm.objects(UserInfo.self).count == 0){
+                let storyboard = UIStoryboard(name: "Start", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
+                window?.rootViewController = controller
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+                window?.rootViewController = controller
+            }
+        } else {
+            let storyborad = UIStoryboard(name: "Login", bundle: nil)
+            let controller = storyborad.instantiateViewController(withIdentifier: "LoginViewController")
+            window?.rootViewController = controller
+        }
         window?.makeKeyAndVisible()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self

@@ -20,7 +20,6 @@ class MyPageDetailMailCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         realm = try! Realm()
-        let userId = realm.objects(UserInfo.self).last!.id
         emailInfo = realm.objects(EmailInfo.self).first
         title.autocorrectionType = .no
         message.autocorrectionType = .no

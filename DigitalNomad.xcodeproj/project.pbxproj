@@ -28,6 +28,7 @@
 		1949DD08204FD50F0062D8EF /* NomadWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD07204FD50F0062D8EF /* NomadWorkView.swift */; };
 		1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1949DD09204FD5170062D8EF /* NomadLifeView.xib */; };
 		1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD0B204FD5220062D8EF /* NomadLifeView.swift */; };
+		194CECDB206FA77C0001BF11 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194CECDA206FA77C0001BF11 /* Today.swift */; };
 		195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFAE2041AF140062A26C /* UITextField+.swift */; };
 		196638BA2068871700C00791 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B5877C32064BBEA0001FAB5 /* 2.jpg */; };
 		196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */; };
@@ -177,6 +178,7 @@
 		1949DD07204FD50F0062D8EF /* NomadWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkView.swift; sourceTree = "<group>"; };
 		1949DD09204FD5170062D8EF /* NomadLifeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeView.xib; sourceTree = "<group>"; };
 		1949DD0B204FD5220062D8EF /* NomadLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeView.swift; sourceTree = "<group>"; };
+		194CECDA206FA77C0001BF11 /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		195CFFAE2041AF140062A26C /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCardView.swift; sourceTree = "<group>"; };
 		196BABB52063BB7900422D2B /* NomadLifeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeCardView.xib; sourceTree = "<group>"; };
@@ -465,13 +467,14 @@
 		19F2CDF4204141B000CB113B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				194CECDA206FA77C0001BF11 /* Today.swift */,
 				199A930E2058E595007509A1 /* UserInfo.swift */,
 				199A93122058E5A6007509A1 /* EmailInfo.swift */,
 				199A93102058E59E007509A1 /* UserLocationInfo.swift */,
+				19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */,
 				199A930C2058E58B007509A1 /* ProjectInfo.swift */,
 				199A93142058E5AF007509A1 /* GoalListInfo.swift */,
 				199A93162058E5B8007509A1 /* WishListInfo.swift */,
-				19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 			files = (
 				198D92CF206147B9001325DD /* EnrollmentViewController.swift in Sources */,
 				193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */,
+				194CECDB206FA77C0001BF11 /* Today.swift in Sources */,
 				196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */,
 				196BABB92063BC1E00422D2B /* NomadLifeCardCell.swift in Sources */,
 				196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */,

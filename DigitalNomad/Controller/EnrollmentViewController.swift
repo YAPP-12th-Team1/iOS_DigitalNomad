@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Firebase
 import AKPickerView_Swift
+import Toaster
 
 class EnrollmentViewController: UIViewController {
     var str: String = ""
     let titles = ["1일", "2일", "3일", "Aichi", "Saitama", "Chiba", "Hyogo", "Hokkaido", "Fukuoka", "Shizuoka"]
+    var selectedDay: Int = 7
+    var place: String = ""
     
     @IBOutlet var tableView: UITableView!
     
@@ -34,15 +38,26 @@ class EnrollmentViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        pickerView.selectItem(6)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     @IBAction func clickConfirm(_ sender: UIButton) {
         //User 최초 생성, Project 최초 생성
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let next = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-        present(next, animated: true)
+        if(place.isEmpty){
+            Toast(text: "유목지를 입력해 주세요.", duration: Delay.short).show()
+            return
+        } else {
+            addUser(place)
+            addProject(selectedDay)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let next = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            present(next, animated: true)
+        }
     }
     
     @objc func clickYesButton(){
@@ -58,6 +73,7 @@ extension EnrollmentViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "enrollmentCell") as! EnrollmentCell
         switch(indexPath.row){
         case 0:
+            cell.textField.delegate = self
             if str == "" {
                 cell.textField.placeholder = "유목지"
             } else {
@@ -114,11 +130,14 @@ extension EnrollmentViewController: UITableViewDelegate{
     }
 }
 
+extension EnrollmentViewController: UITextFieldDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        place = textField.text!
+    }
+}
+
 extension EnrollmentViewController: AKPickerViewDataSource{
-    
-    
     func numberOfItemsInPickerView(_ pickerView: AKPickerView) -> Int {
-        //7~35
         return 30
     }
     func pickerView(_ pickerView: AKPickerView, titleForItem item: Int) -> String {
@@ -127,6 +146,6 @@ extension EnrollmentViewController: AKPickerViewDataSource{
 }
 extension EnrollmentViewController: AKPickerViewDelegate{
     func pickerView(_ pickerView: AKPickerView, didSelectItem item: Int) {
-        
+        selectedDay = item + 1
     }
 }

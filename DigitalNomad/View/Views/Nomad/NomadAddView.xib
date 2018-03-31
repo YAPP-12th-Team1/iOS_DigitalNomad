@@ -118,7 +118,7 @@
                 <outlet property="textField" destination="8Xu-uG-E5b" id="nd8-ai-at4"/>
                 <outlet property="yesterday" destination="Kz8-ag-M1R" id="euu-Xz-itV"/>
             </connections>
-            <point key="canvasLocation" x="2.5" y="49.5"/>
+            <point key="canvasLocation" x="2.5" y="51.5"/>
         </view>
     </objects>
 </document>

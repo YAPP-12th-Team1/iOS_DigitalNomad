@@ -12,7 +12,6 @@ import Firebase
 import GoogleSignIn
 
 class UserInfo: Object{
-    @objc dynamic var id: Int = 0                                                           //Primary Key
     @objc dynamic var email: String = Auth.auth().currentUser?.email ?? "NoEmail"
     @objc dynamic var nickname: String = Auth.auth().currentUser?.displayName ?? "Noname"   //Not Null
     @objc dynamic var image: Data = UIImagePNGRepresentation(#imageLiteral(resourceName: "profile.png"))!
@@ -21,27 +20,18 @@ class UserInfo: Object{
     @objc dynamic var job: String = ""
     @objc dynamic var introducing: String?
     @objc dynamic var purpose: String?
-
-    func incrementID() -> Int {
-        let realm = try! Realm()
-        return (realm.objects(UserInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
-    }
 }
 
-func addUser(_ address: String?, _ job: String){
+func addUser(_ address: String){
     let realm = try! Realm()
     let object = UserInfo()
-    let id = object.incrementID()
-    object.id = id
     object.address = address
-    object.job = job
 
     // firebase
     Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).setValue([
-        "id": id,
         "email": Auth.auth().currentUser?.email,
         "nickname": Auth.auth().currentUser?.displayName,
-        "address": object.address,
+        "address": address,
         "cowork": false,
         "job": object.job
     ])
