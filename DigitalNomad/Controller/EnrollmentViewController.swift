@@ -16,6 +16,7 @@ class EnrollmentViewController: UIViewController {
     let titles = ["1일", "2일", "3일", "Aichi", "Saitama", "Chiba", "Hyogo", "Hokkaido", "Fukuoka", "Shizuoka"]
     var selectedDay: Int = 7
     var place: String = ""
+    var purpose: String = ""
     
     @IBOutlet var tableView: UITableView!
     
@@ -48,11 +49,11 @@ class EnrollmentViewController: UIViewController {
     }
     @IBAction func clickConfirm(_ sender: UIButton) {
         //User 최초 생성, Project 최초 생성
-        if(place.isEmpty){
-            Toast(text: "유목지를 입력해 주세요.", duration: Delay.short).show()
+        if(place.isEmpty || purpose.isEmpty){
+            Toast(text: "입력해주세요.", duration: Delay.short).show()
             return
         } else {
-            addUser(place)
+            addUser(place, selectedDay, purpose)
             addProject(selectedDay)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let next = storyboard.instantiateViewController(withIdentifier: "TabBarController")
@@ -74,6 +75,7 @@ extension EnrollmentViewController: UITableViewDataSource{
         switch(indexPath.row){
         case 0:
             cell.textField.delegate = self
+            cell.textField.tag = 0
             if str == "" {
                 cell.textField.placeholder = "유목지"
             } else {
@@ -83,7 +85,10 @@ extension EnrollmentViewController: UITableViewDataSource{
             cell.addSubview(self.pickerView)
             cell.textField.isHidden = true
         case 2:
+            cell.textField.delegate = self
+            cell.textField.tag = 1
             cell.textField.placeholder = "유목 목적"
+            
         case 3:
             cell.textField.isUserInteractionEnabled = false
             cell.textField.text = "주변 유목민과의 연결을 원하시나요?"
@@ -132,7 +137,11 @@ extension EnrollmentViewController: UITableViewDelegate{
 
 extension EnrollmentViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
-        place = textField.text!
+        if(textField.tag == 0){
+            place = textField.text!
+        } else {
+            purpose = textField.text!
+        }
     }
 }
 

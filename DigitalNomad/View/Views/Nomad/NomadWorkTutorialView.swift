@@ -22,6 +22,10 @@ class NomadWorkTutorialView: UIView {
     
     @objc func clickView(){
         UserDefaults.standard.set(true, forKey: "isFirstNomadWorkExecute")
-        self.removeFromSuperview()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.alpha = 0
+        }) { _ in
+            self.removeFromSuperview()
+        }
     }
 }

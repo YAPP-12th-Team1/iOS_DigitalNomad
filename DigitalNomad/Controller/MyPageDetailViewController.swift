@@ -23,6 +23,11 @@ class MyPageDetailViewController: UIViewController {
     var realm: Realm!
     var userInfo: UserInfo!
     var userLocationInfo: UserLocationInfo?
+    var job = ""
+    var introducing = ""
+    var purpose = ""
+    var emailTitle = ""
+    var emailMessage = ""
     
     let locationManager = CLLocationManager()
     var myLat : Double = 0.0
@@ -82,48 +87,56 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @IBAction func clickConfirm(_ sender: UIButton) {
-
         if(tableView.numberOfSections == 4){
-            let introducingCell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! MyPageDetailInfoCell
-            let purposeCell = tableView.cellForRow(at: IndexPath(row: 2, section: 2)) as! MyPageDetailInfoCell
-            let mailCell = tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! MyPageDetailMailCell
-            
-            let introducing = introducingCell.textField.text
-            let purpose = purposeCell.textField.text
-            
+            try! realm.write{
+                userInfo.cowork = coworkingAllowingSwitch.isOn
+            }
+            if(!job.isEmpty){
+                try! realm.write{
+                    userInfo.job = job
+                }
+            }
+            if(!introducing.isEmpty){
+                try! realm.write{
+                    userInfo.introducing = introducing
+                }
+            }
+            if(!purpose.isEmpty){
+                try! realm.write{
+                    userInfo.purpose = purpose
+                }
+            }
             if let emailInfo = realm.objects(EmailInfo.self).first {
-                if let title = mailCell.title.text{
-                    try! realm.write {
-                        emailInfo.title = title
+                if(!emailTitle.isEmpty){
+                    try! realm.write{
+                        emailInfo.title = emailTitle
                     }
                 }
-                if let message = mailCell.message.text{
+                if(!emailMessage.isEmpty){
                     try! realm.write{
-                        emailInfo.context = message
+                        emailInfo.context = emailMessage
                     }
                 }
             } else {
-                addEmail(mailCell.title.text ?? "", mailCell.message.text ?? "")
+                addEmail(emailTitle, emailMessage)
             }
             
-            try! realm.write{
-                userInfo.cowork = true
-                userInfo.introducing = introducing
-                userInfo.purpose = purpose
-            }
+            let emailInfo = realm.objects(EmailInfo.self).first!
             
             /** firebase emailInfo Update **/
             Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("emailInfo").setValue([
-                "title": mailCell.title.text,
-                "context": mailCell.message.text
+                "title": emailInfo.title,
+                "context": emailInfo.context
             ])
             
             /** firebase User Update **/
             Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
-                "introducing" : introducing,
-                "purpose" : purpose,
-                "cowrk": true
+                "job" : userInfo.job,
+                "introducing" : userInfo.introducing,
+                "purpose" : userInfo.purpose,
+                "cowork": userInfo.cowork
             ])
+            print(job, introducing, purpose, emailTitle, emailMessage)
 
         }
         Toast(text: "저장했습니다.", duration: Delay.short).show()
@@ -148,7 +161,7 @@ class MyPageDetailViewController: UIViewController {
     @objc func clickRefresh(){
         //위치 정보 새로고침
         //위치 정보 UserLocationInfo에 업데이트
-        //좌표 값에 따라서 위치 나오면 UserInfo에 업데이트
+        //좌표 값에 따라서 위치 String 나오면 UserInfo에 업데이트
         //tableView.reloadData()
         
         
@@ -218,12 +231,10 @@ extension MyPageDetailViewController: UITableViewDataSource{
                 cell.title.text = "사용자 이름"
                 cell.textField.isUserInteractionEnabled = false
                 cell.textField.text = userInfo.nickname
-                //cell.textField.text = "유목민"
             case 1:
                 cell.title.text = "이메일"
                 cell.textField.isUserInteractionEnabled = false
                 cell.textField.text = userInfo.email
-                //cell.textField.text = "umokmin@gmail.com"
             case 2:
                 cell.title.text = "유목 장소"
                 cell.textField.isUserInteractionEnabled = false
@@ -234,7 +245,6 @@ extension MyPageDetailViewController: UITableViewDataSource{
                         return "No Info"
                     }
                 }()
-                //cell.textField.text = "서울특별시 광진구"
                 buttonRefresh.frame = CGRect(x: tableView.frame.width - 60, y: cell.frame.height / 2 - 10, width: 40 , height: 20)
                 cell.addSubview(buttonRefresh)
             default:
@@ -245,11 +255,13 @@ extension MyPageDetailViewController: UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "myPageDetailInfoCell") as! MyPageDetailInfoCell
             switch(indexPath.row){
             case 0:
+                cell.textField.delegate = self
                 cell.title.text = "직업"
-                cell.textField.isUserInteractionEnabled = false
+                cell.textField.placeholder = "직업"
                 cell.textField.text = userInfo.job
-                //cell.textField.text = "개발자"
+                cell.textField.tag = 0
             case 1:
+                cell.textField.delegate = self
                 cell.title.text = "소개말"
                 cell.textField.isUserInteractionEnabled = true
                 cell.textField.placeholder = "소개말"
@@ -260,7 +272,9 @@ extension MyPageDetailViewController: UITableViewDataSource{
                         return nil
                     }
                 }()
+                cell.textField.tag = 1
             case 2:
+                cell.textField.delegate = self
                 cell.title.text = "밋업 목적"
                 cell.textField.isUserInteractionEnabled = true
                 cell.textField.placeholder = "밋업 목적"
@@ -271,13 +285,18 @@ extension MyPageDetailViewController: UITableViewDataSource{
                         return nil
                     }
                 }()
+                cell.textField.tag = 2
             default:
                 break
             }
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "myPageDetailMailCell") as! MyPageDetailMailCell
+            cell.title.delegate = self
+            cell.message.delegate = self
             cell.view.frame.size.width = tableView.frame.size.width
+            cell.title.tag = 3
+            cell.message.tag = 4
             return cell
         default:
             return UITableViewCell()
@@ -346,6 +365,31 @@ extension MyPageDetailViewController: UITableViewDataSource{
         }
     }
 }
+
+extension MyPageDetailViewController: UITextFieldDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch(textField.tag){
+        case 0:
+            print(textField.text!)
+            job = textField.text!
+        case 1:
+            print(textField.text!)
+            introducing = textField.text!
+        case 2:
+            print(textField.text!)
+            purpose = textField.text!
+        case 3:
+            print(textField.text!)
+            emailTitle = textField.text!
+        case 4:
+            print(textField.text!)
+            emailMessage = textField.text!
+        default:
+            break
+        }
+    }
+}
+
 extension MyPageDetailViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

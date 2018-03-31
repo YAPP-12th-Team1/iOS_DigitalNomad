@@ -18,6 +18,10 @@ class NomadFinalView: UIView {
         return UINib(nibName: "NomadFinalView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
     }
     @IBAction func clickDismiss(_ sender: UIButton) {
-        self.removeFromSuperview()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.alpha = 0
+        }) { _ in
+            self.removeFromSuperview()
+        }    
     }
 }
