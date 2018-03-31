@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+import Firebase
 
 class PopupMeetupView: UIView {
 
@@ -32,7 +34,25 @@ class PopupMeetupView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("Hi", name)
+  
+        let realm: Realm!
+        realm = try! Realm()
+        var userInfo: UserInfo!
+        var emailInfo: EmailInfo!
+        userInfo = realm.objects(UserInfo.self).first!
+        emailInfo = realm.objects(EmailInfo.self).first!
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("users/\(name)").observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let nickname = value?["nickname"] as? String ?? ""
+            
+            self.sender.text = userInfo.nickname
+            self.receiver.text = nickname
+            self.title.text = emailInfo.title
+            self.message.text = emailInfo.context
+        })
     }
     
     class func instanceFromXib() -> UIView {
@@ -53,4 +73,6 @@ class PopupMeetupView: UIView {
             self.removeFromSuperview()
         }
     }
+
+
 }
