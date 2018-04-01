@@ -45,6 +45,8 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.radioButton.removeFromSuperview()
+        self.radioButton2.removeFromSuperview()
         btnMore.layer.cornerRadius = 5
         btnMore.setTitleColor(.white, for: .normal)
         btnMore.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
