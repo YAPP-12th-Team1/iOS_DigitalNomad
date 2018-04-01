@@ -33,6 +33,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func clickLogin(_ sender: UIButton) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
 }
 

@@ -37,6 +37,9 @@
                                         <state key="normal" title="구글 계정으로 로그인" backgroundImage="Start_YesBackground">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clickLogin:" destination="DvR-rS-t7f" eventType="touchUpInside" id="BNf-EO-Rbx"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Google_White" translatesAutoresizingMaskIntoConstraints="NO" id="QI0-Sx-nYc">
                                         <rect key="frame" x="22" y="17" width="22" height="14"/>
