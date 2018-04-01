@@ -40,7 +40,7 @@ class MapViewController: UIViewController {
     var mapView: MTMapView!
     
     var flag : Int = 0 // 0,3 : 더 보기(거리순), 1,4 : 더 보기(최신순) ,2 : 지도 보기
-    
+    var isFirst : Bool = true
     var isFirstExecuted: Bool = false
     
     override func viewDidLoad() {
@@ -403,21 +403,24 @@ extension MapViewController: CLLocationManagerDelegate{
         myLong = locations[locations.count-1].coordinate.longitude
         print(myLat)
         
-        let item = MTMapPOIItem()
-        item.tag = -1
-        item.itemName = "현 위치"
-        item.markerType = .bluePin
-        item.markerSelectedType = .bluePin
-        item.mapPoint = MTMapPoint(geoCoord: .init(latitude: myLat, longitude: myLong))
-        item.showAnimationType = .noAnimation
-        item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
-        self.mapView?.remove(self.mapView.findPOIItem(byTag: -1))
-        self.mapView?.add(item)
-        
-        let mapPoint = MTMapPoint.init(geoCoord: MTMapPointGeo.init(latitude: myLat, longitude: myLong))
-        
-        self.mapView?.setMapCenter(mapPoint, animated: true)
-        self.mapView?.setZoomLevel(3, animated: true)
+        if isFirst {
+            isFirst = false
+            let item = MTMapPOIItem()
+            item.tag = -1
+            item.itemName = "현 위치"
+            item.markerType = .bluePin
+            item.markerSelectedType = .bluePin
+            item.mapPoint = MTMapPoint(geoCoord: .init(latitude: myLat, longitude: myLong))
+            item.showAnimationType = .noAnimation
+            item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
+            self.mapView?.remove(self.mapView.findPOIItem(byTag: -1))
+            self.mapView?.add(item)
+            
+            let mapPoint = MTMapPoint.init(geoCoord: MTMapPointGeo.init(latitude: myLat, longitude: myLong))
+            
+            self.mapView?.setMapCenter(mapPoint, animated: true)
+            self.mapView?.setZoomLevel(3, animated: true)
+        }
         
         //distance 배열을 갱신하자.
         let obj = self.realm.objects(MapLocationInfo.self)
