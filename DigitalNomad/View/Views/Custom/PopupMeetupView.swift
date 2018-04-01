@@ -72,6 +72,7 @@ class PopupMeetupView: UIView,  MFMailComposeViewControllerDelegate {
         } else {
             self.showSendMailErrorAlert()
         }
+        self.removeFromSuperview()
     }
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
