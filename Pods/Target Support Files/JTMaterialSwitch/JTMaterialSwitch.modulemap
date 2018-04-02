@@ -1,6 +1,0 @@
-framework module JTMaterialSwitch {
-  umbrella header "JTMaterialSwitch-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -25,7 +25,9 @@ class StartViewController: UIViewController {
         popup.frame = self.view.frame
         self.view.addSubview(popup)
         popup.view.alpha = 0
+        popup.alpha = 0
         UIView.animate(withDuration: 0.3) {
+            popup.alpha = 1
             popup.view.alpha = 1
         }
     }
