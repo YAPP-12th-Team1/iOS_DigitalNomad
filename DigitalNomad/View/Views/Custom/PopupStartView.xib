@@ -45,7 +45,8 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mry-Ea-d30">
-                            <rect key="frame" x="50" y="141" width="52" height="17"/>
+                            <rect key="frame" x="50" y="141" width="49" height="17"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="14"/>
                             <state key="normal" title="건너뛰기">
                                 <color key="titleColor" red="0.039215686270000001" green="0.32549019610000002" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -54,7 +55,8 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2Y-2q-7gH">
-                            <rect key="frame" x="193" y="141" width="52" height="17"/>
+                            <rect key="frame" x="196" y="141" width="49" height="17"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="14"/>
                             <state key="normal" title="추천받기">
                                 <color key="titleColor" red="0.039215686274509803" green="0.32549019607843138" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                             </state>

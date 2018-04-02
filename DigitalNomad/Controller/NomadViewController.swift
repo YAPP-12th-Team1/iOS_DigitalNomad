@@ -138,7 +138,6 @@ class NomadViewController: UIViewController {
             self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.7607843137, green: 0.7333333333, blue: 0.8235294118, alpha: 1)
             addView.applyGradient([#colorLiteral(red: 0.9843137255, green: 0.9568627451, blue: 0.9529411765, alpha: 1), #colorLiteral(red: 0.7882352941, green: 0.7647058824, blue: 0.8431372549, alpha: 1)])
             addView.yesterday.text = yesterday
-            addView.textField.placeholder = "하고 싶은 카드를 추가해보세요"
             
             //처음 뷰가 보여질 때 튜토리얼을 띄움, 관련 초기화 코드는 AppDelegate에.
             if(!UserDefaults.standard.bool(forKey: "isFirstNomadLifeExecute")){
@@ -155,6 +154,7 @@ class NomadViewController: UIViewController {
             }, completion: { _ in
                 self.centerView.subviews.last?.isUserInteractionEnabled = true
                 addView.buttonCard.isHidden = false
+                addView.textField.placeholder = "하고 싶은 카드를 추가해보세요"
             })
             underView.addSubview(addView)
             centerView.frame.size.height = underView.frame.origin.y - centerView.frame.origin.y

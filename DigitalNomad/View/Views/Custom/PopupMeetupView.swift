@@ -11,7 +11,7 @@ import RealmSwift
 import Firebase
 import MessageUI
 
-class PopupMeetupView: UIView,  MFMailComposeViewControllerDelegate {
+class PopupMeetupView: UIView {
     
     @IBOutlet var view: UIView!
     @IBOutlet var button: UIButton!
@@ -72,7 +72,6 @@ class PopupMeetupView: UIView,  MFMailComposeViewControllerDelegate {
         } else {
             self.showSendMailErrorAlert()
         }
-        self.removeFromSuperview()
     }
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
@@ -97,12 +96,6 @@ class PopupMeetupView: UIView,  MFMailComposeViewControllerDelegate {
         sendMailErrorAlert.show()
     }
     
-    // MARK: MFMailComposeViewControllerDelegate Method
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    
     @IBAction func clickCancel(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3, animations: {
             self.alpha = 0
@@ -110,7 +103,12 @@ class PopupMeetupView: UIView,  MFMailComposeViewControllerDelegate {
             self.removeFromSuperview()
         }
     }
-    
-    
+}
+
+extension PopupMeetupView: MFMailComposeViewControllerDelegate{
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+        self.removeFromSuperview()
+    }
 }
 
