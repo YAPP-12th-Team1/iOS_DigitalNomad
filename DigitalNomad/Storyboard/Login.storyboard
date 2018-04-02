@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeo.ttc">
+            <string>AppleSDGothicNeo-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="ivt-iI-RWJ">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DvR-rS-t7f" customClass="LoginViewController" customModule="DigitalNomad" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HqH-Rl-4ve">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_Background" translatesAutoresizingMaskIntoConstraints="NO" id="4M2-AK-5aV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3B-Ji-Dlj">
+                                <rect key="frame" x="40" y="498" width="295" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfl-rd-3ku">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="48"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="12"/>
+                                        <state key="normal" title="구글 계정으로 로그인" backgroundImage="Start_YesBackground">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clickLogin:" destination="DvR-rS-t7f" eventType="touchUpInside" id="BNf-EO-Rbx"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Google_White" translatesAutoresizingMaskIntoConstraints="NO" id="QI0-Sx-nYc">
+                                        <rect key="frame" x="22" y="17" width="22" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="TPz-82-lgF"/>
+                                            <constraint firstAttribute="width" constant="22" id="YUG-aF-aVj"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="QI0-Sx-nYc" firstAttribute="centerY" secondItem="hfl-rd-3ku" secondAttribute="centerY" id="4BG-kE-dZm"/>
+                                    <constraint firstAttribute="trailing" secondItem="hfl-rd-3ku" secondAttribute="trailing" id="4Cc-wU-SUL"/>
+                                    <constraint firstItem="QI0-Sx-nYc" firstAttribute="leading" secondItem="n3B-Ji-Dlj" secondAttribute="leading" constant="22" id="7lg-fD-3kk"/>
+                                    <constraint firstAttribute="bottom" secondItem="hfl-rd-3ku" secondAttribute="bottom" id="BDE-HH-SYM"/>
+                                    <constraint firstItem="hfl-rd-3ku" firstAttribute="top" secondItem="n3B-Ji-Dlj" secondAttribute="top" id="cIY-zb-uT3"/>
+                                    <constraint firstItem="hfl-rd-3ku" firstAttribute="leading" secondItem="n3B-Ji-Dlj" secondAttribute="leading" id="feV-Bt-z3c"/>
+                                    <constraint firstAttribute="width" secondItem="n3B-Ji-Dlj" secondAttribute="height" multiplier="295:48" id="iXx-28-wbZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="centerY" secondItem="HqH-Rl-4ve" secondAttribute="centerY" id="JIJ-1y-2NU"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="centerX" secondItem="HqH-Rl-4ve" secondAttribute="centerX" id="MHW-xY-bD4"/>
+                            <constraint firstItem="n3B-Ji-Dlj" firstAttribute="centerX" secondItem="HqH-Rl-4ve" secondAttribute="centerX" id="MpS-e6-LZ5"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="top" secondItem="HqH-Rl-4ve" secondAttribute="top" id="TGE-cV-NIp"/>
+                            <constraint firstItem="n3B-Ji-Dlj" firstAttribute="leading" secondItem="ISf-SK-QiZ" secondAttribute="leading" constant="40" id="U7t-91-3PL"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="leading" secondItem="ISf-SK-QiZ" secondAttribute="leading" id="XjM-xp-rrc"/>
+                            <constraint firstItem="ISf-SK-QiZ" firstAttribute="trailing" secondItem="n3B-Ji-Dlj" secondAttribute="trailing" constant="40" id="Xn2-ea-iER"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="trailing" secondItem="ISf-SK-QiZ" secondAttribute="trailing" id="crk-Oh-aOX"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="top" secondItem="HqH-Rl-4ve" secondAttribute="top" id="kbb-AU-UcH"/>
+                            <constraint firstItem="4M2-AK-5aV" firstAttribute="bottom" secondItem="ISf-SK-QiZ" secondAttribute="bottom" id="lai-0m-LlE"/>
+                            <constraint firstItem="n3B-Ji-Dlj" firstAttribute="top" secondItem="HqH-Rl-4ve" secondAttribute="bottom" multiplier="0.746626" symbolic="YES" id="scd-nu-aZx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ISf-SK-QiZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lnT-Tz-yq2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="122.78860569715144"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Google_White" width="22" height="14"/>
+        <image name="Login_Background" width="375" height="667"/>
+        <image name="Start_YesBackground" width="241" height="48"/>
+    </resources>
+</document>
