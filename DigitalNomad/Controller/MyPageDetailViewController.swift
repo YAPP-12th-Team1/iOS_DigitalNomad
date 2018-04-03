@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import Firebase
+import FirebaseStorage
 import GoogleSignIn
 import JTMaterialSwitch
 import Toaster
@@ -28,7 +29,7 @@ class MyPageDetailViewController: UIViewController {
     var purpose = ""
     var emailTitle = ""
     var emailMessage = ""
-    
+
     let locationManager = CLLocationManager()
     var myLat : Double = 0.0
     var myLong : Double = 0.0

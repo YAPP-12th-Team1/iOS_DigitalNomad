@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import FirebaseStorage
+import Firebase
 
 class MyPageDetailImageCell: UITableViewCell, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -49,6 +51,19 @@ class MyPageDetailImageCell: UITableViewCell, UINavigationControllerDelegate, UI
             try! realm.write{
                 userInfo.image = UIImagePNGRepresentation(pickedImage)!
             }
+
+            let imageName = "\(Int(NSDate.timeIntervalSinceReferenceDate*1000)).jpg"
+            let riversRef = Storage.storage().reference().child("user_images").child(Auth.auth().currentUser!.uid).child(imageName)
+
+            riversRef.putData(userInfo.image, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+                // Metadata contains file metadata such as size, content-type, and download URL.
+                let downloadURL = metadata.downloadURL
+            }
+            
         }
         self.parentViewController()?.dismiss(animated: true, completion: nil)
     }
