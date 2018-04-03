@@ -154,6 +154,7 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</dict>
 		<dict>
 			<key>FooterText</key>
+<<<<<<< HEAD
 			<string>The MIT License (MIT)
 
 Copyright (c) 2014 kevin-hirsch
@@ -184,6 +185,8 @@ SOFTWARE.</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
+=======
+>>>>>>> a3326c0980e07076cdfebae14586d98769ed8b75
 			<string>Copyright 2018 Google</string>
 			<key>License</key>
 			<string>Copyright</string>
