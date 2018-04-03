@@ -20,6 +20,7 @@ class DummyData{
             realm.delete(realm.objects(GoalListInfo.self))
             realm.delete(realm.objects(WishListInfo.self))
         }
+        //
         //아래에 create 함수들을 넣으세요
 //        addUser("서울특별시 노원구", "개발자")
 //        addProject("서울특별시 노원구", 5)
