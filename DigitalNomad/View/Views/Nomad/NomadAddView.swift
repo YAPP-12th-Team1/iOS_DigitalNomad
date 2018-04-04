@@ -90,26 +90,6 @@ class NomadAddView: UIView {
         parentViewController.viewWillAppear(true)
     }
     
-    @objc func setContentSummary() {
-        realm = try! Realm()
-        let yesterday = yesterdayDate()
-    
-        if(self.parentViewController is NomadWorkView){
-            
-            print("WorkCardView")
-            //workList
-            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + yesterday + "'")
-            let text = yesterdayWork[0].todo + " 및 " + String(yesterdayWork.count) + "개"
-            contentSummary.setTitle(text, for: .normal);
-        } else {
-            print("LifeCardView")
-            //wishList
-            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + yesterday + "'")
-            let text = yesterdayWork[0].todo + " 및 " + String(yesterdayWork.count) + "개"
-            contentSummary.setTitle(text, for: .normal);
-        }
-
-    }
     @IBAction func clickContentSummary(_ sender: UIButton) {
         //어제자 일들을 보여주자
         
@@ -138,4 +118,20 @@ class NomadAddView: UIView {
         textField.text! += "_"
     }
    
+    @objc func setContentSummary() {
+        realm = try! Realm()
+        let yesterday = yesterdayDate()
+        if(self.parentViewController is NomadWorkView){
+            print("WorkCardView")
+            //workList
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + yesterday + "'")
+        } else {
+            print("LifeCardView")
+            //wishList
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + yesterday + "'")
+        }
+        let text = yesterdayWork[0].todo + " 및 " + String(yesterdayWork.count) + "개"
+        contentSummary.setTitle(text, for: .normal);
+    }
+    
 }
