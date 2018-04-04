@@ -226,11 +226,7 @@ extension NomadViewController: UISearchBarDelegate{
             let workView = centerView.subviews.last as! NomadWorkView
             if(!searchText.isEmpty){
                 let temps = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + todayDate() + "'").filter("todo CONTAINS[c] '" + searchText + "'")
-                let result = List<GoalListInfo>()
-                for temp in temps{
-                    result.append(temp)
-                }
-                workView.object = result.filter("date = '" + todayDate() + "'")
+                workView.object = temps
             } else {
                 workView.object = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + todayDate() + "'")
             }
@@ -239,13 +235,9 @@ extension NomadViewController: UISearchBarDelegate{
             let lifeView = centerView.subviews.last as! NomadLifeView
             if(!searchText.isEmpty){
                 let temps = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + todayDate() + "'").filter("todo CONTAINS[c] '" + searchText + "'")
-                let result = List<WishListInfo>()
-                for temp in temps{
-                    result.append(temp)
-                }
-                lifeView.object = result
+                lifeView.object = temps
             } else {
-                lifeView.object = realm.objects(ProjectInfo.self).last!.wishLists
+                lifeView.object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + todayDate() + "'")
             }
             lifeView.collectionView.reloadData()
         }

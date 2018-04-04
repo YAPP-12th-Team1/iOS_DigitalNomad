@@ -14,12 +14,12 @@ class NomadLifeView: UIView {
 
     @IBOutlet var collectionView: UICollectionView!
     var realm: Realm!
-    var object: List<WishListInfo>!
+    var object: Results<WishListInfo>!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         realm = try! Realm()
-        object = realm.objects(ProjectInfo.self).last!.wishLists
+        object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + todayDate() + "'")
         collectionView.register(UINib(nibName: "NomadLifeCell", bundle: nil), forCellWithReuseIdentifier: "nomadLifeCell")
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
