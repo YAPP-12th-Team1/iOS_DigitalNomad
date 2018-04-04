@@ -31,9 +31,11 @@ class MyPageMeetupView: UIView {
         ToastView.appearance().bottomOffsetPortrait = 49 + 20
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 2
-        imageView.layer.masksToBounds = false
-        imageView.layer.cornerRadius = imageView.frame.height / 2
+//        imageView.layer.masksToBounds = false
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
         imageView.clipsToBounds = true
+
+        
         buttonMeetup.layer.cornerRadius = 5
         self.usersList()
     }
@@ -96,7 +98,7 @@ class MyPageMeetupView: UIView {
         userInfo = realm.objects(UserInfo.self).first!
 
         let users = list
-        print("setUserData(): ", users)
+//        print("setUserData(): ", users)
         
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -108,10 +110,14 @@ class MyPageMeetupView: UIView {
             let day = value?["day"] as? Int ?? 0
             let address = value?["address"] as? String ?? ""
             let introducing = value?["introducing"] as? String ?? ""
-            let profileImage = value?["profileImage"] as? String
-            let imageRef = URL(string: profileImage!)
             
-            self.imageView.sd_setImage(with: imageRef, placeholderImage: UIImage())
+            if let profileImage = value?["profileImage"] as? String {
+                let imageRef = URL(string: profileImage)
+                self.imageView.sd_setImage(with: imageRef, placeholderImage: UIImage())
+            } else {
+                self.imageView.image = UIImage(named: "Usersample.png")
+            }
+            
             self.name.text = nickname
             self.occupation.text = job
             self.days.text = "유목 생활 " + String(day) + "일째"

@@ -83,6 +83,7 @@
 		19F2CDE82041419C00CB113B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE62041419C00CB113B /* Main.storyboard */; };
 		19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE92041419C00CB113B /* Assets.xcassets */; };
 		19F2CDED2041419C00CB113B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDEB2041419C00CB113B /* LaunchScreen.storyboard */; };
+		4A2202202074BFBD000643F0 /* Usersample.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A22021F2074BFBD000643F0 /* Usersample.png */; };
 		4A8AC3322070221E002F6B32 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC3312070221E002F6B32 /* testImage.png */; };
 		6B3FDE5D206FECFA0081332B /* coworking(3)_111115.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */; };
 		6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */; };
@@ -245,6 +246,7 @@
 		19F2CDE92041419C00CB113B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19F2CDEC2041419C00CB113B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19F2CDEE2041419C00CB113B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A22021F2074BFBD000643F0 /* Usersample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Usersample.png; sourceTree = "<group>"; };
 		4A8AC3312070221E002F6B32 /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
 		6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coworking(3)_111115.jpg"; sourceTree = "<group>"; };
 		6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nature(4)_111511.jpg"; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				4A8AC3312070221E002F6B32 /* testImage.png */,
 				6B5877A82064BBEA0001FAB5 /* researchData */,
 				19C899CA205A007B0044D8A0 /* profile.png */,
+				4A22021F2074BFBD000643F0 /* Usersample.png */,
 				191DFED1204EAFBF0095E9C1 /* humanSample.png */,
 				19A94FC5204EBECD003A1D23 /* humanSample2.png */,
 				6B634A43204EF79F00A59EEF /* cafe.png */,
@@ -763,6 +766,7 @@
 				6B3FDE64206FECFA0081332B /* coworking(2)_111111.jpg in Resources */,
 				191DFEC3204EA9520095E9C1 /* Nomad.storyboard in Resources */,
 				6BA8A9C52070313500DD7B3B /* busan.jpg in Resources */,
+				4A2202202074BFBD000643F0 /* Usersample.png in Resources */,
 				6B54121B2041900600DDB2D5 /* map_present_background_update.png in Resources */,
 				196C77B8205425F200A45E89 /* NomadFinalView.xib in Resources */,
 				6B3FDE62206FECFA0081332B /* leports(2)_115111.jpg in Resources */,
