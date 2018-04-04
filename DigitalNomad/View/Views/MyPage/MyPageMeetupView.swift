@@ -10,6 +10,8 @@ import UIKit
 import Toaster
 import RealmSwift
 import Firebase
+import FirebaseStorage
+import SDWebImage
 
 class MyPageMeetupView: UIView {
     
@@ -106,7 +108,10 @@ class MyPageMeetupView: UIView {
             let day = value?["day"] as? Int ?? 0
             let address = value?["address"] as? String ?? ""
             let introducing = value?["introducing"] as? String ?? ""
-
+            let profileImage = value?["profileImage"] as? String
+            let imageRef = URL(string: profileImage!)
+            
+            self.imageView.sd_setImage(with: imageRef, placeholderImage: UIImage())
             self.name.text = nickname
             self.occupation.text = job
             self.days.text = "유목 생활 " + String(day) + "일째"
@@ -119,5 +124,7 @@ class MyPageMeetupView: UIView {
             }
         })
     }
+
+    
 }
 

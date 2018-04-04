@@ -51,19 +51,23 @@ class MyPageDetailImageCell: UITableViewCell, UINavigationControllerDelegate, UI
             try! realm.write{
                 userInfo.image = UIImagePNGRepresentation(pickedImage)!
             }
-
-            let imageName = "\(Int(NSDate.timeIntervalSinceReferenceDate*1000)).jpg"
-            let riversRef = Storage.storage().reference().child("user_images").child(Auth.auth().currentUser!.uid).child(imageName)
-
-            riversRef.putData(userInfo.image, metadata: nil) { (metadata, error) in
-                guard let metadata = metadata else {
-                    // Uh-oh, an error occurred!
-                    return
-                }
-                // Metadata contains file metadata such as size, content-type, and download URL.
-                let downloadURL = metadata.downloadURL
-            }
             
+            /******** FireBase Storage **********/
+            let imageName = (Auth.auth().currentUser?.uid)! + "\(Int(NSDate.timeIntervalSinceReferenceDate*1000)).jpg"
+            let imageRef = Storage.storage().reference().child(imageName)
+            
+            imageRef.putData(userInfo.image, metadata: nil, completion:{ metadata, error in
+                if let error = error {
+                } else {
+                    if let downloadURL = metadata!.downloadURL(){
+                        /******** FireBase Database **********/
+                        Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
+                                "profileImage" : String(describing: downloadURL)
+                        ])
+                    }
+                }
+            })
+
         }
         self.parentViewController()?.dismiss(animated: true, completion: nil)
     }
