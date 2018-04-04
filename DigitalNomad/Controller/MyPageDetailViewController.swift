@@ -165,8 +165,6 @@ class MyPageDetailViewController: UIViewController {
         //좌표 값에 따라서 위치 String 나오면 UserInfo에 업데이트
         //tableView.reloadData()
         
-        
-        
         let baseUrl: String = "https://dapi.kakao.com/v2/local/geo/coord2address.json?"
         Alamofire.request(baseUrl+"x=\(myLong)&y=\(myLat)", method: .get ,headers: ["Authorization": "KakaoAK 8add144f51d5e214bb8d9008445c817d"]).responseJSON {
             response in
@@ -200,6 +198,7 @@ class MyPageDetailViewController: UIViewController {
             Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
                 "address" : str
             ])
+            
         }
         
     }

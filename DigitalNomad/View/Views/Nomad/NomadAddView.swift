@@ -91,6 +91,9 @@ class NomadAddView: UIView {
     
     @IBAction func clickContentSummary(_ sender: UIButton) {
         //어제자 일들을 보여주자
+//        realm = try! Realm()
+//        let yesterdayWork = realm.objects(GoalListInfo.self).filter()
+        
     }
     
     @IBAction func clickCalendar(_ sender: UIButton) {
