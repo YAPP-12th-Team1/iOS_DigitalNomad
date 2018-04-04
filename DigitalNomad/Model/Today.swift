@@ -16,3 +16,12 @@ func todayDate() -> String{
     let today = dateFormatter.string(from: date)
     return today
 }
+
+func yesterdayDate() -> String {
+    let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "ko_KR")
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    let yesterday = dateFormatter.string(from: date!)
+    return yesterday
+}
