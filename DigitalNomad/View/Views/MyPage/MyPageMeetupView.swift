@@ -31,7 +31,7 @@ class MyPageMeetupView: UIView {
         ToastView.appearance().bottomOffsetPortrait = 49 + 20
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 2
-//        imageView.layer.masksToBounds = false
+//        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
         imageView.clipsToBounds = true
 
