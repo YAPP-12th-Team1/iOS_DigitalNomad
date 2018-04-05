@@ -65,6 +65,7 @@ class MyPageViewController: UIViewController {
         viewCard.addSubview(card)
         
         gauge.rate = CGFloat(gaugeRate())
+        gauge.maxValue = CGFloat(realm.objects(ProjectInfo.self).last!.day)
         let imageData = realm.objects(UserInfo.self).last!.image
         imageView.image = UIImage(data: imageData)
         let lineWidth = gauge.lineWidth / 2
@@ -87,10 +88,11 @@ class MyPageViewController: UIViewController {
         label.layer.cornerRadius = label.frame.height / 2
         label.clipsToBounds = true
         label.backgroundColor = gauge.startColor
-        label.text = "\(Int(percent))%"
+        label.text = "\(gaugeRate())일차"
         label.textAlignment = .center
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.adjustsFontSizeToFitWidth = true
         view.addSubview(label)
         
         labelHashtag.text = getHashTags()
@@ -120,7 +122,7 @@ class MyPageViewController: UIViewController {
         let start = dateFormatter.date(from: startStr)!
         let today = dateFormatter.date(from: todayStr)!
         let interval = today.timeIntervalSince(start)
-        let days = Int(interval / 86400)
+        let days = Int(interval / 86400) + 1
         
         return days
     }
