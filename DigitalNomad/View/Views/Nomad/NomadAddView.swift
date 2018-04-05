@@ -68,6 +68,25 @@ class NomadAddView: UIView {
         //해시태그 이후 공백
     }
     
+    @objc func setContentSummary() {
+        realm = try! Realm()
+        let yesterday = yesterdayDate()
+        if(!UserDefaults.standard.bool(forKey: "isNomadLifeView")){
+            print("WorkCardView")
+            //workList
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + yesterday + "'")
+            let text = yesterdayWork[0].todo + " 및 " + String(yesterdayWork.count) + "개"
+            contentSummary.setTitle(text, for: .normal);
+        } else {
+            print("LifeCardView")
+            //wishList
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + yesterday + "'")
+            let text = yesterdayWork[0].todo + " 및 " + String(yesterdayWork.count) + "개"
+            contentSummary.setTitle(text, for: .normal);
+        }
+        
+    }
+    
     @IBAction func clickAdd(_ sender: UIButton) {
         //GoalListInfo나 WishListInfo에 내용 추가하는 코드
         if(textField.text?.isEmpty)! { return }
@@ -91,7 +110,7 @@ class NomadAddView: UIView {
     }
     
     @IBAction func clickContentSummary(_ sender: UIButton) {
-        //어제자 일들을 보여주자
+        
         
     }
 
@@ -118,20 +137,6 @@ class NomadAddView: UIView {
         textField.text! += "_"
     }
    
-    @objc func setContentSummary() {
-        realm = try! Realm()
-        let yesterday = yesterdayDate()
-        if(self.parentViewController is NomadWorkView){
-            print("WorkCardView")
-            //workList
-            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + yesterday + "'")
-        } else {
-            print("LifeCardView")
-            //wishList
-            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + yesterday + "'")
-        }
-        let text = yesterdayWork[0].todo + " 및 " + String(yesterdayWork.count) + "개"
-        contentSummary.setTitle(text, for: .normal);
-    }
+    
     
 }
