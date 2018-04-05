@@ -31,6 +31,7 @@ class NomadAddView: UIView {
         addButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
         addButton.layer.cornerRadius = 5
         getTimeOfDate()
+        setContentSummary()
     }
     
     class func instanceFromXib() -> UIView {
@@ -91,14 +92,9 @@ class NomadAddView: UIView {
     
     @IBAction func clickContentSummary(_ sender: UIButton) {
         //어제자 일들을 보여주자
-//        realm = try! Realm()
-//        let yesterdayWork = realm.objects(GoalListInfo.self).filter()
         
     }
-    
-    @IBAction func clickCalendar(_ sender: UIButton) {
-        //달력을 띄우자
-    }
+
     @IBAction func clickCard(_ sender: UIButton) {
         //카드를 띄우자
         let cardView = NomadLifeCardView.instanceFromXib() as! NomadLifeCardView
@@ -121,4 +117,21 @@ class NomadAddView: UIView {
     @IBAction func clickUnderScore(_ sender: UIButton) {
         textField.text! += "_"
     }
+   
+    @objc func setContentSummary() {
+        realm = try! Realm()
+        let yesterday = yesterdayDate()
+        if(self.parentViewController is NomadWorkView){
+            print("WorkCardView")
+            //workList
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + yesterday + "'")
+        } else {
+            print("LifeCardView")
+            //wishList
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + yesterday + "'")
+        }
+        let text = yesterdayWork[0].todo + " 및 " + String(yesterdayWork.count) + "개"
+        contentSummary.setTitle(text, for: .normal);
+    }
+    
 }
