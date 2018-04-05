@@ -198,6 +198,7 @@ class MyPageDetailViewController: UIViewController {
             Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
                 "address" : str
             ])
+            self.tableView.reloadData()
             
         }
         

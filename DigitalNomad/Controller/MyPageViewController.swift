@@ -130,12 +130,16 @@ class MyPageViewController: UIViewController {
     var tagDict: [String:Int] = [:]
     func getHashTags() -> String {
 
-        let tagList = realm.objects(GoalListInfo.self).filter("todo contains '#'")
+        let tagList = realm.objects(ProjectInfo.self).last!.goalLists.filter("todo contains '#'")
         var tags = ""
-        var cnt = tagList.count - 1
+        let tagListCount = tagList.count
+        if(tagListCount == 0){
+            return "해시태그를 등록하여 일정을 관리하세요."
+        }
+        var cnt = tagListCount - 1
         
         for i in 0...cnt {
-            var freq = (tagList[i].todo).components(separatedBy: " ")[0]
+            let freq = (tagList[i].todo).components(separatedBy: " ").first!
             if let num = tagDict[freq] {
                 tagDict[freq] = num+1
             } else {

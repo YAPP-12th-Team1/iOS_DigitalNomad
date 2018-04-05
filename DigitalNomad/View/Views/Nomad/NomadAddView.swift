@@ -26,6 +26,7 @@ class NomadAddView: UIView {
         textField.autocorrectionType = .no
         textField.addTarget(self, action: #selector(clickReturnButton), for: .editingDidEndOnExit)
         textField.addTarget(self, action: #selector(textFieldEditing), for: .editingChanged)
+        contentSummary.addTarget(self, action: #selector(clickContentSummary), for: .touchUpInside)
         subView.layer.borderColor = UIColor.lightGray.cgColor
         subView.layer.borderWidth = 1
         addButton.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
@@ -69,22 +70,34 @@ class NomadAddView: UIView {
     }
     
     @objc func setContentSummary() {
-        realm = try! Realm()
         let yesterday = yesterdayDate()
         if(!UserDefaults.standard.bool(forKey: "isNomadLifeView")){
             print("WorkCardView")
             //workList
             let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + yesterday + "'")
-            let text = yesterdayWork[0].todo + " 및 " + String(yesterdayWork.count) + "개"
-            contentSummary.setTitle(text, for: .normal);
+            if let first = yesterdayWork.first {
+                let text = first.todo + " 및 " + String(yesterdayWork.count) + "개"
+                contentSummary.isEnabled = true
+                contentSummary.setTitle(text, for: .normal)
+            } else {
+                let text = "어제 등록한 Goal이 없습니다."
+                contentSummary.isEnabled = false
+                contentSummary.setTitle(text, for: .normal)
+            }
         } else {
             print("LifeCardView")
             //wishList
             let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + yesterday + "'")
-            let text = yesterdayWork[0].todo + " 및 " + String(yesterdayWork.count) + "개"
-            contentSummary.setTitle(text, for: .normal);
+            if let first = yesterdayWork.first {
+                let text = first.todo + " 및 " + String(yesterdayWork.count) + "개"
+                contentSummary.isEnabled = true
+                contentSummary.setTitle(text, for: .normal)
+            } else {
+                let text = "어제 등록한 Wish가 없습니다."
+                contentSummary.isEnabled = false
+                contentSummary.setTitle(text, for: .normal)
+            }
         }
-        
     }
     
     @IBAction func clickAdd(_ sender: UIButton) {
@@ -110,8 +123,7 @@ class NomadAddView: UIView {
     }
     
     @IBAction func clickContentSummary(_ sender: UIButton) {
-        
-        
+        //어제자 테이블뷰 띄우는 코드
     }
 
     @IBAction func clickCard(_ sender: UIButton) {

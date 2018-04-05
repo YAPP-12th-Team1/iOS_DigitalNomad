@@ -28,9 +28,6 @@ class NomadViewController: UIViewController {
         
         //UserInfo의 location 필드를 현재위치로 업데이트하는 코드 위치
         
-        //더미데이터 쌓는 코드 어느정도 완료되면 아래 줄을 없애자
-        //let _ = DummyData()
-        
         //앱 실행 시 화면이 GoalList인지 WishList인지 구분함
         if(UserDefaults.standard.bool(forKey: "isNomadLifeView")){
             lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
