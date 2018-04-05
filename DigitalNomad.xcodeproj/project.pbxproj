@@ -31,6 +31,8 @@
 		1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD0B204FD5220062D8EF /* NomadLifeView.swift */; };
 		194CECDB206FA77C0001BF11 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194CECDA206FA77C0001BF11 /* Today.swift */; };
 		195628B620701352004B3AF7 /* culture(3)_511111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE49206FECF10081332B /* culture(3)_511111.jpg */; };
+		19587FFB20766A4000FD3D01 /* ERProgressHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFA20766A4000FD3D01 /* ERProgressHud.swift */; };
+		19587FFD20767BF900FD3D01 /* NomadLastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */; };
 		195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFAE2041AF140062A26C /* UITextField+.swift */; };
 		196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */; };
 		196BABB62063BB7900422D2B /* NomadLifeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196BABB52063BB7900422D2B /* NomadLifeCardView.xib */; };
@@ -190,6 +192,8 @@
 		1949DD09204FD5170062D8EF /* NomadLifeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeView.xib; sourceTree = "<group>"; };
 		1949DD0B204FD5220062D8EF /* NomadLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeView.swift; sourceTree = "<group>"; };
 		194CECDA206FA77C0001BF11 /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
+		19587FFA20766A4000FD3D01 /* ERProgressHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERProgressHud.swift; sourceTree = "<group>"; };
+		19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLastViewController.swift; sourceTree = "<group>"; };
 		195CFFAE2041AF140062A26C /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCardView.swift; sourceTree = "<group>"; };
 		196BABB52063BB7900422D2B /* NomadLifeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeCardView.xib; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				19A94FCC204EC1AE003A1D23 /* MyPageDetailInfoCell.xib */,
 				19A94FD3204EC1CE003A1D23 /* MyPageDetailMailCell.swift */,
 				19A94FD4204EC1CE003A1D23 /* MyPageDetailMailCell.xib */,
+				19F2CDF8204141C300CB113B /* Views */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -504,7 +509,6 @@
 			isa = PBXGroup;
 			children = (
 				19F2CDF9204141C600CB113B /* Cells */,
-				19F2CDF8204141C300CB113B /* Views */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -521,6 +525,7 @@
 				196C4AF72041483200C7BFAF /* TabBarController.swift */,
 				196C4AE7204144DF00C7BFAF /* MapViewController.swift */,
 				191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */,
+				19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */,
 				196C4AEF2041450F00C7BFAF /* MyPageViewController.swift */,
 				191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */,
 			);
@@ -568,6 +573,7 @@
 				191DFED0204EAFB70095E9C1 /* images */,
 				19F2CDE02041419C00CB113B /* AppDelegate.swift */,
 				19F2CDE92041419C00CB113B /* Assets.xcassets */,
+				19587FFA20766A4000FD3D01 /* ERProgressHud.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -990,8 +996,10 @@
 				1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */,
 				19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */,
 				19BA8279204FF33200C095C1 /* NomadLifeTutorialView.swift in Sources */,
+				19587FFD20767BF900FD3D01 /* NomadLastViewController.swift in Sources */,
 				19A94FDC204EDD5C003A1D23 /* PopupMeetupView.swift in Sources */,
 				198A4D2820614D6900A78E83 /* ResearchViewController.swift in Sources */,
+				19587FFB20766A4000FD3D01 /* ERProgressHud.swift in Sources */,
 				199A93132058E5A6007509A1 /* EmailInfo.swift in Sources */,
 				196C77BA2054260100A45E89 /* NomadFinalView.swift in Sources */,
 				199A930F2058E595007509A1 /* UserInfo.swift in Sources */,

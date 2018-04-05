@@ -43,6 +43,7 @@ class MyPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        ERProgressHud.hide()
         self.navigationController?.navigationBar.isHidden = true
         
         if(self.view.subviews.last is UILabel){
@@ -104,6 +105,7 @@ class MyPageViewController: UIViewController {
     }
     
     @IBAction func clickSetting(_ sender: UIButton) {
+        ERProgressHud.show()
         let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MyPageDetailViewController")
         present(controller, animated: true)

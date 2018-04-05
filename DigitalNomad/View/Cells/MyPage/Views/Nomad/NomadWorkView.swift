@@ -108,7 +108,13 @@ extension NomadWorkView: DZNEmptyDataSetSource{
         return nil
     }
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "내용을 추가하세요.")
+        let parent = self.parentViewController() as! NomadViewController
+        if(parent.searchBar.isFirstResponder) {
+            return NSAttributedString(string: "검색 결과가 없습니다.")
+        } else {
+            return NSAttributedString(string: "목표를 추가하세요.")
+        }
+        
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         return nil

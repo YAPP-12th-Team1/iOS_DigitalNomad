@@ -77,11 +77,9 @@ class NomadAddView: UIView {
             let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + yesterday + "'")
             if let first = yesterdayWork.first {
                 let text = first.todo + " 및 " + String(yesterdayWork.count) + "개"
-                contentSummary.isEnabled = true
                 contentSummary.setTitle(text, for: .normal)
             } else {
                 let text = "어제 등록한 Goal이 없습니다."
-                contentSummary.isEnabled = false
                 contentSummary.setTitle(text, for: .normal)
             }
         } else {
@@ -90,11 +88,9 @@ class NomadAddView: UIView {
             let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + yesterday + "'")
             if let first = yesterdayWork.first {
                 let text = first.todo + " 및 " + String(yesterdayWork.count) + "개"
-                contentSummary.isEnabled = true
                 contentSummary.setTitle(text, for: .normal)
             } else {
                 let text = "어제 등록한 Wish가 없습니다."
-                contentSummary.isEnabled = false
                 contentSummary.setTitle(text, for: .normal)
             }
         }
@@ -124,6 +120,9 @@ class NomadAddView: UIView {
     
     @IBAction func clickContentSummary(_ sender: UIButton) {
         //어제자 테이블뷰 띄우는 코드
+        let storyboard = UIStoryboard(name: "Nomad", bundle: nil)
+        let next = storyboard.instantiateViewController(withIdentifier: "NomadLastViewController")
+        parentViewController()?.present(next, animated: true, completion: nil)
     }
 
     @IBAction func clickCard(_ sender: UIButton) {

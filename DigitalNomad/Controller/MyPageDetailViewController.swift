@@ -68,6 +68,7 @@ class MyPageDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        ERProgressHud.hide()
         self.navigationController?.navigationBar.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
@@ -84,10 +85,12 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @IBAction func clickCancel(_ sender: UIButton) {
+        ERProgressHud.show()
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func clickConfirm(_ sender: UIButton) {
+        ERProgressHud.show()
         if(tableView.numberOfSections == 4){
             try! realm.write{
                 userInfo.cowork = coworkingAllowingSwitch.isOn
