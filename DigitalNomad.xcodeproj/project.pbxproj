@@ -58,7 +58,6 @@
 		199A93132058E5A6007509A1 /* EmailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93122058E5A6007509A1 /* EmailInfo.swift */; };
 		199A93152058E5AF007509A1 /* GoalListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93142058E5AF007509A1 /* GoalListInfo.swift */; };
 		199A93172058E5B8007509A1 /* WishListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93162058E5B8007509A1 /* WishListInfo.swift */; };
-		199A93192058F2DA007509A1 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93182058F2DA007509A1 /* DummyData.swift */; };
 		19A5780720622A5700240B87 /* PopupStartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A5780620622A5700240B87 /* PopupStartView.xib */; };
 		19A5780920622A6700240B87 /* PopupStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5780820622A6700240B87 /* PopupStartView.swift */; };
 		19A5780C206264A500240B87 /* EnrollmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5780A206264A500240B87 /* EnrollmentCell.swift */; };
@@ -221,7 +220,6 @@
 		199A93122058E5A6007509A1 /* EmailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInfo.swift; sourceTree = "<group>"; };
 		199A93142058E5AF007509A1 /* GoalListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListInfo.swift; sourceTree = "<group>"; };
 		199A93162058E5B8007509A1 /* WishListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListInfo.swift; sourceTree = "<group>"; };
-		199A93182058F2DA007509A1 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		19A5780620622A5700240B87 /* PopupStartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupStartView.xib; sourceTree = "<group>"; };
 		19A5780820622A6700240B87 /* PopupStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupStartView.swift; sourceTree = "<group>"; };
 		19A5780A206264A500240B87 /* EnrollmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentCell.swift; sourceTree = "<group>"; };
@@ -404,7 +402,6 @@
 				19A94FCC204EC1AE003A1D23 /* MyPageDetailInfoCell.xib */,
 				19A94FD3204EC1CE003A1D23 /* MyPageDetailMailCell.swift */,
 				19A94FD4204EC1CE003A1D23 /* MyPageDetailMailCell.xib */,
-				19F2CDF8204141C300CB113B /* Views */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -477,7 +474,6 @@
 		19F2CDDF2041419C00CB113B /* DigitalNomad */ = {
 			isa = PBXGroup;
 			children = (
-				199A93182058F2DA007509A1 /* DummyData.swift */,
 				19F2CDF4204141B000CB113B /* Model */,
 				19F2CDF5204141B500CB113B /* View */,
 				19F2CDF6204141BA00CB113B /* Controller */,
@@ -508,6 +504,7 @@
 		19F2CDF5204141B500CB113B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				19F2CDF8204141C300CB113B /* Views */,
 				19F2CDF9204141C600CB113B /* Cells */,
 			);
 			path = View;
@@ -553,7 +550,8 @@
 				19BA827C20500F0D00C095C1 /* MyPage */,
 				19BA827E2050113F00C095C1 /* Custom */,
 			);
-			path = Views;
+			name = Views;
+			path = Cells/MyPage/Views;
 			sourceTree = "<group>";
 		};
 		19F2CDF9204141C600CB113B /* Cells */ = {
@@ -983,7 +981,6 @@
 				198D92CD206144A7001325DD /* StartViewController.swift in Sources */,
 				1949DCFC204F8E2C0062D8EF /* StrikethroughView.swift in Sources */,
 				191DFECD204EACEE0095E9C1 /* MyPageMeetupView.swift in Sources */,
-				199A93192058F2DA007509A1 /* DummyData.swift in Sources */,
 				199A93112058E59E007509A1 /* UserLocationInfo.swift in Sources */,
 				199A930D2058E58B007509A1 /* ProjectInfo.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,
