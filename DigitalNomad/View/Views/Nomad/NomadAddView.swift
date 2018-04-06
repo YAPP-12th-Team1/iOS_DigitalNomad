@@ -40,13 +40,28 @@ class NomadAddView: UIView {
     }
     
     @objc func getTimeOfDate(){
-        //리스트 완료 시각...
-        //지금은 현재시각 뜨게 해놓음
-        let today = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "HH:mm"
-        endTime.text = dateFormatter.string(from: today)
+        //리스트 완료 시각
+        if(!UserDefaults.standard.bool(forKey: "isNomadLifeView")){
+            //workList
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = %@", yesterdayDate())
+            if let last = yesterdayWork.last {
+                let yesterdayTime = formatForTime(date: last.date)
+                endTime.text = yesterdayTime
+                
+            } else {
+                endTime.text = ""
+            }
+        } else {
+            //wishList
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = %@", yesterdayDate())
+            if let last = yesterdayWork.last {
+
+                let yesterdayTime = formatForTime(date: last.date)
+                endTime.text = yesterdayTime
+            } else {
+                endTime.text = ""
+            }
+        }
     }
     
     @objc func clickReturnButton(){
@@ -101,10 +116,12 @@ class NomadAddView: UIView {
         if(textField.text?.isEmpty)! { return }
         let parentViewController = self.parentViewController() as! NomadViewController
         if(parentViewController.centerView.subviews.last is NomadWorkView){
+ 
             addGoalList(textField.text!)
             try! realm.write{
                 realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
             }
+            
             (parentViewController.centerView.subviews.last as! NomadWorkView).tableView.reloadData()
         } else {
             addWishList(textField.text!)

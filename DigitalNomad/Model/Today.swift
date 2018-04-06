@@ -8,6 +8,15 @@
 
 import Foundation
 
+func formatForTime(date: Date) -> String {
+
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "ko_KR")
+    dateFormatter.dateFormat = "HH:mm"
+    return dateFormatter.string(from: date)
+}
+
+
 func yesterdayDate() -> Date {
     let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
     return date!
