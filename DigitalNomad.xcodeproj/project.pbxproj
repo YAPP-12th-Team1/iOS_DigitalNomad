@@ -551,7 +551,7 @@
 				19BA827E2050113F00C095C1 /* Custom */,
 			);
 			name = Views;
-			path = Cells/MyPage/Views;
+			path = Cells/Views;
 			sourceTree = "<group>";
 		};
 		19F2CDF9204141C600CB113B /* Cells */ = {

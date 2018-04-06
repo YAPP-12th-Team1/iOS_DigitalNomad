@@ -49,6 +49,7 @@ class NomadViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
         
+        
         //오늘 날짜와 일차 계산 후 뿌려줌
         let calendar = Calendar(identifier: .gregorian)
         let today = Date()
@@ -71,6 +72,12 @@ class NomadViewController: UIViewController {
             underView.layer.sublayers?.removeFirst()
         }
         centerView.subviews.last?.isUserInteractionEnabled = false
+        
+        //자정 이후에 앱을 실행했을 때 어제의 데이터 중 체크되지 않은 것의 날짜 필드를 오늘로 바꾸어주는 함수.
+        if(UserDefaults.standard.string(forKey: "today") != dateFormatter.string(from: Date())){
+            setAutoPostponed()
+        }
+        
         
         //다른 곳에서 viewWillAppear() 호출 시 센터뷰가 GoalList이냐 WishList이냐에 따라 동작하는 것을 구분함
         if(centerView.subviews.last is NomadWorkView) {
@@ -213,6 +220,19 @@ class NomadViewController: UIViewController {
             }
             centerView.subviews.last?.isUserInteractionEnabled = true
             
+        }
+    }
+    
+    func setAutoPostponed(){
+        let goals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + yesterdayDate() + "'").filter("status = false")
+        let wishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + yesterdayDate() + "'").filter("status = false")
+        try! realm.write{
+            for goal in goals{
+                goal.date = todayDate()
+            }
+            for wish in wishes{
+                wish.date = todayDate()
+            }
         }
     }
 }

@@ -50,6 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //        UserDefaults.standard.set(false, forKey: "isFirstNomadWorkExecute")
 //        UserDefaults.standard.set(false, forKey: "isFirstNomadLifeExecute")
         
+        //앱 실행 시 날짜 UserDefaults에 저장
+        UserDefaults.standard.set(todayDate(), forKey: "today")
+        
         return true
     }
     
