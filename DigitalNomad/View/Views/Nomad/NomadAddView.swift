@@ -74,7 +74,7 @@ class NomadAddView: UIView {
         if(!UserDefaults.standard.bool(forKey: "isNomadLifeView")){
             print("WorkCardView")
             //workList
-            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + yesterday + "'")
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = %@", yesterdayDate())
             if let first = yesterdayWork.first {
                 let text = first.todo + " 및 " + String(yesterdayWork.count) + "개"
                 contentSummary.setTitle(text, for: .normal)
@@ -85,7 +85,7 @@ class NomadAddView: UIView {
         } else {
             print("LifeCardView")
             //wishList
-            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + yesterday + "'")
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = %@", yesterdayDate())
             if let first = yesterdayWork.first {
                 let text = first.todo + " 및 " + String(yesterdayWork.count) + "개"
                 contentSummary.setTitle(text, for: .normal)

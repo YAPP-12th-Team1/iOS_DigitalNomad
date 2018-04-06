@@ -550,8 +550,7 @@
 				19BA827C20500F0D00C095C1 /* MyPage */,
 				19BA827E2050113F00C095C1 /* Custom */,
 			);
-			name = Views;
-			path = Cells/Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		19F2CDF9204141C600CB113B /* Cells */ = {
@@ -1143,7 +1142,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H79MF628K3;
+				DEVELOPMENT_TEAM = 8HPCHS5M63;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1169,7 +1168,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H79MF628K3;
+				DEVELOPMENT_TEAM = 8HPCHS5M63;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

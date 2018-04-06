@@ -8,7 +8,16 @@
 
 import Foundation
 
-func todayDate() -> String{
+func yesterdayDate() -> Date {
+    let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+    return date!
+}
+func tomorrowDate() -> Date {
+    let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+    return date!
+}
+
+func format() -> String{
     let date = Date()
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "ko_KR")
@@ -17,11 +26,3 @@ func todayDate() -> String{
     return today
 }
 
-func yesterdayDate() -> String {
-    let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
-    let dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier: "ko_KR")
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    let yesterday = dateFormatter.string(from: date!)
-    return yesterday
-}

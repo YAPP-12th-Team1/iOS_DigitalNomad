@@ -12,7 +12,7 @@ import RealmSwift
 
 class ProjectInfo: Object{
     @objc dynamic var id: Int = 0               //Primary Key
-    @objc dynamic var period: String = ""     //Not Null
+    @objc dynamic var date: Date = Date()   //Not Null
     @objc dynamic var day: Int = 5              //default: 5
     
     var wishLists = List<WishListInfo>()
@@ -28,7 +28,6 @@ func addProject(_ day: Int = 5){
     let realm = try! Realm()
     let object = ProjectInfo()
     object.id = object.incrementId()
-    object.period = todayDate()
     object.day = day
     try! realm.write{
         realm.add(object)
