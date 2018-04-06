@@ -55,18 +55,17 @@ class NomadViewController: UIViewController {
         
         let todayFormatter = DateFormatter()
         todayFormatter.locale = Locale(identifier: "ko_KR")
-        todayFormatter.dateFormat = "yyyy년 M월 d일 eeee"
+        todayFormatter.dateFormat = "yyyy년 M월 d일"
         
         let yesterdayFormatter = DateFormatter()
         yesterdayFormatter.locale = Locale(identifier: "ko_KR")
         yesterdayFormatter.dateFormat = "M월d일"
         let yesterday = yesterdayFormatter.string(from: calendar.date(byAdding: DateComponents(day: -1), to: Date())!)
         labelToday.text = "오늘 \(todayFormatter.string(from: Date()))"
-        
+       
         let savedDate = realm.objects(ProjectInfo.self).first!.date
-        let todayDate = Date()
-        let interval = todayDate.timeIntervalSince(savedDate)
-        labelDays.text = "\(Int(interval) / 86400 + 1)일차"
+        let diffDay = dateInterval(startDate: savedDate)
+        labelDays.text = "\(diffDay)일차"
         
         if(underView.layer.sublayers != nil){
             underView.layer.sublayers?.removeFirst()
@@ -74,8 +73,7 @@ class NomadViewController: UIViewController {
         centerView.subviews.last?.isUserInteractionEnabled = false
         
         //자정 이후에 앱을 실행했을 때 어제의 데이터 중 체크되지 않은 것의 날짜 필드를 오늘로 바꾸어주는 함수.
-        let dateFormatter = DateFormatter()
-        if(UserDefaults.standard.string(forKey: "today") != dateFormatter.string(from: Date())){
+        if(UserDefaults.standard.string(forKey: "today") != DateFormatter().string(from: Date())){
             setAutoPostponed()
         }
         

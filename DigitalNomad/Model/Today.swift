@@ -16,8 +16,13 @@ func tomorrowDate() -> Date {
     let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
     return date!
 }
-
-func format() -> String{
+func dateInterval(startDate: Date) -> Int {
+    // 시작날짜~오늘날짜까지 몇일째 인지 구하는 함수
+    let todayDate = Date()
+    let interval = todayDate.timeIntervalSince(startDate)
+    return (Int(interval) / 86400 + 1)
+}
+func  Dateformat() -> String{
     let date = Date()
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "ko_KR")
