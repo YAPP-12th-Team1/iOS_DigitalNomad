@@ -19,7 +19,7 @@ class NomadLifeView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         realm = try! Realm()
-        object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = %@", Date())
+        object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [todayStart, todayEnd])
         collectionView.register(UINib(nibName: "NomadLifeCell", bundle: nil), forCellWithReuseIdentifier: "nomadLifeCell")
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -43,24 +43,30 @@ extension NomadLifeView: UICollectionViewDataSource{
         cell.frame.size = CGSize(width: width / 4, height: width / 4)
         cell.containerView.layer.cornerRadius = cell.containerView.frame.height / 2
         if(indexPath.item != object.count){
+            cell.checkBox.isHidden = false
             let result = object[indexPath.item]
+            let pictureIndex = result.pictureIndex
             cell.content.text = result.todo
-            cell.imageView.image = UIImage()
-            if(result.status){
-                cell.checkBox.setOn(true, animated: false)
-            } else {
-                cell.checkBox.setOn(false, animated: false)
-            }
+            cell.imageView.image = { () -> UIImage in
+                if(pictureIndex == -1){
+                    return UIImage()
+                } else {
+                    return UIImage(named: "wish\(pictureIndex)")!
+                }
+            }()
             if(cell.checkBox.layer.sublayers?.count == 4){
                 cell.checkBox.layer.sublayers?.removeFirst()
             }
             if(result.status){
-                cell.checkBox.on = true
+                cell.checkBox.setOn(true, animated: false)
                 cell.checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
                 cell.checkBox.layer.sublayers?.first?.cornerRadius = cell.checkBox.frame.height / 2
             } else {
-                cell.checkBox.on = false
+                cell.checkBox.setOn(false, animated: false)
+                
             }
+            print(cell.checkBox.layer.sublayers?.count)
+            
         } else {
             cell.content.text = nil
             cell.checkBox.isHidden = true
@@ -74,6 +80,27 @@ extension NomadLifeView: UICollectionViewDataSource{
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    func openFinalPage(){
+        let project = realm.objects(ProjectInfo.self).last
+        guard let goals = project?.goalLists else { return }
+        guard let wishs = project?.wishLists else { return }
+        for goal in goals{
+            if(goal.status == false){
+                return
+            }
+        }
+        for wish in wishs{
+            if(wish.status == false){
+                return
+            }
+        }
+        let finalView = NomadFinalView.instanceFromXib()
+        finalView.alpha = 0
+        self.parentViewController()?.view.addSubview(finalView)
+        UIView.animate(withDuration: 0.5, animations: {
+            finalView.alpha = 1
+        })
     }
 }
 extension NomadLifeView: UICollectionViewDelegate{
@@ -90,12 +117,13 @@ extension NomadLifeView: UICollectionViewDelegate{
             let yesAction = UIAlertAction(title: "예", style: .default, handler: { (action) in
                 let todo = (collectionView.cellForItem(at: indexPath) as! NomadLifeCell).content.text!
                 let query = NSPredicate(format: "todo = %@", todo)
-                let result = self.object.filter("date = %@", Date()).filter(query)
+                let result = self.object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query)
                 try! self.realm.write{
                     self.realm.delete(result)
                 }
                 collectionView.reloadData()
                 collectionView.layoutIfNeeded()
+                self.openFinalPage()
             })
             let noAction = UIAlertAction(title: "아니오", style: .cancel)
             alert.addAction(noAction)

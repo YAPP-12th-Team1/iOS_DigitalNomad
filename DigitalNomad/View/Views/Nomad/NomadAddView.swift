@@ -85,7 +85,6 @@ class NomadAddView: UIView {
     }
     
     @objc func setContentSummary() {
-        let yesterday = yesterdayDate()
         if(!UserDefaults.standard.bool(forKey: "isNomadLifeView")){
             print("WorkCardView")
             //workList
@@ -116,12 +115,10 @@ class NomadAddView: UIView {
         if(textField.text?.isEmpty)! { return }
         let parentViewController = self.parentViewController() as! NomadViewController
         if(parentViewController.centerView.subviews.last is NomadWorkView){
- 
             addGoalList(textField.text!)
             try! realm.write{
                 realm.objects(ProjectInfo.self).last!.goalLists.append(realm.objects(GoalListInfo.self).last!)
-            }
-            
+            }     
             (parentViewController.centerView.subviews.last as! NomadWorkView).tableView.reloadData()
         } else {
             addWishList(textField.text!)

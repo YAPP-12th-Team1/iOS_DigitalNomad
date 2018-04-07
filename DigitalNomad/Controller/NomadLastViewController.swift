@@ -26,10 +26,16 @@ class NomadLastViewController: UIViewController {
     var realm: Realm!
     var goals: Results<GoalListInfo>!
     var wishes: Results<WishListInfo>!
+    let isNomadLifeView = UserDefaults.standard.bool(forKey: "isNomadLifeView")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //realm = try! Realm()
+        realm = try! Realm()
+        if(isNomadLifeView) {
+            goals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date < %@", todayStart)
+        } else {
+            wishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date < %@", todayStart)
+        }
         // Do any additional setup after loading the view.
     }
 

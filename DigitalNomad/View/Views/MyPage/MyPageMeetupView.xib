@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -79,11 +79,16 @@
                     <color key="textColor" red="0.60392156862745094" green="0.31764705882352939" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fB1-jO-wGB">
+                    <rect key="frame" x="153" y="91" width="37" height="37"/>
+                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="0.96862745100000003" green="0.77647058820000003" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Xud-OR-n5P" firstAttribute="bottom" secondItem="kww-Ds-E7M" secondAttribute="bottom" id="0dh-S1-MdL"/>
                 <constraint firstItem="458-2u-76Y" firstAttribute="leading" secondItem="kww-Ds-E7M" secondAttribute="trailing" constant="8" id="251-WO-wVE"/>
+                <constraint firstItem="fB1-jO-wGB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="153" id="37y-fy-RMj"/>
                 <constraint firstItem="8y4-5S-Krt" firstAttribute="top" secondItem="kww-Ds-E7M" secondAttribute="top" id="4fC-kj-rQM"/>
                 <constraint firstItem="kww-Ds-E7M" firstAttribute="leading" secondItem="Ptp-D6-KkX" secondAttribute="leading" constant="16" id="8YA-LG-62y"/>
                 <constraint firstItem="UUC-yY-drR" firstAttribute="leading" secondItem="XRG-Pg-GaE" secondAttribute="trailing" constant="8" id="90f-6I-ua7"/>
@@ -97,10 +102,13 @@
                 <constraint firstItem="UUC-yY-drR" firstAttribute="leading" secondItem="Xud-OR-n5P" secondAttribute="trailing" constant="8" id="R2f-6F-2sM"/>
                 <constraint firstItem="XRG-Pg-GaE" firstAttribute="top" secondItem="458-2u-76Y" secondAttribute="bottom" constant="1" id="Rba-h9-8lC"/>
                 <constraint firstItem="Xud-OR-n5P" firstAttribute="leading" secondItem="kww-Ds-E7M" secondAttribute="trailing" constant="8" id="SCh-l0-llA"/>
+                <constraint firstItem="fB1-jO-wGB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="91" id="VyQ-23-uk3"/>
                 <constraint firstItem="9Qp-Id-T09" firstAttribute="trailing" secondItem="Ptp-D6-KkX" secondAttribute="trailing" id="bHj-SW-oB5"/>
                 <constraint firstItem="UUC-yY-drR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.7" id="gF7-hJ-Sc3"/>
                 <constraint firstItem="kww-Ds-E7M" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.3" id="lFe-NR-Z0F"/>
                 <constraint firstItem="jnr-UB-pKf" firstAttribute="top" secondItem="kww-Ds-E7M" secondAttribute="top" id="lN7-Of-ePu"/>
+                <constraint firstAttribute="bottom" secondItem="fB1-jO-wGB" secondAttribute="bottom" constant="90" id="oLV-Mb-B9w"/>
+                <constraint firstAttribute="trailing" secondItem="fB1-jO-wGB" secondAttribute="trailing" constant="153" id="s95-u5-OKW"/>
                 <constraint firstItem="XRG-Pg-GaE" firstAttribute="leading" secondItem="kww-Ds-E7M" secondAttribute="trailing" constant="8" id="sJe-lM-i0u"/>
                 <constraint firstItem="UUC-yY-drR" firstAttribute="leading" secondItem="jnr-UB-pKf" secondAttribute="trailing" constant="8" id="wJ8-1u-0YF"/>
                 <constraint firstItem="9Qp-Id-T09" firstAttribute="bottom" secondItem="Ptp-D6-KkX" secondAttribute="bottom" id="xnf-fu-BfT"/>
@@ -108,6 +116,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Ptp-D6-KkX"/>
             <connections>
+                <outlet property="activityIndicator" destination="fB1-jO-wGB" id="7wa-PL-KlS"/>
                 <outlet property="buttonMeetup" destination="9Qp-Id-T09" id="UVN-nw-dIE"/>
                 <outlet property="days" destination="XRG-Pg-GaE" id="7Ya-Wz-BdZ"/>
                 <outlet property="distance" destination="jnr-UB-pKf" id="jQE-Gh-A5Z"/>

@@ -19,7 +19,7 @@ class NomadWorkView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         realm = try! Realm()
-        object = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = %@", Date())
+        object = realm.objects(ProjectInfo.self).last!.goalLists.filter("date BETWEEN %@", [todayStart, todayEnd])
         tableView.register(UINib(nibName: "NomadWorkCell", bundle: nil), forCellReuseIdentifier: "nomadWorkCell")
     }
     
@@ -76,22 +76,45 @@ extension NomadWorkView: UITableViewDataSource{
                 self.realm.delete(result)
             }
             tableView.reloadData()
+            self.openFinalPage()
             print("삭제")
         }
         let postpone = UITableViewRowAction(style: .normal, title: "미루기") { (action, index) in
-        let todo = result.todo
-        let query = NSPredicate(format: "todo = %@", todo)
-        let postponeCell = self.object.filter(query).first!
-        let calendar = Calendar(identifier: .gregorian)
-        let today = Date()
+            let todo = result.todo
+            let query = NSPredicate(format: "todo = %@", todo)
+            let postponeCell = self.object.filter(query).first!
 
-        let tomorrow = tomorrowDate()
-        try! self.realm.write{
-            postponeCell.date = tomorrow
+
+            let tomorrow = tomorrowDate()
+            try! self.realm.write{
+                postponeCell.date = tomorrow
+            }
+            tableView.reloadData()
+            self.openFinalPage()
         }
-        tableView.reloadData()
-    }
     return [delete, postpone]
+    }
+    
+    func openFinalPage(){
+        let project = realm.objects(ProjectInfo.self).last
+        guard let goals = project?.goalLists else { return }
+        guard let wishs = project?.wishLists else { return }
+        for goal in goals{
+            if(goal.status == false){
+                return
+            }
+        }
+        for wish in wishs{
+            if(wish.status == false){
+                return
+            }
+        }
+        let finalView = NomadFinalView.instanceFromXib()
+        finalView.alpha = 0
+        self.parentViewController()?.view.addSubview(finalView)
+        UIView.animate(withDuration: 0.5, animations: {
+            finalView.alpha = 1
+        })
     }
 }
 extension NomadWorkView: UITableViewDelegate{

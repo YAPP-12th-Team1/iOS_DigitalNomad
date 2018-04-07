@@ -41,7 +41,7 @@ class NomadLifeCell: UICollectionViewCell {
                 if(cell.checkBox == sender){
                     let todo = cell.content.text!
                     let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date = %@", Date()).filter(query).first!
+                    let result = object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query).first!
                     try! realm.write{
                         result.status = true
                     }
@@ -54,7 +54,7 @@ class NomadLifeCell: UICollectionViewCell {
                 if(cell.checkBox == sender){
                     let todo = cell.content.text!
                     let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date = %@", Date()).filter(query).first!
+                    let result = object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query).first!
                     try! realm.write{
                         result.status = false
                     }
@@ -64,6 +64,10 @@ class NomadLifeCell: UICollectionViewCell {
         }
         
         //FinalPage 여는 조건
+        openFinalPage()
+        
+    }
+    func openFinalPage(){
         let project = realm.objects(ProjectInfo.self).last
         guard let goals = project?.goalLists else { return }
         guard let wishs = project?.wishLists else { return }

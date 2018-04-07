@@ -73,7 +73,7 @@ class NomadViewController: UIViewController {
         centerView.subviews.last?.isUserInteractionEnabled = false
         
         //자정 이후에 앱을 실행했을 때 어제의 데이터 중 체크되지 않은 것의 날짜 필드를 오늘로 바꾸어주는 함수.
-        if(UserDefaults.standard.string(forKey: "today") != DateFormatter().string(from: Date())){
+        if(UserDefaults.standard.string(forKey: "today") != todayDateToString()){
             setAutoPostponed()
         }
         
@@ -222,8 +222,8 @@ class NomadViewController: UIViewController {
     }
     
     func setAutoPostponed(){
-        let goals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = %@", yesterdayDate()).filter("status = false")
-        let wishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = %@", yesterdayDate()).filter("status = false")
+        let goals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date BETWEEN %@", [yesterdayStart, yesterdayEnd]).filter("status = false")
+        let wishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [yesterdayStart, yesterdayEnd]).filter("status = false")
         try! realm.write{
             for goal in goals{
                 goal.date = Date()
@@ -240,19 +240,19 @@ extension NomadViewController: UISearchBarDelegate{
         if(centerView.subviews.last is NomadWorkView){
             let workView = centerView.subviews.last as! NomadWorkView
             if(!searchText.isEmpty){
-                let temps = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = %@", Date()).filter("todo CONTAINS[c] '" + searchText + "'")
+                let temps = realm.objects(ProjectInfo.self).last!.goalLists.filter("date BETWEEN %@", [todayStart, todayEnd]).filter("todo CONTAINS[c] '" + searchText + "'")
                 workView.object = temps
             } else {
-                workView.object = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = %@", Date())
+                workView.object = realm.objects(ProjectInfo.self).last!.goalLists.filter("date BETWEEN %@", [todayStart, todayEnd])
             }
             workView.tableView.reloadData()
         } else {
             let lifeView = centerView.subviews.last as! NomadLifeView
             if(!searchText.isEmpty){
-                let temps = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = %@", Date()).filter("todo CONTAINS[c] '" + searchText + "'")
+                let temps = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [todayStart, todayEnd]).filter("todo CONTAINS[c] '" + searchText + "'")
                 lifeView.object = temps
             } else {
-                lifeView.object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = %@", Date())
+                lifeView.object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [todayStart, todayEnd])
             }
             lifeView.collectionView.reloadData()
         }

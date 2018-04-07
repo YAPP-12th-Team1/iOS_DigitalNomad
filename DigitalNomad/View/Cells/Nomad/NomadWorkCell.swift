@@ -35,7 +35,7 @@ class NomadWorkCell: UITableViewCell {
     @IBAction func clickContent(_ sender: UIButton) {
         let object = (realm.objects(ProjectInfo.self).last?.goalLists)!
         let query = NSPredicate(format: "todo = %@", (sender.titleLabel?.text)!)
-        let result = object.filter("date = %@", Date()).filter(query).first!
+        let result = object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query).first!
         let textColor = sender.titleColor(for: .normal)
         if(textColor == .black){
             sender.setTitleColor(.blue, for: .normal)
@@ -71,7 +71,7 @@ class NomadWorkCell: UITableViewCell {
                 if(cell.checkBox == sender){
                     let todo = (cell.content.titleLabel?.text)!
                     let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date = %@", Date()).filter(query).first!
+                    let result = object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query).first!
                     try! realm.write{
                         result.status = true
                     }
@@ -86,7 +86,7 @@ class NomadWorkCell: UITableViewCell {
                 if(cell.checkBox == sender){
                     let todo = (cell.content.titleLabel?.text)!
                     let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date = %@", Date()).filter(query).first!
+                    let result = object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query).first!
                     try! realm.write{
                         result.status = false
                     }
@@ -96,6 +96,9 @@ class NomadWorkCell: UITableViewCell {
         }
         
         //FinalPage 여는 조건
+        openFinalPage()
+    }
+    func openFinalPage(){
         let project = realm.objects(ProjectInfo.self).last
         guard let goals = project?.goalLists else { return }
         guard let wishs = project?.wishLists else { return }
@@ -115,6 +118,6 @@ class NomadWorkCell: UITableViewCell {
         UIView.animate(withDuration: 0.5, animations: {
             finalView.alpha = 1
         })
-        
     }
 }
+

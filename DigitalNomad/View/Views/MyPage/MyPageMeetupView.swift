@@ -22,12 +22,15 @@ class MyPageMeetupView: UIView {
     @IBOutlet var days: UILabel!
     @IBOutlet var message: UILabel!
     @IBOutlet var distance: UILabel!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     var realm: Realm!
     var userInfo: UserInfo!
     var emailInfo: EmailInfo!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        hideElements()
+        showActivityIndicator()
         ToastView.appearance().bottomOffsetPortrait = 49 + 20
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 2
@@ -46,6 +49,8 @@ class MyPageMeetupView: UIView {
     }
     
     @IBAction func showNextPerson(_ sender: UIButton) {
+        hideElements()
+        showActivityIndicator()
         setUserData()
     }
     
@@ -128,7 +133,60 @@ class MyPageMeetupView: UIView {
             if(self.cardIndex == self.list.count){
                 self.cardIndex = 0;
             }
+            self.showElements()
+            self.hideActivityIndicator()
         })
+    }
+    
+    func hideElements(){
+        UIView.animate(withDuration: 0.2) {
+            self.buttonMeetup.alpha = 0
+            self.imageView.alpha = 0
+            self.name.alpha = 0
+            self.occupation.alpha = 0
+            self.days.alpha = 0
+            self.message.alpha = 0
+            self.distance.alpha = 0
+        }
+//        buttonMeetup.isHidden = true
+//        imageView.isHidden = true
+//        name.isHidden = true
+//        occupation.isHidden = true
+//        days.isHidden = true
+//        message.isHidden = true
+//        distance.isHidden = true
+    }
+    func showElements(){
+//        buttonMeetup.isHidden = false
+//        imageView.isHidden = false
+//        name.isHidden = false
+//        occupation.isHidden = false
+//        days.isHidden = false
+//        message.isHidden = false
+//        distance.isHidden = false
+        UIView.animate(withDuration: 0.2) {
+            self.buttonMeetup.alpha = 1
+            self.imageView.alpha = 1
+            self.name.alpha = 1
+            self.occupation.alpha = 1
+            self.days.alpha = 1
+            self.message.alpha = 1
+            self.distance.alpha = 1
+        }
+    }
+    func showActivityIndicator(){
+        activityIndicator.startAnimating()
+        UIView.animate(withDuration: 0.2) {
+            self.activityIndicator.alpha = 1
+        }
+//        activityIndicator.isHidden = false
+    }
+    func hideActivityIndicator(){
+        activityIndicator.stopAnimating()
+        UIView.animate(withDuration: 0.2) {
+            self.activityIndicator.alpha = 0
+        }
+//        activityIndicator.isHidden = true
     }
 
     
