@@ -11,6 +11,7 @@ import UIKit
 class NomadLifeCardView: UIView {
 
     @IBOutlet var collectionView: UICollectionView!
+    var selectedIndex: Int = -1
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,16 +28,20 @@ class NomadLifeCardView: UIView {
 extension NomadLifeCardView: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "nomadLifeCardCell", for: indexPath) as! NomadLifeCardCell
+        if let image = UIImage(named: "wish\(indexPath.item)") {
+            cell.card.image = image
+        } else {
+            cell.card.image = nil
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 15
     }
 }
 extension NomadLifeCardView: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
+        selectedIndex = indexPath.item
     }
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.5) {

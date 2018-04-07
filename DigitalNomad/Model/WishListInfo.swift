@@ -14,7 +14,7 @@ class WishListInfo: Object{
     @objc dynamic var pid: Int = 0          //Foreign Key
     @objc dynamic var date: String = ""
     @objc dynamic var todo: String = ""     //Not Null
-    @objc dynamic var day: String = "0000000"        //반복 요일 설정
+    @objc dynamic var pictureIndex: Int = -1    //-1이면 이미지 없음, 0부터 14까지 이미지 있음
     @objc dynamic var status: Bool = false  //default: false
     
     let projects = LinkingObjects(fromType: ProjectInfo.self, property: "wishLists")

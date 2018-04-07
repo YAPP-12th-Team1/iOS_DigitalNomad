@@ -18,6 +18,21 @@
 		191DFECF204EACF60095E9C1 /* MyPageMeetupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191DFECE204EACF60095E9C1 /* MyPageMeetupView.xib */; };
 		191DFED2204EAFBF0095E9C1 /* humanSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 191DFED1204EAFBF0095E9C1 /* humanSample.png */; };
 		191DFED4204EB32B0095E9C1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFED3204EB32B0095E9C1 /* UIView+.swift */; };
+		19214A9B2077638800100209 /* wish0.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A972077635000100209 /* wish0.png */; };
+		19214A9C2077638800100209 /* wish1.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A902077634E00100209 /* wish1.png */; };
+		19214A9D2077638800100209 /* wish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A912077634E00100209 /* wish2.png */; };
+		19214A9E2077638800100209 /* wish3.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A942077634F00100209 /* wish3.png */; };
+		19214A9F2077638800100209 /* wish4.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A8E2077634D00100209 /* wish4.png */; };
+		19214AA02077638800100209 /* wish5.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A992077635100100209 /* wish5.png */; };
+		19214AA12077638800100209 /* wish6.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A922077634E00100209 /* wish6.png */; };
+		19214AA22077638800100209 /* wish7.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A952077634F00100209 /* wish7.png */; };
+		19214AA32077638800100209 /* wish8.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A982077635000100209 /* wish8.png */; };
+		19214AA42077638800100209 /* wish9.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A9A2077635100100209 /* wish9.png */; };
+		19214AA52077638800100209 /* wish10.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A8C2077634C00100209 /* wish10.png */; };
+		19214AA62077638800100209 /* wish11.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A8F2077634D00100209 /* wish11.png */; };
+		19214AA72077638800100209 /* wish12.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A8D2077634D00100209 /* wish12.png */; };
+		19214AA82077638800100209 /* wish13.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A932077634F00100209 /* wish13.png */; };
+		19214AA92077638800100209 /* wish14.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A962077635000100209 /* wish14.png */; };
 		193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193627E3204F863F006F4081 /* NomadWorkCell.swift */; };
 		193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 193627E4204F863F006F4081 /* NomadWorkCell.xib */; };
 		1948408720704574005017E8 /* splash@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1948408620704574005017E8 /* splash@3x.png */; };
@@ -179,6 +194,21 @@
 		191DFECE204EACF60095E9C1 /* MyPageMeetupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageMeetupView.xib; sourceTree = "<group>"; };
 		191DFED1204EAFBF0095E9C1 /* humanSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanSample.png; sourceTree = "<group>"; };
 		191DFED3204EB32B0095E9C1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		19214A8C2077634C00100209 /* wish10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish10.png; sourceTree = "<group>"; };
+		19214A8D2077634D00100209 /* wish12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish12.png; sourceTree = "<group>"; };
+		19214A8E2077634D00100209 /* wish4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish4.png; sourceTree = "<group>"; };
+		19214A8F2077634D00100209 /* wish11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish11.png; sourceTree = "<group>"; };
+		19214A902077634E00100209 /* wish1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish1.png; sourceTree = "<group>"; };
+		19214A912077634E00100209 /* wish2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish2.png; sourceTree = "<group>"; };
+		19214A922077634E00100209 /* wish6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish6.png; sourceTree = "<group>"; };
+		19214A932077634F00100209 /* wish13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish13.png; sourceTree = "<group>"; };
+		19214A942077634F00100209 /* wish3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish3.png; sourceTree = "<group>"; };
+		19214A952077634F00100209 /* wish7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish7.png; sourceTree = "<group>"; };
+		19214A962077635000100209 /* wish14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish14.png; sourceTree = "<group>"; };
+		19214A972077635000100209 /* wish0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish0.png; sourceTree = "<group>"; };
+		19214A982077635000100209 /* wish8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish8.png; sourceTree = "<group>"; };
+		19214A992077635100100209 /* wish5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish5.png; sourceTree = "<group>"; };
+		19214A9A2077635100100209 /* wish9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish9.png; sourceTree = "<group>"; };
 		193627E3204F863F006F4081 /* NomadWorkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkCell.swift; sourceTree = "<group>"; };
 		193627E4204F863F006F4081 /* NomadWorkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadWorkCell.xib; sourceTree = "<group>"; };
 		1948408620704574005017E8 /* splash@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@3x.png"; sourceTree = "<group>"; };
@@ -356,6 +386,7 @@
 		191DFED0204EAFB70095E9C1 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				19214A892077633400100209 /* wishes */,
 				4A8AC3312070221E002F6B32 /* testImage.png */,
 				6B5877A82064BBEA0001FAB5 /* researchData */,
 				19C899CA205A007B0044D8A0 /* profile.png */,
@@ -367,6 +398,28 @@
 				6B634A45204EF79F00A59EEF /* kamel.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		19214A892077633400100209 /* wishes */ = {
+			isa = PBXGroup;
+			children = (
+				19214A972077635000100209 /* wish0.png */,
+				19214A902077634E00100209 /* wish1.png */,
+				19214A912077634E00100209 /* wish2.png */,
+				19214A942077634F00100209 /* wish3.png */,
+				19214A8E2077634D00100209 /* wish4.png */,
+				19214A992077635100100209 /* wish5.png */,
+				19214A922077634E00100209 /* wish6.png */,
+				19214A952077634F00100209 /* wish7.png */,
+				19214A982077635000100209 /* wish8.png */,
+				19214A9A2077635100100209 /* wish9.png */,
+				19214A8C2077634C00100209 /* wish10.png */,
+				19214A8F2077634D00100209 /* wish11.png */,
+				19214A8D2077634D00100209 /* wish12.png */,
+				19214A932077634F00100209 /* wish13.png */,
+				19214A962077635000100209 /* wish14.png */,
+			);
+			path = wishes;
 			sourceTree = "<group>";
 		};
 		195CFFAD2041AF010062A26C /* Extension */ = {
@@ -550,8 +603,7 @@
 				19BA827C20500F0D00C095C1 /* MyPage */,
 				19BA827E2050113F00C095C1 /* Custom */,
 			);
-			name = Views;
-			path = Cells/Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		19F2CDF9204141C600CB113B /* Cells */ = {
@@ -769,6 +821,7 @@
 				19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */,
 				6B3FDE64206FECFA0081332B /* coworking(2)_111111.jpg in Resources */,
 				191DFEC3204EA9520095E9C1 /* Nomad.storyboard in Resources */,
+				19214AA32077638800100209 /* wish8.png in Resources */,
 				6BA8A9C52070313500DD7B3B /* busan.jpg in Resources */,
 				4A2202202074BFBD000643F0 /* Usersample.png in Resources */,
 				6B54121B2041900600DDB2D5 /* map_present_background_update.png in Resources */,
@@ -781,10 +834,12 @@
 				1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */,
 				1949DD06204FD5030062D8EF /* NomadWorkView.xib in Resources */,
 				198D92CB2061447E001325DD /* Start.storyboard in Resources */,
+				19214AA62077638800100209 /* wish11.png in Resources */,
 				6BA8A9C92070313500DD7B3B /* seoul.jpg in Resources */,
 				6B5412072041900600DDB2D5 /* detail_button.png in Resources */,
 				19A94FD6204EC1CE003A1D23 /* MyPageDetailMailCell.xib in Resources */,
 				19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */,
+				19214AA42077638800100209 /* wish9.png in Resources */,
 				191DFED2204EAFBF0095E9C1 /* humanSample.png in Resources */,
 				6BA8A9C22070313500DD7B3B /* daejun.jpg in Resources */,
 				6B54120D2041900600DDB2D5 /* map_pin_red@3x.png in Resources */,
@@ -797,18 +852,22 @@
 				6B3FDE67206FECFA0081332B /* culture(1)_511111.jpg in Resources */,
 				6B3FDE6C206FECFA0081332B /* citynature_111151.jpg in Resources */,
 				6B54120B2041900600DDB2D5 /* copyright.png in Resources */,
+				19214A9D2077638800100209 /* wish2.png in Resources */,
 				19A5780720622A5700240B87 /* PopupStartView.xib in Resources */,
 				6B3FDE6F206FECFA0081332B /* leports(4)_115111.jpg in Resources */,
 				6B3FDE6E206FECFA0081332B /* history_151111.jpg in Resources */,
 				6BA8A9C72070313500DD7B3B /* junju.jpg in Resources */,
 				6B54120F2041900600DDB2D5 /* map_pin@3x.png in Resources */,
 				6B3FDE75206FECFA0081332B /* leports(3)_115111.jpg in Resources */,
+				19214AA72077638800100209 /* wish12.png in Resources */,
 				1948408720704574005017E8 /* splash@3x.png in Resources */,
 				6BA8A9CB2070313500DD7B3B /* incheon.jpg in Resources */,
 				6B3FDE5F206FECFA0081332B /* coworking(1)_111111.jpg in Resources */,
+				19214AA12077638800100209 /* wish6.png in Resources */,
 				196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */,
 				6B5412172041900600DDB2D5 /* map_present_direction.png in Resources */,
 				6B3FDE72206FECFA0081332B /* coworking(3)_111111.jpg in Resources */,
+				19214A9E2077638800100209 /* wish3.png in Resources */,
 				1949DD00204FA91F0062D8EF /* NomadAddView.xib in Resources */,
 				196BABBA2063BC1E00422D2B /* NomadLifeCardCell.xib in Resources */,
 				6B3FDE70206FECFA0081332B /* coworking(2)_111115.jpg in Resources */,
@@ -821,11 +880,13 @@
 				6B5412122041900600DDB2D5 /* info_box.png in Resources */,
 				6B3FDE5D206FECFA0081332B /* coworking(3)_111115.jpg in Resources */,
 				6B54120C2041900600DDB2D5 /* th_line.png in Resources */,
+				19214AA92077638800100209 /* wish14.png in Resources */,
 				6B5412082041900600DDB2D5 /* map_pin_custom@3x.png in Resources */,
 				6B3FDE60206FECFA0081332B /* coworking(1)_111115.jpg in Resources */,
 				19C899CB205A007B0044D8A0 /* profile.png in Resources */,
 				6B634A46204EF79F00A59EEF /* cafe.png in Resources */,
 				193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */,
+				19214A9F2077638800100209 /* wish4.png in Resources */,
 				19BA8273204FF31100C095C1 /* NomadWorkTutorialView.xib in Resources */,
 				6B5412092041900600DDB2D5 /* map_pinup@3x.png in Resources */,
 				191DFEC5204EACBB0095E9C1 /* MyPageListView.xib in Resources */,
@@ -837,14 +898,19 @@
 				6B54121D2041900600DDB2D5 /* map_pin_shadow.png in Resources */,
 				6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */,
 				6BA8A9C62070313500DD7B3B /* jaeju.jpg in Resources */,
+				19214A9B2077638800100209 /* wish0.png in Resources */,
+				19214AA52077638800100209 /* wish10.png in Resources */,
 				196C4AE42041440100C7BFAF /* Login.storyboard in Resources */,
 				6B5412132041900600DDB2D5 /* point_sprite.png in Resources */,
+				19214A9C2077638800100209 /* wish1.png in Resources */,
+				19214AA82077638800100209 /* wish13.png in Resources */,
 				6B3FDE71206FECFA0081332B /* leports(1)_115111.jpg in Resources */,
 				191DFECF204EACF60095E9C1 /* MyPageMeetupView.xib in Resources */,
 				19F2CDE82041419C00CB113B /* Main.storyboard in Resources */,
 				6B54120E2041900600DDB2D5 /* daum_copyright.png in Resources */,
 				19A94FCE204EC1AE003A1D23 /* MyPageDetailInfoCell.xib in Resources */,
 				6B3FDE63206FECFA0081332B /* nature_111511.jpg in Resources */,
+				19214AA02077638800100209 /* wish5.png in Resources */,
 				6BA8A9CA2070313500DD7B3B /* gwanju.jpg in Resources */,
 				6B3FDE76206FECFA0081332B /* nature(1)_111511.jpg in Resources */,
 				6B3FDE79206FECFA0081332B /* history(1)_151111.jpg in Resources */,
@@ -855,6 +921,7 @@
 				4A8AC3322070221E002F6B32 /* testImage.png in Resources */,
 				6B5412042041900600DDB2D5 /* map_pin_custom.png in Resources */,
 				6BA8A9C82070313500DD7B3B /* daegu.jpg in Resources */,
+				19214AA22077638800100209 /* wish7.png in Resources */,
 				19A94FC6204EBECE003A1D23 /* humanSample2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
