@@ -35,7 +35,7 @@ class NomadWorkCell: UITableViewCell {
     @IBAction func clickContent(_ sender: UIButton) {
         let object = (realm.objects(ProjectInfo.self).last?.goalLists)!
         let query = NSPredicate(format: "todo = %@", (sender.titleLabel?.text)!)
-        let result = object.filter("date = '" + todayDate() + "'").filter(query).first!
+        let result = object.filter("date = %@", Date()).filter(query).first!
         let textColor = sender.titleColor(for: .normal)
         if(textColor == .black){
             sender.setTitleColor(.blue, for: .normal)
@@ -71,7 +71,7 @@ class NomadWorkCell: UITableViewCell {
                 if(cell.checkBox == sender){
                     let todo = (cell.content.titleLabel?.text)!
                     let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date = '" + todayDate() + "'").filter(query).first!
+                    let result = object.filter("date = %@", Date()).filter(query).first!
                     try! realm.write{
                         result.status = true
                     }
@@ -86,7 +86,7 @@ class NomadWorkCell: UITableViewCell {
                 if(cell.checkBox == sender){
                     let todo = (cell.content.titleLabel?.text)!
                     let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date = '" + todayDate() + "'").filter(query).first!
+                    let result = object.filter("date = %@", Date()).filter(query).first!
                     try! realm.write{
                         result.status = false
                     }

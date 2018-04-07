@@ -12,7 +12,7 @@ import RealmSwift
 class WishListInfo: Object{
     @objc dynamic var id: Int = 0           //Primary Key
     @objc dynamic var pid: Int = 0          //Foreign Key
-    @objc dynamic var date: String = ""
+    @objc dynamic var date: Date = Date()
     @objc dynamic var todo: String = ""     //Not Null
     @objc dynamic var pictureIndex: Int = -1    //-1이면 이미지 없음, 0부터 14까지 이미지 있음
     @objc dynamic var status: Bool = false  //default: false
@@ -29,7 +29,6 @@ func addWishList(_ todo: String){
     let realm = try! Realm()
     let object = WishListInfo()
     object.todo = todo
-    object.date = todayDate()
     try! realm.write{
         realm.add(object)
     }

@@ -114,17 +114,9 @@ class MyPageViewController: UIViewController {
     func gaugeRate() -> Int{
         realm = try! Realm()
         projectInfo = realm.objects(ProjectInfo.self).last
-        let startStr = projectInfo.period
-        let todayStr: String = todayDate()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let start = dateFormatter.date(from: startStr)!
-        let today = dateFormatter.date(from: todayStr)!
-        let interval = today.timeIntervalSince(start)
-        let days = Int(interval / 86400) + 1
+        let start = projectInfo.date
+        let days = dateInterval(startDate: start)
         
         return days
     }

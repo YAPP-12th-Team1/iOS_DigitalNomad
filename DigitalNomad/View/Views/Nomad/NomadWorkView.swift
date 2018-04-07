@@ -19,7 +19,7 @@ class NomadWorkView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         realm = try! Realm()
-        object = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = '" + todayDate() + "'")
+        object = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = %@", Date())
         tableView.register(UINib(nibName: "NomadWorkCell", bundle: nil), forCellReuseIdentifier: "nomadWorkCell")
     }
     
@@ -84,11 +84,8 @@ extension NomadWorkView: UITableViewDataSource{
         let postponeCell = self.object.filter(query).first!
         let calendar = Calendar(identifier: .gregorian)
         let today = Date()
-        let tomorrowFormatter = DateFormatter()
-        tomorrowFormatter.locale = Locale(identifier: "ko_KR")
-        tomorrowFormatter.dateFormat = "yyyy-MM-dd"
-        let tomorrow = tomorrowFormatter.string(from: calendar.date(byAdding: DateComponents(day: +1), to: today)!)
-        print(tomorrow)
+
+        let tomorrow = tomorrowDate()
         try! self.realm.write{
             postponeCell.date = tomorrow
         }

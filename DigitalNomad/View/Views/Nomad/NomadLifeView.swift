@@ -19,7 +19,7 @@ class NomadLifeView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         realm = try! Realm()
-        object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = '" + todayDate() + "'")
+        object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = %@", Date())
         collectionView.register(UINib(nibName: "NomadLifeCell", bundle: nil), forCellWithReuseIdentifier: "nomadLifeCell")
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -90,7 +90,7 @@ extension NomadLifeView: UICollectionViewDelegate{
             let yesAction = UIAlertAction(title: "예", style: .default, handler: { (action) in
                 let todo = (collectionView.cellForItem(at: indexPath) as! NomadLifeCell).content.text!
                 let query = NSPredicate(format: "todo = %@", todo)
-                let result = self.object.filter("date = '" + todayDate() + "'").filter(query)
+                let result = self.object.filter("date = %@", Date()).filter(query)
                 try! self.realm.write{
                     self.realm.delete(result)
                 }

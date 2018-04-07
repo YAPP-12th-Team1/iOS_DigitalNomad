@@ -41,7 +41,7 @@ class NomadLifeCell: UICollectionViewCell {
                 if(cell.checkBox == sender){
                     let todo = cell.content.text!
                     let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date = '" + todayDate() + "'").filter(query).first!
+                    let result = object.filter("date = %@", Date()).filter(query).first!
                     try! realm.write{
                         result.status = true
                     }
@@ -54,7 +54,7 @@ class NomadLifeCell: UICollectionViewCell {
                 if(cell.checkBox == sender){
                     let todo = cell.content.text!
                     let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date = '" + todayDate() + "'").filter(query).first!
+                    let result = object.filter("date = %@", Date()).filter(query).first!
                     try! realm.write{
                         result.status = false
                     }
