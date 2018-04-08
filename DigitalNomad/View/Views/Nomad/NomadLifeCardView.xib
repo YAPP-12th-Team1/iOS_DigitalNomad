@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oUi-eq-cGj">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                    <rect key="frame" x="1" y="1" width="375" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nu0-ky-z6Y">
                         <size key="itemSize" width="50" height="50"/>
@@ -33,10 +33,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="oUi-eq-cGj" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="DfE-bi-BqN"/>
-                <constraint firstItem="oUi-eq-cGj" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="aod-4k-bos"/>
-                <constraint firstItem="oUi-eq-cGj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iJf-mj-Leq"/>
-                <constraint firstItem="oUi-eq-cGj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="zYZ-Kc-xNG"/>
+                <constraint firstItem="oUi-eq-cGj" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="1" id="Dsr-k4-PgW"/>
+                <constraint firstItem="oUi-eq-cGj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="1" id="Fpt-rG-NxL"/>
+                <constraint firstItem="oUi-eq-cGj" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="1" id="MTj-pp-qCI"/>
+                <constraint firstItem="oUi-eq-cGj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="1" id="cW8-s4-yXa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

@@ -41,6 +41,7 @@ class NomadAddView: UIView {
     
     @objc func getTimeOfDate(){
         //리스트 완료 시각
+        //여기의 Date()를 hh:mm으로 바꿔서 표시해야할듯 sorted해서!
         if(!UserDefaults.standard.bool(forKey: "isNomadLifeView")){
             //workList
             let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = %@", yesterdayDate())
@@ -88,7 +89,7 @@ class NomadAddView: UIView {
         if(!UserDefaults.standard.bool(forKey: "isNomadLifeView")){
             print("WorkCardView")
             //workList
-            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date = %@", yesterdayDate())
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.goalLists.filter("date BETWEEN %@", [yesterdayStart, yesterdayEnd])
             if let first = yesterdayWork.first {
                 let text = first.todo + " 및 " + String(yesterdayWork.count) + "개"
                 contentSummary.setTitle(text, for: .normal)
@@ -99,7 +100,7 @@ class NomadAddView: UIView {
         } else {
             print("LifeCardView")
             //wishList
-            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date = %@", yesterdayDate())
+            let yesterdayWork = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [yesterdayStart, yesterdayEnd])
             if let first = yesterdayWork.first {
                 let text = first.todo + " 및 " + String(yesterdayWork.count) + "개"
                 contentSummary.setTitle(text, for: .normal)
@@ -121,9 +122,19 @@ class NomadAddView: UIView {
             }     
             (parentViewController.centerView.subviews.last as! NomadWorkView).tableView.reloadData()
         } else {
-            addWishList(textField.text!)
-            try! realm.write{
-                realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
+            if(self.parentViewController()?.view.subviews.last is NomadLifeCardView){
+                let cardView = self.parentViewController()?.view.subviews.last as! NomadLifeCardView
+                let selectedIndex = cardView.selectedIndex
+                addWishList(textField.text!, selectedIndex)
+                try! realm.write{
+                    realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
+                }
+                self.parentViewController()?.view.subviews.last?.removeFromSuperview()
+            } else {
+                addWishList(textField.text!)
+                try! realm.write{
+                    realm.objects(ProjectInfo.self).last!.wishLists.append(realm.objects(WishListInfo.self).last!)
+                }
             }
             (parentViewController.centerView.subviews.last as! NomadLifeView).collectionView.reloadData()
         }

@@ -27,15 +27,58 @@ class NomadLastViewController: UIViewController {
     var goals: Results<GoalListInfo>!
     var wishes: Results<WishListInfo>!
     let isNomadLifeView = UserDefaults.standard.bool(forKey: "isNomadLifeView")
+    var enrolledDate: Date!
+    let dateFormatter = DateFormatter()
+    var dateCount = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = try! Realm()
+        enrolledDate = realm.objects(ProjectInfo.self).last!.date
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         if(isNomadLifeView) {
-            goals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date < %@", todayStart)
+            wishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date < %@", todayStart).sorted(byKeyPath: "date")
+            var count = 0
+            var tempDate = ""
+            var isFirst = true
+            for wish in wishes{
+                let date = dateFormatter.string(from: wish.date)
+                if(tempDate != date){
+                    tempDate = date
+                    if(isFirst){
+                        isFirst = false
+                    } else {
+                        dateCount.append(count)
+                        count = 0
+                    }
+                }
+                count += 1
+            }
+            dateCount.append(count)
+            
         } else {
-            wishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date < %@", todayStart)
+            goals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date < %@", todayStart).sorted(byKeyPath: "date")
+            var count = 0
+            var tempDate = ""
+            var isFirst = true
+            for goal in goals{
+                let date = dateFormatter.string(from: goal.date)
+                if(tempDate != date){
+                    tempDate = date
+                    if(isFirst){
+                        isFirst = false
+                    } else {
+                        dateCount.append(count)
+                        count = 0
+                    }
+                }
+                count += 1
+            }
+            dateCount.append(count)
         }
+        print(goals)
+        print(wishes)
         // Do any additional setup after loading the view.
     }
 
@@ -52,17 +95,39 @@ class NomadLastViewController: UIViewController {
 extension NomadLastViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nomadLastCell")!
-        cell.textLabel?.text = "\(indexPath.section) + \(indexPath.row)"
+        var rowIndex = 0
+        if(indexPath.section > 0){
+            for i in 1...indexPath.section {
+                rowIndex += dateCount[i-1]
+            }
+        }
+        rowIndex += indexPath.row
+        if(isNomadLifeView){
+            let object = wishes[rowIndex]
+            cell.textLabel?.text = object.todo
+        } else {
+            let object = goals[rowIndex]
+            cell.textLabel?.text = object.todo
+        }
+//        cell.textLabel?.text = "\(indexPath.section) + \(indexPath.row)"
         return cell
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "날짜?"
+        var index = 0
+        for i in 0...section{
+            index += dateCount[i]
+        }
+        if(isNomadLifeView){
+            return dateFormatter.string(from: wishes[index-1].date)
+        } else {
+            return dateFormatter.string(from: goals[index-1].date)
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return dateCount.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return dateCount[section]
     }
 }
 extension NomadLastViewController: UITableViewDelegate{

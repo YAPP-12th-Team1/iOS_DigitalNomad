@@ -201,7 +201,8 @@ class MyPageDetailViewController: UIViewController {
             Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
                 "address" : str
             ])
-            self.tableView.reloadData()
+            self.tableView.reloadRows(at: [IndexPath(row: 2, section: 1)], with: .none)
+//            self.tableView.reloadData()
             
         }
         

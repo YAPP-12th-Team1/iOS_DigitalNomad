@@ -33,3 +33,13 @@ func addWishList(_ todo: String){
         realm.add(object)
     }
 }
+
+func addWishList(_ todo: String, _ selectedIndex: Int){
+    let realm = try! Realm()
+    let object = WishListInfo()
+    object.todo = todo
+    object.pictureIndex = selectedIndex
+    try! realm.write{
+        realm.add(object)
+    }
+}
