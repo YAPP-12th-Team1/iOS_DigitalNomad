@@ -19,7 +19,7 @@ class NomadLifeView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         realm = try! Realm()
-        object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [todayStart, todayEnd])
+        object = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
         collectionView.register(UINib(nibName: "NomadLifeCell", bundle: nil), forCellWithReuseIdentifier: "nomadLifeCell")
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -82,14 +82,14 @@ extension NomadLifeView: UICollectionViewDataSource{
     }
     func openFinalPage(){
         let project = realm.objects(ProjectInfo.self).last
-        guard let goals = project?.goalLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
-        guard let wishes = project?.wishLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
+        guard let goals = project?.goalLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]) else { return }
+        guard let wishes = project?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]) else { return }
         let countOfGoals = goals.count
         let countOfWishes = wishes.count
         let completedGoals = goals.filter("status = true").count
         let completedWishes = wishes.filter("status = true").count
         if(countOfGoals != completedGoals || countOfWishes != completedWishes) { return }
-        UserDefaults.standard.set(formatForTime(date: Date()), forKey: "timeOfFinalPageOpened")
+        UserDefaults.standard.set(Date().convertToTime(), forKey: "timeOfFinalPageOpened")
         let finalView = NomadFinalView.instanceFromXib()
         finalView.alpha = 0
         self.parentViewController()?.view.addSubview(finalView)
@@ -114,7 +114,7 @@ extension NomadLifeView: UICollectionViewDelegate{
             let yesAction = UIAlertAction(title: "예", style: .default, handler: { (action) in
                 let id = self.object[indexPath.item].id
                 let query = NSPredicate(format: "id = %d", id)
-                let result = self.object.filter(query).filter("date BETWEEN %@", [todayStart, todayEnd])
+                let result = self.object.filter(query).filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
                 try! self.realm.write{
                     self.realm.delete(result)
                 }

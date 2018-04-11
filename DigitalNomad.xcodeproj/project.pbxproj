@@ -44,7 +44,6 @@
 		1949DD08204FD50F0062D8EF /* NomadWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD07204FD50F0062D8EF /* NomadWorkView.swift */; };
 		1949DD0A204FD5170062D8EF /* NomadLifeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1949DD09204FD5170062D8EF /* NomadLifeView.xib */; };
 		1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD0B204FD5220062D8EF /* NomadLifeView.swift */; };
-		194CECDB206FA77C0001BF11 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194CECDA206FA77C0001BF11 /* Today.swift */; };
 		195628B620701352004B3AF7 /* culture(3)_511111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE49206FECF10081332B /* culture(3)_511111.jpg */; };
 		19587FFB20766A4000FD3D01 /* ERProgressHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFA20766A4000FD3D01 /* ERProgressHud.swift */; };
 		19587FFD20767BF900FD3D01 /* NomadLastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */; };
@@ -73,6 +72,7 @@
 		199A93132058E5A6007509A1 /* EmailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93122058E5A6007509A1 /* EmailInfo.swift */; };
 		199A93152058E5AF007509A1 /* GoalListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93142058E5AF007509A1 /* GoalListInfo.swift */; };
 		199A93172058E5B8007509A1 /* WishListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93162058E5B8007509A1 /* WishListInfo.swift */; };
+		199B9D47207E2A160067D7A8 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B9D46207E2A160067D7A8 /* Date+.swift */; };
 		19A5780720622A5700240B87 /* PopupStartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A5780620622A5700240B87 /* PopupStartView.xib */; };
 		19A5780920622A6700240B87 /* PopupStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5780820622A6700240B87 /* PopupStartView.swift */; };
 		19A5780C206264A500240B87 /* EnrollmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5780A206264A500240B87 /* EnrollmentCell.swift */; };
@@ -220,7 +220,6 @@
 		1949DD07204FD50F0062D8EF /* NomadWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkView.swift; sourceTree = "<group>"; };
 		1949DD09204FD5170062D8EF /* NomadLifeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeView.xib; sourceTree = "<group>"; };
 		1949DD0B204FD5220062D8EF /* NomadLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeView.swift; sourceTree = "<group>"; };
-		194CECDA206FA77C0001BF11 /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		19587FFA20766A4000FD3D01 /* ERProgressHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERProgressHud.swift; sourceTree = "<group>"; };
 		19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLastViewController.swift; sourceTree = "<group>"; };
 		195CFFAE2041AF140062A26C /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
@@ -250,6 +249,7 @@
 		199A93122058E5A6007509A1 /* EmailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInfo.swift; sourceTree = "<group>"; };
 		199A93142058E5AF007509A1 /* GoalListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListInfo.swift; sourceTree = "<group>"; };
 		199A93162058E5B8007509A1 /* WishListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListInfo.swift; sourceTree = "<group>"; };
+		199B9D46207E2A160067D7A8 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		19A5780620622A5700240B87 /* PopupStartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupStartView.xib; sourceTree = "<group>"; };
 		19A5780820622A6700240B87 /* PopupStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupStartView.swift; sourceTree = "<group>"; };
 		19A5780A206264A500240B87 /* EnrollmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentCell.swift; sourceTree = "<group>"; };
@@ -427,6 +427,7 @@
 			children = (
 				195CFFAE2041AF140062A26C /* UITextField+.swift */,
 				191DFED3204EB32B0095E9C1 /* UIView+.swift */,
+				199B9D46207E2A160067D7A8 /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -542,7 +543,6 @@
 		19F2CDF4204141B000CB113B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				194CECDA206FA77C0001BF11 /* Today.swift */,
 				199A930E2058E595007509A1 /* UserInfo.swift */,
 				199A93122058E5A6007509A1 /* EmailInfo.swift */,
 				199A93102058E59E007509A1 /* UserLocationInfo.swift */,
@@ -1026,7 +1026,6 @@
 			files = (
 				198D92CF206147B9001325DD /* EnrollmentViewController.swift in Sources */,
 				193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */,
-				194CECDB206FA77C0001BF11 /* Today.swift in Sources */,
 				196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */,
 				196BABB92063BC1E00422D2B /* NomadLifeCardCell.swift in Sources */,
 				196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */,
@@ -1051,6 +1050,7 @@
 				199A93112058E59E007509A1 /* UserLocationInfo.swift in Sources */,
 				199A930D2058E58B007509A1 /* ProjectInfo.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,
+				199B9D47207E2A160067D7A8 /* Date+.swift in Sources */,
 				199A93172058E5B8007509A1 /* WishListInfo.swift in Sources */,
 				19A94FCD204EC1AE003A1D23 /* MyPageDetailInfoCell.swift in Sources */,
 				19A5780920622A6700240B87 /* PopupStartView.swift in Sources */,

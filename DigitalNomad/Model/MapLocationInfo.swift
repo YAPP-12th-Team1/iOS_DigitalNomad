@@ -18,7 +18,7 @@ class MapLocationInfo: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var address: String = ""
     @objc dynamic var distance: String = ""
-    @objc dynamic var update: Date = Date() 
+    @objc dynamic var update: Date = Date()
 }
 func addMapLocation(_ longitude: Double, _ latitude: Double, _ category: Int, _ name: String, _ address: String, _ distance: String, _ update: Date){
     let realm = try! Realm()

@@ -61,7 +61,7 @@ class NomadAddView: UIView {
     
     @objc func setContentSummary() {
         if(!UserDefaults.standard.bool(forKey: "isNomadLifeView")){
-            let yesterdayGoals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date BETWEEN %@", [yesterdayStart, yesterdayEnd])
+            let yesterdayGoals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date BETWEEN %@", [Date.yesterdayStart, Date.yesterdayEnd])
             var text = ""
             switch(yesterdayGoals.count){
             case 0:
@@ -73,7 +73,7 @@ class NomadAddView: UIView {
             }
             contentSummary.setTitle(text, for: .normal)
         } else {
-            let yesterdayWishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [yesterdayStart, yesterdayEnd])
+            let yesterdayWishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [Date.yesterdayStart, Date.yesterdayEnd])
             var text = ""
             switch(yesterdayWishes.count){
             case 0:
@@ -128,13 +128,13 @@ class NomadAddView: UIView {
         let parent = self.parentViewController() as! NomadViewController
         let sub = parent.view.subviews.last
         if(sub is NomadWorkView){
-           let countOfGoals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date < %@", todayStart).count
+           let countOfGoals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date < %@", Date.todayStart).count
             if(countOfGoals == 0) {
                 Toast(text: "표시할 정보가 없습니다.", duration: Delay.short).show()
                 return
             }
         } else {
-            let countOfWishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date < %@", todayStart).count
+            let countOfWishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date < %@", Date.todayStart).count
             if(countOfWishes == 0) {
                 Toast(text: "표시할 정보가 없습니다.", duration: Delay.short).show()
                 return

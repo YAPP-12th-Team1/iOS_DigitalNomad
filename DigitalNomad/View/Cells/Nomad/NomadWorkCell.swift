@@ -79,14 +79,14 @@ class NomadWorkCell: UITableViewCell {
     
     func openFinalPage(){
         let project = realm.objects(ProjectInfo.self).last
-        guard let goals = project?.goalLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
-        guard let wishes = project?.wishLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
+        guard let goals = project?.goalLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]) else { return }
+        guard let wishes = project?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]) else { return }
         let countOfGoals = goals.count
         let countOfWishes = wishes.count
         let completedGoals = goals.filter("status = true").count
         let completedWishes = wishes.filter("status = true").count
         if(countOfGoals != completedGoals || countOfWishes != completedWishes) { return }
-        UserDefaults.standard.set(formatForTime(date: Date()), forKey: "timeOfFinalPageOpened")
+        UserDefaults.standard.set(Date().convertToTime(), forKey: "timeOfFinalPageOpened")
         let finalView = NomadFinalView.instanceFromXib()
         finalView.alpha = 0
         self.parentViewController()?.view.addSubview(finalView)

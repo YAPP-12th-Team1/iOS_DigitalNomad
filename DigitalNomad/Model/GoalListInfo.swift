@@ -21,13 +21,14 @@ class GoalListInfo: Object{
     
     func incrementID() -> Int {
         let realm = try! Realm()
-        return (realm.objects(GoalListInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
+        return (realm.objects(ProjectInfo.self).last!.goalLists.max(ofProperty: "id") as Int? ?? 0) + 1
     }
 }
 
 func addGoalList(_ todo: String){
     let realm = try! Realm()
     let object = GoalListInfo()
+    object.id = object.incrementID()
     object.todo = todo
     try! realm.write{
         realm.add(object)

@@ -21,13 +21,14 @@ class WishListInfo: Object{
     
     func incrementID() -> Int {
         let realm = try! Realm()
-        return (realm.objects(WishListInfo.self).max(ofProperty: "id") as Int? ?? 0) + 1
+        return (realm.objects(ProjectInfo.self).last!.wishLists.max(ofProperty: "id") as Int? ?? 0) + 1
     }
 }
 
 func addWishList(_ todo: String){
     let realm = try! Realm()
     let object = WishListInfo()
+    object.id = object.incrementID()
     object.todo = todo
     try! realm.write{
         realm.add(object)
@@ -37,6 +38,7 @@ func addWishList(_ todo: String){
 func addWishList(_ todo: String, _ selectedIndex: Int){
     let realm = try! Realm()
     let object = WishListInfo()
+    object.id = object.incrementID()
     object.todo = todo
     object.pictureIndex = selectedIndex
     try! realm.write{

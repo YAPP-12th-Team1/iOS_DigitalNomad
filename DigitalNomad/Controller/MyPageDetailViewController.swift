@@ -205,6 +205,7 @@ extension MyPageDetailViewController: UITableViewDataSource{
                 cell.textField.placeholder = "직업"
                 cell.textField.text = userInfo.job
                 cell.textField.tag = 0
+                cell.textField.isUserInteractionEnabled = true
             case 1:
                 cell.textField.delegate = self
                 cell.title.text = "소개말"

@@ -38,7 +38,7 @@ class NomadLastViewController: UIViewController {
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         if(isNomadLifeView) {
-            wishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date < %@", todayStart).sorted(byKeyPath: "date")
+            wishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date < %@", Date.todayStart).sorted(byKeyPath: "date")
             var count = 0
             var tempDate = ""
             var isFirst = true
@@ -58,7 +58,7 @@ class NomadLastViewController: UIViewController {
             dateCount.append(count)
             
         } else {
-            goals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date < %@", todayStart).sorted(byKeyPath: "date")
+            goals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date < %@", Date.todayStart).sorted(byKeyPath: "date")
             var count = 0
             var tempDate = ""
             var isFirst = true

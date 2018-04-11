@@ -116,7 +116,7 @@ class MyPageViewController: UIViewController {
         projectInfo = realm.objects(ProjectInfo.self).last
         
         let start = projectInfo.date
-        let days = dateInterval(startDate: start)
+        let days = start.dateInterval
         
         return days
     }
