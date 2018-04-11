@@ -92,7 +92,12 @@ extension NomadWorkView: UITableViewDataSource{
             tableView.deleteRows(at: [indexPath], with: .right)
             self.openFinalPage()
         }
-    return [delete, postpone]
+        if(result.status) {
+            return [delete]
+        } else {
+            return [delete, postpone]
+        }
+    
     }
     
     func openFinalPage(){
