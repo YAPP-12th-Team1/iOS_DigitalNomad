@@ -10,19 +10,15 @@ import Foundation
 import RealmSwift
 
 class EmailInfo: Object{
-
     @objc dynamic var title: String = ""    //Not Null
     @objc dynamic var context: String = ""  //Not Null
-
 }
 
 func addEmail(_ title: String, _ context: String){
     let realm = try! Realm()
     let object = EmailInfo()
-
     object.title = title
     object.context = context
-    
     try! realm.write{
         realm.add(object)
     }

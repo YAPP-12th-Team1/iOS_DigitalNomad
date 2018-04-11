@@ -33,6 +33,9 @@ extension NomadWorkView: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "nomadWorkCell") as! NomadWorkCell
         let result = object[indexPath.row]
         cell.content.setTitle(result.todo, for: .normal)
+        cell.content.sizeToFit()
+        cell.content.tag = result.id
+        cell.checkBox.tag = result.id
         switch(result.importance){
         case 0:
             cell.content.setTitleColor(.black, for: .normal)
@@ -49,7 +52,7 @@ extension NomadWorkView: UITableViewDataSource{
         }
         if(result.status){
             //체크박스 체크되어있게
-            cell.checkBox.on = true
+            cell.checkBox.setOn(true, animated: false)
             cell.checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
             cell.checkBox.layer.sublayers?.first?.cornerRadius = cell.checkBox.frame.height / 2
             let strikethrough = StrikethroughView.instanceFromXib() as! StrikethroughView
@@ -59,7 +62,7 @@ extension NomadWorkView: UITableViewDataSource{
             cell.content.addSubview(strikethrough)
         } else {
             //체크박스 체크 안되어있게
-            cell.checkBox.on = false
+            cell.checkBox.setOn(false, animated: false)
         }
         return cell
     }
@@ -75,21 +78,18 @@ extension NomadWorkView: UITableViewDataSource{
             try! self.realm.write{
                 self.realm.delete(result)
             }
-            tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .fade)
             self.openFinalPage()
-            print("삭제")
         }
         let postpone = UITableViewRowAction(style: .normal, title: "미루기") { (action, index) in
-            let todo = result.todo
-            let query = NSPredicate(format: "todo = %@", todo)
+            let id = result.id
+            let query = NSPredicate(format: "id = %d", id)
             let postponeCell = self.object.filter(query).first!
-
-
             let tomorrow = tomorrowDate()
             try! self.realm.write{
                 postponeCell.date = tomorrow
             }
-            tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .right)
             self.openFinalPage()
         }
     return [delete, postpone]
@@ -97,18 +97,14 @@ extension NomadWorkView: UITableViewDataSource{
     
     func openFinalPage(){
         let project = realm.objects(ProjectInfo.self).last
-        guard let goals = project?.goalLists else { return }
-        guard let wishs = project?.wishLists else { return }
-        for goal in goals{
-            if(goal.status == false){
-                return
-            }
-        }
-        for wish in wishs{
-            if(wish.status == false){
-                return
-            }
-        }
+        guard let goals = project?.goalLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
+        guard let wishes = project?.wishLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
+        let countOfGoals = goals.count
+        let countOfWishes = wishes.count
+        let completedGoals = goals.filter("status = true").count
+        let completedWishes = wishes.filter("status = true").count
+        if(countOfGoals != completedGoals || countOfWishes != completedWishes) { return }
+        UserDefaults.standard.set(formatForTime(date: Date()), forKey: "timeOfFinalPageOpened")
         let finalView = NomadFinalView.instanceFromXib()
         finalView.alpha = 0
         self.parentViewController()?.view.addSubview(finalView)

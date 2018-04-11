@@ -20,11 +20,13 @@ class PopupMeetupView: UIView {
     @IBOutlet var title: UILabel!
     @IBOutlet var message: UILabel!
     @IBOutlet var cancelButton: UIButton!
+    var realm: Realm!
     var name: String = ""
     var email: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        realm = try! Realm()
         view.layer.cornerRadius = 5
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowRadius = 3
@@ -36,13 +38,10 @@ class PopupMeetupView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let realm: Realm!
-        realm = try! Realm()
         var userInfo: UserInfo!
         var emailInfo: EmailInfo!
-        userInfo = realm.objects(UserInfo.self).first!
-        emailInfo = realm.objects(EmailInfo.self).first!
+        userInfo = realm.objects(UserInfo.self).last!
+        emailInfo = realm.objects(EmailInfo.self).last!
         
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -52,7 +51,6 @@ class PopupMeetupView: UIView {
             print("name: ", self.name)
             print("nickname: ", nickname)
             self.email = value?["email"] as? String ?? ""
-            
             self.sender.text = userInfo.nickname
             self.receiver.text = nickname
             self.title.text = emailInfo.title
@@ -92,8 +90,10 @@ class PopupMeetupView: UIView {
     }
     
     func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
-        sendMailErrorAlert.show()
+        let alert = UIAlertController(title: "오류", message: "이메일을 보낼 수 없습니다.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.parentViewController()?.present(alert, animated: true)
     }
     
     @IBAction func clickCancel(_ sender: UIButton) {

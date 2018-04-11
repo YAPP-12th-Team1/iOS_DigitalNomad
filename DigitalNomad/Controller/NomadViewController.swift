@@ -28,16 +28,21 @@ class NomadViewController: UIViewController {
         
         //UserInfo의 location 필드를 현재위치로 업데이트하는 코드 위치
         
+        //자정 이후에 앱을 실행했을 때 이전의 데이터 중 체크되지 않은 것의 날짜 필드를 오늘로 바꾸어주는 함수. (자동 미루기)
+        if(UserDefaults.standard.string(forKey: "today") != todayDateToString()){
+            setAutoPostponed()
+        }
+        UserDefaults.standard.set(todayDateToString(), forKey: "today")
+        
         //앱 실행 시 화면이 GoalList인지 WishList인지 구분함
-        if(UserDefaults.standard.bool(forKey: "isNomadLifeView")){
-            lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
-            lifeView.frame.size = centerView.frame.size
-            centerView.addSubview(lifeView)
-            
-        } else {
+        if(!UserDefaults.standard.bool(forKey: "isNomadLifeView")){
             workView = NomadWorkView.instanceFromXib() as! NomadWorkView
             workView.frame.size = centerView.frame.size
             centerView.addSubview(workView)
+        } else {
+            lifeView = NomadLifeView.instanceFromXib() as! NomadLifeView
+            lifeView.frame.size = centerView.frame.size
+            centerView.addSubview(lifeView)
         }
         labelDays.layer.cornerRadius = 5
         labelDays.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
@@ -49,17 +54,16 @@ class NomadViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
         
-        
         //오늘 날짜와 일차 계산 후 뿌려줌
         let calendar = Calendar(identifier: .gregorian)
         
         let todayFormatter = DateFormatter()
         todayFormatter.locale = Locale(identifier: "ko_KR")
-        todayFormatter.dateFormat = "yyyy년 M월 d일"
+        todayFormatter.dateFormat = "yyyy년 MM월 dd일"
         
         let yesterdayFormatter = DateFormatter()
         yesterdayFormatter.locale = Locale(identifier: "ko_KR")
-        yesterdayFormatter.dateFormat = "M월d일"
+        yesterdayFormatter.dateFormat = "M월 d일"
         let yesterday = yesterdayFormatter.string(from: calendar.date(byAdding: DateComponents(day: -1), to: Date())!)
         labelToday.text = "오늘 \(todayFormatter.string(from: Date()))"
        
@@ -72,15 +76,9 @@ class NomadViewController: UIViewController {
         }
         centerView.subviews.last?.isUserInteractionEnabled = false
         
-        //자정 이후에 앱을 실행했을 때 어제의 데이터 중 체크되지 않은 것의 날짜 필드를 오늘로 바꾸어주는 함수.
-        if(UserDefaults.standard.string(forKey: "today") != todayDateToString()){
-            setAutoPostponed()
-        }
-        
         //다른 곳에서 viewWillAppear() 호출 시 센터뷰가 GoalList이냐 WishList이냐에 따라 동작하는 것을 구분함
         if(centerView.subviews.last is NomadWorkView) {
-            //분홍색 계열 (색A, 일)
-            
+            //GoalLists
             if(self.view.subviews.last is NomadLifeCardView){
                 self.view.subviews.last?.removeFromSuperview()
             }
@@ -91,12 +89,11 @@ class NomadViewController: UIViewController {
             addView.buttonCard.isHidden = true
             
             workView = centerView.subviews.last as! NomadWorkView
-            
-            //화면 전환 인터렉션
-            let refresh = UIRefreshControl()
-            workView.tableView.refreshControl = refresh
-            refresh.attributedTitle = NSAttributedString(string: "더 당기면 카드형 노트로 전환됩니다")
-            refresh.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+            let tableView = workView.tableView!
+        
+            tableView.refreshControl = UIRefreshControl()
+            tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Wish로 전환")
+            tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
             
             searchBar.barTintColor = #colorLiteral(red: 0.9529411765, green: 0.6705882353, blue: 0.6274509804, alpha: 1)
             self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.6705882353, blue: 0.6274509804, alpha: 1)
@@ -129,12 +126,11 @@ class NomadViewController: UIViewController {
             addView.frame.size = underView.frame.size
             
             lifeView = centerView.subviews.last as! NomadLifeView
+            let collectionView = lifeView.collectionView!
             
-            //화면 전환 인터렉션
-            let refresh = UIRefreshControl()
-            refresh.attributedTitle = NSAttributedString(string: "더 당기면 리스트형 노트로 전환됩니다")
-            refresh.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
-            lifeView.collectionView.refreshControl = refresh
+            collectionView.refreshControl = UIRefreshControl()
+            collectionView.refreshControl?.attributedTitle = NSAttributedString(string: "Goal로 전환")
+            collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
             
             searchBar.barTintColor = #colorLiteral(red: 0.7607843137, green: 0.7333333333, blue: 0.8235294118, alpha: 1)
             self.tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0.7607843137, green: 0.7333333333, blue: 0.8235294118, alpha: 1)
@@ -204,6 +200,7 @@ class NomadViewController: UIViewController {
             centerView.subviews.last?.isUserInteractionEnabled = false
         }
     }
+    
     @objc func keyboardWillHide(_ notification: Notification){
         if(searchBar.isFirstResponder){
             return
@@ -217,13 +214,14 @@ class NomadViewController: UIViewController {
                 underView.frame.origin.y += addView.subView.frame.height
             }
             centerView.subviews.last?.isUserInteractionEnabled = true
-            
         }
     }
     
     func setAutoPostponed(){
-        let goals = realm.objects(ProjectInfo.self).last!.goalLists.filter("date BETWEEN %@", [yesterdayStart, yesterdayEnd]).filter("status = false")
-        let wishes = realm.objects(ProjectInfo.self).last!.wishLists.filter("date BETWEEN %@", [yesterdayStart, yesterdayEnd]).filter("status = false")
+        let project = realm.objects(ProjectInfo.self).last!
+        let query = NSPredicate(format: "date < %@", todayStart as NSDate)
+        let goals = project.goalLists.filter(query).filter("status = false")
+        let wishes = project.wishLists.filter(query).filter("status = false")
         try! realm.write{
             for goal in goals{
                 goal.date = Date()

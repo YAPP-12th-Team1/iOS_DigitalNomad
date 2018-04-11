@@ -25,7 +25,6 @@ class MyPageDetailImageCell: UITableViewCell, UINavigationControllerDelegate, UI
         myImage.image = UIImage(data: userInfo.image)
         myImage.layer.borderColor = UIColor.black.cgColor
         myImage.layer.borderWidth = 3
-        myImage.layer.masksToBounds = false
         myImage.layer.cornerRadius = myImage.frame.height / 2
         myImage.clipsToBounds = true
         // Initialization code
@@ -33,9 +32,8 @@ class MyPageDetailImageCell: UITableViewCell, UINavigationControllerDelegate, UI
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
     @IBAction func changeMyImage(_ sender: UIButton) {
         if(UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)){
             imagePicker.delegate = self
@@ -44,6 +42,7 @@ class MyPageDetailImageCell: UITableViewCell, UINavigationControllerDelegate, UI
             self.parentViewController()?.present(imagePicker, animated: true, completion: nil)
         }
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
             myImage.contentMode = .scaleAspectFit
@@ -71,6 +70,7 @@ class MyPageDetailImageCell: UITableViewCell, UINavigationControllerDelegate, UI
         }
         self.parentViewController()?.dismiss(animated: true, completion: nil)
     }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.parentViewController()?.dismiss(animated: true, completion: nil)
     }

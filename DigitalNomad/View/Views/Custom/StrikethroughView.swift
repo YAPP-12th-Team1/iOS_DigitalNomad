@@ -12,10 +12,6 @@ class StrikethroughView: UIView {
 
     @IBOutlet var label: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     class func instanceFromXib() -> UIView {
         return UINib(nibName: "StrikethroughView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
     }

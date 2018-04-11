@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import RealmSwift
+import Toaster
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -41,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             window?.rootViewController = controller
         }
         window?.makeKeyAndVisible()
+        
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         UIApplication.shared.isStatusBarHidden = false
@@ -50,9 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //        UserDefaults.standard.set(false, forKey: "isFirstNomadWorkExecute")
 //        UserDefaults.standard.set(false, forKey: "isFirstNomadLifeExecute")
         
-        //앱 실행 시 날짜 UserDefaults에 저장
+        //앱 실행 시 날짜 UserDefaults에 저장, 미루기 기능에 사용됨
+        //백그라운드에서 실행하도록 해야하는데...
         UserDefaults.standard.set(todayDateToString(), forKey: "today")
         
+        //토스트 크기 설정
+        ToastView.appearance().bottomOffsetPortrait = 49 + 20
         return true
     }
     

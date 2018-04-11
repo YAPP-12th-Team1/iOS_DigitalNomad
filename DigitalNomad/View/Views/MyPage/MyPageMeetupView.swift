@@ -31,14 +31,10 @@ class MyPageMeetupView: UIView {
         super.awakeFromNib()
         hideElements()
         showActivityIndicator()
-        ToastView.appearance().bottomOffsetPortrait = 49 + 20
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 2
-//        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
         imageView.clipsToBounds = true
-
-        
         buttonMeetup.layer.cornerRadius = 5
         self.usersList()
     }
@@ -58,7 +54,6 @@ class MyPageMeetupView: UIView {
         //마이페이지 디테일에서 코워킹 설정이 off되어 있으면 토스터를 띄움, 그렇지 않으면 팝업을 띄움
         if(userInfo.cowork){
             let popup = PopupMeetupView.instanceFromXib() as! PopupMeetupView
-            
             // popup 으로 데이터 보내는 부분
             popup.name = popUser
             popup.setNeedsLayout()
@@ -148,22 +143,9 @@ class MyPageMeetupView: UIView {
             self.message.alpha = 0
             self.distance.alpha = 0
         }
-//        buttonMeetup.isHidden = true
-//        imageView.isHidden = true
-//        name.isHidden = true
-//        occupation.isHidden = true
-//        days.isHidden = true
-//        message.isHidden = true
-//        distance.isHidden = true
     }
+    
     func showElements(){
-//        buttonMeetup.isHidden = false
-//        imageView.isHidden = false
-//        name.isHidden = false
-//        occupation.isHidden = false
-//        days.isHidden = false
-//        message.isHidden = false
-//        distance.isHidden = false
         UIView.animate(withDuration: 0.2) {
             self.buttonMeetup.alpha = 1
             self.imageView.alpha = 1
@@ -174,21 +156,19 @@ class MyPageMeetupView: UIView {
             self.distance.alpha = 1
         }
     }
+    
     func showActivityIndicator(){
         activityIndicator.startAnimating()
         UIView.animate(withDuration: 0.2) {
             self.activityIndicator.alpha = 1
         }
-//        activityIndicator.isHidden = false
     }
+    
     func hideActivityIndicator(){
         activityIndicator.stopAnimating()
         UIView.animate(withDuration: 0.2) {
             self.activityIndicator.alpha = 0
         }
-//        activityIndicator.isHidden = true
     }
-
-    
 }
 

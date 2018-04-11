@@ -41,6 +41,7 @@ extension NomadLifeCardView: UICollectionViewDataSource{
 }
 extension NomadLifeCardView: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //선택되었다는 것을 사용자에게 알려주기 위한 디자인이 들어가야 함. 지금은 알파값만 대충 바꿔줌
         selectedIndex = indexPath.item
         if let cell = collectionView.cellForItem(at: indexPath) as? NomadLifeCardCell {
             cell.card.alpha = 0.6
@@ -52,17 +53,17 @@ extension NomadLifeCardView: UICollectionViewDelegate{
         }
     }
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-//        UIView.animate(withDuration: 0.5) {
-//            if let cell = collectionView.cellForItem(at: indexPath) as? NomadLifeCardCell {
-//                cell.view.backgroundColor = #colorLiteral(red: 0.831372549, green: 0.831372549, blue: 0.831372549, alpha: 1)
-//            }
-//        }
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? NomadLifeCardCell {
+                cell.view.backgroundColor = #colorLiteral(red: 0.831372549, green: 0.831372549, blue: 0.831372549, alpha: 1)
+            }
+        }
     }
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-//        UIView.animate(withDuration: 0.5) {
-//            if let cell = collectionView.cellForItem(at: indexPath) as? NomadLifeCardCell {
-//                cell.view.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
-//            }
-//        }
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? NomadLifeCardCell {
+                cell.view.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
+            }
+        }
     }
 }

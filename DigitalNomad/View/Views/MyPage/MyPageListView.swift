@@ -15,10 +15,10 @@ class MyPageListView: UIView {
     @IBOutlet var content: UILabel!
     var realm: Realm!
     var goalListInfo: GoalListInfo!
-
   
     override func awakeFromNib() {
         super.awakeFromNib()
+        realm = try! Realm()
         getWorkContent()
     }
     
@@ -26,10 +26,9 @@ class MyPageListView: UIView {
         return UINib(nibName: "MyPageListView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
     }
     
-    @objc func getWorkContent(){
-        realm = try! Realm()
-        let totalGoalNum = realm.objects(GoalListInfo.self).count
-        let done = realm.objects(GoalListInfo.self).filter("status==true").count
-        content.text =  String(done) + "/" + String(totalGoalNum)
+    func getWorkContent(){
+        let totalGoalNum = realm.objects(ProjectInfo.self).last!.goalLists.count
+        let done = realm.objects(ProjectInfo.self).last!.goalLists.filter("status = true").count
+        self.content.text = "\(done) / \(totalGoalNum)"
     }
 }

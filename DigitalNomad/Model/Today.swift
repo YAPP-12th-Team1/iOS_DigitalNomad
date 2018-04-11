@@ -9,7 +9,6 @@
 import Foundation
 
 func formatForTime(date: Date) -> String {
-
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "ko_KR")
     dateFormatter.dateFormat = "HH:mm"

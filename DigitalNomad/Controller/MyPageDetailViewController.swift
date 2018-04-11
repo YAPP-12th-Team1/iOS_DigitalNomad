@@ -23,22 +23,17 @@ class MyPageDetailViewController: UIViewController {
     var buttonRefresh: UIButton = UIButton()
     var realm: Realm!
     var userInfo: UserInfo!
+    var emailInfo: EmailInfo!
     var userLocationInfo: UserLocationInfo?
-    var job = ""
-    var introducing = ""
-    var purpose = ""
-    var emailTitle = ""
-    var emailMessage = ""
-
     let locationManager = CLLocationManager()
     var myLat : Double = 0.0
     var myLong : Double = 0.0
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         realm = try! Realm()
         userInfo = realm.objects(UserInfo.self).last
+        emailInfo = realm.objects(EmailInfo.self).last
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -55,15 +50,12 @@ class MyPageDetailViewController: UIViewController {
         coworkingAllowingSwitch.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
         buttonRefresh = UIButton(type: .custom)
         buttonRefresh.addTarget(self, action: #selector(clickRefresh), for: .touchUpInside)
-        buttonRefresh.setTitle("R", for: .normal)
-        buttonRefresh.setTitleColor(.black, for: .normal)
+        buttonRefresh.setImage(#imageLiteral(resourceName: "Start_Image"), for: .normal)
         if(userInfo.cowork){
             coworkingAllowingSwitch.setOn(true, animated: false)
         } else {
             coworkingAllowingSwitch.setOn(false, animated: false)
         }
-        // Do any additional setup after loading the view.
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,69 +73,10 @@ class MyPageDetailViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func clickCancel(_ sender: UIButton) {
-        ERProgressHud.show()
-        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func clickConfirm(_ sender: UIButton) {
         ERProgressHud.show()
-        if(tableView.numberOfSections == 4){
-            try! realm.write{
-                userInfo.cowork = coworkingAllowingSwitch.isOn
-            }
-            if(!job.isEmpty){
-                try! realm.write{
-                    userInfo.job = job
-                }
-            }
-            if(!introducing.isEmpty){
-                try! realm.write{
-                    userInfo.introducing = introducing
-                }
-            }
-            if(!purpose.isEmpty){
-                try! realm.write{
-                    userInfo.purpose = purpose
-                }
-            }
-            if let emailInfo = realm.objects(EmailInfo.self).first {
-                if(!emailTitle.isEmpty){
-                    try! realm.write{
-                        emailInfo.title = emailTitle
-                    }
-                }
-                if(!emailMessage.isEmpty){
-                    try! realm.write{
-                        emailInfo.context = emailMessage
-                    }
-                }
-            } else {
-                addEmail(emailTitle, emailMessage)
-            }
-            
-            let emailInfo = realm.objects(EmailInfo.self).first!
-            
-            /** firebase emailInfo Update **/
-            Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("emailInfo").setValue([
-                "title": emailInfo.title,
-                "context": emailInfo.context
-            ])
-            
-            /** firebase User Update **/
-            Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
-                "job" : userInfo.job,
-                "introducing" : userInfo.introducing,
-                "purpose" : userInfo.purpose,
-                "cowork": userInfo.cowork
-            ])
-            print(job, introducing, purpose, emailTitle, emailMessage)
-
-        }
-        Toast(text: "저장했습니다.", duration: Delay.short).show()
         dismiss(animated: true, completion: nil)
     }
     
@@ -154,6 +87,7 @@ class MyPageDetailViewController: UIViewController {
             }
         }
     }
+    
     @objc func keyboardWillHide(_ notification: Notification){
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
             if(self.view.frame.origin.y != 0){
@@ -163,49 +97,35 @@ class MyPageDetailViewController: UIViewController {
     }
     
     @objc func clickRefresh(){
-        //위치 정보 새로고침
-        //위치 정보 UserLocationInfo에 업데이트
-        //좌표 값에 따라서 위치 String 나오면 UserInfo에 업데이트
-        //tableView.reloadData()
-        
         let baseUrl: String = "https://dapi.kakao.com/v2/local/geo/coord2address.json?"
         Alamofire.request(baseUrl+"x=\(myLong)&y=\(myLat)", method: .get ,headers: ["Authorization": "KakaoAK 8add144f51d5e214bb8d9008445c817d"]).responseJSON {
             response in
-            
             guard response.result.error == nil else {
                 print("error calling GET on /todos/1")
                 print(response.result.error!)
                 return
             }
-
             guard let json = response.result.value as? [String: Any] else {
                 print("didn't get todo objecy as JSON from API")
                 print("Error: \(String(describing: response.result.error))")
                 return
             }
-            
             guard let doc = json["documents"] as? [[String: Any]] else {
                 print("Could not get documents from JSON")
                 return
             }
-            
             let addr = doc[0]["address"] as! [String:String]
             let region1 = addr["region_1depth_name"]!
             let region2 = addr["region_2depth_name"]!
-            
             let str = region1+" "+region2
             try! self.realm.write{
                 self.userInfo.address = str
             }
-            
             Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([
                 "address" : str
             ])
             self.tableView.reloadRows(at: [IndexPath(row: 2, section: 1)], with: .none)
-//            self.tableView.reloadData()
-            
         }
-        
     }
     
     @objc func switchValueChanged(_ sender: JTMaterialSwitch){
@@ -213,13 +133,31 @@ class MyPageDetailViewController: UIViewController {
             try! realm.write {
                 userInfo.cowork = true
             }
+            updateFirebaseInfo(key: "cowork", value: true)
+            if let emailInfo = realm.objects(EmailInfo.self).last {
+                self.emailInfo = emailInfo
+            } else {
+                addEmail("", "")
+            }
         } else {
             try! realm.write{
                 userInfo.cowork = false
             }
+            updateFirebaseInfo(key: "cowork", value: false)
         }
         tableView.reloadData()
         tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+    }
+    
+    
+    func updateFirebaseInfo(key: String, value: String) {
+        Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([key : value])
+    }
+    func updateFirebaseInfo(key: String, value: Bool) {
+        Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues([key : value])
+    }
+    func updateFirebaseEmail(key: String, value: String){
+        Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("emailInfo").updateChildValues([key : value])
     }
 }
 
@@ -375,22 +313,33 @@ extension MyPageDetailViewController: UITableViewDataSource{
 
 extension MyPageDetailViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else { return }
         switch(textField.tag){
         case 0:
-            print(textField.text!)
-            job = textField.text!
+            updateFirebaseInfo(key: "job", value: text)
+            try! realm.write {
+                userInfo.job = text
+            }
         case 1:
-            print(textField.text!)
-            introducing = textField.text!
+            updateFirebaseInfo(key: "introducing", value: text)
+            try! realm.write {
+                userInfo.introducing = text
+            }
         case 2:
-            print(textField.text!)
-            purpose = textField.text!
+            updateFirebaseInfo(key: "purpose", value: text)
+            try! realm.write {
+                userInfo.purpose = text
+            }
         case 3:
-            print(textField.text!)
-            emailTitle = textField.text!
+            updateFirebaseEmail(key: "title", value: text)
+            try! realm.write {
+                emailInfo.title = text
+            }
         case 4:
-            print(textField.text!)
-            emailMessage = textField.text!
+            updateFirebaseEmail(key: "context", value: text)
+            try! realm.write {
+                emailInfo.context = text
+            }
         default:
             break
         }
@@ -407,7 +356,6 @@ extension MyPageDetailViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         myLat = locations[locations.count-1].coordinate.latitude
         myLong = locations[locations.count-1].coordinate.longitude
-        
         print(myLat)
         print(myLong)
     }

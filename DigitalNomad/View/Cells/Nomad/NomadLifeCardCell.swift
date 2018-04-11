@@ -23,7 +23,5 @@ class NomadLifeCardCell: UICollectionViewCell {
         card.layer.borderWidth = 1
         card.layer.borderColor = UIColor.black.cgColor
         card.layer.masksToBounds = true
-        
     }
-
 }

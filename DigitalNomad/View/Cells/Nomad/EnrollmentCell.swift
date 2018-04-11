@@ -16,16 +16,10 @@ class EnrollmentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         textField.addTarget(self, action: #selector(clickReturn), for: .editingDidEndOnExit)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        textField.autocorrectionType = .no
     }
     
     @objc func clickReturn(_ sender: UITextField){
         sender.endEditing(true)
     }
-    
 }

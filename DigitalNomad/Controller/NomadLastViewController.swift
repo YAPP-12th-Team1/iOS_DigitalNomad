@@ -77,14 +77,10 @@ class NomadLastViewController: UIViewController {
             }
             dateCount.append(count)
         }
-        print(goals)
-        print(wishes)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func clickPrevious(_ sender: UIButton) {
@@ -109,7 +105,6 @@ extension NomadLastViewController: UITableViewDataSource{
             let object = goals[rowIndex]
             cell.textLabel?.text = object.todo
         }
-//        cell.textLabel?.text = "\(indexPath.section) + \(indexPath.row)"
         return cell
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

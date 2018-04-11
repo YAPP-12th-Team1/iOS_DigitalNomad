@@ -23,41 +23,39 @@ class NomadWorkCell: UITableViewCell {
         checkBox.offAnimationType = .fill
         checkBox.onCheckColor = .white
         checkBox.onTintColor = checkBox.tintColor
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     @IBAction func clickContent(_ sender: UIButton) {
         let object = (realm.objects(ProjectInfo.self).last?.goalLists)!
-        let query = NSPredicate(format: "todo = %@", (sender.titleLabel?.text)!)
-        let result = object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query).first!
-        let textColor = sender.titleColor(for: .normal)
-        if(textColor == .black){
+        let id = sender.tag
+        let query = NSPredicate(format: "id = %d", id)
+        let result = object.filter(query).first!
+        switch(result.importance){
+        case 0:
             sender.setTitleColor(.blue, for: .normal)
-            try! realm.write {
+            try! realm.write{
                 result.importance = 1
             }
-        } else if(textColor == .blue){
+        case 1:
             sender.setTitleColor(.red, for: .normal)
-            try! realm.write {
+            try! realm.write{
                 result.importance = 2
             }
-        } else if(textColor == .red){
+        case 2:
             sender.setTitleColor(.black, for: .normal)
-            try! realm.write {
+            try! realm.write{
                 result.importance = 0
             }
+        default:
+            break
         }
     }
     
     @IBAction func clickCheckBox(_ sender: BEMCheckBox) {
-        let parentViewController = self.parentViewController() as! NomadViewController
         let object = (realm.objects(ProjectInfo.self).last?.goalLists)!
+        let id = sender.tag
+        let query = NSPredicate(format: "id = %d", id)
+        let result = object.filter(query).first!
         if(sender.on){
             checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
             checkBox.layer.sublayers?.first?.cornerRadius = checkBox.frame.height / 2
@@ -66,52 +64,29 @@ class NomadWorkCell: UITableViewCell {
             content.sizeToFit()
             strikethrough.frame.size = content.frame.size
             content.addSubview(strikethrough)
-            for i in 0..<object.count {
-                let cell = (parentViewController.centerView.subviews.last as! NomadWorkView).tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! NomadWorkCell
-                if(cell.checkBox == sender){
-                    let todo = (cell.content.titleLabel?.text)!
-                    let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query).first!
-                    try! realm.write{
-                        result.status = true
-                    }
-                    break
-                }
+            try! realm.write {
+                result.status = true
             }
         } else {
             checkBox.layer.sublayers?.removeFirst()
             content.viewWithTag(100)?.removeFromSuperview()
-            for i in 0..<object.count {
-                let cell = (parentViewController.centerView.subviews.last as! NomadWorkView).tableView.cellForRow(at: IndexPath(row: i, section: 0)) as! NomadWorkCell
-                if(cell.checkBox == sender){
-                    let todo = (cell.content.titleLabel?.text)!
-                    let query = NSPredicate(format: "todo = %@", todo)
-                    let result = object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query).first!
-                    try! realm.write{
-                        result.status = false
-                    }
-                    break
-                }
+            try! realm.write {
+                result.status = false
             }
         }
-        
-        //FinalPage 여는 조건
         openFinalPage()
     }
+    
     func openFinalPage(){
         let project = realm.objects(ProjectInfo.self).last
-        guard let goals = project?.goalLists else { return }
-        guard let wishs = project?.wishLists else { return }
-        for goal in goals{
-            if(goal.status == false){
-                return
-            }
-        }
-        for wish in wishs{
-            if(wish.status == false){
-                return
-            }
-        }
+        guard let goals = project?.goalLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
+        guard let wishes = project?.wishLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
+        let countOfGoals = goals.count
+        let countOfWishes = wishes.count
+        let completedGoals = goals.filter("status = true").count
+        let completedWishes = wishes.filter("status = true").count
+        if(countOfGoals != completedGoals || countOfWishes != completedWishes) { return }
+        UserDefaults.standard.set(formatForTime(date: Date()), forKey: "timeOfFinalPageOpened")
         let finalView = NomadFinalView.instanceFromXib()
         finalView.alpha = 0
         self.parentViewController()?.view.addSubview(finalView)

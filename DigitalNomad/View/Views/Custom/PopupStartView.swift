@@ -21,8 +21,6 @@ class PopupStartView: UIView {
         view.layer.shadowRadius = 3
         view.layer.shadowOffset = .zero
         view.layer.shadowOpacity = 1
-//        buttonSkip.layer.cornerRadius = 5
-//        buttonRecommendation.layer.cornerRadius = 5
     }
     
     class func instanceFromXib() -> UIView {

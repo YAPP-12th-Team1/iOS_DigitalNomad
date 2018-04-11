@@ -18,18 +18,18 @@ class MyPageCardView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        getLifeContent()
+        realm = try! Realm()
+        getWishContent()
     }
     
     class func instanceFromXib() -> UIView {
         return UINib(nibName: "MyPageCardView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
     }
     
-    @objc func getLifeContent(){
-        realm = try! Realm()
-        let totalGoalNum = realm.objects(WishListInfo.self).count
-        let done = realm.objects(WishListInfo.self).filter("status==true").count
-        content.text =  String(done) + "/" + String(totalGoalNum)
+    func getWishContent(){
+        let totalWishNum = realm.objects(ProjectInfo.self).last!.wishLists.count
+        let done = realm.objects(ProjectInfo.self).last!.wishLists.filter("status==true").count
+        content.text = "\(done) / \(totalWishNum)"
     }
 
 }

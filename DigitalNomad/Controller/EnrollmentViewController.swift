@@ -28,13 +28,11 @@ class EnrollmentViewController: UIViewController {
         pickerView.frame = CGRect(x: 0, y: 40, width: self.view.frame.width, height: 50)
         pickerView.delegate = self
         pickerView.dataSource = self
-        
         self.pickerView.font = UIFont(name: "HelveticaNeue-Light", size: 15)!
         self.pickerView.highlightedFont = UIFont(name: "HelveticaNeue", size: 15)!
         self.pickerView.pickerViewStyle = .wheel
         self.pickerView.maskDisabled = false
         self.pickerView.reloadData()
-        
         tableView.register(UINib(nibName: "EnrollmentCell", bundle: nil), forCellReuseIdentifier: "enrollmentCell")
         // Do any additional setup after loading the view.
     }
@@ -43,10 +41,12 @@ class EnrollmentViewController: UIViewController {
         super.viewWillAppear(animated)
         pickerView.selectItem(6)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func clickConfirm(_ sender: UIButton) {
         //User 최초 생성, Project 최초 생성
         if(place.isEmpty || purpose.isEmpty){

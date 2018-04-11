@@ -17,17 +17,9 @@ class MyPageDetailInfoCell: UITableViewCell {
         super.awakeFromNib()
         textField.autocorrectionType = .no
         textField.addTarget(self, action: #selector(clickReturnButton), for: .editingDidEndOnExit)
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     @objc func clickReturnButton(){
         textField.resignFirstResponder()
     }
-    
 }

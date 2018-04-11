@@ -43,15 +43,17 @@ extension NomadLifeView: UICollectionViewDataSource{
         cell.frame.size = CGSize(width: width / 4, height: width / 4)
         cell.containerView.layer.cornerRadius = cell.containerView.frame.height / 2
         if(indexPath.item != object.count){
-            cell.checkBox.isHidden = false
             let result = object[indexPath.item]
+            cell.checkBox.tag = result.id
+            cell.checkBox.isHidden = false
             let pictureIndex = result.pictureIndex
             cell.content.text = result.todo
-            cell.imageView.image = { () -> UIImage in
+            cell.imageView.image = { () -> UIImage? in
                 if(pictureIndex == -1){
-                    return UIImage()
+                    //아래에 기본 이미지 들어가야 할듯. 지금은 빈 상태
+                    return nil
                 } else {
-                    return UIImage(named: "wish\(pictureIndex)")!
+                    return UIImage(named: "wish\(pictureIndex)")
                 }
             }()
             if(cell.checkBox.layer.sublayers?.count == 4){
@@ -63,10 +65,7 @@ extension NomadLifeView: UICollectionViewDataSource{
                 cell.checkBox.layer.sublayers?.first?.cornerRadius = cell.checkBox.frame.height / 2
             } else {
                 cell.checkBox.setOn(false, animated: false)
-                
             }
-            print(cell.checkBox.layer.sublayers?.count)
-            
         } else {
             cell.content.text = nil
             cell.checkBox.isHidden = true
@@ -83,18 +82,14 @@ extension NomadLifeView: UICollectionViewDataSource{
     }
     func openFinalPage(){
         let project = realm.objects(ProjectInfo.self).last
-        guard let goals = project?.goalLists else { return }
-        guard let wishs = project?.wishLists else { return }
-        for goal in goals{
-            if(goal.status == false){
-                return
-            }
-        }
-        for wish in wishs{
-            if(wish.status == false){
-                return
-            }
-        }
+        guard let goals = project?.goalLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
+        guard let wishes = project?.wishLists.filter("date BETWEEN %@", [todayStart, todayEnd]) else { return }
+        let countOfGoals = goals.count
+        let countOfWishes = wishes.count
+        let completedGoals = goals.filter("status = true").count
+        let completedWishes = wishes.filter("status = true").count
+        if(countOfGoals != completedGoals || countOfWishes != completedWishes) { return }
+        UserDefaults.standard.set(formatForTime(date: Date()), forKey: "timeOfFinalPageOpened")
         let finalView = NomadFinalView.instanceFromXib()
         finalView.alpha = 0
         self.parentViewController()?.view.addSubview(finalView)
@@ -106,6 +101,7 @@ extension NomadLifeView: UICollectionViewDataSource{
 extension NomadLifeView: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.item == collectionView.numberOfItems(inSection: 0) - 1){
+            //추가 버튼을 누르면...
             let parentViewController = self.parentViewController() as! NomadViewController
             if(parentViewController.searchBar.isFirstResponder){
                 parentViewController.searchBar.endEditing(true)
@@ -113,15 +109,16 @@ extension NomadLifeView: UICollectionViewDelegate{
             let addView = parentViewController.underView.subviews.last as! NomadAddView
             addView.textField.becomeFirstResponder()
         } else {
+            //이외의 버튼을 누르면...
             let alert = UIAlertController(title: nil, message: "삭제할까요?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "예", style: .default, handler: { (action) in
-                let todo = (collectionView.cellForItem(at: indexPath) as! NomadLifeCell).content.text!
-                let query = NSPredicate(format: "todo = %@", todo)
-                let result = self.object.filter("date BETWEEN %@", [todayStart, todayEnd]).filter(query)
+                let id = self.object[indexPath.item].id
+                let query = NSPredicate(format: "id = %d", id)
+                let result = self.object.filter(query).filter("date BETWEEN %@", [todayStart, todayEnd])
                 try! self.realm.write{
                     self.realm.delete(result)
                 }
-                collectionView.reloadData()
+                collectionView.deleteItems(at: [indexPath])
                 collectionView.layoutIfNeeded()
                 self.openFinalPage()
             })
