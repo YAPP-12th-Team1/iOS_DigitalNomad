@@ -13,7 +13,6 @@ let containerView = UIView()
 class ERProgressHud {
     
     class func show (){
-        
         containerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         let color = UIColor.gray
         let alphaColor = color.withAlphaComponent(0.5)

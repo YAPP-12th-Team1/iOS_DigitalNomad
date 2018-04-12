@@ -89,7 +89,7 @@ extension NomadWorkView: UITableViewDataSource{
             try! self.realm.write{
                 postponeCell.date = tomorrow
             }
-            tableView.deleteRows(at: [indexPath], with: .right)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.top)
             self.openFinalPage()
         }
         if(result.status) {
@@ -109,7 +109,8 @@ extension NomadWorkView: UITableViewDataSource{
         let completedGoals = goals.filter("status = true").count
         let completedWishes = wishes.filter("status = true").count
         if(countOfGoals != completedGoals || countOfWishes != completedWishes) { return }
-        
+        let addView = (self.parentViewController() as! NomadViewController).underView.subviews.last as! NomadAddView
+        addView.endTime.text = Date().convertToTime()
         UserDefaults.standard.set(Date().convertToTime(), forKey: "timeOfFinalPageOpened")
         let finalView = NomadFinalView.instanceFromXib()
         finalView.alpha = 0
