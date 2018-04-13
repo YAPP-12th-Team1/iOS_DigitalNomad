@@ -29,7 +29,14 @@ class MyPageMeetupView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        hideElements()
+//        hideElements()
+        self.buttonMeetup.alpha = 0
+        self.imageView.alpha = 0
+        self.name.alpha = 0
+        self.occupation.alpha = 0
+        self.days.alpha = 0
+        self.message.alpha = 0
+        self.distance.alpha = 0
         showActivityIndicator()
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 2
@@ -53,10 +60,16 @@ class MyPageMeetupView: UIView {
     @IBAction func requestMeetup(_ sender: UIButton) {
         //마이페이지 디테일에서 코워킹 설정이 off되어 있으면 토스터를 띄움, 그렇지 않으면 팝업을 띄움
         if(userInfo.cowork){
+            emailInfo = realm.objects(EmailInfo.self).last!
             let popup = PopupMeetupView.instanceFromXib() as! PopupMeetupView
             // popup 으로 데이터 보내는 부분
             popup.name = popUser
+            popup.상대방이름 = self.name.text!
+            popup.내이름 = userInfo.nickname
+            popup.이메일제목 = emailInfo.title
+            popup.이메일내용 = emailInfo.context
             popup.setNeedsLayout()
+            
             popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             popup.frame = (self.parentViewController()?.view.frame)!
             popup.view.alpha = 0

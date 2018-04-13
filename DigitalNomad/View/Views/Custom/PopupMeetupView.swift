@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import Firebase
 import MessageUI
+import Toaster
 
 class PopupMeetupView: UIView {
     
@@ -23,6 +24,11 @@ class PopupMeetupView: UIView {
     var realm: Realm!
     var name: String = ""
     var email: String = ""
+    
+    var 상대방이름: String = ""
+    var 내이름: String = ""
+    var 이메일제목: String = ""
+    var 이메일내용: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,11 +44,6 @@ class PopupMeetupView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        var userInfo: UserInfo!
-        var emailInfo: EmailInfo!
-        userInfo = realm.objects(UserInfo.self).last!
-        emailInfo = realm.objects(EmailInfo.self).last!
-        
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("users/\(self.name)").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -51,11 +52,13 @@ class PopupMeetupView: UIView {
             print("name: ", self.name)
             print("nickname: ", nickname)
             self.email = value?["email"] as? String ?? ""
-            self.sender.text = userInfo.nickname
-            self.receiver.text = nickname
-            self.title.text = emailInfo.title
-            self.message.text = emailInfo.context
         })
+        //이메일을 비동기로 받아오기 때문에 메일 보내기를 눌렀을 때 받는 사람에 이메일이 누락되는 경우가 있음.
+        //일단 토스트 띄우는 걸로 처리하긴 했는데 동기화 가능하면 해주세요.
+        receiver.text = 상대방이름
+        sender.text = 내이름
+        title.text = 이메일제목
+        message.text = 이메일내용
     }
     
     class func instanceFromXib() -> UIView {
@@ -64,6 +67,11 @@ class PopupMeetupView: UIView {
     
     //////*******************************************************************////////
     @IBAction func sendEmail(_ sender: Any) {
+        if(self.email.isEmpty){
+            Toast(text: "잠시 후 다시 시도해 주세요.", duration: Delay.short).show()
+            return
+        }
+        ToastCenter.default.cancelAll()
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             self.parentViewController()?.present(mailComposeViewController, animated: true, completion: nil)
