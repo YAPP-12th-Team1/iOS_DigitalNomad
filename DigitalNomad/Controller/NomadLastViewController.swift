@@ -100,6 +100,8 @@ extension NomadLastViewController: UITableViewDataSource{
         rowIndex += indexPath.row
         if(isNomadLifeView){
             let object = wishes[rowIndex]
+            let pictureIndex = object.pictureIndex
+            cell.imageView?.image = pictureIndex == -1 ? UIImage() : UIImage(named: "wish\(pictureIndex)")
             cell.textLabel?.text = object.todo
         } else {
             let object = goals[rowIndex]
