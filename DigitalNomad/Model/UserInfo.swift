@@ -56,7 +56,7 @@ func usersList() -> [String] {
     let realm: Realm!
     realm = try! Realm()
     var userInfo: UserInfo!
-    userInfo = realm.objects(UserInfo.self).first!
+    userInfo = realm.objects(UserInfo.self).last!
     
     var ref: DatabaseReference!
     ref = Database.database().reference()

@@ -67,9 +67,16 @@ class NomadViewController: UIViewController {
         let yesterday = yesterdayFormatter.string(from: calendar.date(byAdding: DateComponents(day: -1), to: Date())!)
         labelToday.text = "오늘 \(todayFormatter.string(from: Date()))"
        
-        let savedDate = realm.objects(ProjectInfo.self).first!.date
+        let savedDate = realm.objects(ProjectInfo.self).last!.date
         let diffDay = savedDate.dateInterval
         labelDays.text = "\(diffDay)일차"
+        
+        //프로젝트 종료시 알려주기
+        if(diffDay > realm.objects(ProjectInfo.self).last!.day) {
+            let alert = UIAlertController(title: "프로젝트 종료", message: "설정한 프로젝트가 종료되었습니다. 앱을 삭제하세요?", preferredStyle: .alert)
+            present(alert, animated: true, completion: nil)
+            return
+        }
         
         if(underView.layer.sublayers != nil){
             underView.layer.sublayers?.removeFirst()
