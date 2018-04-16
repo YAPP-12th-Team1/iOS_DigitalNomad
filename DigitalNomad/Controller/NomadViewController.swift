@@ -77,6 +77,8 @@ class NomadViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             return
         }
+        //노마드 일차 파이어베이스 정보 갱신
+        Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).updateChildValues(["day" : diffDay])
         
         if(underView.layer.sublayers != nil){
             underView.layer.sublayers?.removeFirst()

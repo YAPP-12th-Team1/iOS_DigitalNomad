@@ -35,7 +35,7 @@ func addUser(_ address: String, _ day: Int, _ purpose: String){
         "address": address,
         "cowork": false,
         "job": object.job,
-        "day" : day,
+        "day" : 1,
         "purpose" : purpose,
         "introducing": ""
     ])
