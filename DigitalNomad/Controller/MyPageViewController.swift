@@ -131,7 +131,9 @@ class MyPageViewController: UIViewController {
         var cnt = tagListCount - 1
         
         for i in 0...cnt {
-            let freq = (tagList[i].todo).components(separatedBy: " ").first!
+            let todo = tagList[i].todo
+            if(todo[todo.startIndex] != "#") { continue }
+            let freq = todo.components(separatedBy: " ").first!
             if let num = tagDict[freq] {
                 tagDict[freq] = num+1
             } else {
