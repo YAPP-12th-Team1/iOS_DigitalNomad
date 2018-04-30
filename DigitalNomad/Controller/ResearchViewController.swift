@@ -17,7 +17,7 @@ class ResearchViewController: UIViewController {
     //일단 무조건 ResearchResultViewController로 넘어가게 함
 
     // 1.서울, 2.광주, 3.대전, 4.대구, 5.부산, 6.제주, 7.인천, 8.강원, 9.전주, 10.남해
-    let cityData = [553155, 121233, 121253, 121233, 324514, 424515, 123424, 125512, 1512511, 125511]
+    let cityData = [543125, 413435, 413345, 433325, 534215, 235514, 414434, 325512, 352343, 325513]
     let citynature = [
         [3,3,4,2,4,5],
         [5,3,1,1,5,5],
@@ -76,6 +76,7 @@ class ResearchViewController: UIViewController {
     var count = [0, 0, 0, 0, 0, 0, 0]
     var must = [2, 1, 0, 2, 2, 2, 2]
     var totalCount = 0
+    var selectCount = 0
     var value = [0, 0, 0, 0, 0, 0]
     
     
@@ -97,6 +98,7 @@ class ResearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func clickLike(_ sender: UIButton) {
+        selectCount += 1
         switch preState {
         case 0:
             value[0] += citynature[Int(index)][0]
@@ -292,7 +294,11 @@ class ResearchViewController: UIViewController {
     }
     
     func matchCity() -> Int {
-        let value_f: Int = (value[0]/totalCount)*100000 + (value[1]/totalCount)*10000 + (value[2]/totalCount)*1000 + (value[3]/totalCount)*100 + (value[4]/totalCount)*10 + (value[5]/totalCount)
+        if selectCount == 0 {
+            return 0
+        }
+        
+        let value_f: Int = (value[0]/selectCount)*100000 + (value[1]/selectCount)*10000 + (value[2]/selectCount)*1000 + (value[3]/selectCount)*100 + (value[4]/selectCount)*10 + (value[5]/selectCount)
         
         print(value_f)
         
