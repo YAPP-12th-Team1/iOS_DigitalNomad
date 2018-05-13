@@ -65,6 +65,7 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.13)
   - JTMaterialSwitch (1.1)
   - leveldb-library (1.20)
+  - lottie-ios (2.5.0)
   - MarqueeLabel/Swift (3.1.4)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -79,6 +80,7 @@ PODS:
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
+  - SnapKit (4.0.0)
   - SwiftyJSON (4.0.0)
   - Toaster (2.1.1)
 
@@ -96,8 +98,10 @@ DEPENDENCIES:
   - GaugeKit
   - GoogleSignIn
   - JTMaterialSwitch
+  - lottie-ios
   - MarqueeLabel/Swift
   - RealmSwift
+  - SnapKit (~> 4.0.0)
   - SwiftyJSON
   - Toaster
 
@@ -131,14 +135,16 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
   JTMaterialSwitch: cad8093c3773ff9f6c60005c98d269eb869b5e04
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
   RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: 74db2ebf8fa61645b1dc14d2368d7bf1a6d7740c
+PODFILE CHECKSUM: a9fa3e4ec733650ac5d89006bb9300deed8251b3
 
 COCOAPODS: 1.4.0

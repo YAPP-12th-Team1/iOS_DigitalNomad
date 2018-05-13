@@ -17,36 +17,37 @@ import Toaster
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
+    var realm: Realm!
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
-        let realm = try! Realm()
+        realm = try! Realm()
         
         //조건에 따라 첫 화면을 구분함
-        if let _ = Auth.auth().currentUser {
-            if(realm.objects(UserInfo.self).count == 0){
-                let storyboard = UIStoryboard(name: "Start", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
-                window?.rootViewController = controller
-            } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-                window?.rootViewController = controller
-            }
-        } else {
-            let storyborad = UIStoryboard(name: "Login", bundle: nil)
-            let controller = storyborad.instantiateViewController(withIdentifier: "LoginViewController")
-            window?.rootViewController = controller
-        }
-        window?.makeKeyAndVisible()
+//        if let _ = Auth.auth().currentUser {
+//            if(realm.objects(UserInfo.self).count == 0){
+//                let storyboard = UIStoryboard(name: "Start", bundle: nil)
+//                let controller = storyboard.instantiateViewController(withIdentifier: "StartViewController")
+//                window?.rootViewController = controller
+//            } else {
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let controller = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+//                window?.rootViewController = controller
+//            }
+//        } else {
+//            let storyborad = UIStoryboard(name: "Login", bundle: nil)
+//            let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+//            window?.rootViewController = controller
+//        }
+//        window?.makeKeyAndVisible()
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         UIApplication.shared.isStatusBarHidden = false
-        (UIApplication.shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = .white
+//        (UIApplication.shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = .white
         
         //튜토리얼 스크린 디버깅용
 //        UserDefaults.standard.set(false, forKey: "isFirstNomadWorkExecute")
@@ -58,6 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         //토스트 크기 설정
         ToastView.appearance().bottomOffsetPortrait = 49 + 20
+        
+        let storyboard = UIStoryboard(name: "Note", bundle: nil)
+        let next = storyboard.instantiateViewController(withIdentifier: "ParentViewController")
+        window?.rootViewController = next
+        window?.makeKeyAndVisible()
         return true
     }
     

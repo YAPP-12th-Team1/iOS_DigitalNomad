@@ -12,14 +12,19 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBar.tintColor = #colorLiteral(red: 0.9960784314, green: 0.4980392157, blue: 0.4, alpha: 1)
+        self.tabBar.backgroundImage = #imageLiteral(resourceName: "TabbarBackgroundImage")
         let tabOne  = UIStoryboard(name: "Map", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        let tabOneBarItem = UITabBarItem(title: "유목지살펴보기", image: nil, tag: 0)
+        let tabOneBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Tab1"), tag: 0)
+        tabOneBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         tabOne.tabBarItem = tabOneBarItem
         let tabTwo = UIStoryboard(name: "Nomad", bundle: nil).instantiateViewController(withIdentifier: "NomadViewController") as! NomadViewController
-        let tabTwoBarItem = UITabBarItem(title: "유목생활노트", image: nil, tag: 1)
+        let tabTwoBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Tab2"), tag: 1)
+        tabTwoBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         tabTwo.tabBarItem = tabTwoBarItem
         let tabThree = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
-        let tabThreeBarItem = UITabBarItem(title: "마이페이지", image: nil, tag: 2)
+        let tabThreeBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Tab3"), tag: 2)
+        tabThreeBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         tabThree.tabBarItem = tabThreeBarItem
         self.viewControllers = [tabOne, tabTwo, tabThree]
         self.selectedIndex = 1

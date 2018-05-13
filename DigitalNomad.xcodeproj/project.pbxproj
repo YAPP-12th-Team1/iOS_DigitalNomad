@@ -9,15 +9,19 @@
 /* Begin PBXBuildFile section */
 		191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */; };
 		191DFEC1204EA9490095E9C1 /* MyPageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */; };
-		191DFEC3204EA9520095E9C1 /* Nomad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191DFEC2204EA9520095E9C1 /* Nomad.storyboard */; };
+		191DFEC3204EA9520095E9C1 /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191DFEC2204EA9520095E9C1 /* Note.storyboard */; };
 		191DFEC5204EACBB0095E9C1 /* MyPageListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191DFEC4204EACBB0095E9C1 /* MyPageListView.xib */; };
 		191DFEC7204EACCB0095E9C1 /* MyPageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFEC6204EACCB0095E9C1 /* MyPageListView.swift */; };
 		191DFEC9204EACD40095E9C1 /* MyPageCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191DFEC8204EACD40095E9C1 /* MyPageCardView.xib */; };
 		191DFECB204EACE00095E9C1 /* MyPageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFECA204EACE00095E9C1 /* MyPageCardView.swift */; };
 		191DFECD204EACEE0095E9C1 /* MyPageMeetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFECC204EACEE0095E9C1 /* MyPageMeetupView.swift */; };
 		191DFECF204EACF60095E9C1 /* MyPageMeetupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191DFECE204EACF60095E9C1 /* MyPageMeetupView.xib */; };
-		191DFED2204EAFBF0095E9C1 /* humanSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 191DFED1204EAFBF0095E9C1 /* humanSample.png */; };
 		191DFED4204EB32B0095E9C1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFED3204EB32B0095E9C1 /* UIView+.swift */; };
+		191FD3F820A8215F00918676 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3F620A8215F00918676 /* GoalCell.swift */; };
+		191FD3FB20A8457000918676 /* WishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3FA20A8457000918676 /* WishViewController.swift */; };
+		191FD3FD20A8457B00918676 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3FC20A8457B00918676 /* ParentViewController.swift */; };
+		191FD3FF20A8483E00918676 /* WishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3FE20A8483E00918676 /* WishCell.swift */; };
+		191FD40120A84CDD00918676 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD40020A84CDD00918676 /* CompleteViewController.swift */; };
 		19214A9B2077638800100209 /* wish0.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A972077635000100209 /* wish0.png */; };
 		19214A9C2077638800100209 /* wish1.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A902077634E00100209 /* wish1.png */; };
 		19214A9D2077638800100209 /* wish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A912077634E00100209 /* wish2.png */; };
@@ -35,7 +39,6 @@
 		19214AA92077638800100209 /* wish14.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A962077635000100209 /* wish14.png */; };
 		193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193627E3204F863F006F4081 /* NomadWorkCell.swift */; };
 		193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 193627E4204F863F006F4081 /* NomadWorkCell.xib */; };
-		1948408720704574005017E8 /* splash@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1948408620704574005017E8 /* splash@3x.png */; };
 		1949DCFC204F8E2C0062D8EF /* StrikethroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DCFB204F8E2C0062D8EF /* StrikethroughView.swift */; };
 		1949DCFE204F8E490062D8EF /* StrikethroughView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1949DCFD204F8E490062D8EF /* StrikethroughView.xib */; };
 		1949DD00204FA91F0062D8EF /* NomadAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1949DCFF204FA91F0062D8EF /* NomadAddView.xib */; };
@@ -77,7 +80,6 @@
 		19A5780920622A6700240B87 /* PopupStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5780820622A6700240B87 /* PopupStartView.swift */; };
 		19A5780C206264A500240B87 /* EnrollmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5780A206264A500240B87 /* EnrollmentCell.swift */; };
 		19A5780D206264A500240B87 /* EnrollmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A5780B206264A500240B87 /* EnrollmentCell.xib */; };
-		19A94FC6204EBECE003A1D23 /* humanSample2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FC5204EBECD003A1D23 /* humanSample2.png */; };
 		19A94FC9204EC19D003A1D23 /* MyPageDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FC7204EC19D003A1D23 /* MyPageDetailImageCell.swift */; };
 		19A94FCA204EC19D003A1D23 /* MyPageDetailImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FC8204EC19D003A1D23 /* MyPageDetailImageCell.xib */; };
 		19A94FCD204EC1AE003A1D23 /* MyPageDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FCB204EC1AE003A1D23 /* MyPageDetailInfoCell.swift */; };
@@ -86,20 +88,21 @@
 		19A94FD6204EC1CE003A1D23 /* MyPageDetailMailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FD4204EC1CE003A1D23 /* MyPageDetailMailCell.xib */; };
 		19A94FDA204EDD4E003A1D23 /* PopupMeetupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FD9204EDD4E003A1D23 /* PopupMeetupView.xib */; };
 		19A94FDC204EDD5C003A1D23 /* PopupMeetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FDB204EDD5C003A1D23 /* PopupMeetupView.swift */; };
+		19B9365D20A7DB1800FC826E /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9365C20A7DB1800FC826E /* UIColor+.swift */; };
+		19B9365F20A7DB4000FC826E /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9365E20A7DB4000FC826E /* UIFont+.swift */; };
+		19B9366320A7E29C00FC826E /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9366220A7E29C00FC826E /* GoalViewController.swift */; };
 		19BA826C204FEF9900C095C1 /* NomadLifeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA826A204FEF9900C095C1 /* NomadLifeCell.swift */; };
 		19BA826D204FEF9900C095C1 /* NomadLifeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BA826B204FEF9900C095C1 /* NomadLifeCell.xib */; };
 		19BA8273204FF31100C095C1 /* NomadWorkTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BA8272204FF31100C095C1 /* NomadWorkTutorialView.xib */; };
 		19BA8275204FF31B00C095C1 /* NomadWorkTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA8274204FF31B00C095C1 /* NomadWorkTutorialView.swift */; };
 		19BA8277204FF32500C095C1 /* NomadLifeTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */; };
 		19BA8279204FF33200C095C1 /* NomadLifeTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA8278204FF33200C095C1 /* NomadLifeTutorialView.swift */; };
-		19C899CB205A007B0044D8A0 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C899CA205A007B0044D8A0 /* profile.png */; };
 		19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19E63EE020416D4D003D3155 /* GoogleService-Info.plist */; };
 		19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */; };
 		19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2CDE02041419C00CB113B /* AppDelegate.swift */; };
 		19F2CDE82041419C00CB113B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE62041419C00CB113B /* Main.storyboard */; };
 		19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE92041419C00CB113B /* Assets.xcassets */; };
 		19F2CDED2041419C00CB113B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDEB2041419C00CB113B /* LaunchScreen.storyboard */; };
-		4A2202202074BFBD000643F0 /* Usersample.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A22021F2074BFBD000643F0 /* Usersample.png */; };
 		4A8AC3322070221E002F6B32 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC3312070221E002F6B32 /* testImage.png */; };
 		6B3FDE5D206FECFA0081332B /* coworking(3)_111115.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */; };
 		6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */; };
@@ -185,15 +188,19 @@
 		127FCB1B722A87C86E4884FD /* Pods-DigitalNomad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalNomad.release.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalNomad/Pods-DigitalNomad.release.xcconfig"; sourceTree = "<group>"; };
 		191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadViewController.swift; sourceTree = "<group>"; };
 		191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailViewController.swift; sourceTree = "<group>"; };
-		191DFEC2204EA9520095E9C1 /* Nomad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Nomad.storyboard; sourceTree = "<group>"; };
+		191DFEC2204EA9520095E9C1 /* Note.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
 		191DFEC4204EACBB0095E9C1 /* MyPageListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageListView.xib; sourceTree = "<group>"; };
 		191DFEC6204EACCB0095E9C1 /* MyPageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageListView.swift; sourceTree = "<group>"; };
 		191DFEC8204EACD40095E9C1 /* MyPageCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageCardView.xib; sourceTree = "<group>"; };
 		191DFECA204EACE00095E9C1 /* MyPageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCardView.swift; sourceTree = "<group>"; };
 		191DFECC204EACEE0095E9C1 /* MyPageMeetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMeetupView.swift; sourceTree = "<group>"; };
 		191DFECE204EACF60095E9C1 /* MyPageMeetupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageMeetupView.xib; sourceTree = "<group>"; };
-		191DFED1204EAFBF0095E9C1 /* humanSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanSample.png; sourceTree = "<group>"; };
 		191DFED3204EB32B0095E9C1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		191FD3F620A8215F00918676 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
+		191FD3FA20A8457000918676 /* WishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishViewController.swift; sourceTree = "<group>"; };
+		191FD3FC20A8457B00918676 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		191FD3FE20A8483E00918676 /* WishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishCell.swift; sourceTree = "<group>"; };
+		191FD40020A84CDD00918676 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		19214A8C2077634C00100209 /* wish10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish10.png; sourceTree = "<group>"; };
 		19214A8D2077634D00100209 /* wish12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish12.png; sourceTree = "<group>"; };
 		19214A8E2077634D00100209 /* wish4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish4.png; sourceTree = "<group>"; };
@@ -211,7 +218,6 @@
 		19214A9A2077635100100209 /* wish9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish9.png; sourceTree = "<group>"; };
 		193627E3204F863F006F4081 /* NomadWorkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkCell.swift; sourceTree = "<group>"; };
 		193627E4204F863F006F4081 /* NomadWorkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadWorkCell.xib; sourceTree = "<group>"; };
-		1948408620704574005017E8 /* splash@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@3x.png"; sourceTree = "<group>"; };
 		1949DCFB204F8E2C0062D8EF /* StrikethroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikethroughView.swift; sourceTree = "<group>"; };
 		1949DCFD204F8E490062D8EF /* StrikethroughView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StrikethroughView.xib; sourceTree = "<group>"; };
 		1949DCFF204FA91F0062D8EF /* NomadAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadAddView.xib; sourceTree = "<group>"; };
@@ -254,7 +260,6 @@
 		19A5780820622A6700240B87 /* PopupStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupStartView.swift; sourceTree = "<group>"; };
 		19A5780A206264A500240B87 /* EnrollmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentCell.swift; sourceTree = "<group>"; };
 		19A5780B206264A500240B87 /* EnrollmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnrollmentCell.xib; sourceTree = "<group>"; };
-		19A94FC5204EBECD003A1D23 /* humanSample2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanSample2.png; sourceTree = "<group>"; };
 		19A94FC7204EC19D003A1D23 /* MyPageDetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailImageCell.swift; sourceTree = "<group>"; };
 		19A94FC8204EC19D003A1D23 /* MyPageDetailImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageDetailImageCell.xib; sourceTree = "<group>"; };
 		19A94FCB204EC1AE003A1D23 /* MyPageDetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailInfoCell.swift; sourceTree = "<group>"; };
@@ -263,13 +268,15 @@
 		19A94FD4204EC1CE003A1D23 /* MyPageDetailMailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageDetailMailCell.xib; sourceTree = "<group>"; };
 		19A94FD9204EDD4E003A1D23 /* PopupMeetupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMeetupView.xib; sourceTree = "<group>"; };
 		19A94FDB204EDD5C003A1D23 /* PopupMeetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMeetupView.swift; sourceTree = "<group>"; };
+		19B9365C20A7DB1800FC826E /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		19B9365E20A7DB4000FC826E /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		19B9366220A7E29C00FC826E /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		19BA826A204FEF9900C095C1 /* NomadLifeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCell.swift; sourceTree = "<group>"; };
 		19BA826B204FEF9900C095C1 /* NomadLifeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeCell.xib; sourceTree = "<group>"; };
 		19BA8272204FF31100C095C1 /* NomadWorkTutorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadWorkTutorialView.xib; sourceTree = "<group>"; };
 		19BA8274204FF31B00C095C1 /* NomadWorkTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkTutorialView.swift; sourceTree = "<group>"; };
 		19BA8276204FF32500C095C1 /* NomadLifeTutorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeTutorialView.xib; sourceTree = "<group>"; };
 		19BA8278204FF33200C095C1 /* NomadLifeTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeTutorialView.swift; sourceTree = "<group>"; };
-		19C899CA205A007B0044D8A0 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		19E63EE020416D4D003D3155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationInfo.swift; sourceTree = "<group>"; };
 		19F2CDDD2041419B00CB113B /* DigitalNomad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalNomad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,7 +285,6 @@
 		19F2CDE92041419C00CB113B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19F2CDEC2041419C00CB113B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19F2CDEE2041419C00CB113B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A22021F2074BFBD000643F0 /* Usersample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Usersample.png; sourceTree = "<group>"; };
 		4A8AC3312070221E002F6B32 /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
 		6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coworking(3)_111115.jpg"; sourceTree = "<group>"; };
 		6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nature(4)_111511.jpg"; sourceTree = "<group>"; };
@@ -383,21 +389,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		191DBB4A20A7CD0D00423E69 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		191DBB4B20A7CD1800423E69 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				191DFEC2204EA9520095E9C1 /* Note.storyboard */,
+				191FD3FC20A8457B00918676 /* ParentViewController.swift */,
+				191FD40020A84CDD00918676 /* CompleteViewController.swift */,
+				191FD3F220A820C600918676 /* Goal */,
+				191FD3F320A820CA00918676 /* Wish */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		191DBB4C20A7CD1C00423E69 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		191DFED0204EAFB70095E9C1 /* images */ = {
 			isa = PBXGroup;
 			children = (
 				19214A892077633400100209 /* wishes */,
 				4A8AC3312070221E002F6B32 /* testImage.png */,
 				6B5877A82064BBEA0001FAB5 /* researchData */,
-				19C899CA205A007B0044D8A0 /* profile.png */,
-				4A22021F2074BFBD000643F0 /* Usersample.png */,
-				191DFED1204EAFBF0095E9C1 /* humanSample.png */,
-				19A94FC5204EBECD003A1D23 /* humanSample2.png */,
 				6B634A43204EF79F00A59EEF /* cafe.png */,
 				6B634A44204EF79F00A59EEF /* restaurant.png */,
 				6B634A45204EF79F00A59EEF /* kamel.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		191FD3F220A820C600918676 /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				19B9366220A7E29C00FC826E /* GoalViewController.swift */,
+				191FD3F620A8215F00918676 /* GoalCell.swift */,
+			);
+			path = Goal;
+			sourceTree = "<group>";
+		};
+		191FD3F320A820CA00918676 /* Wish */ = {
+			isa = PBXGroup;
+			children = (
+				191FD3FA20A8457000918676 /* WishViewController.swift */,
+				191FD3FE20A8483E00918676 /* WishCell.swift */,
+			);
+			path = Wish;
 			sourceTree = "<group>";
 		};
 		19214A892077633400100209 /* wishes */ = {
@@ -428,6 +474,8 @@
 				195CFFAE2041AF140062A26C /* UITextField+.swift */,
 				191DFED3204EB32B0095E9C1 /* UIView+.swift */,
 				199B9D46207E2A160067D7A8 /* Date+.swift */,
+				19B9365C20A7DB1800FC826E /* UIColor+.swift */,
+				19B9365E20A7DB4000FC826E /* UIFont+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -529,6 +577,9 @@
 			isa = PBXGroup;
 			children = (
 				19F2CDF4204141B000CB113B /* Model */,
+				191DBB4A20A7CD0D00423E69 /* Map */,
+				191DBB4B20A7CD1800423E69 /* Note */,
+				191DBB4C20A7CD1C00423E69 /* MyPage */,
 				19F2CDF5204141B500CB113B /* View */,
 				19F2CDF6204141BA00CB113B /* Controller */,
 				19F2CDF7204141BD00CB113B /* Storyboard */,
@@ -536,6 +587,7 @@
 				19F2CDFA204141CD00CB113B /* Supporting Files */,
 				19F2CDEE2041419C00CB113B /* Info.plist */,
 				19E63EE020416D4D003D3155 /* GoogleService-Info.plist */,
+				6B5411E220418F3000DDB2D5 /* DigitalNomad-Bridging-Header.h */,
 			);
 			path = DigitalNomad;
 			sourceTree = "<group>";
@@ -566,7 +618,6 @@
 		19F2CDF6204141BA00CB113B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6B5411E220418F3000DDB2D5 /* DigitalNomad-Bridging-Header.h */,
 				196C4AF12041455500C7BFAF /* LoginViewController.swift */,
 				198D92CC206144A7001325DD /* StartViewController.swift */,
 				198A4D2720614D6900A78E83 /* ResearchViewController.swift */,
@@ -590,7 +641,6 @@
 				198D92CA2061447E001325DD /* Start.storyboard */,
 				19F2CDE62041419C00CB113B /* Main.storyboard */,
 				196C4AF92041493600C7BFAF /* Map.storyboard */,
-				191DFEC2204EA9520095E9C1 /* Nomad.storyboard */,
 				196C4B012041497500C7BFAF /* MyPage.storyboard */,
 			);
 			path = Storyboard;
@@ -619,7 +669,6 @@
 		19F2CDFA204141CD00CB113B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1948408620704574005017E8 /* splash@3x.png */,
 				191DFED0204EAFB70095E9C1 /* images */,
 				19F2CDE02041419C00CB113B /* AppDelegate.swift */,
 				19F2CDE92041419C00CB113B /* Assets.xcassets */,
@@ -820,10 +869,9 @@
 				6B634A48204EF79F00A59EEF /* kamel.png in Resources */,
 				19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */,
 				6B3FDE64206FECFA0081332B /* coworking(2)_111111.jpg in Resources */,
-				191DFEC3204EA9520095E9C1 /* Nomad.storyboard in Resources */,
+				191DFEC3204EA9520095E9C1 /* Note.storyboard in Resources */,
 				19214AA32077638800100209 /* wish8.png in Resources */,
 				6BA8A9C52070313500DD7B3B /* busan.jpg in Resources */,
-				4A2202202074BFBD000643F0 /* Usersample.png in Resources */,
 				6B54121B2041900600DDB2D5 /* map_present_background_update.png in Resources */,
 				196C77B8205425F200A45E89 /* NomadFinalView.xib in Resources */,
 				6B3FDE62206FECFA0081332B /* leports(2)_115111.jpg in Resources */,
@@ -840,7 +888,6 @@
 				19A94FD6204EC1CE003A1D23 /* MyPageDetailMailCell.xib in Resources */,
 				19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */,
 				19214AA42077638800100209 /* wish9.png in Resources */,
-				191DFED2204EAFBF0095E9C1 /* humanSample.png in Resources */,
 				6BA8A9C22070313500DD7B3B /* daejun.jpg in Resources */,
 				6B54120D2041900600DDB2D5 /* map_pin_red@3x.png in Resources */,
 				6B5412152041900600DDB2D5 /* info_box_tail.png in Resources */,
@@ -860,7 +907,6 @@
 				6B54120F2041900600DDB2D5 /* map_pin@3x.png in Resources */,
 				6B3FDE75206FECFA0081332B /* leports(3)_115111.jpg in Resources */,
 				19214AA72077638800100209 /* wish12.png in Resources */,
-				1948408720704574005017E8 /* splash@3x.png in Resources */,
 				6BA8A9CB2070313500DD7B3B /* incheon.jpg in Resources */,
 				6B3FDE5F206FECFA0081332B /* coworking(1)_111111.jpg in Resources */,
 				19214AA12077638800100209 /* wish6.png in Resources */,
@@ -883,7 +929,6 @@
 				19214AA92077638800100209 /* wish14.png in Resources */,
 				6B5412082041900600DDB2D5 /* map_pin_custom@3x.png in Resources */,
 				6B3FDE60206FECFA0081332B /* coworking(1)_111115.jpg in Resources */,
-				19C899CB205A007B0044D8A0 /* profile.png in Resources */,
 				6B634A46204EF79F00A59EEF /* cafe.png in Resources */,
 				193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */,
 				19214A9F2077638800100209 /* wish4.png in Resources */,
@@ -922,7 +967,6 @@
 				6B5412042041900600DDB2D5 /* map_pin_custom.png in Resources */,
 				6BA8A9C82070313500DD7B3B /* daegu.jpg in Resources */,
 				19214AA22077638800100209 /* wish7.png in Resources */,
-				19A94FC6204EBECE003A1D23 /* humanSample2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,9 +1030,11 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1007,9 +1053,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1047,17 +1095,23 @@
 				198D92CD206144A7001325DD /* StartViewController.swift in Sources */,
 				1949DCFC204F8E2C0062D8EF /* StrikethroughView.swift in Sources */,
 				191DFECD204EACEE0095E9C1 /* MyPageMeetupView.swift in Sources */,
+				191FD3FB20A8457000918676 /* WishViewController.swift in Sources */,
+				191FD3FF20A8483E00918676 /* WishCell.swift in Sources */,
 				199A93112058E59E007509A1 /* UserLocationInfo.swift in Sources */,
 				199A930D2058E58B007509A1 /* ProjectInfo.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,
+				191FD3F820A8215F00918676 /* GoalCell.swift in Sources */,
 				199B9D47207E2A160067D7A8 /* Date+.swift in Sources */,
 				199A93172058E5B8007509A1 /* WishListInfo.swift in Sources */,
 				19A94FCD204EC1AE003A1D23 /* MyPageDetailInfoCell.swift in Sources */,
 				19A5780920622A6700240B87 /* PopupStartView.swift in Sources */,
 				19A94FC9204EC19D003A1D23 /* MyPageDetailImageCell.swift in Sources */,
 				191DFED4204EB32B0095E9C1 /* UIView+.swift in Sources */,
+				191FD3FD20A8457B00918676 /* ParentViewController.swift in Sources */,
 				191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */,
 				1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */,
+				19B9365F20A7DB4000FC826E /* UIFont+.swift in Sources */,
+				19B9366320A7E29C00FC826E /* GoalViewController.swift in Sources */,
 				19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */,
 				19BA8279204FF33200C095C1 /* NomadLifeTutorialView.swift in Sources */,
 				19587FFD20767BF900FD3D01 /* NomadLastViewController.swift in Sources */,
@@ -1068,6 +1122,8 @@
 				196C77BA2054260100A45E89 /* NomadFinalView.swift in Sources */,
 				199A930F2058E595007509A1 /* UserInfo.swift in Sources */,
 				196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */,
+				19B9365D20A7DB1800FC826E /* UIColor+.swift in Sources */,
+				191FD40120A84CDD00918676 /* CompleteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1215,7 +1271,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VWGP3BJ5Y;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1226,7 +1282,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DigitalNomad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DigitalNomad/Controller/DigitalNomad-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "DigitalNomad/DigitalNomad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1242,7 +1298,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VWGP3BJ5Y;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1253,7 +1309,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DigitalNomad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DigitalNomad/Controller/DigitalNomad-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "DigitalNomad/DigitalNomad-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
