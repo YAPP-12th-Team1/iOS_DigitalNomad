@@ -100,6 +100,12 @@
                                 <action selector="touchUpSendButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="car-u4-i3F"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HorizontalLineRed" translatesAutoresizingMaskIntoConstraints="NO" id="NVK-A2-Zmc">
+                            <rect key="frame" x="147" y="124" width="1" height="41"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="uNB-vX-3Sv"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -115,14 +121,17 @@
                         <constraint firstItem="eZT-an-ZLT" firstAttribute="top" secondItem="Job-tL-OaK" secondAttribute="top" constant="18" id="JpK-NG-o8v"/>
                         <constraint firstAttribute="trailing" secondItem="eZT-an-ZLT" secondAttribute="trailing" constant="24" id="M0U-tq-b05"/>
                         <constraint firstAttribute="bottom" secondItem="Eb8-cd-ri8" secondAttribute="bottom" constant="52" id="P0C-Zg-EZE"/>
+                        <constraint firstItem="NVK-A2-Zmc" firstAttribute="centerX" secondItem="Job-tL-OaK" secondAttribute="centerX" id="UOO-hC-hbK"/>
                         <constraint firstItem="HLf-5C-lic" firstAttribute="top" secondItem="WVv-Zm-2Ub" secondAttribute="bottom" constant="8" id="Yvo-yV-Aid"/>
                         <constraint firstItem="STM-Jo-PTJ" firstAttribute="top" secondItem="ZV1-Qz-X5i" secondAttribute="bottom" constant="8" id="bdL-7B-Tu0"/>
                         <constraint firstAttribute="height" constant="176" id="dch-Dm-rOy"/>
                         <constraint firstAttribute="trailing" secondItem="STM-Jo-PTJ" secondAttribute="trailing" constant="24" id="e7i-Mv-uRt"/>
                         <constraint firstAttribute="trailing" secondItem="ZV1-Qz-X5i" secondAttribute="trailing" constant="24" id="eQZ-Ym-L6b"/>
+                        <constraint firstItem="NVK-A2-Zmc" firstAttribute="top" secondItem="Eb8-cd-ri8" secondAttribute="bottom" id="g0f-mG-alE"/>
                         <constraint firstItem="86S-rS-Rvu" firstAttribute="top" secondItem="GyB-pC-SE4" secondAttribute="top" id="g4j-gE-4vf"/>
                         <constraint firstItem="Eb8-cd-ri8" firstAttribute="leading" secondItem="Job-tL-OaK" secondAttribute="leading" constant="8" id="igP-O1-CZC"/>
                         <constraint firstItem="HLf-5C-lic" firstAttribute="leading" secondItem="Job-tL-OaK" secondAttribute="leading" constant="28" id="qLG-N4-ysu"/>
+                        <constraint firstAttribute="bottom" secondItem="NVK-A2-Zmc" secondAttribute="bottom" constant="11" id="qeS-N5-hHb"/>
                         <constraint firstItem="mkc-Wf-jwJ" firstAttribute="leading" secondItem="Job-tL-OaK" secondAttribute="leading" constant="28" id="sao-xh-kLa"/>
                         <constraint firstItem="86S-rS-Rvu" firstAttribute="baseline" secondItem="GyB-pC-SE4" secondAttribute="firstBaseline" id="taM-ii-khX"/>
                         <constraint firstItem="STM-Jo-PTJ" firstAttribute="leading" secondItem="WVv-Zm-2Ub" secondAttribute="trailing" id="u3l-As-Xom"/>
@@ -141,6 +150,7 @@
                 <outlet property="receiverLabel" destination="eZT-an-ZLT" id="T19-HT-fMf"/>
                 <outlet property="senderLabel" destination="ZV1-Qz-X5i" id="WyQ-zX-cPf"/>
                 <outlet property="titleLabel" destination="STM-Jo-PTJ" id="xfs-Wt-g5m"/>
+                <outlet property="view" destination="Job-tL-OaK" id="Y79-uh-z2c"/>
             </connections>
         </view>
     </objects>

@@ -21,7 +21,7 @@ extension Date {
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy년 M월 dd일"
         let today = dateFormatter.string(from: date)
         return today
     }

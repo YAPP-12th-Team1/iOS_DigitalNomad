@@ -32,6 +32,7 @@ class WishViewController: UIViewController {
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.minimumLineSpacing = 10
+        flowLayout.headerReferenceSize = CGSize(width: self.view.frame.width, height: 60)
         let quarter = self.collectionView.frame.width / 4
         flowLayout.itemSize = CGSize(width: quarter - 20, height: quarter * 1.5)
         self.collectionView.collectionViewLayout = flowLayout
@@ -82,7 +83,83 @@ extension WishViewController: UICollectionViewDataSource {
 
 //MARK:- 컬렉션 뷰 델리게이트 구현
 extension WishViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "wishHeaderView", for: indexPath)
+        header.frame = CGRect(x: 0, y: 0, width: self.collectionView.frame.width, height: 60)
+        header.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        //MARK: 오늘 날짜 표시
+        let todayLabel = UILabel()
+        let todayText = Date.todayDateToString
+        let todaySplit = todayText.split(separator: " ")
+        let monthString = todaySplit[1].description
+        let dayString = todaySplit[2].description
+        let monthLocation: Int = {
+            if monthString.count == 2 {
+                return 7
+            } else if monthString.count == 3 {
+                return 8
+            } else {
+                return -1
+            }
+        }()
+        let dayLocation: Int = {
+            if dayString.count == 2 {
+                return monthLocation + 3
+            } else if dayString.count == 3 {
+                return monthLocation + 4
+            } else {
+                return -1
+            }
+        }()
+        let attrToday = NSMutableAttributedString(string: todayText, attributes: [
+            .font: UIFont.systemFont(ofSize: 22.0, weight: .medium),
+            .foregroundColor: UIColor.aquamarine
+            ])
+        attrToday.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 22.0)!, range: NSRange(location: 4, length: 1))
+        attrToday.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 22.0)!, range: NSRange(location: monthLocation, length: 1))
+        attrToday.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 22.0)!, range: NSRange(location: dayLocation, length: 1))
+        todayLabel.attributedText = attrToday
+        header.addSubview(todayLabel)
+        todayLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(header.snp.left).offset(33)
+            make.centerY.equalTo(header.snp.centerY)
+        }
+        //MARK: n일차 표시
+        let daysLabel = UILabel()
+        header.addSubview(daysLabel)
+        daysLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(header.snp.right).offset(-33)
+            make.left.equalTo(todayLabel.snp.right).offset(8)
+            make.centerY.equalTo(todayLabel.snp.centerY)
+            make.top.equalTo(todayLabel.snp.top)
+            make.bottom.equalTo(todayLabel.snp.bottom)
+        }
+        guard let savedDate = realm.objects(ProjectInfo.self).last?.date else { return UICollectionReusableView() }
+        let daysText = "\(savedDate.dateInterval)일차"
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        let attrDays = NSMutableAttributedString(string: daysText, attributes: [
+            .font: UIFont.systemFont(ofSize: 14, weight: .medium),
+            .foregroundColor: UIColor.white,
+            .paragraphStyle: style
+            ])
+        let daysCount = daysText.count
+        let daysLocation = daysCount - 2
+        attrDays.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 14)!, range: NSRange(location: daysLocation, length: 2))
+        daysLabel.attributedText = attrDays
+        daysLabel.layer.cornerRadius = 15
+        daysLabel.clipsToBounds = true
+        daysLabel.backgroundColor = .aquamarine
+        //MARK: 분리선 표시
+        let separatorView = UIImageView(image: #imageLiteral(resourceName: "NoteLine"))
+        header.addSubview(separatorView)
+        separatorView.snp.makeConstraints { (make) in
+            make.height.equalTo(2)
+            make.width.equalTo(header.snp.width)
+            make.bottom.equalTo(header.snp.bottom)
+        }
+        return header
+    }
 }
 
 //MARK:- 컬렉션 뷰 델리게이트 플로우 레이아웃 구현

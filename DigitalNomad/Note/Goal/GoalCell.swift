@@ -27,10 +27,12 @@ class GoalCell: SwipeTableViewCell {
         self.checkBox.offAnimationType = .fill
     }
     
+    //GoalViewController에 구현체 있음
     @IBAction func clickCheckBox(_ sender: BEMCheckBox) {
         goalCellDelegate?.clickCheckBox(sender, todo: self.todoButton)
     }
     
+    //GoalViewController에 구현체 있음
     @IBAction func clickTodoButton(_ sender: UIButton) {
         goalCellDelegate?.clickTodoButton(sender)
     }

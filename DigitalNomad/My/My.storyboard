@@ -30,7 +30,7 @@
                                     <action selector="touchUpSettingButton:" destination="BlV-YA-9ZR" eventType="touchUpInside" id="PFQ-Cy-JGc"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3bl-wy-K9M">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfileNone" translatesAutoresizingMaskIntoConstraints="NO" id="3bl-wy-K9M">
                                 <rect key="frame" x="113.5" y="79" width="148" height="148"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3bl-wy-K9M" secondAttribute="height" multiplier="1:1" id="ezY-hp-eOc"/>
@@ -157,8 +157,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Zz-OV-dzQ" customClass="FSPagerView" customModule="FSPagerView">
-                                <rect key="frame" x="0.0" y="361" width="375" height="228"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="333" width="375" height="285"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isInfinite" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -168,9 +167,9 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1Zz-OV-dzQ" firstAttribute="top" secondItem="FFF-vi-mIF" secondAttribute="bottom" constant="28" id="0h5-gl-qvI"/>
+                            <constraint firstItem="1Zz-OV-dzQ" firstAttribute="top" secondItem="FFF-vi-mIF" secondAttribute="bottom" id="0h5-gl-qvI"/>
                             <constraint firstItem="dch-bJ-60Y" firstAttribute="trailing" secondItem="3bl-wy-K9M" secondAttribute="trailing" constant="113.5" id="1fq-Bf-v7q"/>
                             <constraint firstItem="1Zz-OV-dzQ" firstAttribute="trailing" secondItem="dch-bJ-60Y" secondAttribute="trailing" id="89z-Rl-j2x"/>
                             <constraint firstItem="FFF-vi-mIF" firstAttribute="trailing" secondItem="dch-bJ-60Y" secondAttribute="centerX" constant="-10" id="B7G-sW-En9"/>
@@ -189,7 +188,7 @@
                             <constraint firstItem="3bl-wy-K9M" firstAttribute="top" secondItem="R4l-uR-a2y" secondAttribute="bottom" constant="18" id="i15-fS-gx9"/>
                             <constraint firstItem="3bl-wy-K9M" firstAttribute="leading" secondItem="dch-bJ-60Y" secondAttribute="leading" constant="113.5" id="iTn-N4-ubh"/>
                             <constraint firstItem="dch-bJ-60Y" firstAttribute="trailing" secondItem="4mo-Tn-aQ7" secondAttribute="trailing" constant="22" id="m8N-EA-BYh"/>
-                            <constraint firstAttribute="bottom" secondItem="1Zz-OV-dzQ" secondAttribute="bottom" constant="78" id="sxJ-GX-46p"/>
+                            <constraint firstAttribute="bottom" secondItem="1Zz-OV-dzQ" secondAttribute="bottom" constant="49" id="sxJ-GX-46p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dch-bJ-60Y"/>
                     </view>
@@ -254,6 +253,7 @@
         <image name="HashtagBackground" width="139" height="28"/>
         <image name="ListBox" width="159" height="46"/>
         <image name="LogoBlack" width="66" height="22"/>
+        <image name="ProfileNone" width="142" height="142"/>
         <image name="Setting" width="24" height="24"/>
     </resources>
 </document>

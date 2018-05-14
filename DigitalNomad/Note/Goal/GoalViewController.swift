@@ -76,6 +76,7 @@ class GoalViewController: UIViewController {
     
     //MARK: 버튼 입력에 따른 처리 메소드
     @objc func touchUpHashtagButton(_ sender: UIButton) {
+        //해시태그 중복 입력 방지
         let text = self.addTodoTextField.text ?? ""
         guard let lastChar = text.last else {
             self.addTodoTextField.text = "#"
@@ -87,6 +88,7 @@ class GoalViewController: UIViewController {
     }
     
     @objc func touchUpAddButton(_ sender: UIButton) {
+        //일정 등록
         guard let text = self.addTodoTextField.text else { return }
         if text.isEmpty { return }
         addGoalList(text)
@@ -104,6 +106,7 @@ class GoalViewController: UIViewController {
     }
     
     @objc func searchBarDidChange(_ sender: UITextField) {
+        //공백이 입력되면 그것을 지운다. 서치바가 현재 리스폰더이면 일정 검색
         if sender.text! == " " {
             sender.text = nil
             return
@@ -269,11 +272,11 @@ extension GoalViewController: UITableViewDataSource {
 //MARK:- 테이블 뷰 델리게이트 구현
 extension GoalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 60))
         header.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         //MARK: 오늘 날짜 표시
         let todayLabel = UILabel()
-        let todayText = "2018년 5월 26일"
+        let todayText = Date.todayDateToString
         let todaySplit = todayText.split(separator: " ")
         let monthString = todaySplit[1].description
         let dayString = todaySplit[2].description
@@ -318,7 +321,8 @@ extension GoalViewController: UITableViewDelegate {
             make.top.equalTo(todayLabel.snp.top)
             make.bottom.equalTo(todayLabel.snp.bottom)
         }
-        let daysText = "1일차"
+        guard let savedDate = realm.objects(ProjectInfo.self).last?.date else { return UICollectionReusableView() }
+        let daysText = "\(savedDate.dateInterval)일차"
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         let attrDays = NSMutableAttributedString(string: daysText, attributes: [

@@ -400,9 +400,11 @@
 			children = (
 				19EF0FE720A960200013DCF9 /* My.storyboard */,
 				19C54AB420A9A10B00717C6F /* MeetUpCell.xib */,
+				19C54AA420A988A100717C6F /* PopupMeetUpView.xib */,
 				19EF0FE920A960C70013DCF9 /* MyViewController.swift */,
 				19C54AAF20A99F4000717C6F /* MyHashtagCell.swift */,
 				19C54AB320A9A10B00717C6F /* MeetUpCell.swift */,
+				19C54AA620A988C400717C6F /* PopupMeetUpView.swift */,
 				19C54AAD20A99DDC00717C6F /* MyDetailViewController.swift */,
 			);
 			path = My;
@@ -469,6 +471,7 @@
 				196C4B012041497500C7BFAF /* MyPage.storyboard */,
 				196C4AEF2041450F00C7BFAF /* MyPageViewController.swift */,
 				191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */,
+				19C54AA120A9884E00717C6F /* Popup */,
 				19F2CDF5204141B500CB113B /* View */,
 			);
 			path = Deprecated;
@@ -548,10 +551,6 @@
 			isa = PBXGroup;
 			children = (
 				19A94FDB204EDD5C003A1D23 /* PopupMeetupViewtemp.swift */,
-				19A5780620622A5700240B87 /* PopupStartView.xib */,
-				19A5780820622A6700240B87 /* PopupStartView.swift */,
-				19C54AA420A988A100717C6F /* PopupMeetUpView.xib */,
-				19C54AA620A988C400717C6F /* PopupMeetUpView.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -560,7 +559,9 @@
 			isa = PBXGroup;
 			children = (
 				198D92CA2061447E001325DD /* Start.storyboard */,
+				19A5780620622A5700240B87 /* PopupStartView.xib */,
 				198D92CC206144A7001325DD /* StartViewController.swift */,
+				19A5780820622A6700240B87 /* PopupStartView.swift */,
 				198A4D2720614D6900A78E83 /* ResearchViewController.swift */,
 				198A4D2920614D7A00A78E83 /* ResearchResultViewController.swift */,
 				198D92CE206147B9001325DD /* EnrollmentViewController.swift */,
@@ -599,7 +600,6 @@
 				191DBB4A20A7CD0D00423E69 /* Map */,
 				191DBB4B20A7CD1800423E69 /* Note */,
 				191DBB4C20A7CD1C00423E69 /* My */,
-				19C54AA120A9884E00717C6F /* Popup */,
 				195CFFAD2041AF010062A26C /* Extension */,
 				19F2CDFA204141CD00CB113B /* Supporting Files */,
 				19F2CDEE2041419C00CB113B /* Info.plist */,

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,24 +14,107 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="meetUpCell" id="gTV-IL-0wX" customClass="MeetUpCell" customModule="DigitalNomad" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="244" height="158"/>
+            <rect key="frame" x="0.0" y="0.0" width="276" height="250"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="244" height="158"/>
+                <rect key="frame" x="0.0" y="0.0" width="276" height="250"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="asdfasfdsaf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkQ-Kr-v7J">
-                        <rect key="frame" x="138" y="69" width="90" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeetupBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Xr3-fJ-LTx">
+                        <rect key="frame" x="0.0" y="53" width="276" height="197"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeetupLine" translatesAutoresizingMaskIntoConstraints="NO" id="6KC-IR-GZ9">
+                        <rect key="frame" x="31.5" y="176" width="213" height="1"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6Z-1t-AgY">
+                        <rect key="frame" x="73.5" y="112" width="23" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfileMeetupNone" translatesAutoresizingMaskIntoConstraints="NO" id="2YB-Mt-E3f">
+                        <rect key="frame" x="98" y="13" width="81" height="81"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxE-tY-yOf">
+                        <rect key="frame" x="193" y="66.5" width="26.5" height="12"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                        <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정약용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="If3-Uc-D5E">
+                        <rect key="frame" x="121.5" y="112" width="34" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                        <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30일차" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QY-Uu-wsa">
+                        <rect key="frame" x="180.5" y="112" width="39" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeetupLine" translatesAutoresizingMaskIntoConstraints="NO" id="jW7-6Y-BHH">
+                        <rect key="frame" x="32" y="132" width="213" height="1"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot; 저녁 식사 함께해요! &quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8e-ON-D3x">
+                        <rect key="frame" x="32" y="145" width="213" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXu-k6-5uv">
+                        <rect key="frame" x="71.5" y="186.5" width="133" height="33"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                        <state key="normal" title="밋업요청" backgroundImage="MeetupButton"/>
+                        <connections>
+                            <action selector="touchUpMeetupButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="J0k-sU-NAF"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fxE-tY-yOf" firstAttribute="leading" secondItem="2YB-Mt-E3f" secondAttribute="trailing" constant="14" id="2YZ-R7-1ih"/>
+                <constraint firstItem="6KC-IR-GZ9" firstAttribute="top" secondItem="t8e-ON-D3x" secondAttribute="bottom" constant="12" id="3tv-0D-s0A"/>
+                <constraint firstItem="jW7-6Y-BHH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="32" id="BPE-Cs-h7V"/>
+                <constraint firstAttribute="trailing" secondItem="Xr3-fJ-LTx" secondAttribute="trailing" id="C72-bU-zy0"/>
+                <constraint firstItem="Xr3-fJ-LTx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="GgT-Ou-ze5"/>
+                <constraint firstItem="6KC-IR-GZ9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="L10-sO-5iA"/>
+                <constraint firstItem="2YB-Mt-E3f" firstAttribute="centerY" secondItem="Xr3-fJ-LTx" secondAttribute="top" id="Ong-Xj-LPe"/>
+                <constraint firstItem="OXu-k6-5uv" firstAttribute="top" secondItem="6KC-IR-GZ9" secondAttribute="bottom" constant="9.5" id="Oum-3D-zjU"/>
+                <constraint firstItem="t8e-ON-D3x" firstAttribute="trailing" secondItem="jW7-6Y-BHH" secondAttribute="trailing" id="Pt4-tK-fjR"/>
+                <constraint firstItem="5QY-Uu-wsa" firstAttribute="centerY" secondItem="If3-Uc-D5E" secondAttribute="centerY" id="Tw9-At-ehB"/>
+                <constraint firstItem="2YB-Mt-E3f" firstAttribute="centerX" secondItem="Xr3-fJ-LTx" secondAttribute="centerX" id="WQB-AP-6u6"/>
+                <constraint firstItem="If3-Uc-D5E" firstAttribute="top" secondItem="2YB-Mt-E3f" secondAttribute="bottom" constant="18" id="XxX-uj-w0f"/>
+                <constraint firstItem="t8e-ON-D3x" firstAttribute="leading" secondItem="jW7-6Y-BHH" secondAttribute="leading" id="eLy-VZ-og5"/>
+                <constraint firstAttribute="trailing" secondItem="jW7-6Y-BHH" secondAttribute="trailing" constant="31" id="eUZ-aM-Jwp"/>
+                <constraint firstItem="T6Z-1t-AgY" firstAttribute="centerY" secondItem="If3-Uc-D5E" secondAttribute="centerY" id="g2I-Hd-pVH"/>
+                <constraint firstItem="If3-Uc-D5E" firstAttribute="leading" secondItem="T6Z-1t-AgY" secondAttribute="trailing" constant="25" id="g7v-xb-QwM"/>
+                <constraint firstAttribute="bottom" secondItem="Xr3-fJ-LTx" secondAttribute="bottom" id="hN1-zj-qPU"/>
+                <constraint firstItem="jW7-6Y-BHH" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="kpN-NK-eXu"/>
+                <constraint firstItem="If3-Uc-D5E" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="l1E-W5-UMr"/>
+                <constraint firstItem="fxE-tY-yOf" firstAttribute="top" secondItem="2YB-Mt-E3f" secondAttribute="centerY" constant="13" id="mAp-wN-8dL"/>
+                <constraint firstItem="OXu-k6-5uv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="q4e-Hs-oQv"/>
+                <constraint firstItem="5QY-Uu-wsa" firstAttribute="leading" secondItem="If3-Uc-D5E" secondAttribute="trailing" constant="25" id="w08-Z0-Mi5"/>
+                <constraint firstItem="t8e-ON-D3x" firstAttribute="top" secondItem="jW7-6Y-BHH" secondAttribute="bottom" constant="12" id="wbb-j6-Hbx"/>
+                <constraint firstItem="jW7-6Y-BHH" firstAttribute="top" secondItem="T6Z-1t-AgY" secondAttribute="bottom" constant="4" id="y08-jt-990"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="244" height="158"/>
+            <connections>
+                <outlet property="daysLabel" destination="5QY-Uu-wsa" id="LV9-2C-U9X"/>
+                <outlet property="distanceLabel" destination="fxE-tY-yOf" id="bjT-KQ-FP2"/>
+                <outlet property="jobLabel" destination="T6Z-1t-AgY" id="T4I-47-Xrl"/>
+                <outlet property="nameLabel" destination="If3-Uc-D5E" id="XkK-LQ-FzV"/>
+                <outlet property="titleLabel" destination="t8e-ON-D3x" id="Utb-sR-b0c"/>
+            </connections>
             <point key="canvasLocation" x="131" y="108"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="MeetupBackground" width="290" height="197"/>
+        <image name="MeetupButton" width="133" height="33"/>
+        <image name="MeetupLine" width="213" height="1"/>
+        <image name="ProfileMeetupNone" width="81" height="81"/>
+    </resources>
 </document>

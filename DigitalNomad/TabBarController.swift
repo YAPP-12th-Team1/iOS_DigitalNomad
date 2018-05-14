@@ -12,8 +12,6 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.tintColor = .salmon
-//        self.tabBar.tintColor = .aquamarine
         self.tabBar.backgroundImage = #imageLiteral(resourceName: "TabbarBackgroundImage")
         let tabOne  = UIStoryboard(name: "Map", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
         let tabOneBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "Tab1"), tag: 0)

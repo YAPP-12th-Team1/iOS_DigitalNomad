@@ -29,6 +29,7 @@ class WishCell: UICollectionViewCell {
         self.checkBox.offAnimationType = .fill
     }
     
+    //WishViewController에 구현체 있음
     @IBAction func touchUpCheckBox(_ sender: BEMCheckBox) {
         delegate?.touchUpCheckBox()
     }

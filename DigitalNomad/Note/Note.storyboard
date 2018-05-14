@@ -241,10 +241,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="UVb-96-EJH">
-                                <rect key="frame" x="16" y="39" width="66" height="22"/>
+                                <rect key="frame" x="22" y="39" width="66" height="22"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="TopSearchBlue" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-7G-t9b">
-                                <rect key="frame" x="107" y="32" width="250" height="35"/>
+                                <rect key="frame" x="113" y="32" width="244" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Hmf-7b-kBJ"/>
                                 </constraints>
@@ -273,13 +273,13 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mmb-S6-vg3">
                                             <size key="itemSize" width="89" height="123"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="headerReferenceSize" width="50" height="50"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wishCell" id="WjI-Kd-DDU" customClass="WishCell" customModule="DigitalNomad" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="89" height="123"/>
+                                                <rect key="frame" x="0.0" y="50" width="89" height="123"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="89" height="123"/>
@@ -348,6 +348,10 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="wishHeaderView" id="Udm-Qx-p9d">
+                                            <rect key="frame" x="0.0" y="0.0" width="337" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionReusableView>
                                         <connections>
                                             <outlet property="dataSource" destination="de1-l8-0qI" id="Jvb-Yt-AJg"/>
                                             <outlet property="delegate" destination="de1-l8-0qI" id="GBx-tM-DFm"/>
@@ -377,7 +381,7 @@
                             <constraint firstItem="9w6-wu-uaQ" firstAttribute="leading" secondItem="Ma3-6k-ILq" secondAttribute="leading" constant="19" id="JKu-U2-qhi"/>
                             <constraint firstItem="L3G-7G-t9b" firstAttribute="centerY" secondItem="UVb-96-EJH" secondAttribute="centerY" id="JmS-l2-hjX"/>
                             <constraint firstItem="D7o-fH-L8k" firstAttribute="trailing" secondItem="L3G-7G-t9b" secondAttribute="trailing" constant="-10" id="P0b-mL-hTP"/>
-                            <constraint firstItem="UVb-96-EJH" firstAttribute="leading" secondItem="Ma3-6k-ILq" secondAttribute="leading" constant="16" id="V0L-n1-FyV"/>
+                            <constraint firstItem="UVb-96-EJH" firstAttribute="leading" secondItem="Ma3-6k-ILq" secondAttribute="leading" constant="22" id="V0L-n1-FyV"/>
                             <constraint firstItem="9w6-wu-uaQ" firstAttribute="top" secondItem="CQg-JH-55C" secondAttribute="bottom" constant="25" id="i8E-6y-cON"/>
                             <constraint firstItem="Ma3-6k-ILq" firstAttribute="trailing" secondItem="L3G-7G-t9b" secondAttribute="trailing" constant="18" id="l5a-ws-e9X"/>
                             <constraint firstItem="D7o-fH-L8k" firstAttribute="centerY" secondItem="L3G-7G-t9b" secondAttribute="centerY" id="qF6-lH-Z2d"/>
