@@ -15,6 +15,7 @@ protocol WishCellDelegate {
 
 class WishCell: UICollectionViewCell {
     
+    
     @IBOutlet var todoImageView: UIImageView!
     @IBOutlet var todoLabel: UILabel!
     @IBOutlet var checkBox: BEMCheckBox!
@@ -22,9 +23,6 @@ class WishCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.todoImageView.layer.cornerRadius = self.todoImageView.frame.height / 2
-        self.todoImageView.layer.borderWidth = 2
-        self.todoImageView.layer.borderColor = UIColor.aquamarine.cgColor
         self.checkBox.onAnimationType = .fill
         self.checkBox.offAnimationType = .fill
     }

@@ -38,6 +38,7 @@
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4mo-Tn-aQ7">
                                 <rect key="frame" x="22" y="242" width="331" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4mo-Tn-aQ7" secondAttribute="height" multiplier="331:30" id="fyR-2h-nfZ"/>
                                 </constraints>

@@ -123,11 +123,12 @@ extension MyViewController: PopupMeetUpViewDelegate {
 //MARK:- 컬렉션 뷰 데이터 소스 구현
 extension MyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagCell", for: indexPath) as? MyHashtagCell else { return UICollectionViewCell() }
+        cell.hashtagLabel.text = "# 오오오"
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
 }
 
@@ -138,7 +139,10 @@ extension MyViewController: UICollectionViewDelegate {
 
 //MARK:- 컬렉션 뷰 델리게이트 플로우 레이아웃 구현
 extension MyViewController: UICollectionViewDelegateFlowLayout {
-    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        guard let label = (collectionView.cellForItem(at: indexPath) as! MyHashtagCell).hashtagLabel else { return .zero}
+//        return label.frame.size
+//    }
 }
 
 //MARK:- FSPgaerView 데이터 소스 구현

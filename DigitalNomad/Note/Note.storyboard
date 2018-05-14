@@ -288,17 +288,13 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sYo-5X-eqs">
                                                             <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kSI-EV-Zva">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card" translatesAutoresizingMaskIntoConstraints="NO" id="kSI-EV-Zva">
                                                                     <rect key="frame" x="8" y="8" width="73" height="73"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqj-9N-WWd" customClass="BEMCheckBox">
-                                                                    <rect key="frame" x="55" y="8" width="26" height="26"/>
+                                                                    <rect key="frame" x="59" y="8" width="22" height="22"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="tintColor" red="0.92156862750000001" green="0.34509803919999998" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="26" id="LAu-KF-oeg"/>
-                                                                        <constraint firstAttribute="width" constant="26" id="Ul0-AY-ajJ"/>
-                                                                    </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
                                                                             <color key="value" red="0.92156862750000001" green="0.34509803919999998" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
@@ -309,11 +305,17 @@
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                                            <color key="value" red="0.92156862750000001" green="0.34509803919999998" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="touchUpCheckBox:" destination="WjI-Kd-DDU" eventType="valueChanged" id="Yki-yy-hSK"/>
                                                                     </connections>
                                                                 </view>
+                                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="egO-13-3m4">
+                                                                    <rect key="frame" x="16" y="16" width="57" height="51"/>
+                                                                </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
@@ -321,9 +323,15 @@
                                                                 <constraint firstAttribute="width" secondItem="sYo-5X-eqs" secondAttribute="height" multiplier="1:1" id="Byb-vG-iOu"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Hqj-9N-WWd" secondAttribute="trailing" constant="8" id="Fhc-Tg-Sss"/>
                                                                 <constraint firstItem="Hqj-9N-WWd" firstAttribute="top" secondItem="sYo-5X-eqs" secondAttribute="top" constant="8" id="IV3-Bm-Fjg"/>
+                                                                <constraint firstItem="egO-13-3m4" firstAttribute="top" secondItem="sYo-5X-eqs" secondAttribute="top" constant="16" id="Kz8-Kd-nqf"/>
+                                                                <constraint firstAttribute="bottom" secondItem="egO-13-3m4" secondAttribute="bottom" constant="22" id="RS3-h6-3xt"/>
                                                                 <constraint firstAttribute="bottom" secondItem="kSI-EV-Zva" secondAttribute="bottom" constant="8" id="S5c-rB-AU9"/>
+                                                                <constraint firstItem="Hqj-9N-WWd" firstAttribute="height" secondItem="kSI-EV-Zva" secondAttribute="height" multiplier="0.3" id="Ss0-yF-Ms3"/>
+                                                                <constraint firstItem="egO-13-3m4" firstAttribute="leading" secondItem="sYo-5X-eqs" secondAttribute="leading" constant="16" id="cKu-pm-1BO"/>
                                                                 <constraint firstItem="kSI-EV-Zva" firstAttribute="leading" secondItem="sYo-5X-eqs" secondAttribute="leading" constant="8" id="lk9-fN-AAQ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="egO-13-3m4" secondAttribute="trailing" constant="16" id="plg-cJ-Tf6"/>
                                                                 <constraint firstItem="kSI-EV-Zva" firstAttribute="top" secondItem="sYo-5X-eqs" secondAttribute="top" constant="8" id="wQq-zs-1xQ"/>
+                                                                <constraint firstItem="Hqj-9N-WWd" firstAttribute="width" secondItem="kSI-EV-Zva" secondAttribute="width" multiplier="0.3" id="yFe-B2-cuu"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLZ-kZ-jAJ">
@@ -343,7 +351,7 @@
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="checkBox" destination="Hqj-9N-WWd" id="Quu-h3-FBN"/>
-                                                    <outlet property="todoImageView" destination="kSI-EV-Zva" id="YLM-eq-bXr"/>
+                                                    <outlet property="todoImageView" destination="egO-13-3m4" id="Ix1-d2-1rI"/>
                                                     <outlet property="todoLabel" destination="uLZ-kZ-jAJ" id="bEn-JK-ln4"/>
                                                 </connections>
                                             </collectionViewCell>
@@ -525,6 +533,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Card" width="70" height="73"/>
         <image name="Complete" width="205" height="205"/>
         <image name="CompleteButton" width="275" height="50"/>
         <image name="CompleteButtonShadow" width="242" height="56"/>

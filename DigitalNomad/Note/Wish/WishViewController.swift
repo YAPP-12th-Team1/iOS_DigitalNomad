@@ -18,6 +18,7 @@ class WishViewController: UIViewController {
     @IBOutlet var searchBar: UITextField!
     @IBOutlet var collectionView: UICollectionView!
     var realm: Realm!
+    var object: Results<WishListInfo>!
     
     //MARK:- 기본 메소드
     override func viewDidLoad() {
@@ -32,13 +33,35 @@ class WishViewController: UIViewController {
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.minimumLineSpacing = 10
-        flowLayout.headerReferenceSize = CGSize(width: self.view.frame.width, height: 60)
         let quarter = self.collectionView.frame.width / 4
         flowLayout.itemSize = CGSize(width: quarter - 20, height: quarter * 1.5)
         self.collectionView.collectionViewLayout = flowLayout
+        
+        //타겟 등록
+        self.searchBar.addTarget(self, action: #selector(self.searchBarDidChange(_:)), for: .editingChanged)
     }
     
     //MARK:- 사용자 정의 메소드
+    @objc func touchUpPlus(_ gesture: UITapGestureRecognizer) {
+        print("추가")
+    }
+    
+    @objc func searchBarDidChange(_ sender: UITextField) {
+        if sender.text! == " " {
+            sender.text = nil
+            return
+        }
+        if sender == self.searchBar {
+            let keyword = sender.text!
+            if !keyword.isEmpty {
+                self.object = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]).filter("todo CONTAINS[c] '" + keyword + "'")
+                self.collectionView.reloadSections(IndexSet(0...0))
+            } else {
+                self.object = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
+                self.collectionView.reloadSections(IndexSet(0...))
+            }
+        }
+    }
     
     //완료 페이지 여는 조건
     func presentCompleteViewController(){
@@ -70,6 +93,7 @@ extension WishViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wishCell", for: indexPath) as? WishCell else { return UICollectionViewCell() }
         if indexPath.item == 0 {
             cell.todoImageView.image = #imageLiteral(resourceName: "Plus")
+            cell.todoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchUpPlus(_:))))
             cell.todoLabel.text = nil
         } else {
             
@@ -77,7 +101,7 @@ extension WishViewController: UICollectionViewDataSource {
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 0
     }
 }
 
@@ -151,7 +175,7 @@ extension WishViewController: UICollectionViewDelegate {
         daysLabel.clipsToBounds = true
         daysLabel.backgroundColor = .aquamarine
         //MARK: 분리선 표시
-        let separatorView = UIImageView(image: #imageLiteral(resourceName: "NoteLine"))
+        let separatorView = UIImageView(image: #imageLiteral(resourceName: "HorizontalLineBlue"))
         header.addSubview(separatorView)
         separatorView.snp.makeConstraints { (make) in
             make.height.equalTo(2)
@@ -164,7 +188,13 @@ extension WishViewController: UICollectionViewDelegate {
 
 //MARK:- 컬렉션 뷰 델리게이트 플로우 레이아웃 구현
 extension WishViewController: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if collectionView.numberOfItems(inSection: 0) == 0 {
+            return .zero
+        } else {
+            return CGSize(width: self.view.frame.width, height: 60)
+        }
+    }
 }
 
 //MARK:- Empty Data Set Source 구현
