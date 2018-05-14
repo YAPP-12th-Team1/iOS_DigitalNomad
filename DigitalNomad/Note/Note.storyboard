@@ -84,6 +84,9 @@
                                                             <state key="normal" title="이메일 수신확인">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="clickTodoButton:" destination="JVm-D6-DSO" eventType="touchUpInside" id="ZsR-H3-WoP"/>
+                                                            </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoteLine" translatesAutoresizingMaskIntoConstraints="NO" id="fE5-JV-i8C">
                                                             <rect key="frame" x="53" y="42" width="284" height="2"/>
@@ -112,6 +115,9 @@
                                                                     <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="clickCheckBox:" destination="JVm-D6-DSO" eventType="valueChanged" id="ePP-oh-k01"/>
+                                                            </connections>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
@@ -213,6 +219,7 @@
                         <outlet property="addTodoButton" destination="Zln-Na-YmW" id="Gua-Eu-guV"/>
                         <outlet property="addTodoTextField" destination="aIR-sJ-2JG" id="zKt-J9-yLw"/>
                         <outlet property="addView" destination="Gca-44-N2f" id="OsX-GF-a66"/>
+                        <outlet property="addViewBottom" destination="0Vi-dq-x00" id="uED-qa-2nC"/>
                         <outlet property="hashtagButton" destination="hM1-sh-7oF" id="82G-Vz-Iq9"/>
                         <outlet property="searchBar" destination="Wav-T7-B6C" id="sFD-AJ-M9P"/>
                         <outlet property="tableView" destination="42N-B8-781" id="IP9-BL-IyY"/>

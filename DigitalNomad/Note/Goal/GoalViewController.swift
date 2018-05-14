@@ -23,9 +23,12 @@ class GoalViewController: UIViewController {
     @IBOutlet var addView: UIView!
     @IBOutlet var tableView: UITableView!
     
+    //MARK:- AddView bottom layout constraint
+    @IBOutlet var addViewBottom: NSLayoutConstraint!
+    
     //MARK:- 프로퍼티
     var realm: Realm!
-    var object: Results<GoalListInfo>?
+    var object: Results<GoalListInfo>!
     
     //MARK:- 기본 메소드
     override func viewDidLoad() {
@@ -57,8 +60,8 @@ class GoalViewController: UIViewController {
         if self.searchBar.isFirstResponder { return }
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-//            self.addView.frame.origin.y = self.view.frame.height - 49 - keyboardHeight
-            self.addView.frame.origin.y -= keyboardHeight
+            self.addView.frame.origin.y = self.view.frame.height - 49 - keyboardHeight
+            self.addViewBottom.constant += keyboardHeight - 49
         }
     }
     
@@ -66,8 +69,8 @@ class GoalViewController: UIViewController {
         if self.searchBar.isFirstResponder { return }
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-//            self.addView.frame.origin.y  = self.view.frame.height - 49
-            self.addView.frame.origin.y += keyboardHeight
+            self.addView.frame.origin.y  = self.view.frame.height - 49
+            self.addViewBottom.constant = 49
         }
     }
     
@@ -91,7 +94,11 @@ class GoalViewController: UIViewController {
             realm.objects(ProjectInfo.self).last?.goalLists.append(realm.objects(GoalListInfo.self).last!)
         }
         self.object = realm.objects(ProjectInfo.self).last?.goalLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
-        self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
+        if self.object.count == 1 {
+            self.tableView.reloadData()
+        } else {
+            self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
+        }
         self.addTodoTextField.text = nil
         self.addTodoTextField.endEditing(true)
     }
@@ -104,6 +111,8 @@ extension GoalViewController: UITextFieldDelegate {
         return true
     }
 }
+
+//MARK:- 셀 커스텀 델리게이트 구현
 extension GoalViewController: GoalCellDelegate {
     func clickCheckBox(_ sender: BEMCheckBox, todo: UIButton) {
         let id = sender.tag
@@ -155,41 +164,52 @@ extension GoalViewController: GoalCellDelegate {
         }
     }
 }
+
 //MARK:- 테이블 뷰 데이터 소스 구현
 extension GoalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as? GoalCell else { return UITableViewCell() }
         cell.delegate = self
         cell.goalCellDelegate = self
-        cell.checkBox.tag = indexPath.row
-        cell.todoButton.tag = indexPath.row
         guard let result = self.object?[indexPath.row] else { return UITableViewCell() }
-        cell.todoButton.setTitle(result.todo, for: .normal)
-        cell.todoButton.sizeToFit()
-        switch result.importance {
-        case 0:
-            cell.todoButton.setTitleColor(.black, for: .normal)
-        case 1:
-            cell.todoButton.setTitleColor(.blue, for: .normal)
-        case 2:
-            cell.todoButton.setTitleColor(.red, for: .normal)
-        default:
-            break
-        }
-        let text = cell.todoButton.titleLabel?.text ?? ""
+        cell.checkBox.tag = result.id
+        cell.todoButton.tag = result.id
+        let text = result.todo
+        let wholeRange = NSRange(location: 0, length: text.count)
         if result.status {
             cell.checkBox.setOn(true, animated: false)
-            let attrText = NSAttributedString(string: text, attributes: [
-                NSAttributedStringKey.strikethroughStyle: NSUnderlineStyle.styleSingle,
-                NSAttributedStringKey.strikethroughColor: UIColor.black
+            let attrText = NSMutableAttributedString(string: text, attributes: [
+                .strikethroughStyle: NSUnderlineStyle.styleSingle,
+                .strikethroughColor: UIColor.black
                 ])
+            switch result.importance {
+            case 0:
+                attrText.addAttribute(.foregroundColor, value: UIColor.black, range: wholeRange)
+            case 1:
+                attrText.addAttribute(.foregroundColor, value: UIColor.blue, range: wholeRange)
+            case 2:
+                attrText.addAttribute(.foregroundColor, value: UIColor.red, range: wholeRange)
+            default:
+                break
+            }
             cell.todoButton.setAttributedTitle(attrText, for: .normal)
         } else {
             cell.checkBox.setOn(false, animated: false)
-            let attrText = NSAttributedString(string: text, attributes: [
+            let attrText = NSMutableAttributedString(string: text, attributes: [
                 NSAttributedStringKey.strikethroughStyle: NSUnderlineStyle.styleNone
                 ])
+            switch result.importance {
+            case 0:
+                attrText.addAttribute(.foregroundColor, value: UIColor.black, range: wholeRange)
+            case 1:
+                attrText.addAttribute(.foregroundColor, value: UIColor.blue, range: wholeRange)
+            case 2:
+                attrText.addAttribute(.foregroundColor, value: UIColor.red, range: wholeRange)
+            default:
+                break
+            }
             cell.todoButton.setAttributedTitle(attrText, for: .normal)
+            cell.todoButton.sizeToFit()
         }
         return cell
     }
@@ -296,6 +316,9 @@ extension GoalViewController: SwipeTableViewCellDelegate {
                 self.realm.delete(result)
             }
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            if self.object.count == 0 {
+                self.tableView.reloadData()
+            }
             action.fulfill(with: .delete)
         }
         postponeAction.image = #imageLiteral(resourceName: "hours24")
