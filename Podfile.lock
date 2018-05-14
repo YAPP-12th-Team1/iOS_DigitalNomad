@@ -40,6 +40,7 @@ PODS:
   - FirebaseUI/Storage (4.5.5):
     - Firebase/Storage (~> 4.0)
     - SDWebImage (~> 4.0)
+  - FSPagerView (0.7.1)
   - GaugeKit (0.4.5)
   - GoogleSignIn (4.1.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
@@ -96,6 +97,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - FirebaseUI/Storage
+  - FSPagerView
   - GaugeKit
   - GoogleSignIn
   - JTMaterialSwitch
@@ -130,6 +132,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
   FirebaseStorage: 181bb543d39ee3c53e0558de7ba86b1286a0427f
   FirebaseUI: 7f149d40db1a67c459df16540256b66d8f8e8c70
+  FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
   GaugeKit: 7872069a8aed2d26b17fca110fe1ab59722f8a33
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
@@ -148,6 +151,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: 80bdb188166484d8a0d813d9fd7748ad33181815
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: c9eb1bdd839643176157c35d62688e32087f560c
+PODFILE CHECKSUM: 6b09b5590c247e94775455d68de8e6100dccb9f6
 
 COCOAPODS: 1.4.0

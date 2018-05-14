@@ -17,6 +17,11 @@ class ParentViewController: UIViewController {
         super.viewDidLoad()
         self.goalViewController = storyboard?.instantiateViewController(withIdentifier: "GoalViewController") as? GoalViewController
         self.wishViewController = storyboard?.instantiateViewController(withIdentifier: "WishViewController") as? WishViewController
+//        if UserDefaults.standard.bool(forKey: "isGoalViewControllerFirst") {
+//            switchViewController(from: nil, to: goalViewController)
+//        } else {
+//            switchViewController(from: nil, to: wishViewController)
+//        }
         switchViewController(from: nil, to: goalViewController)
     }
     
@@ -30,6 +35,11 @@ class ParentViewController: UIViewController {
             self.addChildViewController(toVC!)
             self.view.addSubview(toVC!.view)
             toVC?.didMove(toParentViewController: self)
+        }
+        if toVC is GoalViewController {
+            self.tabBarController?.tabBar.tintColor = .salmon
+        } else {
+            self.tabBarController?.tabBar.tintColor = .aquamarine
         }
     }
 }

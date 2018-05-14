@@ -21,6 +21,7 @@ target 'DigitalNomad' do
   pod 'Toaster'
   pod 'DLRadioButton', '~> 1.4'
   pod 'SnapKit', '~> 4.0.0'
+  pod 'FSPagerView'
   pod 'lottie-ios'
   pod 'AKPickerView-Swift', :git => 'https://github.com/Akkyie/AKPickerView-Swift.git'
   pod 'SwipeCellKit'

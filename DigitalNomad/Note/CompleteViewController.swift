@@ -17,4 +17,8 @@ class CompleteViewController: UIViewController {
         self.view.addSubview(animationView)
         animationView.play()
     }
+    
+    @IBAction func touchUpButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

@@ -47,11 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         UIApplication.shared.isStatusBarHidden = false
-//        (UIApplication.shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = .white
-        
-        //튜토리얼 스크린 디버깅용
-//        UserDefaults.standard.set(false, forKey: "isFirstNomadWorkExecute")
-//        UserDefaults.standard.set(false, forKey: "isFirstNomadLifeExecute")
         
         //앱 실행 시 날짜 UserDefaults에 저장, 미루기 기능에 사용됨
         //백그라운드에서 실행하도록 해야하는데...
@@ -78,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         // ...
-        if let error = error {
+        if error != nil {
             // ...
             return
         }
@@ -89,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // ...
         
         Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
+            if error != nil {
                 // ...
                 return
             }
