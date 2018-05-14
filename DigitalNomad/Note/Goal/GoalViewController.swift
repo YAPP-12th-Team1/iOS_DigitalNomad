@@ -11,6 +11,7 @@ import DZNEmptyDataSet
 import BEMCheckBox
 import SnapKit
 import RealmSwift
+import SwipeCellKit
 
 class GoalViewController: UIViewController {
 
@@ -39,6 +40,10 @@ class GoalViewController: UIViewController {
         self.searchBar.leftViewMode = .always
         self.addTodoTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: self.hashtagButton.frame.width + (self.hashtagButton.frame.origin.x - self.addTodoTextField.frame.origin.x) + 8, height: 0))
         self.addTodoTextField.leftViewMode = .always
+        
+        //타겟 등록
+        self.addTodoButton.addTarget(self, action: #selector(self.clickAddButton(_:)), for: .touchUpInside)
+        self.hashtagButton.addTarget(self, action: #selector(self.clickHashtagButton(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,13 +52,13 @@ class GoalViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
     
-    //MARK:- 사용자 정의 메소드
-    
+    //MARK:- 키보드 출현에 따른 뷰 이동 메소드
     @objc func keyboardWillShow(_ notification: Notification) {
         if self.searchBar.isFirstResponder { return }
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            self.addView.frame.origin.y = self.view.frame.height - 49 - keyboardHeight
+//            self.addView.frame.origin.y = self.view.frame.height - 49 - keyboardHeight
+            self.addView.frame.origin.y -= keyboardHeight
         }
     }
     
@@ -61,12 +66,38 @@ class GoalViewController: UIViewController {
         if self.searchBar.isFirstResponder { return }
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            self.addView.frame.origin.y  = self.view.frame.height - 49
+//            self.addView.frame.origin.y  = self.view.frame.height - 49
+            self.addView.frame.origin.y += keyboardHeight
         }
+    }
+    
+    //MARK:- 버튼 입력에 따른 처리 메소드
+    @objc func clickHashtagButton(_ sender: UIButton) {
+        let text = self.addTodoTextField.text ?? ""
+        guard let lastChar = text.last else {
+            self.addTodoTextField.text = "#"
+            return
+        }
+        if lastChar != "#" {
+            self.addTodoTextField.text! += "#"
+        }
+    }
+    
+    @objc func clickAddButton(_ sender: UIButton) {
+        guard let text = self.addTodoTextField.text else { return }
+        if text.isEmpty { return }
+        addGoalList(text)
+        try! realm.write {
+            realm.objects(ProjectInfo.self).last?.goalLists.append(realm.objects(GoalListInfo.self).last!)
+        }
+        self.object = realm.objects(ProjectInfo.self).last?.goalLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
+        self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
+        self.addTodoTextField.text = nil
+        self.addTodoTextField.endEditing(true)
     }
 }
 
-//MARK:- 서치바 델리게이트 구현
+//MARK:- 텍스트필드 델리게이트 구현
 extension GoalViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
@@ -129,6 +160,7 @@ extension GoalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as? GoalCell else { return UITableViewCell() }
         cell.delegate = self
+        cell.goalCellDelegate = self
         cell.checkBox.tag = indexPath.row
         cell.todoButton.tag = indexPath.row
         guard let result = self.object?[indexPath.row] else { return UITableViewCell() }
@@ -162,7 +194,7 @@ extension GoalViewController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.object?.count ?? -1
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -245,8 +277,37 @@ extension GoalViewController: UITableViewDelegate {
         return header
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //리스트 없으면 return 0
+        if self.object?.count == 0 { return 0 }
         return 60
+    }
+}
+//MARK:- 셀 스와이프 라이브러리 델리게이트 구현
+extension GoalViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        guard let result = self.object?[indexPath.row] else { return nil }
+        let postponeAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
+            //미루기
+            action.fulfill(with: .delete)
+        }
+        let deleteAction = SwipeAction(style: .destructive, title: "삭제") { (action, indexPath) in
+            //삭제
+            try! self.realm.write {
+                self.realm.delete(result)
+            }
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            action.fulfill(with: .delete)
+        }
+        postponeAction.image = #imageLiteral(resourceName: "hours24")
+        postponeAction.backgroundColor = .aquamarine
+//        deleteAction.image =
+        return [deleteAction, postponeAction]
+    }
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        options.expansionStyle = .none
+        options.transitionStyle = .border
+        return options
     }
 }
 

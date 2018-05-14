@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-994" y="143"/>
         </scene>
-        <!--Goal View Controller-->
+        <!--Empty Data Set Delegate-->
         <scene sceneID="efI-1A-atw">
             <objects>
                 <viewController storyboardIdentifier="GoalViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1ji-S9-LJ2" customClass="GoalViewController" customModule="DigitalNomad" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="1ji-S9-LJ2" id="6Mj-5Z-E9k"/>
                                 </connections>
@@ -71,7 +71,7 @@
                                         <rect key="frame" x="0.0" y="30" width="337" height="352"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="goalCell" id="JVm-D6-DSO" customClass="GoalCell" customModule="DigitalNomad" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="goalCell" id="JVm-D6-DSO" customClass="GoalCell" customModule="DigitalNomad" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="337" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JVm-D6-DSO" id="M2y-gp-717">
@@ -124,8 +124,18 @@
                                                         <constraint firstAttribute="trailing" secondItem="fE5-JV-i8C" secondAttribute="trailing" id="zeM-ae-Nki"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="checkBox" destination="xFD-Di-iAW" id="dUa-tq-GsF"/>
+                                                    <outlet property="todoButton" destination="uUn-ny-YCU" id="k54-Sb-ilA"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="1ji-S9-LJ2" id="ZfM-z9-gwn"/>
+                                            <outlet property="delegate" destination="1ji-S9-LJ2" id="pWT-8t-4Dy"/>
+                                            <outlet property="emptyDataSetDelegate" destination="1ji-S9-LJ2" id="3uO-yg-swM"/>
+                                            <outlet property="emptyDataSetSource" destination="1ji-S9-LJ2" id="o4Z-br-w7k"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.95294117649999999" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -233,7 +243,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="1ji-S9-LJ2" id="Wc3-S9-aYS"/>
                                 </connections>

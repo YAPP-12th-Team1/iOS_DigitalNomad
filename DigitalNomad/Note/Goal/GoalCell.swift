@@ -8,15 +8,16 @@
 
 import UIKit
 import BEMCheckBox
+import SwipeCellKit
 
 protocol GoalCellDelegate {
     func clickCheckBox(_ sender: BEMCheckBox, todo: UIButton)
     func clickTodoButton(_ sender: UIButton)
 }
 
-class GoalCell: UITableViewCell {
+class GoalCell: SwipeTableViewCell {
 
-    var delegate: GoalCellDelegate?
+    var goalCellDelegate: GoalCellDelegate?
     @IBOutlet var checkBox: BEMCheckBox!
     @IBOutlet var todoButton: UIButton!
     
@@ -31,11 +32,10 @@ class GoalCell: UITableViewCell {
     }
     
     @IBAction func clickCheckBox(_ sender: BEMCheckBox) {
-        delegate?.clickCheckBox(sender, todo: self.todoButton)
+        goalCellDelegate?.clickCheckBox(sender, todo: self.todoButton)
     }
     
     @IBAction func clickTodoButton(_ sender: UIButton) {
-        delegate?.clickTodoButton(sender)
+        goalCellDelegate?.clickTodoButton(sender)
     }
-    
 }
