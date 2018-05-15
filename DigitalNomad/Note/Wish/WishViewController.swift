@@ -41,7 +41,23 @@ class WishViewController: UIViewController {
         self.searchBar.addTarget(self, action: #selector(self.searchBarDidChange(_:)), for: .editingChanged)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        self.postponePreviousWishes()
+        self.collectionView.reloadData()
+    }
+    
     //MARK:- 사용자 정의 메소드
+    @objc func keyboardWillShow(_ notification: Notification) {
+        
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        
+    }
+    
     @objc func touchUpPlus(_ gesture: UITapGestureRecognizer) {
         print("추가")
     }
@@ -63,7 +79,7 @@ class WishViewController: UIViewController {
         }
     }
     
-    //완료 페이지 여는 조건
+    //MARK: 완료 페이지 여는 조건
     func presentCompleteViewController(){
         let project = realm.objects(ProjectInfo.self).last
         guard let goals = project?.goalLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]) else { return }
@@ -76,6 +92,18 @@ class WishViewController: UIViewController {
         guard let completeViewController = storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") else { return }
         completeViewController.modalTransitionStyle = .crossDissolve
         self.present(completeViewController, animated: true, completion: nil)
+    }
+    
+    //MARK: 자동 미루기
+    func postponePreviousWishes() {
+        guard let project = realm.objects(ProjectInfo.self).last else { return }
+        let query = NSPredicate(format: "date < %@", Date.todayStart as NSDate)
+        let wishes = project.wishLists.filter(query).filter("status = false")
+        try! realm.write {
+            for wish in wishes {
+                wish.date = Date()
+            }
+        }
     }
 }
 

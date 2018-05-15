@@ -14,5 +14,11 @@ class MyHashtagCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.hashtagLabel.layer.borderWidth = 2
+        self.hashtagLabel.layer.borderColor = #colorLiteral(red: 0.3725490196, green: 0.3725490196, blue: 0.3725490196, alpha: 1)
+        self.hashtagLabel.layer.cornerRadius = 10
+        self.hashtagLabel.clipsToBounds = true
     }
 }

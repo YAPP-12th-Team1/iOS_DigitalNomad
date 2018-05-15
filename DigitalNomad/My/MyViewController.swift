@@ -39,8 +39,15 @@ class MyViewController: UIViewController {
         realm = try! Realm()
         self.userInfo = realm.objects(UserInfo.self).last ?? nil
         self.emailInfo = realm.objects(EmailInfo.self).last ?? nil
+        
+        //밋업 카드 관련 초기화
         self.pagerView.itemSize = CGSize(width: 276, height: 250)
         self.pagerView.transformer = FSPagerViewTransformer(type: .linear)
+        
+        //해시태그 컬렉션 뷰 프로퍼티 설정
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.estimatedItemSize = CGSize(width: 10, height: 50)
+        self.collectionView.collectionViewLayout = flowLayout
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,7 +131,9 @@ extension MyViewController: PopupMeetUpViewDelegate {
 extension MyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagCell", for: indexPath) as? MyHashtagCell else { return UICollectionViewCell() }
-        cell.hashtagLabel.text = "# 오오오"
+        cell.hashtagLabel.text = "# 해시태애그"
+        cell.hashtagLabel.frame.size.height = cell.frame.height
+        cell.hashtagLabel.frame.size.width += 20
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -140,12 +149,12 @@ extension MyViewController: UICollectionViewDelegate {
 //MARK:- 컬렉션 뷰 델리게이트 플로우 레이아웃 구현
 extension MyViewController: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        guard let label = (collectionView.cellForItem(at: indexPath) as! MyHashtagCell).hashtagLabel else { return .zero}
+//        guard let label = (collectionView.cellForItem(at: indexPath) as! MyHashtagCell).hashtagLabel else { return .zero }
 //        return label.frame.size
 //    }
 }
 
-//MARK:- FSPgaerView 데이터 소스 구현
+//MARK:- 밋업 카드 관련 데이터 소스 구현
 extension MyViewController: FSPagerViewDataSource {
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         guard let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "meetUpCell", at: index) as? MeetUpCell else { return FSPagerViewCell() }
@@ -157,11 +166,12 @@ extension MyViewController: FSPagerViewDataSource {
     }
 }
 
-//MARK:- FSPagerView 델리게이트 구현
+//MARK:- 밋업 카드 관련 델리게이트 구현
 extension MyViewController: FSPagerViewDelegate {
     
 }
 
+//MARK:- 메일 보내기 델리게이트 구현
 extension MyViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)

@@ -22,6 +22,10 @@ class GoalViewController: UIViewController {
     @IBOutlet var addTodoButton: UIButton!
     @IBOutlet var addView: UIView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var summaryView: UIView!
+    @IBOutlet var yesterdayLabel: UILabel!
+    @IBOutlet var completeTimeLabel: UILabel!
+    @IBOutlet var summaryButton: UIButton!
     
     //MARK:- AddView bottom layout constraint
     @IBOutlet var addViewBottom: NSLayoutConstraint!
@@ -49,12 +53,22 @@ class GoalViewController: UIViewController {
         self.hashtagButton.addTarget(self, action: #selector(self.touchUpHashtagButton(_:)), for: .touchUpInside)
         self.searchBar.addTarget(self, action: #selector(self.searchBarDidChange(_:)), for: .editingChanged)
         self.addTodoTextField.addTarget(self, action: #selector(self.searchBarDidChange(_:)), for: .editingChanged)
+        self.summaryButton.addTarget(self, action: #selector(self.touchUpSummaryButton(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        self.postponePreviousGoals()
+        self.tableView.reloadData()
+        if realm.objects(ProjectInfo.self).last?.date.dateInterval == 1 {
+            self.summaryView.isHidden = true
+        } else {
+            self.summaryView.isHidden = false
+            self.setYesterdaySummary()
+            self.setYesterdayLabel()
+        }
     }
     
     //MARK:- 사용자 정의 메소드
@@ -87,8 +101,8 @@ class GoalViewController: UIViewController {
         }
     }
     
+    //MARK: 일정 등록
     @objc func touchUpAddButton(_ sender: UIButton) {
-        //일정 등록
         guard let text = self.addTodoTextField.text else { return }
         if text.isEmpty { return }
         addGoalList(text)
@@ -105,6 +119,7 @@ class GoalViewController: UIViewController {
         self.addTodoTextField.endEditing(true)
     }
     
+    //MARK: 서치바 입력 중 상황 제어
     @objc func searchBarDidChange(_ sender: UITextField) {
         //공백이 입력되면 그것을 지운다. 서치바가 현재 리스폰더이면 일정 검색
         if sender.text! == " " {
@@ -123,6 +138,34 @@ class GoalViewController: UIViewController {
         }
     }
     
+    //MARK: 이전 등록 목록 표시하는 뷰 보여주기
+    @objc func touchUpSummaryButton(_ sender: UIButton) {
+        
+    }
+    
+    //MARK: 어제 날짜 설정
+    func setYesterdayLabel() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "M/dd"
+        self.yesterdayLabel.text = dateFormatter.string(from: Date.yesterdayDate)
+    }
+    
+    //MARK: 어제 요약 정보 설정
+    func setYesterdaySummary() {
+        guard let yesterday = realm.objects(ProjectInfo.self).last?.goalLists.filter("date BETWEEN %@", [Date.yesterdayStart, Date.yesterdayEnd]) else { return }
+        var text: String?
+        switch yesterday.count {
+        case 0:
+            text = "어제 등록한 노트가 없습니다."
+        case 1:
+            text = yesterday.first?.todo
+        default:
+            text = yesterday.first?.todo ?? "" + " 및 \(yesterday.count - 1)개"
+        }
+        self.summaryButton.setTitle(text, for: .normal)
+    }
+    
     //MARK: 완료 페이지 여는 조건
     func presentCompleteViewController(){
         let project = realm.objects(ProjectInfo.self).last
@@ -133,9 +176,22 @@ class GoalViewController: UIViewController {
         let completedGoals = goals.filter("status = true").count
         let completedWishes = wishes.filter("status = true").count
         if entireGoals != completedGoals || entireWishes != completedWishes { return }
+        self.completeTimeLabel.text = Date().convertToTime()
         guard let completeViewController = storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") else { return }
         completeViewController.modalTransitionStyle = .crossDissolve
         self.present(completeViewController, animated: true, completion: nil)
+    }
+    
+    //MARK: 자동 미루기
+    func postponePreviousGoals() {
+        guard let project = realm.objects(ProjectInfo.self).last else { return }
+        let query = NSPredicate(format: "date < %@", Date.todayStart as NSDate)
+        let goals = project.goalLists.filter(query).filter("status = false")
+        try! realm.write {
+            for goal in goals {
+                goal.date = Date()
+            }
+        }
     }
 }
 
@@ -321,7 +377,7 @@ extension GoalViewController: UITableViewDelegate {
             make.top.equalTo(todayLabel.snp.top)
             make.bottom.equalTo(todayLabel.snp.bottom)
         }
-        guard let savedDate = realm.objects(ProjectInfo.self).last?.date else { return UICollectionReusableView() }
+        guard let savedDate = realm.objects(ProjectInfo.self).last?.date else { return nil }
         let daysText = "\(savedDate.dateInterval)일차"
         let style = NSMutableParagraphStyle()
         style.alignment = .center
@@ -366,7 +422,9 @@ extension GoalViewController: SwipeTableViewCellDelegate {
                 postponeCell.date = tomorrow
             }
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.tableView.reloadData()
+            if self.object.count == 0 {
+                self.tableView.reloadData()
+            }
             self.presentCompleteViewController()
             action.fulfill(with: .delete)
         }
@@ -375,7 +433,9 @@ extension GoalViewController: SwipeTableViewCellDelegate {
                 self.realm.delete(result)
             }
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.tableView.reloadData()
+            if self.object.count == 0 {
+                self.tableView.reloadData()
+            }
             self.presentCompleteViewController()
             action.fulfill(with: .delete)
         }
