@@ -114,13 +114,14 @@ extension NomadLifeView: UICollectionViewDelegate{
             //이외의 버튼을 누르면...
             let alert = UIAlertController(title: nil, message: "삭제할까요?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "예", style: .default, handler: { (action) in
-                let id = self.object[indexPath.item].id
+                let id = self.object[indexPath.item - 1].id
                 let query = NSPredicate(format: "id = %d", id)
                 let result = self.object.filter(query).filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
                 try! self.realm.write{
                     self.realm.delete(result)
                 }
-                collectionView.deleteItems(at: [indexPath])
+                let indexPathOfSelectedItem = IndexPath(item: indexPath.item - 1, section: 0)
+                collectionView.deleteItems(at: [indexPathOfSelectedItem])
                 collectionView.layoutIfNeeded()
                 self.openFinalPage()
             })

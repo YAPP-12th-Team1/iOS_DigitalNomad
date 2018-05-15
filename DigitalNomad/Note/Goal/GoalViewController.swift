@@ -42,7 +42,7 @@ class GoalViewController: UIViewController {
         //데이터 초기화
         self.object = realm.objects(ProjectInfo.self).last?.goalLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
         
-        //서치바 텍스트 보여지는 패딩 설정
+        //텍스트 필드 텍스트 보여지는 패딩 설정
         self.searchBar.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: self.searchBar.frame.height))
         self.searchBar.leftViewMode = .always
         self.addTodoTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: self.hashtagButton.frame.width + (self.hashtagButton.frame.origin.x - self.addTodoTextField.frame.origin.x) + 8, height: 0))
@@ -205,10 +205,10 @@ extension GoalViewController: UITextFieldDelegate {
 
 //MARK:- 셀 커스텀 델리게이트 구현
 extension GoalViewController: GoalCellDelegate {
-    func clickCheckBox(_ sender: BEMCheckBox, todo: UIButton) {
+    func touchUpCheckBox(_ sender: BEMCheckBox, todo: UIButton) {
         let id = sender.tag
         let query = NSPredicate(format: "id = %d", id)
-        guard let result = self.object?.filter(query).first else { return }
+        guard let result = self.object.filter(query).first else { return }
         let text = todo.titleLabel?.text ?? ""
         let attrText = NSMutableAttributedString(string: text)
         if sender.on {
@@ -238,7 +238,7 @@ extension GoalViewController: GoalCellDelegate {
         self.presentCompleteViewController()
     }
     
-    func clickTodoButton(_ sender: UIButton) {
+    func touchUpTodoButton(_ sender: UIButton) {
         let id = sender.tag
         let query = NSPredicate(format: "id = %d", id)
         guard let result = self.object.filter(query).first else { return }
@@ -271,7 +271,9 @@ extension GoalViewController: GoalCellDelegate {
 extension GoalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as? GoalCell else { return UITableViewCell() }
+        //스와이프 셀(라이브러리) 델리게이트 채택
         cell.delegate = self
+        //커스텀 셀 델리게이트 채택
         cell.goalCellDelegate = self
         let result = self.object[indexPath.row]
         cell.checkBox.tag = result.id

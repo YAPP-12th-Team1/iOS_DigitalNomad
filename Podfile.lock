@@ -84,6 +84,7 @@ PODS:
   - SnapKit (4.0.0)
   - SwiftyJSON (4.0.0)
   - SwipeCellKit (2.1.0)
+  - Tags (0.1.4)
   - Toaster (2.1.1)
 
 DEPENDENCIES:
@@ -107,6 +108,7 @@ DEPENDENCIES:
   - SnapKit (~> 4.0.0)
   - SwiftyJSON
   - SwipeCellKit
+  - Tags
   - Toaster
 
 EXTERNAL SOURCES:
@@ -149,8 +151,9 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwipeCellKit: 80bdb188166484d8a0d813d9fd7748ad33181815
+  Tags: b18378f79d8b30c40d4b7ae4d5edfc478434d858
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: 6b09b5590c247e94775455d68de8e6100dccb9f6
+PODFILE CHECKSUM: d0348e1a83b02b76fe5a3a49f49c0faaa9227630
 
 COCOAPODS: 1.4.0

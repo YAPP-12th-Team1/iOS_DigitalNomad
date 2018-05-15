@@ -13,12 +13,13 @@ import Firebase
 import SDWebImage
 import Toaster
 import MessageUI
+import Tags
 
 class MyViewController: UIViewController {
 
     //MARK:- IBOutlets
+    @IBOutlet var hashtagView: TagsView!
     @IBOutlet var profileImageView: UIImageView!
-    @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var pagerView: FSPagerView! {
         didSet {
             self.pagerView.register(UINib(nibName: "MeetUpCell", bundle: nil), forCellWithReuseIdentifier: "meetUpCell")
@@ -44,10 +45,9 @@ class MyViewController: UIViewController {
         self.pagerView.itemSize = CGSize(width: 276, height: 250)
         self.pagerView.transformer = FSPagerViewTransformer(type: .linear)
         
-        //해시태그 컬렉션 뷰 프로퍼티 설정
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.estimatedItemSize = CGSize(width: 10, height: 50)
-        self.collectionView.collectionViewLayout = flowLayout
+        //해시태그 뷰 초기화
+        self.hashtagView.tagFont = UIFont.systemFont(ofSize: 13, weight: .medium)
+        self.hashtagView.lineBreakMode = .byTruncatingTail
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +65,8 @@ class MyViewController: UIViewController {
             let complete = objects.filter("status = true").count
             return "\(complete)/\(entire)"
         }()
+        self.hashtagView.removeAll()
+        self.hashtagView.append(contentsOf: ["# 가장많이쓴해시태그", "# 두번째", "# 해시태그나열"])
     }
     
     //MARK:- 사용자 정의 메소드
@@ -125,33 +127,6 @@ extension MyViewController: PopupMeetUpViewDelegate {
         mail.setMessageBody(body, isHTML: true)
         return mail
     }
-}
-
-//MARK:- 컬렉션 뷰 데이터 소스 구현
-extension MyViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hashtagCell", for: indexPath) as? MyHashtagCell else { return UICollectionViewCell() }
-        cell.hashtagLabel.text = "# 해시태애그"
-        cell.hashtagLabel.frame.size.height = cell.frame.height
-        cell.hashtagLabel.frame.size.width += 20
-        return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-}
-
-//MARK:- 컬렉션 뷰 델리게이트 구현
-extension MyViewController: UICollectionViewDelegate {
-    
-}
-
-//MARK:- 컬렉션 뷰 델리게이트 플로우 레이아웃 구현
-extension MyViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        guard let label = (collectionView.cellForItem(at: indexPath) as! MyHashtagCell).hashtagLabel else { return .zero }
-//        return label.frame.size
-//    }
 }
 
 //MARK:- 밋업 카드 관련 데이터 소스 구현

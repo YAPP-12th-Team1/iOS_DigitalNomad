@@ -25,6 +25,7 @@ target 'DigitalNomad' do
   pod 'lottie-ios'
   pod 'AKPickerView-Swift', :git => 'https://github.com/Akkyie/AKPickerView-Swift.git'
   pod 'SwipeCellKit'
+  pod 'Tags'
   # Pods for DigitalNomad
  
 end

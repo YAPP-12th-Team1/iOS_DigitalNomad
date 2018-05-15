@@ -11,8 +11,8 @@ import BEMCheckBox
 import SwipeCellKit
 
 protocol GoalCellDelegate {
-    func clickCheckBox(_ sender: BEMCheckBox, todo: UIButton)
-    func clickTodoButton(_ sender: UIButton)
+    func touchUpCheckBox(_ sender: BEMCheckBox, todo: UIButton)
+    func touchUpTodoButton(_ sender: UIButton)
 }
 
 class GoalCell: SwipeTableViewCell {
@@ -29,11 +29,11 @@ class GoalCell: SwipeTableViewCell {
     
     //GoalViewController에 구현체 있음
     @IBAction func clickCheckBox(_ sender: BEMCheckBox) {
-        goalCellDelegate?.clickCheckBox(sender, todo: self.todoButton)
+        goalCellDelegate?.touchUpCheckBox(sender, todo: self.todoButton)
     }
     
     //GoalViewController에 구현체 있음
     @IBAction func clickTodoButton(_ sender: UIButton) {
-        goalCellDelegate?.clickTodoButton(sender)
+        goalCellDelegate?.touchUpTodoButton(sender)
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import BEMCheckBox
 
 protocol WishCellDelegate {
-    func touchUpCheckBox()
+    func touchUpCheckBox(_ sender: BEMCheckBox)
 }
 
 class WishCell: UICollectionViewCell {
@@ -29,6 +29,6 @@ class WishCell: UICollectionViewCell {
     
     //WishViewController에 구현체 있음
     @IBAction func touchUpCheckBox(_ sender: BEMCheckBox) {
-        delegate?.touchUpCheckBox()
+        delegate?.touchUpCheckBox(sender)
     }
 }
