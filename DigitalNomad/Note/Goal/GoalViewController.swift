@@ -113,6 +113,7 @@ class GoalViewController: UIViewController {
             if self.upperViewHeightConstraint.constant >= 200 {
                 guard let parent = self.parent as? ParentViewController else { return }
                 parent.switchViewController(from: parent.goalViewController, to: parent.wishViewController)
+                UserDefaults.standard.set(true, forKey: "isWishViewControllerFirst")
                 initialize()
             }
         case .ended:
@@ -176,13 +177,7 @@ class GoalViewController: UIViewController {
     @objc func touchUpSummaryButton(_ sender: UIButton) {
         
     }
-    
-    //MARK: 화면 전환
-    @IBAction func touchUpSwitchButton(_ sender: UIButton) {
-        guard let parent = self.parent as? ParentViewController else { return }
-        parent.switchViewController(from: parent.goalViewController, to: parent.wishViewController)
-    }
-    
+
     //MARK: 어제 날짜 설정
     func setYesterdayLabel() {
         let dateFormatter = DateFormatter()
@@ -216,7 +211,9 @@ class GoalViewController: UIViewController {
         let completedGoals = goals.filter("status = true").count
         let completedWishes = wishes.filter("status = true").count
         if entireGoals != completedGoals || entireWishes != completedWishes { return }
-        self.completeTimeLabel.text = Date().convertToTime()
+        let completeTime = Date().convertToTime()
+        self.completeTimeLabel.text = completeTime
+        UserDefaults.standard.set(completeTime, forKey: "completeTime")
         guard let completeViewController = storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") else { return }
         completeViewController.modalTransitionStyle = .crossDissolve
         self.present(completeViewController, animated: true, completion: nil)

@@ -17,13 +17,11 @@ class ParentViewController: UIViewController {
         super.viewDidLoad()
         self.goalViewController = storyboard?.instantiateViewController(withIdentifier: "GoalViewController") as? GoalViewController
         self.wishViewController = storyboard?.instantiateViewController(withIdentifier: "WishViewController") as? WishViewController
-//        if UserDefaults.standard.bool(forKey: "isGoalViewControllerFirst") {
-//            switchViewController(from: nil, to: goalViewController)
-//        } else {
-//            switchViewController(from: nil, to: wishViewController)
-//        }
-        //아래 to에 들어갈 파라미터를 바꾸어서 첫 시작 화면을 결정
-        switchViewController(from: nil, to: wishViewController)
+        if UserDefaults.standard.bool(forKey: "isWishViewControllerFirst") {
+            switchViewController(from: nil, to: wishViewController)
+        } else {
+            switchViewController(from: nil, to: goalViewController)
+        }
     }
     
     func switchViewController(from fromVC: UIViewController?, to toVC: UIViewController?) {

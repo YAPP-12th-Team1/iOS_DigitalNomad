@@ -10,43 +10,22 @@
 		191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */; };
 		191DFEC1204EA9490095E9C1 /* MyPageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */; };
 		191DFEC3204EA9520095E9C1 /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191DFEC2204EA9520095E9C1 /* Note.storyboard */; };
-		191DFEC7204EACCB0095E9C1 /* MyPageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFEC6204EACCB0095E9C1 /* MyPageListView.swift */; };
-		191DFECB204EACE00095E9C1 /* MyPageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFECA204EACE00095E9C1 /* MyPageCardView.swift */; };
 		191DFECD204EACEE0095E9C1 /* MyPageMeetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFECC204EACEE0095E9C1 /* MyPageMeetupView.swift */; };
 		191FD3F820A8215F00918676 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3F620A8215F00918676 /* GoalCell.swift */; };
 		191FD3FB20A8457000918676 /* WishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3FA20A8457000918676 /* WishViewController.swift */; };
 		191FD3FD20A8457B00918676 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3FC20A8457B00918676 /* ParentViewController.swift */; };
 		191FD3FF20A8483E00918676 /* WishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3FE20A8483E00918676 /* WishCell.swift */; };
 		191FD40120A84CDD00918676 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD40020A84CDD00918676 /* CompleteViewController.swift */; };
-		19214A9B2077638800100209 /* wish0.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A972077635000100209 /* wish0.png */; };
-		19214A9C2077638800100209 /* wish1.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A902077634E00100209 /* wish1.png */; };
-		19214A9D2077638800100209 /* wish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A912077634E00100209 /* wish2.png */; };
-		19214A9E2077638800100209 /* wish3.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A942077634F00100209 /* wish3.png */; };
-		19214A9F2077638800100209 /* wish4.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A8E2077634D00100209 /* wish4.png */; };
-		19214AA02077638800100209 /* wish5.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A992077635100100209 /* wish5.png */; };
-		19214AA12077638800100209 /* wish6.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A922077634E00100209 /* wish6.png */; };
-		19214AA22077638800100209 /* wish7.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A952077634F00100209 /* wish7.png */; };
-		19214AA32077638800100209 /* wish8.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A982077635000100209 /* wish8.png */; };
-		19214AA42077638800100209 /* wish9.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A9A2077635100100209 /* wish9.png */; };
-		19214AA52077638800100209 /* wish10.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A8C2077634C00100209 /* wish10.png */; };
-		19214AA62077638800100209 /* wish11.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A8F2077634D00100209 /* wish11.png */; };
-		19214AA72077638800100209 /* wish12.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A8D2077634D00100209 /* wish12.png */; };
-		19214AA82077638800100209 /* wish13.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A932077634F00100209 /* wish13.png */; };
-		19214AA92077638800100209 /* wish14.png in Resources */ = {isa = PBXBuildFile; fileRef = 19214A962077635000100209 /* wish14.png */; };
-		193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193627E3204F863F006F4081 /* NomadWorkCell.swift */; };
-		193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 193627E4204F863F006F4081 /* NomadWorkCell.xib */; };
-		1949DD08204FD50F0062D8EF /* NomadWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD07204FD50F0062D8EF /* NomadWorkView.swift */; };
-		1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD0B204FD5220062D8EF /* NomadLifeView.swift */; };
 		194CD6DC20ABFA6900110AFD /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194CD6DB20ABFA6900110AFD /* UIImage+.swift */; };
+		194CD6DE20AC4EFF00110AFD /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194CD6DD20AC4EFF00110AFD /* CardView.swift */; };
+		194CD6E020AC4F0B00110AFD /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 194CD6DF20AC4F0B00110AFD /* CardView.xib */; };
+		194CD6E320AC4F5A00110AFD /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194CD6E120AC4F5A00110AFD /* CardCell.swift */; };
+		194CD6E420AC4F5A00110AFD /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 194CD6E220AC4F5A00110AFD /* CardCell.xib */; };
 		195628B620701352004B3AF7 /* culture(3)_511111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE49206FECF10081332B /* culture(3)_511111.jpg */; };
 		19587FFB20766A4000FD3D01 /* ERProgressHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFA20766A4000FD3D01 /* ERProgressHud.swift */; };
 		19587FFD20767BF900FD3D01 /* NomadLastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */; };
-		196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */; };
-		196BABB92063BC1E00422D2B /* NomadLifeCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB72063BC1E00422D2B /* NomadLifeCardCell.swift */; };
-		196BABBA2063BC1E00422D2B /* NomadLifeCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196BABB82063BC1E00422D2B /* NomadLifeCardCell.xib */; };
 		196C4AE42041440100C7BFAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE32041440100C7BFAF /* Login.storyboard */; };
 		196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AE7204144DF00C7BFAF /* MapViewController.swift */; };
-		196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AEF2041450F00C7BFAF /* MyPageViewController.swift */; };
 		196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AF12041455500C7BFAF /* LoginViewController.swift */; };
 		196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AF72041483200C7BFAF /* TabBarController.swift */; };
 		196C4AFA2041493600C7BFAF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AF92041493600C7BFAF /* Map.storyboard */; };
@@ -65,10 +44,6 @@
 		199B9D47207E2A160067D7A8 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B9D46207E2A160067D7A8 /* Date+.swift */; };
 		19A5780720622A5700240B87 /* PopupStartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A5780620622A5700240B87 /* PopupStartView.xib */; };
 		19A5780920622A6700240B87 /* PopupStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5780820622A6700240B87 /* PopupStartView.swift */; };
-		19A5780C206264A500240B87 /* EnrollmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5780A206264A500240B87 /* EnrollmentCell.swift */; };
-		19A5780D206264A500240B87 /* EnrollmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A5780B206264A500240B87 /* EnrollmentCell.xib */; };
-		19A94FC9204EC19D003A1D23 /* MyPageDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FC7204EC19D003A1D23 /* MyPageDetailImageCell.swift */; };
-		19A94FCA204EC19D003A1D23 /* MyPageDetailImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FC8204EC19D003A1D23 /* MyPageDetailImageCell.xib */; };
 		19A94FCD204EC1AE003A1D23 /* MyPageDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FCB204EC1AE003A1D23 /* MyPageDetailInfoCell.swift */; };
 		19A94FCE204EC1AE003A1D23 /* MyPageDetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A94FCC204EC1AE003A1D23 /* MyPageDetailInfoCell.xib */; };
 		19A94FD5204EC1CE003A1D23 /* MyPageDetailMailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A94FD3204EC1CE003A1D23 /* MyPageDetailMailCell.swift */; };
@@ -77,11 +52,8 @@
 		19B9365D20A7DB1800FC826E /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9365C20A7DB1800FC826E /* UIColor+.swift */; };
 		19B9365F20A7DB4000FC826E /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9365E20A7DB4000FC826E /* UIFont+.swift */; };
 		19B9366320A7E29C00FC826E /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9366220A7E29C00FC826E /* GoalViewController.swift */; };
-		19BA826C204FEF9900C095C1 /* NomadLifeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA826A204FEF9900C095C1 /* NomadLifeCell.swift */; };
-		19BA826D204FEF9900C095C1 /* NomadLifeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BA826B204FEF9900C095C1 /* NomadLifeCell.xib */; };
 		19C54AA520A988A100717C6F /* PopupMeetUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C54AA420A988A100717C6F /* PopupMeetUpView.xib */; };
 		19C54AA720A988C400717C6F /* PopupMeetUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AA620A988C400717C6F /* PopupMeetUpView.swift */; };
-		19C54AAA20A99A8500717C6F /* NomadAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AA820A99A8300717C6F /* NomadAddView.swift */; };
 		19C54AAE20A99DDC00717C6F /* MyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AAD20A99DDC00717C6F /* MyDetailViewController.swift */; };
 		19C54AB520A9A10B00717C6F /* MeetUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AB320A9A10B00717C6F /* MeetUpCell.swift */; };
 		19C54AB620A9A10B00717C6F /* MeetUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C54AB420A9A10B00717C6F /* MeetUpCell.xib */; };
@@ -179,42 +151,21 @@
 		191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadViewController.swift; sourceTree = "<group>"; };
 		191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailViewController.swift; sourceTree = "<group>"; };
 		191DFEC2204EA9520095E9C1 /* Note.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
-		191DFEC6204EACCB0095E9C1 /* MyPageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageListView.swift; sourceTree = "<group>"; };
-		191DFECA204EACE00095E9C1 /* MyPageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCardView.swift; sourceTree = "<group>"; };
 		191DFECC204EACEE0095E9C1 /* MyPageMeetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMeetupView.swift; sourceTree = "<group>"; };
 		191FD3F620A8215F00918676 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		191FD3FA20A8457000918676 /* WishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishViewController.swift; sourceTree = "<group>"; };
 		191FD3FC20A8457B00918676 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		191FD3FE20A8483E00918676 /* WishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishCell.swift; sourceTree = "<group>"; };
 		191FD40020A84CDD00918676 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
-		19214A8C2077634C00100209 /* wish10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish10.png; sourceTree = "<group>"; };
-		19214A8D2077634D00100209 /* wish12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish12.png; sourceTree = "<group>"; };
-		19214A8E2077634D00100209 /* wish4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish4.png; sourceTree = "<group>"; };
-		19214A8F2077634D00100209 /* wish11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish11.png; sourceTree = "<group>"; };
-		19214A902077634E00100209 /* wish1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish1.png; sourceTree = "<group>"; };
-		19214A912077634E00100209 /* wish2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish2.png; sourceTree = "<group>"; };
-		19214A922077634E00100209 /* wish6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish6.png; sourceTree = "<group>"; };
-		19214A932077634F00100209 /* wish13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish13.png; sourceTree = "<group>"; };
-		19214A942077634F00100209 /* wish3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish3.png; sourceTree = "<group>"; };
-		19214A952077634F00100209 /* wish7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish7.png; sourceTree = "<group>"; };
-		19214A962077635000100209 /* wish14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish14.png; sourceTree = "<group>"; };
-		19214A972077635000100209 /* wish0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish0.png; sourceTree = "<group>"; };
-		19214A982077635000100209 /* wish8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish8.png; sourceTree = "<group>"; };
-		19214A992077635100100209 /* wish5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish5.png; sourceTree = "<group>"; };
-		19214A9A2077635100100209 /* wish9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wish9.png; sourceTree = "<group>"; };
-		193627E3204F863F006F4081 /* NomadWorkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkCell.swift; sourceTree = "<group>"; };
-		193627E4204F863F006F4081 /* NomadWorkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadWorkCell.xib; sourceTree = "<group>"; };
-		1949DD07204FD50F0062D8EF /* NomadWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkView.swift; sourceTree = "<group>"; };
-		1949DD0B204FD5220062D8EF /* NomadLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeView.swift; sourceTree = "<group>"; };
 		194CD6DB20ABFA6900110AFD /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		194CD6DD20AC4EFF00110AFD /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		194CD6DF20AC4F0B00110AFD /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		194CD6E120AC4F5A00110AFD /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		194CD6E220AC4F5A00110AFD /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		19587FFA20766A4000FD3D01 /* ERProgressHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERProgressHud.swift; sourceTree = "<group>"; };
 		19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLastViewController.swift; sourceTree = "<group>"; };
-		196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCardView.swift; sourceTree = "<group>"; };
-		196BABB72063BC1E00422D2B /* NomadLifeCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCardCell.swift; sourceTree = "<group>"; };
-		196BABB82063BC1E00422D2B /* NomadLifeCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeCardCell.xib; sourceTree = "<group>"; };
 		196C4AE32041440100C7BFAF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		196C4AE7204144DF00C7BFAF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		196C4AEF2041450F00C7BFAF /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		196C4AF12041455500C7BFAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		196C4AF5204145B200C7BFAF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		196C4AF6204145B200C7BFAF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -235,10 +186,6 @@
 		199B9D46207E2A160067D7A8 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		19A5780620622A5700240B87 /* PopupStartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupStartView.xib; sourceTree = "<group>"; };
 		19A5780820622A6700240B87 /* PopupStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupStartView.swift; sourceTree = "<group>"; };
-		19A5780A206264A500240B87 /* EnrollmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentCell.swift; sourceTree = "<group>"; };
-		19A5780B206264A500240B87 /* EnrollmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnrollmentCell.xib; sourceTree = "<group>"; };
-		19A94FC7204EC19D003A1D23 /* MyPageDetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailImageCell.swift; sourceTree = "<group>"; };
-		19A94FC8204EC19D003A1D23 /* MyPageDetailImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageDetailImageCell.xib; sourceTree = "<group>"; };
 		19A94FCB204EC1AE003A1D23 /* MyPageDetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailInfoCell.swift; sourceTree = "<group>"; };
 		19A94FCC204EC1AE003A1D23 /* MyPageDetailInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageDetailInfoCell.xib; sourceTree = "<group>"; };
 		19A94FD3204EC1CE003A1D23 /* MyPageDetailMailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailMailCell.swift; sourceTree = "<group>"; };
@@ -247,11 +194,8 @@
 		19B9365C20A7DB1800FC826E /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		19B9365E20A7DB4000FC826E /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		19B9366220A7E29C00FC826E /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
-		19BA826A204FEF9900C095C1 /* NomadLifeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCell.swift; sourceTree = "<group>"; };
-		19BA826B204FEF9900C095C1 /* NomadLifeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeCell.xib; sourceTree = "<group>"; };
 		19C54AA420A988A100717C6F /* PopupMeetUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMeetUpView.xib; sourceTree = "<group>"; };
 		19C54AA620A988C400717C6F /* PopupMeetUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMeetUpView.swift; sourceTree = "<group>"; };
-		19C54AA820A99A8300717C6F /* NomadAddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NomadAddView.swift; sourceTree = "<group>"; };
 		19C54AAD20A99DDC00717C6F /* MyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailViewController.swift; sourceTree = "<group>"; };
 		19C54AB320A9A10B00717C6F /* MeetUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUpCell.swift; sourceTree = "<group>"; };
 		19C54AB420A9A10B00717C6F /* MeetUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetUpCell.xib; sourceTree = "<group>"; };
@@ -408,7 +352,6 @@
 		191DFED0204EAFB70095E9C1 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				19214A892077633400100209 /* wishes */,
 				4A8AC3312070221E002F6B32 /* testImage.png */,
 				6B5877A82064BBEA0001FAB5 /* researchData */,
 				6B634A43204EF79F00A59EEF /* cafe.png */,
@@ -432,30 +375,12 @@
 			children = (
 				191FD3FA20A8457000918676 /* WishViewController.swift */,
 				191FD3FE20A8483E00918676 /* WishCell.swift */,
+				194CD6DF20AC4F0B00110AFD /* CardView.xib */,
+				194CD6DD20AC4EFF00110AFD /* CardView.swift */,
+				194CD6E220AC4F5A00110AFD /* CardCell.xib */,
+				194CD6E120AC4F5A00110AFD /* CardCell.swift */,
 			);
 			path = Wish;
-			sourceTree = "<group>";
-		};
-		19214A892077633400100209 /* wishes */ = {
-			isa = PBXGroup;
-			children = (
-				19214A972077635000100209 /* wish0.png */,
-				19214A902077634E00100209 /* wish1.png */,
-				19214A912077634E00100209 /* wish2.png */,
-				19214A942077634F00100209 /* wish3.png */,
-				19214A8E2077634D00100209 /* wish4.png */,
-				19214A992077635100100209 /* wish5.png */,
-				19214A922077634E00100209 /* wish6.png */,
-				19214A952077634F00100209 /* wish7.png */,
-				19214A982077635000100209 /* wish8.png */,
-				19214A9A2077635100100209 /* wish9.png */,
-				19214A8C2077634C00100209 /* wish10.png */,
-				19214A8F2077634D00100209 /* wish11.png */,
-				19214A8D2077634D00100209 /* wish12.png */,
-				19214A932077634F00100209 /* wish13.png */,
-				19214A962077635000100209 /* wish14.png */,
-			);
-			path = wishes;
 			sourceTree = "<group>";
 		};
 		19362B7620A9C7E100419425 /* Deprecated */ = {
@@ -464,10 +389,13 @@
 				191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */,
 				19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */,
 				196C4B012041497500C7BFAF /* MyPage.storyboard */,
-				196C4AEF2041450F00C7BFAF /* MyPageViewController.swift */,
 				191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */,
-				19C54AA120A9884E00717C6F /* Popup */,
-				19F2CDF5204141B500CB113B /* View */,
+				19A94FDB204EDD5C003A1D23 /* PopupMeetupViewtemp.swift */,
+				191DFECC204EACEE0095E9C1 /* MyPageMeetupView.swift */,
+				19A94FCB204EC1AE003A1D23 /* MyPageDetailInfoCell.swift */,
+				19A94FCC204EC1AE003A1D23 /* MyPageDetailInfoCell.xib */,
+				19A94FD3204EC1CE003A1D23 /* MyPageDetailMailCell.swift */,
+				19A94FD4204EC1CE003A1D23 /* MyPageDetailMailCell.xib */,
 			);
 			path = Deprecated;
 			sourceTree = "<group>";
@@ -490,63 +418,6 @@
 				196C4AF12041455500C7BFAF /* LoginViewController.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		19BA827A20500EDE00C095C1 /* Nomad */ = {
-			isa = PBXGroup;
-			children = (
-				193627E3204F863F006F4081 /* NomadWorkCell.swift */,
-				193627E4204F863F006F4081 /* NomadWorkCell.xib */,
-				19BA826A204FEF9900C095C1 /* NomadLifeCell.swift */,
-				19BA826B204FEF9900C095C1 /* NomadLifeCell.xib */,
-				19A5780A206264A500240B87 /* EnrollmentCell.swift */,
-				19A5780B206264A500240B87 /* EnrollmentCell.xib */,
-				196BABB72063BC1E00422D2B /* NomadLifeCardCell.swift */,
-				196BABB82063BC1E00422D2B /* NomadLifeCardCell.xib */,
-			);
-			path = Nomad;
-			sourceTree = "<group>";
-		};
-		19BA827B20500EE700C095C1 /* MyPage */ = {
-			isa = PBXGroup;
-			children = (
-				19A94FC7204EC19D003A1D23 /* MyPageDetailImageCell.swift */,
-				19A94FC8204EC19D003A1D23 /* MyPageDetailImageCell.xib */,
-				19A94FCB204EC1AE003A1D23 /* MyPageDetailInfoCell.swift */,
-				19A94FCC204EC1AE003A1D23 /* MyPageDetailInfoCell.xib */,
-				19A94FD3204EC1CE003A1D23 /* MyPageDetailMailCell.swift */,
-				19A94FD4204EC1CE003A1D23 /* MyPageDetailMailCell.xib */,
-			);
-			path = MyPage;
-			sourceTree = "<group>";
-		};
-		19BA827C20500F0D00C095C1 /* MyPage */ = {
-			isa = PBXGroup;
-			children = (
-				191DFEC6204EACCB0095E9C1 /* MyPageListView.swift */,
-				191DFECA204EACE00095E9C1 /* MyPageCardView.swift */,
-				191DFECC204EACEE0095E9C1 /* MyPageMeetupView.swift */,
-			);
-			path = MyPage;
-			sourceTree = "<group>";
-		};
-		19BA827D20500F1300C095C1 /* Nomad */ = {
-			isa = PBXGroup;
-			children = (
-				19C54AA820A99A8300717C6F /* NomadAddView.swift */,
-				1949DD07204FD50F0062D8EF /* NomadWorkView.swift */,
-				1949DD0B204FD5220062D8EF /* NomadLifeView.swift */,
-				196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */,
-			);
-			path = Nomad;
-			sourceTree = "<group>";
-		};
-		19C54AA120A9884E00717C6F /* Popup */ = {
-			isa = PBXGroup;
-			children = (
-				19A94FDB204EDD5C003A1D23 /* PopupMeetupViewtemp.swift */,
-			);
-			path = Popup;
 			sourceTree = "<group>";
 		};
 		19C54AAC20A99B8800717C6F /* Start */ = {
@@ -615,33 +486,6 @@
 				199A93162058E5B8007509A1 /* WishListInfo.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		19F2CDF5204141B500CB113B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				19F2CDF8204141C300CB113B /* Views */,
-				19F2CDF9204141C600CB113B /* Cells */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		19F2CDF8204141C300CB113B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				19BA827D20500F1300C095C1 /* Nomad */,
-				19BA827C20500F0D00C095C1 /* MyPage */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		19F2CDF9204141C600CB113B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				19BA827A20500EDE00C095C1 /* Nomad */,
-				19BA827B20500EE700C095C1 /* MyPage */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		19F2CDFA204141CD00CB113B /* Supporting Files */ = {
@@ -836,17 +680,14 @@
 				6B5412052041900600DDB2D5 /* shadow_balloon.png in Resources */,
 				6B3FDE78206FECFA0081332B /* coworking_111115.jpg in Resources */,
 				19F2CDED2041419C00CB113B /* LaunchScreen.storyboard in Resources */,
-				19A94FCA204EC19D003A1D23 /* MyPageDetailImageCell.xib in Resources */,
 				6B3FDE74206FECFA0081332B /* nature(3)_111511.jpg in Resources */,
 				6B3FDE77206FECFA0081332B /* culture_511111.jpg in Resources */,
 				6B5412192041900600DDB2D5 /* map_present.png in Resources */,
 				196C4AFA2041493600C7BFAF /* Map.storyboard in Resources */,
-				19A5780D206264A500240B87 /* EnrollmentCell.xib in Resources */,
 				6B634A48204EF79F00A59EEF /* kamel.png in Resources */,
 				19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */,
 				6B3FDE64206FECFA0081332B /* coworking(2)_111111.jpg in Resources */,
 				191DFEC3204EA9520095E9C1 /* Note.storyboard in Resources */,
-				19214AA32077638800100209 /* wish8.png in Resources */,
 				6BA8A9C52070313500DD7B3B /* busan.jpg in Resources */,
 				6B54121B2041900600DDB2D5 /* map_present_background_update.png in Resources */,
 				6B3FDE62206FECFA0081332B /* leports(2)_115111.jpg in Resources */,
@@ -854,13 +695,12 @@
 				6B3FDE73206FECFA0081332B /* culture(2)_511111.jpg in Resources */,
 				6B634A47204EF79F00A59EEF /* restaurant.png in Resources */,
 				198D92CB2061447E001325DD /* Start.storyboard in Resources */,
-				19214AA62077638800100209 /* wish11.png in Resources */,
 				6BA8A9C92070313500DD7B3B /* seoul.jpg in Resources */,
+				194CD6E420AC4F5A00110AFD /* CardCell.xib in Resources */,
 				6B5412072041900600DDB2D5 /* detail_button.png in Resources */,
 				19A94FD6204EC1CE003A1D23 /* MyPageDetailMailCell.xib in Resources */,
 				19EF0FE820A960200013DCF9 /* My.storyboard in Resources */,
 				19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */,
-				19214AA42077638800100209 /* wish9.png in Resources */,
 				6BA8A9C22070313500DD7B3B /* daejun.jpg in Resources */,
 				6B54120D2041900600DDB2D5 /* map_pin_red@3x.png in Resources */,
 				6B5412152041900600DDB2D5 /* info_box_tail.png in Resources */,
@@ -871,22 +711,17 @@
 				6B3FDE67206FECFA0081332B /* culture(1)_511111.jpg in Resources */,
 				6B3FDE6C206FECFA0081332B /* citynature_111151.jpg in Resources */,
 				6B54120B2041900600DDB2D5 /* copyright.png in Resources */,
-				19214A9D2077638800100209 /* wish2.png in Resources */,
 				19A5780720622A5700240B87 /* PopupStartView.xib in Resources */,
 				6B3FDE6F206FECFA0081332B /* leports(4)_115111.jpg in Resources */,
 				6B3FDE6E206FECFA0081332B /* history_151111.jpg in Resources */,
 				6BA8A9C72070313500DD7B3B /* junju.jpg in Resources */,
 				6B54120F2041900600DDB2D5 /* map_pin@3x.png in Resources */,
 				6B3FDE75206FECFA0081332B /* leports(3)_115111.jpg in Resources */,
-				19214AA72077638800100209 /* wish12.png in Resources */,
 				6BA8A9CB2070313500DD7B3B /* incheon.jpg in Resources */,
 				6B3FDE5F206FECFA0081332B /* coworking(1)_111111.jpg in Resources */,
-				19214AA12077638800100209 /* wish6.png in Resources */,
 				196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */,
 				6B5412172041900600DDB2D5 /* map_present_direction.png in Resources */,
 				6B3FDE72206FECFA0081332B /* coworking(3)_111111.jpg in Resources */,
-				19214A9E2077638800100209 /* wish3.png in Resources */,
-				196BABBA2063BC1E00422D2B /* NomadLifeCardCell.xib in Resources */,
 				6B3FDE70206FECFA0081332B /* coworking(2)_111115.jpg in Resources */,
 				6B5412062041900600DDB2D5 /* map_pinup.png in Resources */,
 				6B3FDE61206FECFA0081332B /* citynature(1)_111151.jpg in Resources */,
@@ -898,34 +733,26 @@
 				6B5412122041900600DDB2D5 /* info_box.png in Resources */,
 				6B3FDE5D206FECFA0081332B /* coworking(3)_111115.jpg in Resources */,
 				6B54120C2041900600DDB2D5 /* th_line.png in Resources */,
-				19214AA92077638800100209 /* wish14.png in Resources */,
 				6B5412082041900600DDB2D5 /* map_pin_custom@3x.png in Resources */,
 				6B3FDE60206FECFA0081332B /* coworking(1)_111115.jpg in Resources */,
 				6B634A46204EF79F00A59EEF /* cafe.png in Resources */,
-				193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */,
-				19214A9F2077638800100209 /* wish4.png in Resources */,
 				6B5412092041900600DDB2D5 /* map_pinup@3x.png in Resources */,
 				6B5412142041900600DDB2D5 /* map_pinup_custom.png in Resources */,
 				6B5412102041900600DDB2D5 /* map_present_tracking.png in Resources */,
-				19BA826D204FEF9900C095C1 /* NomadLifeCell.xib in Resources */,
 				6BA8A9C32070313500DD7B3B /* gangwon.jpg in Resources */,
 				6B5412112041900600DDB2D5 /* map_pin_red.png in Resources */,
 				6B54121D2041900600DDB2D5 /* map_pin_shadow.png in Resources */,
 				6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */,
 				6BA8A9C62070313500DD7B3B /* jaeju.jpg in Resources */,
 				19C54AA520A988A100717C6F /* PopupMeetUpView.xib in Resources */,
-				19214A9B2077638800100209 /* wish0.png in Resources */,
-				19214AA52077638800100209 /* wish10.png in Resources */,
 				196C4AE42041440100C7BFAF /* Login.storyboard in Resources */,
 				6B5412132041900600DDB2D5 /* point_sprite.png in Resources */,
-				19214A9C2077638800100209 /* wish1.png in Resources */,
-				19214AA82077638800100209 /* wish13.png in Resources */,
 				6B3FDE71206FECFA0081332B /* leports(1)_115111.jpg in Resources */,
 				19F2CDE82041419C00CB113B /* Main.storyboard in Resources */,
 				6B54120E2041900600DDB2D5 /* daum_copyright.png in Resources */,
 				19A94FCE204EC1AE003A1D23 /* MyPageDetailInfoCell.xib in Resources */,
+				194CD6E020AC4F0B00110AFD /* CardView.xib in Resources */,
 				6B3FDE63206FECFA0081332B /* nature_111511.jpg in Resources */,
-				19214AA02077638800100209 /* wish5.png in Resources */,
 				6BA8A9CA2070313500DD7B3B /* gwanju.jpg in Resources */,
 				6B3FDE76206FECFA0081332B /* nature(1)_111511.jpg in Resources */,
 				6B3FDE79206FECFA0081332B /* history(1)_151111.jpg in Resources */,
@@ -935,7 +762,6 @@
 				4A8AC3322070221E002F6B32 /* testImage.png in Resources */,
 				6B5412042041900600DDB2D5 /* map_pin_custom.png in Resources */,
 				6BA8A9C82070313500DD7B3B /* daegu.jpg in Resources */,
-				19214AA22077638800100209 /* wish7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1048,24 +874,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				198D92CF206147B9001325DD /* EnrollmentViewController.swift in Sources */,
-				193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */,
-				196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */,
 				194CD6DC20ABFA6900110AFD /* UIImage+.swift in Sources */,
-				196BABB92063BC1E00422D2B /* NomadLifeCardCell.swift in Sources */,
 				196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */,
-				191DFECB204EACE00095E9C1 /* MyPageCardView.swift in Sources */,
 				198A4D2A20614D7A00A78E83 /* ResearchResultViewController.swift in Sources */,
 				19EF0FEA20A960C70013DCF9 /* MyViewController.swift in Sources */,
-				191DFEC7204EACCB0095E9C1 /* MyPageListView.swift in Sources */,
-				196C4AF02041450F00C7BFAF /* MyPageViewController.swift in Sources */,
-				19A5780C206264A500240B87 /* EnrollmentCell.swift in Sources */,
 				199A93152058E5AF007509A1 /* GoalListInfo.swift in Sources */,
-				19BA826C204FEF9900C095C1 /* NomadLifeCell.swift in Sources */,
 				196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */,
 				6B634A41204EF73300A59EEF /* MapCell.swift in Sources */,
 				19A94FD5204EC1CE003A1D23 /* MyPageDetailMailCell.swift in Sources */,
 				191DFEC1204EA9490095E9C1 /* MyPageDetailViewController.swift in Sources */,
-				1949DD08204FD50F0062D8EF /* NomadWorkView.swift in Sources */,
 				198D92CD206144A7001325DD /* StartViewController.swift in Sources */,
 				19C54AA720A988C400717C6F /* PopupMeetUpView.swift in Sources */,
 				191DFECD204EACEE0095E9C1 /* MyPageMeetupView.swift in Sources */,
@@ -1080,19 +897,18 @@
 				199A93172058E5B8007509A1 /* WishListInfo.swift in Sources */,
 				19A94FCD204EC1AE003A1D23 /* MyPageDetailInfoCell.swift in Sources */,
 				19A5780920622A6700240B87 /* PopupStartView.swift in Sources */,
-				19A94FC9204EC19D003A1D23 /* MyPageDetailImageCell.swift in Sources */,
 				191FD3FD20A8457B00918676 /* ParentViewController.swift in Sources */,
 				191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */,
-				1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */,
 				19B9365F20A7DB4000FC826E /* UIFont+.swift in Sources */,
-				19C54AAA20A99A8500717C6F /* NomadAddView.swift in Sources */,
 				19B9366320A7E29C00FC826E /* GoalViewController.swift in Sources */,
 				19C54AB520A9A10B00717C6F /* MeetUpCell.swift in Sources */,
+				194CD6E320AC4F5A00110AFD /* CardCell.swift in Sources */,
 				19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */,
 				19587FFD20767BF900FD3D01 /* NomadLastViewController.swift in Sources */,
 				19A94FDC204EDD5C003A1D23 /* PopupMeetupViewtemp.swift in Sources */,
 				198A4D2820614D6900A78E83 /* ResearchViewController.swift in Sources */,
 				19587FFB20766A4000FD3D01 /* ERProgressHud.swift in Sources */,
+				194CD6DE20AC4EFF00110AFD /* CardView.swift in Sources */,
 				199A93132058E5A6007509A1 /* EmailInfo.swift in Sources */,
 				199A930F2058E595007509A1 /* UserInfo.swift in Sources */,
 				196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */,

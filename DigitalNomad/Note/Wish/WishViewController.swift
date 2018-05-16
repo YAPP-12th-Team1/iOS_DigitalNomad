@@ -41,6 +41,9 @@ class WishViewController: UIViewController {
         realm = try! Realm()
         object = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
         
+        //컬렉션 뷰 태그 설정 : 메인 0번 카드뷰 1번
+        self.collectionView.tag = 0
+        
         //텍스트 필드 텍스트 보여지는 패딩 설정
         self.searchBar.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: self.searchBar.frame.height))
         self.searchBar.leftViewMode = .always
@@ -122,7 +125,12 @@ class WishViewController: UIViewController {
     @objc func touchUpAddButton(_ sender: UIButton) {
         guard let text = self.addTodoTextField.text else { return }
         if text.isEmpty { return }
-        addWishList(text, -1)
+        guard let cardView = self.view.subviews.last as? CardView else { return }
+        if let selectedIndexPath = cardView.collectionView.indexPathsForSelectedItems?.first {
+            addWishList(text, selectedIndexPath.item)
+        } else {
+            addWishList(text)
+        }
         try! realm.write {
             realm.objects(ProjectInfo.self).last?.wishLists.append(realm.objects(WishListInfo.self).last!)
         }
@@ -130,6 +138,9 @@ class WishViewController: UIViewController {
         self.collectionView.reloadSections(IndexSet(0...0))
         self.addTodoTextField.text = nil
         self.addTodoTextField.endEditing(true)
+        if self.view.subviews.last is CardView {
+            self.view.subviews.last?.removeFromSuperview()
+        }
     }
     
     @objc func touchUpHashtagButton(_ sender: UIButton) {
@@ -146,18 +157,23 @@ class WishViewController: UIViewController {
     
     //MARK: 화면 전환
     @objc func panUpperView(_ gesture: UIPanGestureRecognizer) {
+        func initialize() {
+            self.upperViewHeightConstraint.constant = 98
+        }
         switch gesture.state {
         case .changed:
             let y = gesture.translation(in: self.view).y + 98
             if y < 98 { return }
             self.upperViewHeightConstraint.constant = y
+            let alpha: CGFloat = (y - 98) / 102
             if self.upperViewHeightConstraint.constant >= 200 {
                 guard let parent = self.parent as? ParentViewController else { return }
                 parent.switchViewController(from: parent.wishViewController, to: parent.goalViewController)
-                self.upperViewHeightConstraint.constant = 98
+                UserDefaults.standard.set(false, forKey: "isWishViewControllerFirst")
+                initialize()
             }
         case .ended:
-            self.upperViewHeightConstraint.constant = 98
+            initialize()
         default:
             break
         }
@@ -200,6 +216,9 @@ class WishViewController: UIViewController {
         let completedGoals = goals.filter("status = true").count
         let completedWishes = wishes.filter("status = true").count
         if entireGoals != completedGoals || entireWishes != completedWishes { return }
+        let completeTime = Date().convertToTime()
+        self.completeTimeLabel.text = completeTime
+        UserDefaults.standard.set(completeTime, forKey: "completeTime")
         guard let completeViewController = storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") else { return }
         completeViewController.modalTransitionStyle = .crossDissolve
         self.present(completeViewController, animated: true, completion: nil)
@@ -222,7 +241,26 @@ class WishViewController: UIViewController {
 extension WishViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
+        if self.view.subviews.last is CardView {
+            self.view.subviews.last?.removeFromSuperview()
+        }
         return true
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == self.searchBar { return }
+        let cardView = CardView.instanceFromXib() as! CardView
+        cardView.collectionView.delegate = self
+        cardView.collectionView.dataSource = self
+        cardView.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: "kind", withReuseIdentifier: "cardHeaderView")
+        cardView.collectionView.tag = 1
+        self.view.addSubview(cardView)
+        cardView.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view.snp.width)
+            make.height.equalTo(113)
+            make.bottom.equalTo(self.addView.snp.top)
+            make.centerX.equalTo(self.view.snp.centerX)
+        }
+        cardView.collectionView.reloadData()
     }
 }
 
@@ -247,143 +285,172 @@ extension WishViewController: WishCellDelegate {
 //MARK:- 컬렉션 뷰 데이터 소스 구현
 extension WishViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wishCell", for: indexPath) as? WishCell else { return UICollectionViewCell() }
-        cell.delegate = self
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(touchUpPlus(_:)))
-        if indexPath.item == 0 {
-            cell.todoImageView.image = #imageLiteral(resourceName: "Plus")
-            cell.todoImageView.addGestureRecognizer(gesture)
-            cell.todoLabel.text = nil
-            cell.checkBox.isHidden = true
-        } else {
-            let result = self.object[indexPath.item - 1]
-            cell.checkBox.tag = result.id
-            cell.todoImageView.image = nil
-            cell.todoImageView.removeGestureRecognizer(gesture)
-            cell.todoLabel.text = result.todo
-            cell.checkBox.isHidden = false
-            if result.status {
-                cell.checkBox.setOn(true, animated: false)
+        if collectionView.tag == 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wishCell", for: indexPath) as? WishCell else { return UICollectionViewCell() }
+            cell.delegate = self
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(touchUpPlus(_:)))
+            if indexPath.item == 0 {
+                cell.todoImageView.image = #imageLiteral(resourceName: "Plus")
+                cell.todoImageView.addGestureRecognizer(gesture)
+                cell.todoLabel.text = nil
+                cell.checkBox.isHidden = true
             } else {
-                cell.checkBox.setOn(false, animated: false)
+                let result = self.object[indexPath.item - 1]
+                cell.checkBox.tag = result.id
+                cell.todoImageView.image = result.pictureIndex == -1 ? nil : UIImage(imageLiteralResourceName: "wish\(result.pictureIndex)")
+                cell.todoImageView.removeGestureRecognizer(gesture)
+                cell.todoLabel.text = result.todo
+                cell.checkBox.isHidden = false
+                if result.status {
+                    cell.checkBox.setOn(true, animated: false)
+                } else {
+                    cell.checkBox.setOn(false, animated: false)
+                }
             }
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as? CardCell else { return UICollectionViewCell() }
+            cell.imageView.image = UIImage(imageLiteralResourceName: "wish\(indexPath.item)")
+            cell.backgroundColor = cell.isSelected ? UIColor.gray : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            return cell
         }
-        return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.object.count + 1
+        if collectionView.tag == 0 {
+            return self.object.count + 1
+        } else {
+            return 8
+        }
+        
     }
 }
 
 //MARK:- 컬렉션 뷰 델리게이트 구현
 extension WishViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 0 { return }
-        let alert = UIAlertController(title: nil, message: "삭제할까요?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "예", style: .destructive) { (action) in
-            //목록 삭제
-            let id = self.object[indexPath.item - 1].id
-            let query = NSPredicate(format: "id = %d", id)
-            let result = self.object.filter(query).filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
-            try! self.realm.write {
-                self.realm.delete(result)
+        if collectionView.tag == 0 {
+            if indexPath.item == 0 { return }
+            let alert = UIAlertController(title: nil, message: "삭제할까요?", preferredStyle: .alert)
+            let yesAction = UIAlertAction(title: "예", style: .destructive) { (action) in
+                //목록 삭제
+                let id = self.object[indexPath.item - 1].id
+                let query = NSPredicate(format: "id = %d", id)
+                let result = self.object.filter(query).filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
+                try! self.realm.write {
+                    self.realm.delete(result)
+                }
+                collectionView.deleteItems(at: [indexPath])
             }
-//            let indexPathOfSelectedItem = IndexPath(item: indexPath.item - 1, section: 0)
-//            collectionView.deleteItems(at: [indexPathOfSelectedItem])
-            collectionView.deleteItems(at: [indexPath])
-//            collectionView.layoutIfNeeded()
+            let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+            alert.addAction(noAction)
+            alert.addAction(yesAction)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let item = collectionView.cellForItem(at: indexPath)
+            item?.backgroundColor = UIColor.gray
         }
-        let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-        alert.addAction(noAction)
-        alert.addAction(yesAction)
-        self.present(alert, animated: true, completion: nil)
+    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView.tag == 1 {
+            let item = collectionView.cellForItem(at: indexPath)
+            item?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "wishHeaderView", for: indexPath)
-        header.frame = CGRect(x: 0, y: 0, width: self.collectionView.frame.width, height: 60)
-        header.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        //MARK: 오늘 날짜 표시
-        let todayLabel = UILabel()
-        let todayText = Date.todayDateToString
-        let todaySplit = todayText.split(separator: " ")
-        let monthString = todaySplit[1].description
-        let dayString = todaySplit[2].description
-        let monthLocation: Int = {
-            if monthString.count == 2 {
-                return 7
-            } else if monthString.count == 3 {
-                return 8
-            } else {
-                return -1
+        if collectionView.tag == 0 {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "wishHeaderView", for: indexPath)
+            header.frame = CGRect(x: 0, y: 0, width: self.collectionView.frame.width, height: 60)
+            header.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            //MARK: 오늘 날짜 표시
+            let todayLabel = UILabel()
+            let todayText = Date.todayDateToString
+            let todaySplit = todayText.split(separator: " ")
+            let monthString = todaySplit[1].description
+            let dayString = todaySplit[2].description
+            let monthLocation: Int = {
+                if monthString.count == 2 {
+                    return 7
+                } else if monthString.count == 3 {
+                    return 8
+                } else {
+                    return -1
+                }
+            }()
+            let dayLocation: Int = {
+                if dayString.count == 2 {
+                    return monthLocation + 3
+                } else if dayString.count == 3 {
+                    return monthLocation + 4
+                } else {
+                    return -1
+                }
+            }()
+            let attrToday = NSMutableAttributedString(string: todayText, attributes: [
+                .font: UIFont.systemFont(ofSize: 22.0, weight: .medium),
+                .foregroundColor: UIColor.aquamarine
+                ])
+            attrToday.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 22.0)!, range: NSRange(location: 4, length: 1))
+            attrToday.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 22.0)!, range: NSRange(location: monthLocation, length: 1))
+            attrToday.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 22.0)!, range: NSRange(location: dayLocation, length: 1))
+            todayLabel.attributedText = attrToday
+            header.addSubview(todayLabel)
+            todayLabel.snp.makeConstraints { (make) in
+                make.left.equalTo(header.snp.left).offset(33)
+                make.centerY.equalTo(header.snp.centerY)
             }
-        }()
-        let dayLocation: Int = {
-            if dayString.count == 2 {
-                return monthLocation + 3
-            } else if dayString.count == 3 {
-                return monthLocation + 4
-            } else {
-                return -1
+            //MARK: n일차 표시
+            let daysLabel = UILabel()
+            header.addSubview(daysLabel)
+            daysLabel.snp.makeConstraints { (make) in
+                make.right.equalTo(header.snp.right).offset(-33)
+                make.left.equalTo(todayLabel.snp.right).offset(8)
+                make.centerY.equalTo(todayLabel.snp.centerY)
+                make.top.equalTo(todayLabel.snp.top)
+                make.bottom.equalTo(todayLabel.snp.bottom)
             }
-        }()
-        let attrToday = NSMutableAttributedString(string: todayText, attributes: [
-            .font: UIFont.systemFont(ofSize: 22.0, weight: .medium),
-            .foregroundColor: UIColor.aquamarine
-            ])
-        attrToday.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 22.0)!, range: NSRange(location: 4, length: 1))
-        attrToday.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 22.0)!, range: NSRange(location: monthLocation, length: 1))
-        attrToday.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 22.0)!, range: NSRange(location: dayLocation, length: 1))
-        todayLabel.attributedText = attrToday
-        header.addSubview(todayLabel)
-        todayLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(header.snp.left).offset(33)
-            make.centerY.equalTo(header.snp.centerY)
+            guard let savedDate = realm.objects(ProjectInfo.self).last?.date else { return UICollectionReusableView() }
+            let daysText = "\(savedDate.dateInterval)일차"
+            let style = NSMutableParagraphStyle()
+            style.alignment = .center
+            let attrDays = NSMutableAttributedString(string: daysText, attributes: [
+                .font: UIFont.systemFont(ofSize: 14, weight: .medium),
+                .foregroundColor: UIColor.white,
+                .paragraphStyle: style
+                ])
+            let daysCount = daysText.count
+            let daysLocation = daysCount - 2
+            attrDays.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 14)!, range: NSRange(location: daysLocation, length: 2))
+            daysLabel.attributedText = attrDays
+            daysLabel.layer.cornerRadius = 15
+            daysLabel.clipsToBounds = true
+            daysLabel.backgroundColor = .aquamarine
+            //MARK: 분리선 표시
+            let separatorView = UIImageView(image: #imageLiteral(resourceName: "HorizontalLineBlue"))
+            header.addSubview(separatorView)
+            separatorView.snp.makeConstraints { (make) in
+                make.height.equalTo(2)
+                make.width.equalTo(header.snp.width)
+                make.bottom.equalTo(header.snp.bottom)
+            }
+            return header
+        } else {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: "kind", withReuseIdentifier: "cardHeaderView", for: indexPath)
         }
-        //MARK: n일차 표시
-        let daysLabel = UILabel()
-        header.addSubview(daysLabel)
-        daysLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(header.snp.right).offset(-33)
-            make.left.equalTo(todayLabel.snp.right).offset(8)
-            make.centerY.equalTo(todayLabel.snp.centerY)
-            make.top.equalTo(todayLabel.snp.top)
-            make.bottom.equalTo(todayLabel.snp.bottom)
-        }
-        guard let savedDate = realm.objects(ProjectInfo.self).last?.date else { return UICollectionReusableView() }
-        let daysText = "\(savedDate.dateInterval)일차"
-        let style = NSMutableParagraphStyle()
-        style.alignment = .center
-        let attrDays = NSMutableAttributedString(string: daysText, attributes: [
-            .font: UIFont.systemFont(ofSize: 14, weight: .medium),
-            .foregroundColor: UIColor.white,
-            .paragraphStyle: style
-            ])
-        let daysCount = daysText.count
-        let daysLocation = daysCount - 2
-        attrDays.addAttribute(.font, value: UIFont(name: "AppleSDGothicNeo-Medium", size: 14)!, range: NSRange(location: daysLocation, length: 2))
-        daysLabel.attributedText = attrDays
-        daysLabel.layer.cornerRadius = 15
-        daysLabel.clipsToBounds = true
-        daysLabel.backgroundColor = .aquamarine
-        //MARK: 분리선 표시
-        let separatorView = UIImageView(image: #imageLiteral(resourceName: "HorizontalLineBlue"))
-        header.addSubview(separatorView)
-        separatorView.snp.makeConstraints { (make) in
-            make.height.equalTo(2)
-            make.width.equalTo(header.snp.width)
-            make.bottom.equalTo(header.snp.bottom)
-        }
-        return header
+        
     }
 }
 
 //MARK:- 컬렉션 뷰 델리게이트 플로우 레이아웃 구현
 extension WishViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if collectionView.numberOfItems(inSection: 0) == 0 {
-            return .zero
+        if collectionView.tag == 0 {
+            if collectionView.numberOfItems(inSection: 0) == 0 {
+                return .zero
+            } else {
+                return CGSize(width: self.view.frame.width, height: 60)
+            }
         } else {
-            return CGSize(width: self.view.frame.width, height: 60)
+            return CGSize(width: 0, height: 26)
         }
     }
 }

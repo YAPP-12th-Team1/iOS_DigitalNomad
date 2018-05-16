@@ -163,8 +163,7 @@ extension MyPageDetailViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch(indexPath.section){
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "myPageDetailImageCell") as! MyPageDetailImageCell
-            return cell
+            return UITableViewCell()
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "myPageDetailInfoCell") as! MyPageDetailInfoCell
             switch(indexPath.row){

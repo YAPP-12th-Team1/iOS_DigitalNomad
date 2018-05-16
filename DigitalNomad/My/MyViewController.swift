@@ -75,8 +75,7 @@ class MyViewController: UIViewController {
             let complete = objects.filter("status = true").count
             return "\(complete)/\(entire)"
         }()
-        self.hashtagView.removeAll()
-        self.hashtagView.append(contentsOf: ["# 가장많이쓴해시태그", "# 두번째", "# 해시태그나열"])
+        self.initializeHashtag()
     }
     
     //MARK:- 사용자 정의 메소드
@@ -93,6 +92,29 @@ class MyViewController: UIViewController {
     @IBAction func touchUpSettingButton(_ sender: UIButton) {
         guard let next = storyboard?.instantiateViewController(withIdentifier: "MyDetailViewController") as? MyDetailViewController else { return }
         self.navigationController?.pushViewController(next, animated: true)
+    }
+    
+    func initializeHashtag() {
+        self.hashtagView.removeAll()
+        guard let goalLists = realm.objects(ProjectInfo.self).last?.goalLists.filter("todo contains '#'") else { return }
+        var hashtagDict = [String: Int]()
+        for goalList in goalLists {
+            let todo = goalList.todo
+            if todo[todo.startIndex] != "#" { continue }
+            guard let frequency = todo.components(separatedBy: " ").first else { return }
+            if let number = hashtagDict[frequency] {
+                hashtagDict[frequency] = number + 1
+            } else {
+                hashtagDict[frequency] = 0
+            }
+        }
+        let sortedArray = hashtagDict.sorted { $0.1 > $1.1 }
+        var count = 0
+        for element in sortedArray {
+            self.hashtagView.append(element.key)
+            count += 1
+            if count == 3 { break }
+        }
     }
 }
 
@@ -174,6 +196,19 @@ extension MyViewController: UIImagePickerControllerDelegate, UINavigationControl
         guard let result = realm.objects(UserInfo.self).last else { return }
         try! realm.write {
             result.image = UIImagePNGRepresentation(image)!
+        }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let imageName = "\(uid)\(Int(NSDate.timeIntervalSinceReferenceDate * 1000))"
+        let imageReference = Storage.storage().reference().child(imageName)
+        imageReference.putData(result.image, metadata: nil) { (metadata, error) in
+            if let error = error { print(error.localizedDescription) }
+            else {
+                if let downloadURL = metadata?.downloadURL() {
+                    Database.database().reference().child("users").child(uid).updateChildValues([
+                        "profileImage": String(describing: downloadURL)
+                        ])
+                }
+            }
         }
         picker.dismiss(animated: true, completion: nil)
     }
