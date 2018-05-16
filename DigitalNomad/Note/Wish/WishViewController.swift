@@ -15,6 +15,7 @@ import SnapKit
 class WishViewController: UIViewController {
 
     //MARK:- IBOutlets
+    @IBOutlet var upperViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var searchBar: UITextField!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var addView: UIView!
@@ -25,6 +26,7 @@ class WishViewController: UIViewController {
     @IBOutlet var completeTimeLabel: UILabel!
     @IBOutlet var yesterdayLabel: UILabel!
     @IBOutlet var summaryButton: UIButton!
+    @IBOutlet var panView: UIView!
     
     //MARK:- AddView bottom layout constraint
     @IBOutlet var addViewBottom: NSLayoutConstraint!
@@ -60,6 +62,9 @@ class WishViewController: UIViewController {
         self.searchBar.addTarget(self, action: #selector(self.searchBarDidChange(_:)), for: .editingChanged)
         self.addTodoTextField.addTarget(self, action: #selector(self.searchBarDidChange(_:)), for: .editingChanged)
         self.summaryButton.addTarget(self, action: #selector(self.touchUpSummaryButton(_:)), for: .touchUpInside)
+        
+        //스와이프 제스처 등록
+        self.panView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.panUpperView(_:))))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +76,7 @@ class WishViewController: UIViewController {
         if realm.objects(ProjectInfo.self).last?.date.dateInterval == 1 {
             self.summaryView.isHidden = true
         } else {
-            self.summaryView.isHidden = true
+            self.summaryView.isHidden = false
             self.setYesterdaySummary()
             self.setYesterdayLabel()
         }
@@ -123,11 +128,6 @@ class WishViewController: UIViewController {
         }
         self.object = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
         self.collectionView.reloadSections(IndexSet(0...0))
-//        if self.object.count == 1 {
-//            self.collectionView.reloadData()
-//        } else {
-//            self.collectionView.reloadSections(IndexSet(0...0))
-//        }
         self.addTodoTextField.text = nil
         self.addTodoTextField.endEditing(true)
     }
@@ -141,6 +141,25 @@ class WishViewController: UIViewController {
         }
         if lastChar != "#" {
             self.addTodoTextField.text! += "#"
+        }
+    }
+    
+    //MARK: 화면 전환
+    @objc func panUpperView(_ gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .changed:
+            let y = gesture.translation(in: self.view).y + 98
+            if y < 98 { return }
+            self.upperViewHeightConstraint.constant = y
+            if self.upperViewHeightConstraint.constant >= 200 {
+                guard let parent = self.parent as? ParentViewController else { return }
+                parent.switchViewController(from: parent.wishViewController, to: parent.goalViewController)
+                self.upperViewHeightConstraint.constant = 98
+            }
+        case .ended:
+            self.upperViewHeightConstraint.constant = 98
+        default:
+            break
         }
     }
     
@@ -158,7 +177,7 @@ class WishViewController: UIViewController {
     
     //MARK: 어제 요약 정보 설정
     func setYesterdaySummary() {
-        guard let yesterday = realm.objects(ProjectInfo.self).last?.goalLists.filter("date BETWEEN %@", [Date.yesterdayStart, Date.yesterdayEnd]) else { return }
+        guard let yesterday = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.yesterdayStart, Date.yesterdayEnd]) else { return }
         var text: String?
         switch yesterday.count {
         case 0:

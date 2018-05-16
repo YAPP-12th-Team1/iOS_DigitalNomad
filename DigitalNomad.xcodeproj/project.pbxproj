@@ -13,7 +13,6 @@
 		191DFEC7204EACCB0095E9C1 /* MyPageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFEC6204EACCB0095E9C1 /* MyPageListView.swift */; };
 		191DFECB204EACE00095E9C1 /* MyPageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFECA204EACE00095E9C1 /* MyPageCardView.swift */; };
 		191DFECD204EACEE0095E9C1 /* MyPageMeetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFECC204EACEE0095E9C1 /* MyPageMeetupView.swift */; };
-		191DFED4204EB32B0095E9C1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFED3204EB32B0095E9C1 /* UIView+.swift */; };
 		191FD3F820A8215F00918676 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3F620A8215F00918676 /* GoalCell.swift */; };
 		191FD3FB20A8457000918676 /* WishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3FA20A8457000918676 /* WishViewController.swift */; };
 		191FD3FD20A8457B00918676 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191FD3FC20A8457B00918676 /* ParentViewController.swift */; };
@@ -38,10 +37,10 @@
 		193627E6204F863F006F4081 /* NomadWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 193627E4204F863F006F4081 /* NomadWorkCell.xib */; };
 		1949DD08204FD50F0062D8EF /* NomadWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD07204FD50F0062D8EF /* NomadWorkView.swift */; };
 		1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949DD0B204FD5220062D8EF /* NomadLifeView.swift */; };
+		194CD6DC20ABFA6900110AFD /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194CD6DB20ABFA6900110AFD /* UIImage+.swift */; };
 		195628B620701352004B3AF7 /* culture(3)_511111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE49206FECF10081332B /* culture(3)_511111.jpg */; };
 		19587FFB20766A4000FD3D01 /* ERProgressHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFA20766A4000FD3D01 /* ERProgressHud.swift */; };
 		19587FFD20767BF900FD3D01 /* NomadLastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */; };
-		195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CFFAE2041AF140062A26C /* UITextField+.swift */; };
 		196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */; };
 		196BABB92063BC1E00422D2B /* NomadLifeCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196BABB72063BC1E00422D2B /* NomadLifeCardCell.swift */; };
 		196BABBA2063BC1E00422D2B /* NomadLifeCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196BABB82063BC1E00422D2B /* NomadLifeCardCell.xib */; };
@@ -84,7 +83,6 @@
 		19C54AA720A988C400717C6F /* PopupMeetUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AA620A988C400717C6F /* PopupMeetUpView.swift */; };
 		19C54AAA20A99A8500717C6F /* NomadAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AA820A99A8300717C6F /* NomadAddView.swift */; };
 		19C54AAE20A99DDC00717C6F /* MyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AAD20A99DDC00717C6F /* MyDetailViewController.swift */; };
-		19C54AB020A99F4000717C6F /* MyHashtagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AAF20A99F4000717C6F /* MyHashtagCell.swift */; };
 		19C54AB520A9A10B00717C6F /* MeetUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AB320A9A10B00717C6F /* MeetUpCell.swift */; };
 		19C54AB620A9A10B00717C6F /* MeetUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C54AB420A9A10B00717C6F /* MeetUpCell.xib */; };
 		19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19E63EE020416D4D003D3155 /* GoogleService-Info.plist */; };
@@ -184,7 +182,6 @@
 		191DFEC6204EACCB0095E9C1 /* MyPageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageListView.swift; sourceTree = "<group>"; };
 		191DFECA204EACE00095E9C1 /* MyPageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCardView.swift; sourceTree = "<group>"; };
 		191DFECC204EACEE0095E9C1 /* MyPageMeetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMeetupView.swift; sourceTree = "<group>"; };
-		191DFED3204EB32B0095E9C1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		191FD3F620A8215F00918676 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		191FD3FA20A8457000918676 /* WishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishViewController.swift; sourceTree = "<group>"; };
 		191FD3FC20A8457B00918676 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
@@ -209,9 +206,9 @@
 		193627E4204F863F006F4081 /* NomadWorkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadWorkCell.xib; sourceTree = "<group>"; };
 		1949DD07204FD50F0062D8EF /* NomadWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadWorkView.swift; sourceTree = "<group>"; };
 		1949DD0B204FD5220062D8EF /* NomadLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeView.swift; sourceTree = "<group>"; };
+		194CD6DB20ABFA6900110AFD /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		19587FFA20766A4000FD3D01 /* ERProgressHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERProgressHud.swift; sourceTree = "<group>"; };
 		19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLastViewController.swift; sourceTree = "<group>"; };
-		195CFFAE2041AF140062A26C /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		196BABB32063BB6E00422D2B /* NomadLifeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCardView.swift; sourceTree = "<group>"; };
 		196BABB72063BC1E00422D2B /* NomadLifeCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLifeCardCell.swift; sourceTree = "<group>"; };
 		196BABB82063BC1E00422D2B /* NomadLifeCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NomadLifeCardCell.xib; sourceTree = "<group>"; };
@@ -256,7 +253,6 @@
 		19C54AA620A988C400717C6F /* PopupMeetUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMeetUpView.swift; sourceTree = "<group>"; };
 		19C54AA820A99A8300717C6F /* NomadAddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NomadAddView.swift; sourceTree = "<group>"; };
 		19C54AAD20A99DDC00717C6F /* MyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailViewController.swift; sourceTree = "<group>"; };
-		19C54AAF20A99F4000717C6F /* MyHashtagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHashtagCell.swift; sourceTree = "<group>"; };
 		19C54AB320A9A10B00717C6F /* MeetUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUpCell.swift; sourceTree = "<group>"; };
 		19C54AB420A9A10B00717C6F /* MeetUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetUpCell.xib; sourceTree = "<group>"; };
 		19E63EE020416D4D003D3155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -402,7 +398,6 @@
 				19C54AB420A9A10B00717C6F /* MeetUpCell.xib */,
 				19C54AA420A988A100717C6F /* PopupMeetUpView.xib */,
 				19EF0FE920A960C70013DCF9 /* MyViewController.swift */,
-				19C54AAF20A99F4000717C6F /* MyHashtagCell.swift */,
 				19C54AB320A9A10B00717C6F /* MeetUpCell.swift */,
 				19C54AA620A988C400717C6F /* PopupMeetUpView.swift */,
 				19C54AAD20A99DDC00717C6F /* MyDetailViewController.swift */,
@@ -480,11 +475,10 @@
 		195CFFAD2041AF010062A26C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				195CFFAE2041AF140062A26C /* UITextField+.swift */,
-				191DFED3204EB32B0095E9C1 /* UIView+.swift */,
 				199B9D46207E2A160067D7A8 /* Date+.swift */,
 				19B9365C20A7DB1800FC826E /* UIColor+.swift */,
 				19B9365E20A7DB4000FC826E /* UIFont+.swift */,
+				194CD6DB20ABFA6900110AFD /* UIImage+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1056,6 +1050,7 @@
 				198D92CF206147B9001325DD /* EnrollmentViewController.swift in Sources */,
 				193627E5204F863F006F4081 /* NomadWorkCell.swift in Sources */,
 				196BABB42063BB6E00422D2B /* NomadLifeCardView.swift in Sources */,
+				194CD6DC20ABFA6900110AFD /* UIImage+.swift in Sources */,
 				196BABB92063BC1E00422D2B /* NomadLifeCardCell.swift in Sources */,
 				196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */,
 				191DFECB204EACE00095E9C1 /* MyPageCardView.swift in Sources */,
@@ -1069,7 +1064,6 @@
 				196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */,
 				6B634A41204EF73300A59EEF /* MapCell.swift in Sources */,
 				19A94FD5204EC1CE003A1D23 /* MyPageDetailMailCell.swift in Sources */,
-				195CFFAF2041AF140062A26C /* UITextField+.swift in Sources */,
 				191DFEC1204EA9490095E9C1 /* MyPageDetailViewController.swift in Sources */,
 				1949DD08204FD50F0062D8EF /* NomadWorkView.swift in Sources */,
 				198D92CD206144A7001325DD /* StartViewController.swift in Sources */,
@@ -1087,8 +1081,6 @@
 				19A94FCD204EC1AE003A1D23 /* MyPageDetailInfoCell.swift in Sources */,
 				19A5780920622A6700240B87 /* PopupStartView.swift in Sources */,
 				19A94FC9204EC19D003A1D23 /* MyPageDetailImageCell.swift in Sources */,
-				19C54AB020A99F4000717C6F /* MyHashtagCell.swift in Sources */,
-				191DFED4204EB32B0095E9C1 /* UIView+.swift in Sources */,
 				191FD3FD20A8457B00918676 /* ParentViewController.swift in Sources */,
 				191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */,
 				1949DD0C204FD5220062D8EF /* NomadLifeView.swift in Sources */,

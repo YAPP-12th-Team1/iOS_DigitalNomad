@@ -27,16 +27,18 @@ class ParentViewController: UIViewController {
     }
     
     func switchViewController(from fromVC: UIViewController?, to toVC: UIViewController?) {
-        if fromVC != nil {
-            fromVC?.willMove(toParentViewController: nil)
-            fromVC?.view.removeFromSuperview()
-            fromVC?.removeFromParentViewController()
-        }
-        if toVC != nil {
-            self.addChildViewController(toVC!)
-            self.view.addSubview(toVC!.view)
-            toVC?.didMove(toParentViewController: self)
-        }
+        UIView.transition(with: view, duration: 0.4, options: [.curveEaseInOut, .transitionCurlDown], animations: {
+            if fromVC != nil {
+                fromVC?.willMove(toParentViewController: nil)
+                fromVC?.view.removeFromSuperview()
+                fromVC?.removeFromParentViewController()
+            }
+            if toVC != nil {
+                self.addChildViewController(toVC!)
+                self.view.addSubview(toVC!.view)
+                toVC?.didMove(toParentViewController: self)
+            }
+        }, completion: nil)
         if toVC is GoalViewController {
             self.tabBarController?.tabBar.tintColor = .salmon
         } else {

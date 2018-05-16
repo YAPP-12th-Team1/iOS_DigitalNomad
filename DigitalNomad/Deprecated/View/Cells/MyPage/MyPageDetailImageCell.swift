@@ -39,7 +39,7 @@ class MyPageDetailImageCell: UITableViewCell, UINavigationControllerDelegate, UI
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = false
-            self.parentViewController()?.present(imagePicker, animated: true, completion: nil)
+//            self.parentViewController()?.present(imagePicker, animated: true, completion: nil)
         }
     }
     
@@ -68,11 +68,11 @@ class MyPageDetailImageCell: UITableViewCell, UINavigationControllerDelegate, UI
             })
 
         }
-        self.parentViewController()?.dismiss(animated: true, completion: nil)
+//        self.parentViewController()?.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.parentViewController()?.dismiss(animated: true, completion: nil)
+//        self.parentViewController()?.dismiss(animated: true, completion: nil)
     }
 }
 

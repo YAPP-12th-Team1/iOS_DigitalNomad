@@ -48,6 +48,16 @@ class MyViewController: UIViewController {
         //해시태그 뷰 초기화
         self.hashtagView.tagFont = UIFont.systemFont(ofSize: 13, weight: .medium)
         self.hashtagView.lineBreakMode = .byTruncatingTail
+        
+        //프로필 이미지 뷰 초기화
+        self.profileImageView.image = UIImage(data: (realm.objects(UserInfo.self).last?.image)!)?.circleMasked
+        self.profileImageView.layer.shadowColor = UIColor.black.cgColor
+        self.profileImageView.layer.shadowRadius = 3
+        self.profileImageView.layer.shadowOffset = .zero
+        self.profileImageView.layer.shadowOpacity = 1
+        
+        //제스쳐 등록
+        self.profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchUpProfileImageView(_:))))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +80,16 @@ class MyViewController: UIViewController {
     }
     
     //MARK:- 사용자 정의 메소드
+    @objc func touchUpProfileImageView(_ gesture: UITapGestureRecognizer) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            controller.sourceType = .photoLibrary
+            controller.allowsEditing = true
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func touchUpSettingButton(_ sender: UIButton) {
         guard let next = storyboard?.instantiateViewController(withIdentifier: "MyDetailViewController") as? MyDetailViewController else { return }
         self.navigationController?.pushViewController(next, animated: true)
@@ -144,6 +164,22 @@ extension MyViewController: FSPagerViewDataSource {
 //MARK:- 밋업 카드 관련 델리게이트 구현
 extension MyViewController: FSPagerViewDelegate {
     
+}
+
+//MARK:- 이미지 피커 컨트롤러 델리게이트 구현
+extension MyViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+        self.profileImageView.image = image.circleMasked
+        guard let result = realm.objects(UserInfo.self).last else { return }
+        try! realm.write {
+            result.image = UIImagePNGRepresentation(image)!
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
 
 //MARK:- 메일 보내기 델리게이트 구현

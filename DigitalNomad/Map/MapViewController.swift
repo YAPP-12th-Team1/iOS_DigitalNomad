@@ -49,7 +49,7 @@ class MapViewController: UIViewController {
         self.radioButton2.removeFromSuperview()
         btnMore.layer.cornerRadius = 5
         btnMore.setTitleColor(.white, for: .normal)
-        btnMore.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+//        btnMore.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
         
         // 위치 사용 동의 알람창 최초
         isAuthorizedtoGetUserLocation()

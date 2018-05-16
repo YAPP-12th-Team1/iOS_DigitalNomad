@@ -35,7 +35,7 @@ class NomadLifeCell: UICollectionViewCell {
         let query = NSPredicate(format: "id = %d", id)
         let result = object.filter(query).first!
         if(sender.on){
-            checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+//            checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
             checkBox.layer.sublayers?.first?.cornerRadius = checkBox.frame.height / 2
             try! realm.write {
                 result.status = true

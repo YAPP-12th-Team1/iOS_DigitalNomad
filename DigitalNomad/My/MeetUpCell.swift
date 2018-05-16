@@ -15,6 +15,7 @@ protocol MeetUpCellDelegate {
 
 class MeetUpCell: FSPagerViewCell {
 
+    @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var daysLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!

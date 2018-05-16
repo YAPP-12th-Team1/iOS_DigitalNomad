@@ -28,7 +28,7 @@ class MyPageDetailMailCell: UITableViewCell {
         view.layer.cornerRadius = 5
         view.layer.borderColor = #colorLiteral(red: 0.3411764706, green: 0.3254901961, blue: 0.3254901961, alpha: 1)
         view.layer.borderWidth = 1
-        title.addBorderBottom(height: 1.0)
+//        title.addBorderBottom(height: 1.0)
         
         if let email = emailInfo {
             title.text = email.title

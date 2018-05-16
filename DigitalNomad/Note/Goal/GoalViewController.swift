@@ -16,6 +16,10 @@ import SwipeCellKit
 class GoalViewController: UIViewController {
 
     //MARK:- IBOutlets
+    @IBOutlet var upperViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var panView: UIView!
+    @IBOutlet var slideDownView: UIImageView!
+    @IBOutlet var slideDownLabel: UILabel!
     @IBOutlet var searchBar: UITextField!
     @IBOutlet var addTodoTextField: UITextField!
     @IBOutlet var hashtagButton: UIButton!
@@ -54,6 +58,9 @@ class GoalViewController: UIViewController {
         self.searchBar.addTarget(self, action: #selector(self.searchBarDidChange(_:)), for: .editingChanged)
         self.addTodoTextField.addTarget(self, action: #selector(self.searchBarDidChange(_:)), for: .editingChanged)
         self.summaryButton.addTarget(self, action: #selector(self.touchUpSummaryButton(_:)), for: .touchUpInside)
+        
+        //스와이프 제스처 등록
+        self.panView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.panUpperView(_:))))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +93,33 @@ class GoalViewController: UIViewController {
         if self.searchBar.isFirstResponder { return }
         self.addView.frame.origin.y = self.view.frame.height - 49
         self.addViewBottom.constant = 49
+    }
+    
+    //MARK: 화면 전환
+    @objc func panUpperView(_ gesture: UIPanGestureRecognizer) {
+        func initialize() {
+            self.upperViewHeightConstraint.constant = 98
+            self.slideDownView.alpha = 0
+            self.slideDownLabel.alpha = 0
+        }
+        switch gesture.state {
+        case .changed:
+            let y = gesture.translation(in: self.view).y + 98
+            if y < 98 { return }
+            self.upperViewHeightConstraint.constant = y
+            let alpha: CGFloat = (y - 98) / 102
+            self.slideDownView.alpha = alpha
+            self.slideDownLabel.alpha = alpha
+            if self.upperViewHeightConstraint.constant >= 200 {
+                guard let parent = self.parent as? ParentViewController else { return }
+                parent.switchViewController(from: parent.goalViewController, to: parent.wishViewController)
+                initialize()
+            }
+        case .ended:
+            initialize()
+        default:
+            break
+        }
     }
     
     //MARK: 버튼 입력에 따른 처리 메소드
@@ -141,6 +175,12 @@ class GoalViewController: UIViewController {
     //MARK: 이전 등록 목록 표시하는 뷰 보여주기
     @objc func touchUpSummaryButton(_ sender: UIButton) {
         
+    }
+    
+    //MARK: 화면 전환
+    @IBAction func touchUpSwitchButton(_ sender: UIButton) {
+        guard let parent = self.parent as? ParentViewController else { return }
+        parent.switchViewController(from: parent.goalViewController, to: parent.wishViewController)
     }
     
     //MARK: 어제 날짜 설정

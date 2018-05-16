@@ -74,7 +74,7 @@ class PopupMeetupView: UIView {
         ToastCenter.default.cancelAll()
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
-            self.parentViewController()?.present(mailComposeViewController, animated: true, completion: nil)
+//            self.parentViewController()?.present(mailComposeViewController, animated: true, completion: nil)
         } else {
             self.showSendMailErrorAlert()
         }
@@ -101,7 +101,7 @@ class PopupMeetupView: UIView {
         let alert = UIAlertController(title: "오류", message: "이메일을 보낼 수 없습니다.", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
         alert.addAction(action)
-        self.parentViewController()?.present(alert, animated: true)
+//        self.parentViewController()?.present(alert, animated: true)
     }
     
     @IBAction func clickCancel(_ sender: UIButton) {

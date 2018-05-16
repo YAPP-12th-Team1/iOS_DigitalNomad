@@ -70,13 +70,13 @@ class MyPageMeetupView: UIView {
             popup.이메일내용 = emailInfo.context
             popup.setNeedsLayout()
             
-            popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-            popup.frame = (self.parentViewController()?.view.frame)!
-            popup.view.alpha = 0
-            self.parentViewController()?.view.addSubview(popup)
-            UIView.animate(withDuration: 0.3) {
-                popup.view.alpha = 1
-            }
+//            popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+//            popup.frame = (self.parentViewController()?.view.frame)!
+//            popup.view.alpha = 0
+//            self.parentViewController()?.view.addSubview(popup)
+//            UIView.animate(withDuration: 0.3) {
+//                popup.view.alpha = 1
+//            }
         } else {
             Toast(text: "코워킹 공개를 허용해 주세요. (설정 -> Co-working)", duration: Delay.short).show()
         }

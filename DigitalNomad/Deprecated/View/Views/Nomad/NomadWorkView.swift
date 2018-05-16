@@ -53,7 +53,7 @@ extension NomadWorkView: UITableViewDataSource{
         if(result.status){
             //체크박스 체크되어있게
             cell.checkBox.setOn(true, animated: false)
-            cell.checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+//            cell.checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
             cell.checkBox.layer.sublayers?.first?.cornerRadius = cell.checkBox.frame.height / 2
             cell.content.sizeToFit()
         } else {
@@ -127,12 +127,13 @@ extension NomadWorkView: DZNEmptyDataSetSource{
         return nil
     }
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let parent = self.parentViewController() as! NomadViewController
-        if(parent.searchBar.isFirstResponder) {
-            return NSAttributedString(string: "검색 결과가 없습니다.")
-        } else {
-            return NSAttributedString(string: "목표를 추가하세요.")
-        }
+//        let parent = self.parentViewController() as! NomadViewController
+//        if(parent.searchBar.isFirstResponder) {
+//            return NSAttributedString(string: "검색 결과가 없습니다.")
+//        } else {
+//            return NSAttributedString(string: "목표를 추가하세요.")
+//        }
+        return nil
         
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {

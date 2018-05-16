@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
     var realm: Realm!
-
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -50,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         //앱 실행 시 날짜 UserDefaults에 저장, 미루기 기능에 사용됨
         //백그라운드에서 실행하도록 해야하는데...
-        UserDefaults.standard.set(Date.todayDateToString, forKey: "today")
+//        UserDefaults.standard.set(Date.todayDateToString, forKey: "today")
         
         //토스트 크기 설정
         ToastView.appearance().bottomOffsetPortrait = 49 + 20

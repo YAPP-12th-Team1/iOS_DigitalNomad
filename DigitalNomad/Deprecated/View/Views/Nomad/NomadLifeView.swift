@@ -61,7 +61,7 @@ extension NomadLifeView: UICollectionViewDataSource{
             }
             if(result.status){
                 cell.checkBox.setOn(true, animated: false)
-                cell.checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
+//                cell.checkBox.applyGradient([#colorLiteral(red: 0.5019607843, green: 0.7215686275, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.8470588235, blue: 0.7725490196, alpha: 1)])
                 cell.checkBox.layer.sublayers?.first?.cornerRadius = cell.checkBox.frame.height / 2
             } else {
                 cell.checkBox.setOn(false, animated: false)
@@ -104,12 +104,12 @@ extension NomadLifeView: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.item == collectionView.numberOfItems(inSection: 0) - 1){
             //추가 버튼을 누르면...
-            let parentViewController = self.parentViewController() as! NomadViewController
-            if(parentViewController.searchBar.isFirstResponder){
-                parentViewController.searchBar.endEditing(true)
-            }
-            let addView = parentViewController.underView.subviews.last as! NomadAddView
-            addView.textField.becomeFirstResponder()
+//            let parentViewController = self.parentViewController() as! NomadViewController
+//            if(parentViewController.searchBar.isFirstResponder){
+//                parentViewController.searchBar.endEditing(true)
+//            }
+//            let addView = parentViewController.underView.subviews.last as! NomadAddView
+//            addView.textField.becomeFirstResponder()
         } else {
             //이외의 버튼을 누르면...
             let alert = UIAlertController(title: nil, message: "삭제할까요?", preferredStyle: .alert)
@@ -128,7 +128,7 @@ extension NomadLifeView: UICollectionViewDelegate{
             let noAction = UIAlertAction(title: "아니오", style: .cancel)
             alert.addAction(noAction)
             alert.addAction(yesAction)
-            self.parentViewController()?.present(alert, animated: true, completion: nil)
+//            self.parentViewController()?.present(alert, animated: true, completion: nil)
             
         }
     }
