@@ -102,6 +102,16 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Zz-OV-dzQ" customClass="FSPagerView" customModule="FSPagerView">
                                 <rect key="frame" x="0.0" y="319" width="375" height="299"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="YlW-7I-Rdj">
+                                        <rect key="frame" x="169" y="131" width="37" height="37"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YlW-7I-Rdj" firstAttribute="centerY" secondItem="1Zz-OV-dzQ" secondAttribute="centerY" id="N2K-hB-u3z"/>
+                                    <constraint firstItem="YlW-7I-Rdj" firstAttribute="centerX" secondItem="1Zz-OV-dzQ" secondAttribute="centerX" id="YaL-fZ-d6g"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isInfinite" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -159,6 +169,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Y5H-WV-0jb"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="YlW-7I-Rdj" id="jSs-e0-eYq"/>
                         <outlet property="cardLabel" destination="xBm-g3-7ZI" id="8JW-HY-IfX"/>
                         <outlet property="hashtagView" destination="MVy-Dq-XQ6" id="ZbK-wc-p2o"/>
                         <outlet property="listLabel" destination="bcA-T7-Xpi" id="USs-Oo-qSi"/>

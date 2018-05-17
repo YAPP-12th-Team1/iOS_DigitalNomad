@@ -83,6 +83,7 @@ class WishViewController: UIViewController {
             self.setYesterdaySummary()
             self.setYesterdayLabel()
         }
+        self.completeTimeLabel.text = UserDefaults.standard.string(forKey: "completeTime") ?? nil
     }
     
     //MARK:- 사용자 정의 메소드
@@ -135,7 +136,11 @@ class WishViewController: UIViewController {
             realm.objects(ProjectInfo.self).last?.wishLists.append(realm.objects(WishListInfo.self).last!)
         }
         self.object = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
-        self.collectionView.reloadSections(IndexSet(0...0))
+        if self.object.count == 1 {
+            self.collectionView.reloadData()
+        } else {
+            self.collectionView.reloadSections(IndexSet(0...0))
+        }
         self.addTodoTextField.text = nil
         self.addTodoTextField.endEditing(true)
         if self.view.subviews.last is CardView {
@@ -201,7 +206,7 @@ class WishViewController: UIViewController {
         case 1:
             text = yesterday.first?.todo
         default:
-            text = yesterday.first?.todo ?? "" + " 및 \(yesterday.count - 1)개"
+            text = (yesterday.first?.todo ?? "") + " 및 \(yesterday.count - 1)개"
         }
         self.summaryButton.setTitle(text, for: .normal)
     }
@@ -317,7 +322,7 @@ extension WishViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 0 {
-            return self.object.count + 1
+            return self.object.count == 0 ? 0 : self.object.count + 1
         } else {
             return 8
         }
@@ -339,7 +344,11 @@ extension WishViewController: UICollectionViewDelegate {
                 try! self.realm.write {
                     self.realm.delete(result)
                 }
-                collectionView.deleteItems(at: [indexPath])
+                if self.object.count == 0 {
+                    collectionView.reloadData()
+                } else {
+                    collectionView.deleteItems(at: [indexPath])
+                }
             }
             let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
             alert.addAction(noAction)

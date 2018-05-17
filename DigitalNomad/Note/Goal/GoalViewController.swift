@@ -76,6 +76,7 @@ class GoalViewController: UIViewController {
             self.setYesterdaySummary()
             self.setYesterdayLabel()
         }
+        self.completeTimeLabel.text = UserDefaults.standard.string(forKey: "completeTime") ?? nil
     }
     
     //MARK:- 사용자 정의 메소드
@@ -196,7 +197,7 @@ class GoalViewController: UIViewController {
         case 1:
             text = yesterday.first?.todo
         default:
-            text = yesterday.first?.todo ?? "" + " 및 \(yesterday.count - 1)개"
+            text = (yesterday.first?.todo ?? "") + " 및 \(yesterday.count - 1)개"
         }
         self.summaryButton.setTitle(text, for: .normal)
     }
