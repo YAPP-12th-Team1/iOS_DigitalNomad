@@ -28,6 +28,7 @@ class MyViewController: UIViewController {
     @IBOutlet var listLabel: UILabel!
     @IBOutlet var cardLabel: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var activityIndicatorLabel: UILabel!
     
     //MARK:- 프로퍼티
     var realm: Realm!
@@ -37,12 +38,8 @@ class MyViewController: UIViewController {
     
     //MARK:- 밋업 카드 초기화를 위한 프로퍼티
     var meetupKeys = [String]()
-    var nicknames = [String]()
-    var jobs = [String]()
-    var days = [Int]()
-    var addresses = [String]()
-    var introducings = [String]()
-    var images = [UIImage?]()
+    var meetupData = [(nickname: String, job: String, day: Int, address: String, introducing: String, image: UIImage?)]()
+    var emails = [String]()
     
     //MARK:- 기본 메소드
     override func viewDidLoad() {
@@ -68,11 +65,15 @@ class MyViewController: UIViewController {
         
         //제스쳐 등록
         self.profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchUpProfileImageView(_:))))
+        
+        //밋업 카드 비동기 작업 시작
+        self.activityIndicator.startAnimating()
+        self.activityIndicatorLabel.isHidden = false
+        self.initializeMeetUpView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         //MARK: 리스트, 카드, 해시태그 라벨 초기화
         self.listLabel.text = {
             guard let objects = self.realm.objects(ProjectInfo.self).last?.goalLists else { return nil }
@@ -87,58 +88,6 @@ class MyViewController: UIViewController {
             return "\(complete)/\(entire)"
         }()
         self.initializeHashtag()
-        
-        //MARK: 밋업 카드 데이터 불러오기
-        self.meetupKeys.removeAll()
-        self.nicknames.removeAll()
-        self.jobs.removeAll()
-        self.days.removeAll()
-        self.addresses.removeAll()
-        self.introducings.removeAll()
-        self.images.removeAll()
-        self.activityIndicator.startAnimating()
-        Database.database().reference().child("users").observeSingleEvent(of: .value) { (snapshot) in
-            //본인 제외 코워킹 설정 되어 있는 사람의 키값 빼옴
-            guard let keys = snapshot.value as? NSDictionary else { return }
-            for key in keys {
-                guard let newKey = key.key as? String else { return }
-                guard let uid = Auth.auth().currentUser?.uid else { return }
-                if newKey != uid {
-                    guard let newValue = key.value as? NSMutableDictionary else { return }
-                    if newValue["cowork"] != nil {
-                        self.meetupKeys.append(newKey)
-                    }
-                }
-            }
-            for meetupKey in self.meetupKeys {
-                Database.database().reference().child("users/\(meetupKey)").observeSingleEvent(of: .value, with: { (snapshot) in
-                    guard let value = snapshot.value as? NSDictionary else { return }
-                    let nickname = value["nickname"] as? String ?? ""
-                    let job = value["job"] as? String ?? ""
-                    let day = value["day"] as? Int ?? 0
-                    let address = value["address"] as? String ?? ""
-                    let introducing = value["introducing"] as? String ?? ""
-                    if let profileImageData = value["profileImage"] as? String {
-                        guard let imageReference = URL(string: profileImageData) else { return }
-                        do {
-                            let imageData = try Data(contentsOf: imageReference)
-                            self.images.append(UIImage(data: imageData)!)
-                        } catch { print(error.localizedDescription) }
-                    } else {
-                        self.images.append(#imageLiteral(resourceName: "ProfileMeetupNone"))
-                    }
-                    self.nicknames.append(nickname)
-                    self.jobs.append(job)
-                    self.days.append(day)
-                    self.addresses.append(address)
-                    self.introducings.append(introducing)
-                    if meetupKey == self.meetupKeys.last! {
-                        self.pagerView.reloadData()
-                        self.activityIndicator.stopAnimating()
-                    }
-                })
-            }
-        }
     }
     
     //MARK:- 사용자 정의 메소드
@@ -155,6 +104,56 @@ class MyViewController: UIViewController {
     @IBAction func touchUpSettingButton(_ sender: UIButton) {
         guard let next = storyboard?.instantiateViewController(withIdentifier: "MyDetailViewController") as? MyDetailViewController else { return }
         self.navigationController?.pushViewController(next, animated: true)
+    }
+    
+    func initializeMeetUpView() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        Database.database().reference().child("users").observeSingleEvent(of: .value) { (snapshot) in
+            //본인 제외 코워킹 설정 되어 있는 사람의 키값 빼옴
+            guard let keys = snapshot.value as? NSDictionary else { return }
+            for key in keys {
+                guard let newKey = key.key as? String else { return }
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                if newKey != uid {
+                    guard let newValue = key.value as? NSMutableDictionary else { return }
+                    if newValue["cowork"] != nil {
+                        self.meetupKeys.append(newKey)
+                    }
+                }
+            }
+            for meetupKey in self.meetupKeys {
+                Database.database().reference().child("users/\(meetupKey)").observeSingleEvent(of: .value, with: { (snapshot) in
+                    OperationQueue().addOperation {
+                        guard let value = snapshot.value as? NSDictionary else { return }
+                        let nickname = value["nickname"] as? String ?? ""
+                        let job = value["job"] as? String ?? ""
+                        let day = value["day"] as? Int ?? 0
+                        let address = value["address"] as? String ?? ""
+                        let introducing = value["introducing"] as? String ?? ""
+                        let email = value["email"] as? String ?? ""
+                        var image: UIImage? = nil
+                        if let profileImageData = value["profileImage"] as? String {
+                            guard let imageReference = URL(string: profileImageData) else { return }
+                            do {
+                                let imageData = try Data(contentsOf: imageReference)
+                                image = UIImage(data: imageData)
+                            } catch { print(error.localizedDescription) }
+                        }
+                        self.meetupData.append((nickname: nickname, job: job, day: day, address: address, introducing: introducing, image: image))
+                        self.emails.append(email)
+                        if meetupKey == self.meetupKeys.last! {
+                            OperationQueue.main.addOperation {
+                                self.pagerView.reloadData()
+                                self.activityIndicator.stopAnimating()
+                                self.activityIndicator.isHidden = true
+                                self.activityIndicatorLabel.isHidden = true
+                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                            }
+                        }
+                    }
+                })
+            }
+        }
     }
     
     func initializeHashtag() {
@@ -191,6 +190,7 @@ extension MyViewController: MeetUpCellDelegate {
         popup.receiver = "\(cell.nameLabel.text ?? "") (\(cell.jobLabel.text ?? ""))"
         popup.sender = self.userInfo?.nickname
         popup.title = self.emailInfo?.title
+        popup.email = self.emails[currentIndex]
         popup.layoutSubviews()
         popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         popup.frame = self.view.bounds
@@ -204,9 +204,9 @@ extension MyViewController: MeetUpCellDelegate {
 
 //MARK:- 밋업 팝업 뷰 커스텀 델리게이트 구현
 extension MyViewController: PopupMeetUpViewDelegate {
-    func touchUpSendButton() {
+    func touchUpSendButton(_ email: String?) {
         removePopup()
-        let mailViewController = configureMailComposeViewController()
+        let mailViewController = configureMailComposeViewController(email)
         if MFMailComposeViewController.canSendMail() {
             self.present(mailViewController, animated: true, completion: nil)
         } else {
@@ -223,9 +223,11 @@ extension MyViewController: PopupMeetUpViewDelegate {
             self.popup.removeFromSuperview()
         }
     }
-    func configureMailComposeViewController() -> MFMailComposeViewController {
+    func configureMailComposeViewController(_ email: String?) -> MFMailComposeViewController {
         let mail = MFMailComposeViewController()
         mail.mailComposeDelegate = self
+        mail.setToRecipients([email ?? ""])
+        mail.setSubject("[유목민] Co-Working 신청")
         let imageData = UIImagePNGRepresentation(#imageLiteral(resourceName: "testImage.png")) ?? nil
         let imageString = imageData?.base64EncodedString() ?? ""
         let body = "<html><body><p>반가워요! Co-working을 실천하고 싶어서 메일 드렸습니다.</p><p>-이 메일은 유목민 App에서 발송되었습니다.-</p><p><b><img src='data:image/png;base64,\(String(describing: imageString) )'></b></p></body></html>"
@@ -239,16 +241,18 @@ extension MyViewController: FSPagerViewDataSource {
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         guard let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "meetUpCell", at: index) as? MeetUpCell else { return FSPagerViewCell() }
         cell.delegate = self
-        cell.profileImageView.image = self.images[index]?.circleMasked
-        cell.jobLabel.text = self.jobs[index]
-        cell.nameLabel.text = self.nicknames[index]
-        cell.daysLabel.text = "\(self.days[index])일차"
-        cell.distanceLabel.text = self.addresses[index]
-        cell.titleLabel.text = "\" \(self.introducings[index]) \""
+        print(index)
+        let data = self.meetupData[index]
+        cell.profileImageView.image = data.image?.circleMasked ?? #imageLiteral(resourceName: "ProfileMeetupNone")
+        cell.jobLabel.text = data.job
+        cell.nameLabel.text = data.nickname
+        cell.daysLabel.text = "\(data.day)일차"
+        cell.distanceLabel.text = data.address
+        cell.titleLabel.text = "\" \(data.introducing) \""
         return cell
     }
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return self.meetupKeys.count
+        return self.meetupData.count
     }
 }
 

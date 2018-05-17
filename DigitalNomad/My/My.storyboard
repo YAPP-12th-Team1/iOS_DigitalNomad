@@ -105,12 +105,20 @@
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="YlW-7I-Rdj">
                                         <rect key="frame" x="169" y="131" width="37" height="37"/>
-                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주변 유목민들을 불러오고 있어요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgV-Fm-MMV">
+                                        <rect key="frame" x="95.5" y="176" width="185" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="YlW-7I-Rdj" firstAttribute="centerY" secondItem="1Zz-OV-dzQ" secondAttribute="centerY" id="N2K-hB-u3z"/>
                                     <constraint firstItem="YlW-7I-Rdj" firstAttribute="centerX" secondItem="1Zz-OV-dzQ" secondAttribute="centerX" id="YaL-fZ-d6g"/>
+                                    <constraint firstItem="EgV-Fm-MMV" firstAttribute="top" secondItem="YlW-7I-Rdj" secondAttribute="bottom" constant="8" id="Zap-Zd-ecx"/>
+                                    <constraint firstItem="EgV-Fm-MMV" firstAttribute="centerX" secondItem="1Zz-OV-dzQ" secondAttribute="centerX" id="tmZ-BL-hs6"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isInfinite" value="YES"/>
@@ -170,6 +178,7 @@
                     <navigationItem key="navigationItem" id="Y5H-WV-0jb"/>
                     <connections>
                         <outlet property="activityIndicator" destination="YlW-7I-Rdj" id="jSs-e0-eYq"/>
+                        <outlet property="activityIndicatorLabel" destination="EgV-Fm-MMV" id="Vqs-hp-nXK"/>
                         <outlet property="cardLabel" destination="xBm-g3-7ZI" id="8JW-HY-IfX"/>
                         <outlet property="hashtagView" destination="MVy-Dq-XQ6" id="ZbK-wc-p2o"/>
                         <outlet property="listLabel" destination="bcA-T7-Xpi" id="USs-Oo-qSi"/>

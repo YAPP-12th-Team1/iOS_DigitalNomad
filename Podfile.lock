@@ -73,6 +73,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - ReachabilitySwift (4.1.0)
   - Realm (3.1.1):
     - Realm/Headers (= 3.1.1)
   - Realm/Headers (3.1.1)
@@ -104,6 +105,7 @@ DEPENDENCIES:
   - JTMaterialSwitch
   - lottie-ios
   - MarqueeLabel/Swift
+  - ReachabilitySwift
   - RealmSwift
   - SnapKit (~> 4.0.0)
   - SwiftyJSON
@@ -145,6 +147,7 @@ SPEC CHECKSUMS:
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
   RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
@@ -154,6 +157,6 @@ SPEC CHECKSUMS:
   Tags: b18378f79d8b30c40d4b7ae4d5edfc478434d858
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: d0348e1a83b02b76fe5a3a49f49c0faaa9227630
+PODFILE CHECKSUM: 08d2f1d084f71af0d91d82544bb25ea24b58a5ac
 
 COCOAPODS: 1.4.0

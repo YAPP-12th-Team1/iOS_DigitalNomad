@@ -211,24 +211,6 @@ class WishViewController: UIViewController {
         self.summaryButton.setTitle(text, for: .normal)
     }
     
-    //MARK: 완료 페이지 여는 조건
-    func presentCompleteViewController(){
-        let project = realm.objects(ProjectInfo.self).last
-        guard let goals = project?.goalLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]) else { return }
-        guard let wishes = project?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]) else { return }
-        let entireGoals = goals.count
-        let entireWishes = wishes.count
-        let completedGoals = goals.filter("status = true").count
-        let completedWishes = wishes.filter("status = true").count
-        if entireGoals != completedGoals || entireWishes != completedWishes { return }
-        let completeTime = Date().convertToTime()
-        self.completeTimeLabel.text = completeTime
-        UserDefaults.standard.set(completeTime, forKey: "completeTime")
-        guard let completeViewController = storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") else { return }
-        completeViewController.modalTransitionStyle = .crossDissolve
-        self.present(completeViewController, animated: true, completion: nil)
-    }
-    
     //MARK: 자동 미루기
     func postponePreviousWishes() {
         guard let project = realm.objects(ProjectInfo.self).last else { return }
@@ -283,7 +265,7 @@ extension WishViewController: WishCellDelegate {
                 result.status = false
             }
         }
-        self.presentCompleteViewController()
+        (self.parent as? ParentViewController)?.presentCompleteViewController()
     }
 }
 
@@ -349,6 +331,7 @@ extension WishViewController: UICollectionViewDelegate {
                 } else {
                     collectionView.deleteItems(at: [indexPath])
                 }
+                (self.parent as? ParentViewController)?.presentCompleteViewController()
             }
             let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
             alert.addAction(noAction)

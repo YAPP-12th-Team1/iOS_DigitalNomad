@@ -30,6 +30,7 @@
 		196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AF72041483200C7BFAF /* TabBarController.swift */; };
 		196C4AFA2041493600C7BFAF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AF92041493600C7BFAF /* Map.storyboard */; };
 		196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4B012041497500C7BFAF /* MyPage.storyboard */; };
+		1970BBC820AD4316005A593B /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970BBC720AD4316005A593B /* ReachabilityManager.swift */; };
 		198A4D2820614D6900A78E83 /* ResearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A4D2720614D6900A78E83 /* ResearchViewController.swift */; };
 		198A4D2A20614D7A00A78E83 /* ResearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A4D2920614D7A00A78E83 /* ResearchResultViewController.swift */; };
 		198D92CB2061447E001325DD /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198D92CA2061447E001325DD /* Start.storyboard */; };
@@ -172,6 +173,7 @@
 		196C4AF72041483200C7BFAF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		196C4AF92041493600C7BFAF /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		196C4B012041497500C7BFAF /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
+		1970BBC720AD4316005A593B /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		198A4D2720614D6900A78E83 /* ResearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchViewController.swift; sourceTree = "<group>"; };
 		198A4D2920614D7A00A78E83 /* ResearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchResultViewController.swift; sourceTree = "<group>"; };
 		198D92CA2061447E001325DD /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 				19F2CDE02041419C00CB113B /* AppDelegate.swift */,
 				19F2CDE92041419C00CB113B /* Assets.xcassets */,
 				19587FFA20766A4000FD3D01 /* ERProgressHud.swift */,
+				1970BBC720AD4316005A593B /* ReachabilityManager.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JTMaterialSwitch/JTMaterialSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -849,6 +853,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTMaterialSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -889,6 +894,7 @@
 				19C54AAE20A99DDC00717C6F /* MyDetailViewController.swift in Sources */,
 				191FD3FB20A8457000918676 /* WishViewController.swift in Sources */,
 				191FD3FF20A8483E00918676 /* WishCell.swift in Sources */,
+				1970BBC820AD4316005A593B /* ReachabilityManager.swift in Sources */,
 				199A93112058E59E007509A1 /* UserLocationInfo.swift in Sources */,
 				199A930D2058E58B007509A1 /* ProjectInfo.swift in Sources */,
 				19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */,

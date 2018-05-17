@@ -13,7 +13,7 @@ import GoogleSignIn
 
 class UserInfo: Object{
     @objc dynamic var email: String = Auth.auth().currentUser?.email ?? "NoEmail"
-    @objc dynamic var nickname: String = Auth.auth().currentUser?.displayName ?? "Noname"   //Not Null
+    @objc dynamic var nickname: String = Auth.auth().currentUser?.displayName ?? "익명의유목민"   //Not Null
     @objc dynamic var image: Data = UIImagePNGRepresentation(#imageLiteral(resourceName: "ProfileNone"))!
     @objc dynamic var address: String?
     @objc dynamic var cowork: Bool = false                                                  //default: false

@@ -49,8 +49,6 @@ class PopupMeetupView: UIView {
         ref.child("users/\(self.name)").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let nickname = value?["nickname"] as? String ?? ""
-            print("name: ", self.name)
-            print("nickname: ", nickname)
             self.email = value?["email"] as? String ?? ""
         })
         //이메일을 비동기로 받아오기 때문에 메일 보내기를 눌렀을 때 받는 사람에 이메일이 누락되는 경우가 있음.

@@ -13,7 +13,7 @@ import MessageUI
 import Toaster
 
 protocol PopupMeetUpViewDelegate {
-    func touchUpSendButton()
+    func touchUpSendButton(_ email: String?)
     func touchUpCancelButton()
 }
 
@@ -30,6 +30,7 @@ class PopupMeetUpView: UIView {
     var receiver: String?
     var sender: String?
     var title: String?
+    var email: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,7 +55,7 @@ class PopupMeetUpView: UIView {
     
     //MyViewController에 구현체 있음
     @IBAction func touchUpSendButton(_ sender: UIButton) {
-        delegate?.touchUpSendButton()
+        delegate?.touchUpSendButton(self.email)
     }
     
     //MyViewController에 구현체 있음
