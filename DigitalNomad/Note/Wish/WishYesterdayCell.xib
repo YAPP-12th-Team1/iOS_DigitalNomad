@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wishYesterdayCell" rowHeight="65" id="KGk-i7-Jjw" customClass="WishYesterdayCell" customModule="DigitalNomad" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card" translatesAutoresizingMaskIntoConstraints="NO" id="yda-hq-CBN">
+                        <rect key="frame" x="20" y="21" width="43" height="43"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="43" id="HLS-qt-wMr"/>
+                            <constraint firstAttribute="height" constant="43" id="qCo-WS-0PH"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HorizontalLineBlue" translatesAutoresizingMaskIntoConstraints="NO" id="4mH-wv-7WZ">
+                        <rect key="frame" x="87" y="62.5" width="223" height="2"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="HXd-9R-JqM"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카드 히스토리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szw-hu-0C4">
+                        <rect key="frame" x="87" y="34.5" width="76.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZcP-4i-dmj">
+                        <rect key="frame" x="20" y="21" width="43" height="43"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4mH-wv-7WZ" firstAttribute="leading" secondItem="yda-hq-CBN" secondAttribute="trailing" constant="24" id="241-Q5-SWc"/>
+                    <constraint firstAttribute="trailing" secondItem="4mH-wv-7WZ" secondAttribute="trailing" constant="10" id="34C-9D-tay"/>
+                    <constraint firstItem="szw-hu-0C4" firstAttribute="centerY" secondItem="yda-hq-CBN" secondAttribute="centerY" id="8fa-92-ipl"/>
+                    <constraint firstItem="szw-hu-0C4" firstAttribute="leading" secondItem="yda-hq-CBN" secondAttribute="trailing" constant="24" id="HmR-to-UV8"/>
+                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="J8K-Ww-v36"/>
+                    <constraint firstAttribute="bottom" secondItem="4mH-wv-7WZ" secondAttribute="bottom" id="JOP-yU-wbN"/>
+                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="height" secondItem="yda-hq-CBN" secondAttribute="height" id="MgC-57-aCY"/>
+                    <constraint firstAttribute="bottom" secondItem="ZcP-4i-dmj" secondAttribute="bottom" id="MyP-Hs-5E3"/>
+                    <constraint firstAttribute="bottom" secondItem="yda-hq-CBN" secondAttribute="bottom" id="QsZ-Zr-aPa"/>
+                    <constraint firstItem="yda-hq-CBN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Y6z-hS-yMj"/>
+                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="width" secondItem="yda-hq-CBN" secondAttribute="width" id="d6U-eJ-o8g"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cardImageView" destination="ZcP-4i-dmj" id="znp-8m-xIK"/>
+                <outlet property="todoLabel" destination="szw-hu-0C4" id="SBV-Kn-55K"/>
+            </connections>
+            <point key="canvasLocation" x="103" y="105.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Card" width="66" height="66"/>
+        <image name="HorizontalLineBlue" width="276" height="1"/>
+    </resources>
+</document>

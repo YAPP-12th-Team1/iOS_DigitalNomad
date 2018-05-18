@@ -33,13 +33,16 @@ class WishViewController: UIViewController {
     
     //MARK:- 프로퍼티
     var realm: Realm!
-    var object: Results<WishListInfo>!
+    var todayObject: Results<WishListInfo>!
+    var yesterdayObject: Results<WishListInfo>!
+    var popup: WishYesterdayView!
     
     //MARK:- 기본 메소드
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = try! Realm()
-        object = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
+        self.todayObject = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
+        self.yesterdayObject = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.yesterdayStart, Date.yesterdayEnd])
         
         //컬렉션 뷰 태그 설정 : 메인 0번 카드뷰 1번
         self.collectionView.tag = 0
@@ -114,10 +117,10 @@ class WishViewController: UIViewController {
         if sender == self.searchBar {
             let keyword = sender.text!
             if !keyword.isEmpty {
-                self.object = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]).filter("todo CONTAINS[c] '" + keyword + "'")
+                self.todayObject = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd]).filter("todo CONTAINS[c] '" + keyword + "'")
                 self.collectionView.reloadSections(IndexSet(0...0))
             } else {
-                self.object = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
+                self.todayObject = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
                 self.collectionView.reloadSections(IndexSet(0...0))
             }
         }
@@ -135,8 +138,8 @@ class WishViewController: UIViewController {
         try! realm.write {
             realm.objects(ProjectInfo.self).last?.wishLists.append(realm.objects(WishListInfo.self).last!)
         }
-        self.object = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
-        if self.object.count == 1 {
+        self.todayObject = realm.objects(ProjectInfo.self).last?.wishLists.filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
+        if self.todayObject.count == 1 {
             self.collectionView.reloadData()
         } else {
             self.collectionView.reloadSections(IndexSet(0...0))
@@ -185,7 +188,20 @@ class WishViewController: UIViewController {
     }
     
     @objc func touchUpSummaryButton(_ sender: UIButton) {
-        
+        popup = WishYesterdayView.instanceFromXib() as? WishYesterdayView
+        popup.delegate = self
+        popup.tableView.delegate = self
+        popup.tableView.dataSource = self
+        popup.tableView.emptyDataSetSource = self
+        popup.tableView.tag = 2
+        popup.dateLabel.text = self.yesterdayLabel.text
+        popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        popup.frame = self.view.bounds
+        self.view.addSubview(popup)
+        popup.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            self.popup.alpha = 1
+        }
     }
     
     //MARK: 어제 날짜 설정
@@ -251,11 +267,23 @@ extension WishViewController: UITextFieldDelegate {
     }
 }
 
+//MARK:- 어제 요약 정보 커스텀 델리게이트 구현
+extension WishViewController: WishYesterdayViewDelegate {
+    func touchUpExitButton() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.popup.alpha = 0
+        }) { _ in
+            self.popup.removeFromSuperview()
+        }
+    }
+}
+
+//MARK:- 셀 커스텀 델리게이트 구현
 extension WishViewController: WishCellDelegate {
     func touchUpCheckBox(_ sender: BEMCheckBox) {
         let id = sender.tag
         let query = NSPredicate(format: "id = %d", id)
-        guard let result = self.object.filter(query).first else { return }
+        guard let result = self.todayObject.filter(query).first else { return }
         if sender.on {
             try! realm.write {
                 result.status = true
@@ -282,7 +310,7 @@ extension WishViewController: UICollectionViewDataSource {
                 cell.todoLabel.text = nil
                 cell.checkBox.isHidden = true
             } else {
-                let result = self.object[indexPath.item - 1]
+                let result = self.todayObject[indexPath.item - 1]
                 cell.checkBox.tag = result.id
                 cell.todoImageView.image = result.pictureIndex == -1 ? nil : UIImage(imageLiteralResourceName: "wish\(result.pictureIndex)")
                 cell.todoImageView.removeGestureRecognizer(gesture)
@@ -304,7 +332,7 @@ extension WishViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 0 {
-            return self.object.count == 0 ? 0 : self.object.count + 1
+            return self.todayObject.count == 0 ? 0 : self.todayObject.count + 1
         } else {
             return 8
         }
@@ -320,13 +348,13 @@ extension WishViewController: UICollectionViewDelegate {
             let alert = UIAlertController(title: nil, message: "삭제할까요?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "예", style: .destructive) { (action) in
                 //목록 삭제
-                let id = self.object[indexPath.item - 1].id
+                let id = self.todayObject[indexPath.item - 1].id
                 let query = NSPredicate(format: "id = %d", id)
-                let result = self.object.filter(query).filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
+                let result = self.todayObject.filter(query).filter("date BETWEEN %@", [Date.todayStart, Date.todayEnd])
                 try! self.realm.write {
                     self.realm.delete(result)
                 }
-                if self.object.count == 0 {
+                if self.todayObject.count == 0 {
                     collectionView.reloadData()
                 } else {
                     collectionView.deleteItems(at: [indexPath])
@@ -447,15 +475,43 @@ extension WishViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+//MARK:- 어제 요약 정보 테이블뷰 데이터소스 구현
+extension WishViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "wishYesterdayCell", for: indexPath) as? WishYesterdayCell else { return UITableViewCell() }
+        let result = self.yesterdayObject[indexPath.row]
+        cell.todoLabel.text = result.todo
+        cell.cardImageView.image = UIImage(imageLiteralResourceName: "wish\(result.pictureIndex)")
+        return cell
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.yesterdayObject.count
+    }
+}
+
+//MARK:- 어제 요약 정보 테이블뷰 델리게이트 구현
+extension WishViewController: UITableViewDelegate {
+    
+}
+
 //MARK:- Empty Data Set Source 구현
 extension WishViewController: DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let title = NSAttributedString(string: "유목 생활 노트", attributes: [.font: UIFont.textStyle6, .foregroundColor: UIColor.aquamarine])
-        return title
+        if scrollView.tag != 2 {
+            let title = NSAttributedString(string: "유목 생활 노트", attributes: [.font: UIFont.textStyle6, .foregroundColor: UIColor.aquamarine])
+            return title
+        } else {
+            return nil
+        }
     }
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let description = NSAttributedString(string: "유목 기간 동안 하고 싶은 일을 체크하세요.\n쉽고 편리하게 카드를 추가하고\n낯선 공간에서의 즐거움을 느껴보세요!", attributes: [.font : UIFont.textStyle5, .foregroundColor: UIColor.aquamarine])
-        return description
+        if scrollView.tag != 2 {
+            let description = NSAttributedString(string: "유목 기간 동안 하고 싶은 일을 체크하세요.\n쉽고 편리하게 카드를 추가하고\n낯선 공간에서의 즐거움을 느껴보세요!", attributes: [.font : UIFont.textStyle5, .foregroundColor: UIColor.aquamarine])
+            return description
+        } else {
+            let description = NSAttributedString(string: "어제 등록한 노트가 없습니다.", attributes: [.font : UIFont.textStyle5, .foregroundColor: UIColor.aquamarine])
+            return description
+        }
     }
 }
 
