@@ -38,9 +38,8 @@
                                 <action selector="touchUpExitButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="qRd-d8-l4H"/>
                             </connections>
                         </button>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cm1-f4-kbL">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cm1-f4-kbL">
                             <rect key="frame" x="0.0" y="75" width="295" height="324"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
@@ -52,9 +51,13 @@
                         <constraint firstItem="TCT-rA-yS5" firstAttribute="leading" secondItem="20z-He-2v9" secondAttribute="leading" constant="20" id="8h4-fz-0sM"/>
                         <constraint firstItem="HmP-6W-TrB" firstAttribute="top" secondItem="TCT-rA-yS5" secondAttribute="bottom" id="CcH-1K-3qY"/>
                         <constraint firstAttribute="height" constant="399" id="KMu-A3-koZ"/>
+                        <constraint firstAttribute="bottom" secondItem="Cm1-f4-kbL" secondAttribute="bottom" id="Sa0-XZ-iNe"/>
                         <constraint firstAttribute="width" constant="295" id="SqN-Yy-AKK"/>
                         <constraint firstItem="HmP-6W-TrB" firstAttribute="top" secondItem="20z-He-2v9" secondAttribute="top" constant="50" id="kRR-ef-fJ7"/>
+                        <constraint firstItem="Cm1-f4-kbL" firstAttribute="leading" secondItem="20z-He-2v9" secondAttribute="leading" id="lJ5-ld-wAc"/>
                         <constraint firstAttribute="trailing" secondItem="35A-rG-SbA" secondAttribute="trailing" constant="20" id="mLg-HH-ESH"/>
+                        <constraint firstAttribute="trailing" secondItem="Cm1-f4-kbL" secondAttribute="trailing" id="oad-2P-toU"/>
+                        <constraint firstItem="Cm1-f4-kbL" firstAttribute="top" secondItem="HmP-6W-TrB" secondAttribute="bottom" constant="24" id="we6-l7-aPj"/>
                     </constraints>
                 </view>
             </subviews>

@@ -108,14 +108,10 @@ extension MyDetailViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 2
-        case 1:
-            return 4
-        case 2:
-            return 1
-        default:
-            return 0
+        case 0: return 2
+        case 1: return 4
+        case 2: return 1
+        default: return 0
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -136,9 +132,14 @@ extension MyDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 18
     }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 18))
+        view.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
+        return view
+    }
 }
 
-//MARK:- 이미지 피커 관련 델리게이특 ㅜ현
+//MARK:- 이미지 피커 관련 델리게이트 구현
 extension MyDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }

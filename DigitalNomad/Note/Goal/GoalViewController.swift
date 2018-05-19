@@ -16,7 +16,7 @@ import SwipeCellKit
 class GoalViewController: UIViewController {
 
     //MARK:- IBOutlets
-    @IBOutlet var upperViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var upperViewAspectRatio: NSLayoutConstraint!
     @IBOutlet var panView: UIView!
     @IBOutlet var slideDownView: UIImageView!
     @IBOutlet var slideDownLabel: UILabel!
@@ -83,6 +83,7 @@ class GoalViewController: UIViewController {
             self.setYesterdayLabel()
         }
         self.completeTimeLabel.text = UserDefaults.standard.string(forKey: "completeTime") ?? nil
+        
     }
     
     //MARK:- 사용자 정의 메소드
@@ -104,20 +105,22 @@ class GoalViewController: UIViewController {
     
     //MARK: 화면 전환
     @objc func panUpperView(_ gesture: UIPanGestureRecognizer) {
+        let initialAspectRatio: CGFloat = 98.0 / 375.0
+        let distance = self.view.frame.width * initialAspectRatio
         func initialize() {
-            self.upperViewHeightConstraint.constant = 98
+            self.upperViewAspectRatio.constant = 0
             self.slideDownView.alpha = 0
             self.slideDownLabel.alpha = 0
         }
         switch gesture.state {
         case .changed:
-            let y = gesture.translation(in: self.view).y + 98
-            if y < 98 { return }
-            self.upperViewHeightConstraint.constant = y
+            let y = gesture.translation(in: self.view).y + distance
+            if y < distance { return }
+            self.upperViewAspectRatio.constant = y - distance
             let alpha: CGFloat = (y - 98) / 102
             self.slideDownView.alpha = alpha
             self.slideDownLabel.alpha = alpha
-            if self.upperViewHeightConstraint.constant >= 200 {
+            if y >= 200 {
                 guard let parent = self.parent as? ParentViewController else { return }
                 parent.switchViewController(from: parent.goalViewController, to: parent.wishViewController)
                 UserDefaults.standard.set(true, forKey: "isWishViewControllerFirst")

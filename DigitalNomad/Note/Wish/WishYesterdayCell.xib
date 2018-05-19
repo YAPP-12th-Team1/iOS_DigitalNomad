@@ -38,22 +38,22 @@
                         <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZcP-4i-dmj">
-                        <rect key="frame" x="20" y="21" width="43" height="43"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZcP-4i-dmj">
+                        <rect key="frame" x="28" y="29" width="27" height="27"/>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="4mH-wv-7WZ" firstAttribute="leading" secondItem="yda-hq-CBN" secondAttribute="trailing" constant="24" id="241-Q5-SWc"/>
                     <constraint firstAttribute="trailing" secondItem="4mH-wv-7WZ" secondAttribute="trailing" constant="10" id="34C-9D-tay"/>
+                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="bottom" secondItem="yda-hq-CBN" secondAttribute="bottom" constant="-8" id="7SL-CQ-nbF"/>
                     <constraint firstItem="szw-hu-0C4" firstAttribute="centerY" secondItem="yda-hq-CBN" secondAttribute="centerY" id="8fa-92-ipl"/>
+                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="top" secondItem="yda-hq-CBN" secondAttribute="top" constant="8" id="9dD-yT-4vc"/>
+                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="leading" secondItem="yda-hq-CBN" secondAttribute="leading" constant="8" id="Fvq-Ba-CL6"/>
                     <constraint firstItem="szw-hu-0C4" firstAttribute="leading" secondItem="yda-hq-CBN" secondAttribute="trailing" constant="24" id="HmR-to-UV8"/>
-                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="J8K-Ww-v36"/>
                     <constraint firstAttribute="bottom" secondItem="4mH-wv-7WZ" secondAttribute="bottom" id="JOP-yU-wbN"/>
-                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="height" secondItem="yda-hq-CBN" secondAttribute="height" id="MgC-57-aCY"/>
-                    <constraint firstAttribute="bottom" secondItem="ZcP-4i-dmj" secondAttribute="bottom" id="MyP-Hs-5E3"/>
                     <constraint firstAttribute="bottom" secondItem="yda-hq-CBN" secondAttribute="bottom" id="QsZ-Zr-aPa"/>
                     <constraint firstItem="yda-hq-CBN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Y6z-hS-yMj"/>
-                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="width" secondItem="yda-hq-CBN" secondAttribute="width" id="d6U-eJ-o8g"/>
+                    <constraint firstItem="ZcP-4i-dmj" firstAttribute="trailing" secondItem="yda-hq-CBN" secondAttribute="trailing" constant="-8" id="sow-ER-0DJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -10,7 +10,7 @@ import UIKit
 
 protocol PopupStartViewDelegate {
     func touchUpSkipButton()
-    func touchUpExperiencedButton()
+    func touchUpRecommendButton()
 }
 
 class PopupStartView: UIView {
@@ -38,6 +38,6 @@ class PopupStartView: UIView {
     }
     
     @IBAction func clickRecommendation(_ sender: UIButton) {
-        delegate?.touchUpExperiencedButton()
+        delegate?.touchUpRecommendButton()
     }
 }

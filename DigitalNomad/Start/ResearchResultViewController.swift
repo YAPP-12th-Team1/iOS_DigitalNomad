@@ -52,23 +52,18 @@ class ResearchResultViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func clickRecommendedPlace(_ sender: UIButton) {
         //다음 뷰컨트롤러에 장소 스트링을 같이 보내주기
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollmentViewController") as! EnrollmentViewController
-        controller.str = researchResult.text!
+        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollViewController") as! EnrollViewController
+        controller.recommendedPlace = researchResult.text ?? nil
         present(controller, animated: true, completion: nil)
     }
     
     @IBAction func clickAnotherPlace(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollmentViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollViewController")
         present(controller, animated: true, completion: nil)
     }
     

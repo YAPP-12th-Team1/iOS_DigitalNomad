@@ -32,7 +32,7 @@ class StartViewController: UIViewController {
     
     @IBAction func clickExperiencedNomad(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let next = storyboard.instantiateViewController(withIdentifier: "ResearchViewController")
+        let next = storyboard.instantiateViewController(withIdentifier: "EnrollViewController")
         present(next, animated: true)
     }
 }
@@ -41,14 +41,13 @@ extension StartViewController: PopupStartViewDelegate {
     func touchUpSkipButton() {
         self.popup.removeFromSuperview()
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollmentViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollViewController")
         self.present(controller, animated: true, completion: nil)
     }
-    
-    func touchUpExperiencedButton() {
+    func touchUpRecommendButton() {
         self.popup.removeFromSuperview()
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ResearchViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollViewController")
         self.present(controller, animated: true, completion: nil)
     }
 }

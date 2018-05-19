@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -188,11 +189,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapUpper" translatesAutoresizingMaskIntoConstraints="NO" id="uzj-hg-OOH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="87" id="lWg-tJ-I6l"/>
+                                    <constraint firstAttribute="width" secondItem="uzj-hg-OOH" secondAttribute="height" multiplier="125:29" id="sek-dw-YlR"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="장소, 주소, 버스 검색" minimumFontSize="17" background="MapSearchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="iGv-Xc-PNP">
-                                <rect key="frame" x="113" y="36" width="244" height="35"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="장소, 주소, 버스 검색" clearsOnBeginEditing="YES" minimumFontSize="17" background="MapSearchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="iGv-Xc-PNP">
+                                <rect key="frame" x="113" y="35" width="244" height="36"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -281,45 +282,46 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrE-I3-3kY">
-                                <rect key="frame" x="18" y="36" width="85" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="QSi-zX-FCV"/>
-                                    <constraint firstAttribute="height" constant="35" id="VuF-pO-9C5"/>
-                                </constraints>
+                                <rect key="frame" x="18" y="35" width="85" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <state key="normal" title="  더보기" image="Flag" backgroundImage="MapButtonBackground"/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchBlack" translatesAutoresizingMaskIntoConstraints="NO" id="Xhm-Xv-fgJ">
-                                <rect key="frame" x="331" y="45" width="16" height="16"/>
+                                <rect key="frame" x="331" y="44.5" width="16" height="16"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nrE-I3-3kY" firstAttribute="leading" secondItem="Axz-b4-hom" secondAttribute="leading" constant="18" id="2VB-nY-356"/>
                             <constraint firstItem="BIO-fR-zog" firstAttribute="leading" secondItem="Axz-b4-hom" secondAttribute="leading" id="3Tf-CV-CdQ"/>
-                            <constraint firstItem="iGv-Xc-PNP" firstAttribute="height" secondItem="nrE-I3-3kY" secondAttribute="height" id="4yP-HU-VRd"/>
                             <constraint firstItem="1zs-qk-Bee" firstAttribute="leading" secondItem="Axz-b4-hom" secondAttribute="leading" id="9NI-Ea-7EG"/>
                             <constraint firstItem="Axz-b4-hom" firstAttribute="trailing" secondItem="1zs-qk-Bee" secondAttribute="trailing" id="BPY-NW-ITk"/>
                             <constraint firstItem="Axz-b4-hom" firstAttribute="trailing" secondItem="BIO-fR-zog" secondAttribute="trailing" id="FOK-mZ-hQd"/>
-                            <constraint firstItem="Axz-b4-hom" firstAttribute="trailing" secondItem="iGv-Xc-PNP" secondAttribute="trailing" constant="18" id="HZ3-1P-ejk"/>
-                            <constraint firstItem="BIO-fR-zog" firstAttribute="top" secondItem="uzj-hg-OOH" secondAttribute="bottom" id="Ip6-zS-rza"/>
-                            <constraint firstItem="iGv-Xc-PNP" firstAttribute="centerY" secondItem="nrE-I3-3kY" secondAttribute="centerY" id="R4Y-Xp-5OS"/>
-                            <constraint firstItem="Xhm-Xv-fgJ" firstAttribute="trailing" secondItem="iGv-Xc-PNP" secondAttribute="trailing" constant="-10" id="Yfo-tA-GqE"/>
+                            <constraint firstItem="nrE-I3-3kY" firstAttribute="height" secondItem="uzj-hg-OOH" secondAttribute="height" multiplier="0.416666" id="LDP-Tg-Bpy"/>
+                            <constraint firstItem="iGv-Xc-PNP" firstAttribute="bottom" secondItem="nrE-I3-3kY" secondAttribute="bottom" id="MFL-MG-zbc"/>
+                            <constraint firstItem="Xhm-Xv-fgJ" firstAttribute="centerY" secondItem="iGv-Xc-PNP" secondAttribute="centerY" id="Sn3-Tk-3y6"/>
+                            <constraint firstItem="Axz-b4-hom" firstAttribute="trailing" secondItem="iGv-Xc-PNP" secondAttribute="trailing" constant="18" id="Y3W-Bj-7KG"/>
+                            <constraint firstItem="Xhm-Xv-fgJ" firstAttribute="trailing" secondItem="iGv-Xc-PNP" secondAttribute="trailing" constant="-10" id="aQl-uW-sbF"/>
                             <constraint firstItem="1zs-qk-Bee" firstAttribute="top" secondItem="BIO-fR-zog" secondAttribute="bottom" id="atL-aE-1if"/>
-                            <constraint firstItem="Axz-b4-hom" firstAttribute="bottom" secondItem="1zs-qk-Bee" secondAttribute="bottom" constant="49" id="cCf-Wx-ywe"/>
-                            <constraint firstItem="BIO-fR-zog" firstAttribute="top" secondItem="nrE-I3-3kY" secondAttribute="bottom" constant="16" id="hKA-3l-7jE"/>
+                            <constraint firstItem="iGv-Xc-PNP" firstAttribute="leading" secondItem="nrE-I3-3kY" secondAttribute="trailing" constant="10" id="gne-6A-Ve2"/>
+                            <constraint firstItem="nrE-I3-3kY" firstAttribute="bottom" secondItem="uzj-hg-OOH" secondAttribute="bottom" multiplier="0.815" id="hdS-P9-5k5"/>
                             <constraint firstItem="uzj-hg-OOH" firstAttribute="leading" secondItem="Axz-b4-hom" secondAttribute="leading" id="k2Q-ja-NJq"/>
                             <constraint firstItem="uzj-hg-OOH" firstAttribute="top" secondItem="chB-lq-Okx" secondAttribute="top" id="lpx-56-UaX"/>
-                            <constraint firstItem="iGv-Xc-PNP" firstAttribute="leading" secondItem="nrE-I3-3kY" secondAttribute="trailing" constant="10" id="sI3-32-0YE"/>
+                            <constraint firstItem="BIO-fR-zog" firstAttribute="top" secondItem="uzj-hg-OOH" secondAttribute="bottom" id="p0h-xZ-nTc"/>
                             <constraint firstItem="uzj-hg-OOH" firstAttribute="trailing" secondItem="Axz-b4-hom" secondAttribute="trailing" id="tjV-BR-DEC"/>
-                            <constraint firstItem="Xhm-Xv-fgJ" firstAttribute="centerY" secondItem="iGv-Xc-PNP" secondAttribute="centerY" id="ubA-XH-qAi"/>
+                            <constraint firstItem="nrE-I3-3kY" firstAttribute="width" secondItem="uzj-hg-OOH" secondAttribute="width" multiplier="0.226666" id="u8h-OA-0JB"/>
+                            <constraint firstItem="iGv-Xc-PNP" firstAttribute="top" secondItem="nrE-I3-3kY" secondAttribute="top" id="ycm-AW-CYC"/>
+                            <constraint firstAttribute="bottom" secondItem="1zs-qk-Bee" secondAttribute="bottom" constant="49" id="yjJ-M4-8IX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Axz-b4-hom"/>
                     </view>
                     <connections>
+                        <outlet property="centerView" destination="BIO-fR-zog" id="vFi-VG-G0u"/>
                         <outlet property="searchBar" destination="iGv-Xc-PNP" id="o3x-wK-5BV"/>
+                        <outlet property="searchImage" destination="Xhm-Xv-fgJ" id="5YC-VJ-52P"/>
                         <outlet property="tableView" destination="1zs-qk-Bee" id="m7c-tX-Siw"/>
                         <outlet property="toggleButton" destination="nrE-I3-3kY" id="dz0-HH-xqt"/>
+                        <outlet property="upperView" destination="uzj-hg-OOH" id="NWJ-yF-S8L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFc-bF-zJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
