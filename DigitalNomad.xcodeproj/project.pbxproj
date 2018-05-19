@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191A700620AFC40900D939C7 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A700520AFC40900D939C7 /* PlaceViewController.swift */; };
+		191A700820AFC41800D939C7 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A700720AFC41800D939C7 /* PlaceCell.swift */; };
+		191A700C20AFE37000D939C7 /* EnrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A700B20AFE37000D939C7 /* EnrollViewController.swift */; };
 		191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */; };
 		191DFEC1204EA9490095E9C1 /* MyPageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */; };
 		191DFEC3204EA9520095E9C1 /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191DFEC2204EA9520095E9C1 /* Note.storyboard */; };
@@ -31,19 +34,20 @@
 		194CD6E420AC4F5A00110AFD /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 194CD6E220AC4F5A00110AFD /* CardCell.xib */; };
 		195628B620701352004B3AF7 /* culture(3)_511111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE49206FECF10081332B /* culture(3)_511111.jpg */; };
 		19587FFB20766A4000FD3D01 /* ERProgressHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFA20766A4000FD3D01 /* ERProgressHud.swift */; };
-		19587FFD20767BF900FD3D01 /* NomadLastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */; };
+		1964915520AF19F1003B0D9A /* MyDetailViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1964915420AF19F1003B0D9A /* MyDetailViewCells.swift */; };
 		196C4AE42041440100C7BFAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE32041440100C7BFAF /* Login.storyboard */; };
 		196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AE7204144DF00C7BFAF /* MapViewController.swift */; };
 		196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AF12041455500C7BFAF /* LoginViewController.swift */; };
 		196C4AF82041483200C7BFAF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AF72041483200C7BFAF /* TabBarController.swift */; };
 		196C4AFA2041493600C7BFAF /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AF92041493600C7BFAF /* Map.storyboard */; };
 		196C4B022041497500C7BFAF /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4B012041497500C7BFAF /* MyPage.storyboard */; };
+		196E854720AFE3C1009257A5 /* EnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196E854620AFE3C0009257A5 /* EnrollmentViewController.swift */; };
+		196E854C20AFE733009257A5 /* EnrollCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196E854B20AFE733009257A5 /* EnrollCells.swift */; };
 		1970BBC820AD4316005A593B /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970BBC720AD4316005A593B /* ReachabilityManager.swift */; };
 		198A4D2820614D6900A78E83 /* ResearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A4D2720614D6900A78E83 /* ResearchViewController.swift */; };
 		198A4D2A20614D7A00A78E83 /* ResearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A4D2920614D7A00A78E83 /* ResearchResultViewController.swift */; };
 		198D92CB2061447E001325DD /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198D92CA2061447E001325DD /* Start.storyboard */; };
 		198D92CD206144A7001325DD /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D92CC206144A7001325DD /* StartViewController.swift */; };
-		198D92CF206147B9001325DD /* EnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D92CE206147B9001325DD /* EnrollmentViewController.swift */; };
 		199A930D2058E58B007509A1 /* ProjectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A930C2058E58B007509A1 /* ProjectInfo.swift */; };
 		199A930F2058E595007509A1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A930E2058E595007509A1 /* UserInfo.swift */; };
 		199A93112058E59E007509A1 /* UserLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199A93102058E59E007509A1 /* UserLocationInfo.swift */; };
@@ -157,6 +161,9 @@
 
 /* Begin PBXFileReference section */
 		127FCB1B722A87C86E4884FD /* Pods-DigitalNomad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalNomad.release.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalNomad/Pods-DigitalNomad.release.xcconfig"; sourceTree = "<group>"; };
+		191A700520AFC40900D939C7 /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		191A700720AFC41800D939C7 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		191A700B20AFE37000D939C7 /* EnrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollViewController.swift; sourceTree = "<group>"; };
 		191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadViewController.swift; sourceTree = "<group>"; };
 		191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDetailViewController.swift; sourceTree = "<group>"; };
 		191DFEC2204EA9520095E9C1 /* Note.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
@@ -180,7 +187,7 @@
 		194CD6E120AC4F5A00110AFD /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		194CD6E220AC4F5A00110AFD /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		19587FFA20766A4000FD3D01 /* ERProgressHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERProgressHud.swift; sourceTree = "<group>"; };
-		19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomadLastViewController.swift; sourceTree = "<group>"; };
+		1964915420AF19F1003B0D9A /* MyDetailViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailViewCells.swift; sourceTree = "<group>"; };
 		196C4AE32041440100C7BFAF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		196C4AE7204144DF00C7BFAF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		196C4AF12041455500C7BFAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -189,12 +196,13 @@
 		196C4AF72041483200C7BFAF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		196C4AF92041493600C7BFAF /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		196C4B012041497500C7BFAF /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
+		196E854620AFE3C0009257A5 /* EnrollmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrollmentViewController.swift; sourceTree = "<group>"; };
+		196E854B20AFE733009257A5 /* EnrollCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollCells.swift; sourceTree = "<group>"; };
 		1970BBC720AD4316005A593B /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		198A4D2720614D6900A78E83 /* ResearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchViewController.swift; sourceTree = "<group>"; };
 		198A4D2920614D7A00A78E83 /* ResearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchResultViewController.swift; sourceTree = "<group>"; };
 		198D92CA2061447E001325DD /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		198D92CC206144A7001325DD /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		198D92CE206147B9001325DD /* EnrollmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentViewController.swift; sourceTree = "<group>"; };
 		199A930C2058E58B007509A1 /* ProjectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfo.swift; sourceTree = "<group>"; };
 		199A930E2058E595007509A1 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		199A93102058E59E007509A1 /* UserLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationInfo.swift; sourceTree = "<group>"; };
@@ -337,6 +345,8 @@
 				196C4AF92041493600C7BFAF /* Map.storyboard */,
 				196C4AE7204144DF00C7BFAF /* MapViewController.swift */,
 				6B634A40204EF73300A59EEF /* MapCell.swift */,
+				191A700520AFC40900D939C7 /* PlaceViewController.swift */,
+				191A700720AFC41800D939C7 /* PlaceCell.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -363,6 +373,7 @@
 				19C54AB320A9A10B00717C6F /* MeetUpCell.swift */,
 				19C54AA620A988C400717C6F /* PopupMeetUpView.swift */,
 				19C54AAD20A99DDC00717C6F /* MyDetailViewController.swift */,
+				1964915420AF19F1003B0D9A /* MyDetailViewCells.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -413,7 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */,
-				19587FFC20767BF900FD3D01 /* NomadLastViewController.swift */,
 				196C4B012041497500C7BFAF /* MyPage.storyboard */,
 				191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */,
 				19A94FDB204EDD5C003A1D23 /* PopupMeetupViewtemp.swift */,
@@ -422,6 +432,7 @@
 				19A94FCC204EC1AE003A1D23 /* MyPageDetailInfoCell.xib */,
 				19A94FD3204EC1CE003A1D23 /* MyPageDetailMailCell.swift */,
 				19A94FD4204EC1CE003A1D23 /* MyPageDetailMailCell.xib */,
+				196E854620AFE3C0009257A5 /* EnrollmentViewController.swift */,
 			);
 			path = Deprecated;
 			sourceTree = "<group>";
@@ -446,6 +457,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		196E854820AFE6A1009257A5 /* Enroll */ = {
+			isa = PBXGroup;
+			children = (
+				191A700B20AFE37000D939C7 /* EnrollViewController.swift */,
+				196E854B20AFE733009257A5 /* EnrollCells.swift */,
+			);
+			path = Enroll;
+			sourceTree = "<group>";
+		};
 		19C54AAC20A99B8800717C6F /* Start */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,7 +475,7 @@
 				19A5780820622A6700240B87 /* PopupStartView.swift */,
 				198A4D2720614D6900A78E83 /* ResearchViewController.swift */,
 				198A4D2920614D7A00A78E83 /* ResearchResultViewController.swift */,
-				198D92CE206147B9001325DD /* EnrollmentViewController.swift */,
+				196E854820AFE6A1009257A5 /* Enroll */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -906,7 +926,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				198D92CF206147B9001325DD /* EnrollmentViewController.swift in Sources */,
+				196E854720AFE3C1009257A5 /* EnrollmentViewController.swift in Sources */,
 				194CD6DC20ABFA6900110AFD /* UIImage+.swift in Sources */,
 				196C4AF22041455500C7BFAF /* LoginViewController.swift in Sources */,
 				198A4D2A20614D7A00A78E83 /* ResearchResultViewController.swift in Sources */,
@@ -917,6 +937,7 @@
 				19A94FD5204EC1CE003A1D23 /* MyPageDetailMailCell.swift in Sources */,
 				1946CBBD20AE75C200A1A2BC /* WishYesterdayCell.swift in Sources */,
 				191DFEC1204EA9490095E9C1 /* MyPageDetailViewController.swift in Sources */,
+				1964915520AF19F1003B0D9A /* MyDetailViewCells.swift in Sources */,
 				198D92CD206144A7001325DD /* StartViewController.swift in Sources */,
 				19C54AA720A988C400717C6F /* PopupMeetUpView.swift in Sources */,
 				191DFECD204EACEE0095E9C1 /* MyPageMeetupView.swift in Sources */,
@@ -936,13 +957,16 @@
 				19A5780920622A6700240B87 /* PopupStartView.swift in Sources */,
 				1946CBB920AE500500A1A2BC /* GoalYesterdayCell.swift in Sources */,
 				191FD3FD20A8457B00918676 /* ParentViewController.swift in Sources */,
+				196E854C20AFE733009257A5 /* EnrollCells.swift in Sources */,
+				191A700C20AFE37000D939C7 /* EnrollViewController.swift in Sources */,
 				191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */,
 				19B9365F20A7DB4000FC826E /* UIFont+.swift in Sources */,
 				19B9366320A7E29C00FC826E /* GoalViewController.swift in Sources */,
 				19C54AB520A9A10B00717C6F /* MeetUpCell.swift in Sources */,
+				191A700620AFC40900D939C7 /* PlaceViewController.swift in Sources */,
 				194CD6E320AC4F5A00110AFD /* CardCell.swift in Sources */,
 				19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */,
-				19587FFD20767BF900FD3D01 /* NomadLastViewController.swift in Sources */,
+				191A700820AFC41800D939C7 /* PlaceCell.swift in Sources */,
 				19A94FDC204EDD5C003A1D23 /* PopupMeetupViewtemp.swift in Sources */,
 				198A4D2820614D6900A78E83 /* ResearchViewController.swift in Sources */,
 				19587FFB20766A4000FD3D01 /* ERProgressHud.swift in Sources */,

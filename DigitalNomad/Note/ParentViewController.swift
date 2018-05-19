@@ -65,8 +65,8 @@ class ParentViewController: UIViewController {
         let completedWishes = wishes.filter("status = true").count
         if entireGoals != completedGoals || entireWishes != completedWishes { return }
         let completeTime = Date().convertToTime()
-        self.goalViewController?.completeTimeLabel.text = completeTime
-        self.wishViewController?.completeTimeLabel.text = completeTime
+        self.goalViewController?.completeTimeLabel?.text = completeTime
+        self.wishViewController?.completeTimeLabel?.text = completeTime
         UserDefaults.standard.set(completeTime, forKey: "completeTime")
         guard let completeViewController = storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") else { return }
         completeViewController.modalTransitionStyle = .crossDissolve

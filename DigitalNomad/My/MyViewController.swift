@@ -63,9 +63,6 @@ class MyViewController: UIViewController {
         self.profileImageView.layer.shadowOffset = .zero
         self.profileImageView.layer.shadowOpacity = 1
         
-        //제스쳐 등록
-        self.profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchUpProfileImageView(_:))))
-        
         //밋업 카드 비동기 작업 시작
         self.activityIndicator.startAnimating()
         self.activityIndicatorLabel.isHidden = false
@@ -91,16 +88,6 @@ class MyViewController: UIViewController {
     }
     
     //MARK:- 사용자 정의 메소드
-    @objc func touchUpProfileImageView(_ gesture: UITapGestureRecognizer) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let controller = UIImagePickerController()
-            controller.delegate = self
-            controller.sourceType = .photoLibrary
-            controller.allowsEditing = true
-            self.present(controller, animated: true, completion: nil)
-        }
-    }
-    
     @IBAction func touchUpSettingButton(_ sender: UIButton) {
         guard let next = storyboard?.instantiateViewController(withIdentifier: "MyDetailViewController") as? MyDetailViewController else { return }
         self.navigationController?.pushViewController(next, animated: true)
@@ -259,35 +246,6 @@ extension MyViewController: FSPagerViewDataSource {
 //MARK:- 밋업 카드 관련 델리게이트 구현
 extension MyViewController: FSPagerViewDelegate {
     
-}
-
-//MARK:- 이미지 피커 컨트롤러 델리게이트 구현
-extension MyViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
-        self.profileImageView.image = image.circleMasked
-        guard let result = realm.objects(UserInfo.self).last else { return }
-        try! realm.write {
-            result.image = UIImagePNGRepresentation(image)!
-        }
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let imageName = "\(uid)\(Int(NSDate.timeIntervalSinceReferenceDate * 1000))"
-        let imageReference = Storage.storage().reference().child(imageName)
-        imageReference.putData(result.image, metadata: nil) { (metadata, error) in
-            if let error = error { print(error.localizedDescription) }
-            else {
-                if let downloadURL = metadata?.downloadURL() {
-                    Database.database().reference().child("users").child(uid).updateChildValues([
-                        "profileImage": String(describing: downloadURL)
-                        ])
-                }
-            }
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
 }
 
 //MARK:- 메일 보내기 델리게이트 구현

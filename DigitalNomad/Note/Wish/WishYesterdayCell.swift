@@ -9,11 +9,6 @@
 import UIKit
 
 class WishYesterdayCell: UITableViewCell {
-
     @IBOutlet var cardImageView: UIImageView!
     @IBOutlet var todoLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 }

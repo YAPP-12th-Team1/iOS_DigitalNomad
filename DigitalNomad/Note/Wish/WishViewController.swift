@@ -18,6 +18,8 @@ class WishViewController: UIViewController {
     @IBOutlet var upperViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var searchBar: UITextField!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var slideDownView: UIImageView!
+    @IBOutlet var slideDownLabel: UILabel!
     @IBOutlet var addView: UIView!
     @IBOutlet var addTodoButton: UIButton!
     @IBOutlet var hashtagButton: UIButton!
@@ -167,6 +169,8 @@ class WishViewController: UIViewController {
     @objc func panUpperView(_ gesture: UIPanGestureRecognizer) {
         func initialize() {
             self.upperViewHeightConstraint.constant = 98
+            self.slideDownView.alpha = 0
+            self.slideDownLabel.alpha = 0
         }
         switch gesture.state {
         case .changed:
@@ -174,6 +178,8 @@ class WishViewController: UIViewController {
             if y < 98 { return }
             self.upperViewHeightConstraint.constant = y
             let alpha: CGFloat = (y - 98) / 102
+            self.slideDownView.alpha = alpha
+            self.slideDownLabel.alpha = alpha
             if self.upperViewHeightConstraint.constant >= 200 {
                 guard let parent = self.parent as? ParentViewController else { return }
                 parent.switchViewController(from: parent.wishViewController, to: parent.goalViewController)
