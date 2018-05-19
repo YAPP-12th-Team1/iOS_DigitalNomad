@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AKPickerView_Swift
 
 class EnrollViewController: UIViewController {
 
@@ -27,6 +28,21 @@ class EnrollViewController: UIViewController {
     }
 }
 
+//MARK:- 수평 피커 뷰 데이터소스 구현
+extension EnrollViewController: AKPickerViewDataSource {
+    func numberOfItemsInPickerView(_ pickerView: AKPickerView) -> Int {
+        return 30
+    }
+    func pickerView(_ pickerView: AKPickerView, titleForItem item: Int) -> String {
+        return "\(item + 1)일"
+    }
+}
+
+//MARK:- 수평 피커 뷰 델리게이트 구현
+extension EnrollViewController: AKPickerViewDelegate {
+    
+}
+
 extension EnrollViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
@@ -35,6 +51,7 @@ extension EnrollViewController: UITableViewDataSource {
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as? DateCell else { return UITableViewCell() }
+            cell.pickerView.delegate = self
             return cell
         case 2:
             return UITableViewCell()
