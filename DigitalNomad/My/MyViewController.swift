@@ -58,10 +58,6 @@ class MyViewController: UIViewController {
         
         //프로필 이미지 뷰 초기화
         self.profileImageView.image = UIImage(data: (realm.objects(UserInfo.self).last?.image)!)?.circleMasked
-        self.profileImageView.layer.shadowColor = UIColor.black.cgColor
-        self.profileImageView.layer.shadowRadius = 3
-        self.profileImageView.layer.shadowOffset = .zero
-        self.profileImageView.layer.shadowOpacity = 1
         
         //밋업 카드 비동기 작업 시작
         self.activityIndicator.startAnimating()
