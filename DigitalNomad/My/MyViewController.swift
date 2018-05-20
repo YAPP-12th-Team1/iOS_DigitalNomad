@@ -217,7 +217,11 @@ extension MyViewController: PopupMeetUpViewDelegate {
         mail.setSubject("[유목민] Co-Working 신청")
         let imageData = UIImagePNGRepresentation(#imageLiteral(resourceName: "testImage.png")) ?? nil
         let imageString = imageData?.base64EncodedString() ?? ""
-        let body = "<html><body><p>반가워요! Co-working을 실천하고 싶어서 메일 드렸습니다.</p><p>-이 메일은 유목민 App에서 발송되었습니다.-</p><p><b><img src='data:image/png;base64,\(String(describing: imageString) )'></b></p></body></html>"
+        var body = ""
+        if let message = self.emailInfo?.context {
+            body += "\(message)\n\n\n"
+        }
+        body += "<html><body><p>반가워요! Co-working을 실천하고 싶어서 메일 드렸습니다.</p><p>-이 메일은 유목민 App에서 발송되었습니다.-</p><p><b><img src='data:image/png;base64,\(String(describing: imageString) )'></b></p></body></html>"
         mail.setMessageBody(body, isHTML: true)
         return mail
     }
@@ -228,7 +232,6 @@ extension MyViewController: FSPagerViewDataSource {
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         guard let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "meetUpCell", at: index) as? MeetUpCell else { return FSPagerViewCell() }
         cell.delegate = self
-        print(index)
         let data = self.meetupData[index]
         cell.profileImageView.image = data.image?.circleMasked ?? #imageLiteral(resourceName: "ProfileMeetupNone")
         cell.jobLabel.text = data.job

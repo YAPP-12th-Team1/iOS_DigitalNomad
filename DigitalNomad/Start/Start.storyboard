@@ -315,7 +315,7 @@
                                         <rect key="frame" x="0.0" y="455" width="328" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9aC-uI-frf" id="Cud-4G-J2B">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="직업" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wy-oE-5QY">
@@ -352,7 +352,7 @@
                                         <rect key="frame" x="0.0" y="505" width="328" height="154"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IkY-cO-FMf" id="9GK-aU-qVa">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="153.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SettingLine" translatesAutoresizingMaskIntoConstraints="NO" id="RrS-Fj-JUv">
@@ -370,8 +370,8 @@
                                                         <outlet property="delegate" destination="L1z-ml-q13" id="7Vk-PS-ty5"/>
                                                     </connections>
                                                 </textField>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="4" contentMode="scaleToFill" text="내용을 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OQV-Wh-j6e">
-                                                    <rect key="frame" x="16" y="59" width="295" height="83"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="4" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="내용을 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OQV-Wh-j6e">
+                                                    <rect key="frame" x="16" y="59" width="295" height="83.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>

@@ -192,7 +192,7 @@
                                     <constraint firstAttribute="width" secondItem="uzj-hg-OOH" secondAttribute="height" multiplier="125:29" id="sek-dw-YlR"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="장소, 주소, 버스 검색" clearsOnBeginEditing="YES" minimumFontSize="17" background="MapSearchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="iGv-Xc-PNP">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="장소, 주소, 버스 검색" minimumFontSize="17" background="MapSearchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="iGv-Xc-PNP">
                                 <rect key="frame" x="113" y="35" width="244" height="36"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

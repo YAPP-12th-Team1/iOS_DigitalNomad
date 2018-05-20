@@ -250,7 +250,7 @@
                                     <action selector="touchUpEditButton:" destination="vbI-Gl-9r9" eventType="touchUpInside" id="Lt3-bQ-Wvx"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vfw-nE-4Mk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vfw-nE-4Mk">
                                 <rect key="frame" x="20" y="297" width="335" height="350"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -377,7 +377,7 @@
                                                         <outlet property="delegate" destination="vbI-Gl-9r9" id="W8J-Lu-jMe"/>
                                                     </connections>
                                                 </textField>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="내용을 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gHJ-gs-cbK">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="내용을 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gHJ-gs-cbK">
                                                     <rect key="frame" x="20" y="59" width="295" height="84"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>

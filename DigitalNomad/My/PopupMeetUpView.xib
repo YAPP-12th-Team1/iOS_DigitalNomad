@@ -68,8 +68,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="저녁 식사하며 새로운 아이디어 얘기해요!" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STM-Jo-PTJ">
-                            <rect key="frame" x="93" y="68" width="178" height="34"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="제모크" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STM-Jo-PTJ">
+                            <rect key="frame" x="93" y="68" width="178" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -110,7 +110,6 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="ZV1-Qz-X5i" firstAttribute="top" secondItem="eZT-an-ZLT" secondAttribute="bottom" constant="8" id="1Ab-gy-5gb"/>
-                        <constraint firstItem="86S-rS-Rvu" firstAttribute="top" secondItem="STM-Jo-PTJ" secondAttribute="bottom" constant="21" id="4jY-gJ-bCT"/>
                         <constraint firstItem="86S-rS-Rvu" firstAttribute="leading" secondItem="Eb8-cd-ri8" secondAttribute="leading" id="5pm-Ud-PGc"/>
                         <constraint firstItem="GyB-pC-SE4" firstAttribute="trailing" secondItem="Eb8-cd-ri8" secondAttribute="trailing" id="8c4-cK-uGb"/>
                         <constraint firstAttribute="bottom" secondItem="86S-rS-Rvu" secondAttribute="bottom" id="8qt-Rs-15i"/>

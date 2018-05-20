@@ -48,7 +48,7 @@
                                     <constraint firstAttribute="width" secondItem="AeE-ic-dgb" secondAttribute="height" multiplier="3:1" id="ALC-oF-kF9"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" background="TopSearchRed" translatesAutoresizingMaskIntoConstraints="NO" id="Wav-T7-B6C">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="TopSearchRed" translatesAutoresizingMaskIntoConstraints="NO" id="Wav-T7-B6C">
                                 <rect key="frame" x="113" y="31.5" width="244" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Wav-T7-B6C" secondAttribute="height" multiplier="244:35" id="LIk-TW-PQU"/>
@@ -343,7 +343,7 @@
                                     <constraint firstAttribute="width" secondItem="UVb-96-EJH" secondAttribute="height" multiplier="3:1" id="nLh-U7-3zA"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" background="TopSearchBlue" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-7G-t9b">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="TopSearchBlue" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-7G-t9b">
                                 <rect key="frame" x="113" y="31.5" width="244" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="L3G-7G-t9b" secondAttribute="height" multiplier="244:35" id="l86-mW-8qW"/>

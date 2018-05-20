@@ -131,7 +131,12 @@ extension MyDetailViewController: UITextFieldDelegate {
 
 //MARK:- 텍스트 뷰 델리게이트 구현
 extension MyDetailViewController: UITextViewDelegate {
-    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        try! realm.write {
+            self.emailInfo.context = textView.text
+        }
+        updateFirebaseEmail(key: "context", value: textView.text)
+    }
 }
 
 //MARK- 코워킹 셀 커스텀 델리게이트 구현
@@ -200,6 +205,8 @@ extension MyDetailViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "section3Cell", for: indexPath) as? Section3Cell else { return UITableViewCell() }
             cell.titleTextField.tag = 3
             cell.contentTextView.tag = 4
+            cell.titleTextField.text = self.emailInfo.title
+            cell.contentTextView.text = self.emailInfo.context
             return cell
         default:
             return UITableViewCell()

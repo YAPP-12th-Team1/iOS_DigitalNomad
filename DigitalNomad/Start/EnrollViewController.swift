@@ -122,7 +122,7 @@ extension EnrollViewController: UITextViewDelegate {
         }
         return true
     }
-    func textViewDidChange(_ textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         self.enrollInfo.emailContent = textView.text
         self.validateEnrollButton()
     }
