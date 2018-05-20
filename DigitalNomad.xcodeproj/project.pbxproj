@@ -73,7 +73,6 @@
 		19C54AB620A9A10B00717C6F /* MeetUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C54AB420A9A10B00717C6F /* MeetUpCell.xib */; };
 		19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19E63EE020416D4D003D3155 /* GoogleService-Info.plist */; };
 		19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */; };
-		19EC009620B04EF700A4B260 /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC009520B04EF700A4B260 /* NSLayoutConstraint+.swift */; };
 		19EF0FE820A960200013DCF9 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19EF0FE720A960200013DCF9 /* My.storyboard */; };
 		19EF0FEA20A960C70013DCF9 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EF0FE920A960C70013DCF9 /* MyViewController.swift */; };
 		19F2CDE12041419C00CB113B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2CDE02041419C00CB113B /* AppDelegate.swift */; };
@@ -230,7 +229,6 @@
 		19C54AB420A9A10B00717C6F /* MeetUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetUpCell.xib; sourceTree = "<group>"; };
 		19E63EE020416D4D003D3155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationInfo.swift; sourceTree = "<group>"; };
-		19EC009520B04EF700A4B260 /* NSLayoutConstraint+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+.swift"; sourceTree = "<group>"; };
 		19EF0FE720A960200013DCF9 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
 		19EF0FE920A960C70013DCF9 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		19F2CDDD2041419B00CB113B /* DigitalNomad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalNomad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,8 +345,6 @@
 			isa = PBXGroup;
 			children = (
 				196C4AF92041493600C7BFAF /* Map.storyboard */,
-				196C4AE7204144DF00C7BFAF /* MapViewController.swift */,
-				6B634A40204EF73300A59EEF /* MapCell.swift */,
 				191A700520AFC40900D939C7 /* PlaceViewController.swift */,
 				191A700720AFC41800D939C7 /* PlaceCell.swift */,
 			);
@@ -427,6 +423,8 @@
 		19362B7620A9C7E100419425 /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
+				196C4AE7204144DF00C7BFAF /* MapViewController.swift */,
+				6B634A40204EF73300A59EEF /* MapCell.swift */,
 				191DFEBE204EA93B0095E9C1 /* NomadViewController.swift */,
 				196C4B012041497500C7BFAF /* MyPage.storyboard */,
 				191DFEC0204EA9490095E9C1 /* MyPageDetailViewController.swift */,
@@ -448,7 +446,6 @@
 				19B9365C20A7DB1800FC826E /* UIColor+.swift */,
 				19B9365E20A7DB4000FC826E /* UIFont+.swift */,
 				194CD6DB20ABFA6900110AFD /* UIImage+.swift */,
-				19EC009520B04EF700A4B260 /* NSLayoutConstraint+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -935,7 +932,6 @@
 				19A94FD5204EC1CE003A1D23 /* MyPageDetailMailCell.swift in Sources */,
 				1946CBBD20AE75C200A1A2BC /* WishYesterdayCell.swift in Sources */,
 				191DFEC1204EA9490095E9C1 /* MyPageDetailViewController.swift in Sources */,
-				19EC009620B04EF700A4B260 /* NSLayoutConstraint+.swift in Sources */,
 				1964915520AF19F1003B0D9A /* MyDetailViewCells.swift in Sources */,
 				198D92CD206144A7001325DD /* StartViewController.swift in Sources */,
 				19C54AA720A988C400717C6F /* PopupMeetUpView.swift in Sources */,

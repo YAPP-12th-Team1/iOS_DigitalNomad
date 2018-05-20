@@ -166,6 +166,10 @@ class MyViewController: UIViewController {
 //MARK:- 밋업 셀 커스텀 델리게이트 구현
 extension MyViewController: MeetUpCellDelegate {
     func touchUpMeetupButton() {
+        if !(userInfo?.cowork)! {
+            Toast(text: "코워킹 공개를 허용해 주세요.", delay: 0, duration: Delay.short).show()
+            return
+        }
         let currentIndex = self.pagerView.currentIndex
         guard let cell = pagerView(self.pagerView, cellForItemAt: currentIndex) as? MeetUpCell else { return }
         popup = PopupMeetUpView.instanceFromXib() as? PopupMeetUpView ?? nil

@@ -261,7 +261,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWO-an-pMU">
-                                                    <rect key="frame" x="31" y="90" width="117" height="45"/>
+                                                    <rect key="frame" x="31" y="90" width="117.5" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="oWO-an-pMU" secondAttribute="height" multiplier="13:5" id="O3a-Ih-eAR"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <state key="normal" title="예" backgroundImage="EnrollConnectOff">
                                                         <color key="titleColor" red="0.99607843137254903" green="0.49803921568627452" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -275,6 +278,9 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hab-Ra-G1B">
                                                     <rect key="frame" x="180" y="90" width="117" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="hab-Ra-G1B" secondAttribute="height" multiplier="13:5" id="heR-8p-uOo"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <state key="normal" title="아니오" backgroundImage="EnrollConnectOff">
                                                         <color key="titleColor" red="0.99607843139999996" green="0.49803921569999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -290,7 +296,9 @@
                                             <constraints>
                                                 <constraint firstItem="MpG-Fe-3l6" firstAttribute="centerX" secondItem="fdG-dg-P59" secondAttribute="centerX" id="9j8-qg-ah4"/>
                                                 <constraint firstAttribute="bottom" secondItem="oWO-an-pMU" secondAttribute="bottom" constant="16" id="Iv6-hI-DzA"/>
+                                                <constraint firstItem="oWO-an-pMU" firstAttribute="width" secondItem="fdG-dg-P59" secondAttribute="width" multiplier="0.358895" id="MZs-jK-F23"/>
                                                 <constraint firstItem="dQ2-m2-HDr" firstAttribute="top" secondItem="fdG-dg-P59" secondAttribute="top" constant="17" id="Qng-Aj-kR4"/>
+                                                <constraint firstItem="hab-Ra-G1B" firstAttribute="width" secondItem="oWO-an-pMU" secondAttribute="width" id="XOL-BV-dce"/>
                                                 <constraint firstItem="MpG-Fe-3l6" firstAttribute="top" secondItem="dQ2-m2-HDr" secondAttribute="bottom" constant="17" id="YXD-5a-tBB"/>
                                                 <constraint firstAttribute="bottom" secondItem="hab-Ra-G1B" secondAttribute="bottom" constant="16" id="YeR-2Y-PkO"/>
                                                 <constraint firstItem="dQ2-m2-HDr" firstAttribute="centerX" secondItem="fdG-dg-P59" secondAttribute="centerX" id="c6H-HO-TwX"/>
@@ -554,7 +562,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aNo-IF-LXz">
-                                <rect key="frame" x="56" y="509" width="263" height="116"/>
+                                <rect key="frame" x="56" y="511" width="263" height="116"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fQ-6M-YYP">
                                         <rect key="frame" x="0.0" y="0.0" width="263" height="48"/>
@@ -584,9 +592,9 @@
                             <constraint firstItem="oxd-yb-ngd" firstAttribute="leading" secondItem="wzg-Gn-6zL" secondAttribute="leading" constant="66" id="2Sp-Vr-r3A"/>
                             <constraint firstItem="QHy-wN-v1C" firstAttribute="top" secondItem="tB1-Ed-TUm" secondAttribute="top" constant="39" id="2ga-4G-HV6"/>
                             <constraint firstItem="wzg-Gn-6zL" firstAttribute="trailing" secondItem="QHy-wN-v1C" secondAttribute="trailing" constant="24" id="Af8-QM-R7N"/>
+                            <constraint firstItem="aNo-IF-LXz" firstAttribute="bottom" secondItem="tB1-Ed-TUm" secondAttribute="bottom" multiplier="0.94" id="Jnu-RW-XG0"/>
                             <constraint firstItem="oxd-yb-ngd" firstAttribute="centerY" secondItem="tB1-Ed-TUm" secondAttribute="centerY" id="LNo-1T-Gbb"/>
                             <constraint firstItem="oxd-yb-ngd" firstAttribute="centerX" secondItem="tB1-Ed-TUm" secondAttribute="centerX" id="N38-le-vTE"/>
-                            <constraint firstItem="aNo-IF-LXz" firstAttribute="top" secondItem="oxd-yb-ngd" secondAttribute="bottom" constant="53" id="NRk-aA-cbP"/>
                             <constraint firstItem="aNo-IF-LXz" firstAttribute="centerX" secondItem="tB1-Ed-TUm" secondAttribute="centerX" id="Tr0-o5-alN"/>
                             <constraint firstItem="oxd-yb-ngd" firstAttribute="top" secondItem="w2A-n6-Adi" secondAttribute="bottom" constant="34" id="fcE-Dq-62g"/>
                             <constraint firstItem="wzg-Gn-6zL" firstAttribute="trailing" secondItem="oxd-yb-ngd" secondAttribute="trailing" constant="65" id="jzj-N2-hcZ"/>

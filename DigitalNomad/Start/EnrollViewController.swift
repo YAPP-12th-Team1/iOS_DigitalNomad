@@ -38,6 +38,8 @@ class EnrollViewController: UIViewController {
         addProject(self.enrollInfo.days!)
         if self.enrollInfo.isCoworking! {
             addEmail(self.enrollInfo.emailTitle!, self.enrollInfo.emailContent!)
+        } else {
+            addEmail("", "")
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let next = storyboard.instantiateViewController(withIdentifier: "TabBarController")
@@ -110,7 +112,6 @@ extension EnrollViewController: UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         inputTextFieldInfo(textField)
-        textField.endEditing(true)
     }
 }
 

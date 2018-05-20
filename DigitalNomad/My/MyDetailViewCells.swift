@@ -19,7 +19,7 @@ class Section1Cell: UITableViewCell {
 }
 
 protocol Section2CoworkingCellDelegate {
-    func changeCoworkingSwitchValue()
+    func changeCoworkingSwitchValue(_ sender: UISwitch)
 }
 
 class Section2CoworkingCell: UITableViewCell {
@@ -32,7 +32,7 @@ class Section2CoworkingCell: UITableViewCell {
     }
     
     @IBAction func changeCoworkingSwitchValue(_ sender: UISwitch) {
-        delegate?.changeCoworkingSwitchValue()
+        delegate?.changeCoworkingSwitchValue(sender)
     }
 }
 
