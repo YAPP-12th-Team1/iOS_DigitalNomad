@@ -342,7 +342,7 @@ extension WishViewController: UICollectionViewDataSource {
         if collectionView.tag == 0 {
             return self.todayObject.count == 0 ? 0 : self.todayObject.count + 1
         } else {
-            return 8
+            return 27
         }
         
     }
@@ -374,14 +374,15 @@ extension WishViewController: UICollectionViewDelegate {
             alert.addAction(yesAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            let item = collectionView.cellForItem(at: indexPath)
-            item?.backgroundColor = UIColor.gray
+            let item = collectionView.cellForItem(at: indexPath) as! CardCell
+            item.backgroundImageView.layer.borderWidth = 2
+            item.backgroundImageView.layer.borderColor = UIColor.black.cgColor
         }
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView.tag == 1 {
-            let item = collectionView.cellForItem(at: indexPath)
-            item?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            let item = collectionView.cellForItem(at: indexPath) as! CardCell
+            item.backgroundImageView.layer.borderWidth = 0
         }
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

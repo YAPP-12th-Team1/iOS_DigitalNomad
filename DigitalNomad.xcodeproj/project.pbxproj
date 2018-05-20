@@ -34,6 +34,7 @@
 		194CD6E420AC4F5A00110AFD /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 194CD6E220AC4F5A00110AFD /* CardCell.xib */; };
 		195628B620701352004B3AF7 /* culture(3)_511111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE49206FECF10081332B /* culture(3)_511111.jpg */; };
 		19587FFB20766A4000FD3D01 /* ERProgressHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19587FFA20766A4000FD3D01 /* ERProgressHud.swift */; };
+		195D639320B1122C005FB9FF /* EnrollInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D639220B1122C005FB9FF /* EnrollInfo.swift */; };
 		1964915520AF19F1003B0D9A /* MyDetailViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1964915420AF19F1003B0D9A /* MyDetailViewCells.swift */; };
 		196C4AE42041440100C7BFAF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196C4AE32041440100C7BFAF /* Login.storyboard */; };
 		196C4AE8204144DF00C7BFAF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C4AE7204144DF00C7BFAF /* MapViewController.swift */; };
@@ -188,6 +189,7 @@
 		194CD6E120AC4F5A00110AFD /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		194CD6E220AC4F5A00110AFD /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		19587FFA20766A4000FD3D01 /* ERProgressHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERProgressHud.swift; sourceTree = "<group>"; };
+		195D639220B1122C005FB9FF /* EnrollInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollInfo.swift; sourceTree = "<group>"; };
 		1964915420AF19F1003B0D9A /* MyDetailViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailViewCells.swift; sourceTree = "<group>"; };
 		196C4AE32041440100C7BFAF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		196C4AE7204144DF00C7BFAF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -460,15 +462,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		196E854820AFE6A1009257A5 /* Enroll */ = {
-			isa = PBXGroup;
-			children = (
-				191A700B20AFE37000D939C7 /* EnrollViewController.swift */,
-				196E854B20AFE733009257A5 /* EnrollCells.swift */,
-			);
-			path = Enroll;
-			sourceTree = "<group>";
-		};
 		19C54AAC20A99B8800717C6F /* Start */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,7 +471,8 @@
 				19A5780820622A6700240B87 /* PopupStartView.swift */,
 				198A4D2720614D6900A78E83 /* ResearchViewController.swift */,
 				198A4D2920614D7A00A78E83 /* ResearchResultViewController.swift */,
-				196E854820AFE6A1009257A5 /* Enroll */,
+				191A700B20AFE37000D939C7 /* EnrollViewController.swift */,
+				196E854B20AFE733009257A5 /* EnrollCells.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -533,6 +527,7 @@
 				199A930C2058E58B007509A1 /* ProjectInfo.swift */,
 				199A93142058E5AF007509A1 /* GoalListInfo.swift */,
 				199A93162058E5B8007509A1 /* WishListInfo.swift */,
+				195D639220B1122C005FB9FF /* EnrollInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -964,6 +959,7 @@
 				196E854C20AFE733009257A5 /* EnrollCells.swift in Sources */,
 				191A700C20AFE37000D939C7 /* EnrollViewController.swift in Sources */,
 				191DFEBF204EA93B0095E9C1 /* NomadViewController.swift in Sources */,
+				195D639320B1122C005FB9FF /* EnrollInfo.swift in Sources */,
 				19B9365F20A7DB4000FC826E /* UIFont+.swift in Sources */,
 				19B9366320A7E29C00FC826E /* GoalViewController.swift in Sources */,
 				19C54AB520A9A10B00717C6F /* MeetUpCell.swift in Sources */,

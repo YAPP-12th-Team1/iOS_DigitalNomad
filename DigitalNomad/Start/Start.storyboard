@@ -157,11 +157,14 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location" translatesAutoresizingMaskIntoConstraints="NO" id="eef-ro-Iqr">
                                                     <rect key="frame" x="156" y="17" width="17" height="23"/>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="강원도 강릉시" placeholder="유목지" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lpl-xr-mIy">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="유목지" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lpl-xr-mIy">
                                                     <rect key="frame" x="15" y="54" width="298" height="20"/>
                                                     <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="L1z-ml-q13" id="tg8-XU-qaC"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -173,7 +176,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="locationLabel" destination="Lpl-xr-mIy" id="Nt7-Id-uNh"/>
+                                            <outlet property="locationTextField" destination="Lpl-xr-mIy" id="Nt7-Id-uNh"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCell" rowHeight="89" id="G3y-zA-YHX" customClass="DateCell" customModule="DigitalNomad" customModuleProvider="target">
@@ -216,7 +219,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Goal" translatesAutoresizingMaskIntoConstraints="NO" id="XGN-Wb-81a">
                                                     <rect key="frame" x="155" y="17" width="19" height="26"/>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#나의_유목_목적은?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QoB-wQ-zsV">
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#나의_유목_목적은?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QoB-wQ-zsV">
                                                     <rect key="frame" x="15" y="59" width="298" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="9lI-fE-KJY"/>
@@ -224,6 +227,9 @@
                                                     <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="L1z-ml-q13" id="tc3-ba-iIK"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -255,20 +261,26 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWO-an-pMU">
-                                                    <rect key="frame" x="46" y="92" width="30" height="32"/>
+                                                    <rect key="frame" x="31" y="90" width="117" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                    <state key="normal" title="예">
+                                                    <state key="normal" title="예" backgroundImage="EnrollConnectOff">
                                                         <color key="titleColor" red="0.99607843137254903" green="0.49803921568627452" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <state key="selected" backgroundImage="EnrollConnectOn">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="touchUpYesButton:" destination="1d0-Ht-UJC" eventType="touchUpInside" id="R5O-3i-HBQ"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hab-Ra-G1B">
-                                                    <rect key="frame" x="239" y="92" width="42" height="32"/>
+                                                    <rect key="frame" x="180" y="90" width="117" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                    <state key="normal" title="아니오">
+                                                    <state key="normal" title="아니오" backgroundImage="EnrollConnectOff">
                                                         <color key="titleColor" red="0.99607843139999996" green="0.49803921569999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <state key="selected" backgroundImage="EnrollConnectOn">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="touchUpNoButton:" destination="1d0-Ht-UJC" eventType="touchUpInside" id="hzF-k2-NuX"/>
@@ -276,19 +288,108 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hab-Ra-G1B" secondAttribute="trailing" constant="32" id="7g2-tR-PSi"/>
                                                 <constraint firstItem="MpG-Fe-3l6" firstAttribute="centerX" secondItem="fdG-dg-P59" secondAttribute="centerX" id="9j8-qg-ah4"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="oWO-an-pMU" secondAttribute="bottom" constant="16" id="OQw-gr-J8Z"/>
+                                                <constraint firstAttribute="bottom" secondItem="oWO-an-pMU" secondAttribute="bottom" constant="16" id="Iv6-hI-DzA"/>
                                                 <constraint firstItem="dQ2-m2-HDr" firstAttribute="top" secondItem="fdG-dg-P59" secondAttribute="top" constant="17" id="Qng-Aj-kR4"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="hab-Ra-G1B" secondAttribute="bottom" constant="16" id="U55-8W-DwP"/>
                                                 <constraint firstItem="MpG-Fe-3l6" firstAttribute="top" secondItem="dQ2-m2-HDr" secondAttribute="bottom" constant="17" id="YXD-5a-tBB"/>
+                                                <constraint firstAttribute="bottom" secondItem="hab-Ra-G1B" secondAttribute="bottom" constant="16" id="YeR-2Y-PkO"/>
                                                 <constraint firstItem="dQ2-m2-HDr" firstAttribute="centerX" secondItem="fdG-dg-P59" secondAttribute="centerX" id="c6H-HO-TwX"/>
-                                                <constraint firstItem="oWO-an-pMU" firstAttribute="leading" secondItem="fdG-dg-P59" secondAttribute="leadingMargin" constant="31" id="mUz-AR-a5u"/>
+                                                <constraint firstAttribute="trailing" secondItem="hab-Ra-G1B" secondAttribute="trailing" constant="31" id="qhm-Lb-JcL"/>
+                                                <constraint firstItem="oWO-an-pMU" firstAttribute="leading" secondItem="fdG-dg-P59" secondAttribute="leading" constant="31" id="unX-ZW-k4o"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="noButton" destination="hab-Ra-G1B" id="Plh-wS-s2v"/>
                                             <outlet property="yesButton" destination="oWO-an-pMU" id="JIQ-E8-9wH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="coworkingCell" rowHeight="50" id="9aC-uI-frf" customClass="CoworkingCell" customModule="DigitalNomad" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="455" width="328" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9aC-uI-frf" id="Cud-4G-J2B">
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="직업" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wy-oE-5QY">
+                                                    <rect key="frame" x="20" y="15.5" width="28" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="......" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a12-jT-xHy">
+                                                    <rect key="frame" x="56" y="8" width="252" height="33.5"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="L1z-ml-q13" id="bH2-Wk-4BO"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2wy-oE-5QY" firstAttribute="centerY" secondItem="Cud-4G-J2B" secondAttribute="centerY" id="4kV-lI-O9G"/>
+                                                <constraint firstItem="a12-jT-xHy" firstAttribute="bottom" secondItem="Cud-4G-J2B" secondAttribute="bottomMargin" id="Hhd-vh-Clf"/>
+                                                <constraint firstItem="a12-jT-xHy" firstAttribute="top" secondItem="Cud-4G-J2B" secondAttribute="topMargin" id="RRZ-Do-GjN"/>
+                                                <constraint firstAttribute="trailing" secondItem="a12-jT-xHy" secondAttribute="trailing" constant="20" id="s4L-4A-WKy"/>
+                                                <constraint firstItem="a12-jT-xHy" firstAttribute="leading" secondItem="2wy-oE-5QY" secondAttribute="trailing" constant="8" id="wk6-G5-A0l"/>
+                                                <constraint firstItem="2wy-oE-5QY" firstAttribute="leading" secondItem="Cud-4G-J2B" secondAttribute="leading" constant="20" id="zAb-kQ-gMN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentTextField" destination="a12-jT-xHy" id="3m7-HD-wOa"/>
+                                            <outlet property="titleLabel" destination="2wy-oE-5QY" id="lSK-Id-Shz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="emailCell" rowHeight="154" id="IkY-cO-FMf" customClass="EmailCell" customModule="DigitalNomad" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="505" width="328" height="154"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IkY-cO-FMf" id="9GK-aU-qVa">
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="154"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SettingLine" translatesAutoresizingMaskIntoConstraints="NO" id="RrS-Fj-JUv">
+                                                    <rect key="frame" x="16" y="49" width="295" height="2"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="2" id="u6A-j8-wrV"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nZH-83-sPJ">
+                                                    <rect key="frame" x="16" y="8" width="295" height="41"/>
+                                                    <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="L1z-ml-q13" id="7Vk-PS-ty5"/>
+                                                    </connections>
+                                                </textField>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="4" contentMode="scaleToFill" text="내용을 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OQV-Wh-j6e">
+                                                    <rect key="frame" x="16" y="59" width="295" height="83"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="L1z-ml-q13" id="hkF-xe-pBx"/>
+                                                    </connections>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OQV-Wh-j6e" secondAttribute="bottom" constant="3" id="SfJ-Go-OXA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="RrS-Fj-JUv" secondAttribute="trailing" constant="9" id="TNA-y2-8pf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OQV-Wh-j6e" secondAttribute="trailing" constant="9" id="anC-s8-vqn"/>
+                                                <constraint firstItem="OQV-Wh-j6e" firstAttribute="top" secondItem="RrS-Fj-JUv" secondAttribute="bottom" constant="8" id="f33-B9-cpd"/>
+                                                <constraint firstItem="nZH-83-sPJ" firstAttribute="top" secondItem="9GK-aU-qVa" secondAttribute="topMargin" id="gG7-Ya-h5g"/>
+                                                <constraint firstItem="RrS-Fj-JUv" firstAttribute="leading" secondItem="9GK-aU-qVa" secondAttribute="leadingMargin" constant="8" id="hgR-T2-Eha"/>
+                                                <constraint firstItem="RrS-Fj-JUv" firstAttribute="top" secondItem="9GK-aU-qVa" secondAttribute="topMargin" constant="41" id="jKl-61-827"/>
+                                                <constraint firstItem="RrS-Fj-JUv" firstAttribute="top" secondItem="nZH-83-sPJ" secondAttribute="bottom" id="n4D-mK-5qY"/>
+                                                <constraint firstItem="nZH-83-sPJ" firstAttribute="leading" secondItem="9GK-aU-qVa" secondAttribute="leadingMargin" constant="8" id="qOU-SY-cW5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nZH-83-sPJ" secondAttribute="trailing" constant="9" id="qgA-Aj-6ZA"/>
+                                                <constraint firstItem="OQV-Wh-j6e" firstAttribute="leading" secondItem="9GK-aU-qVa" secondAttribute="leadingMargin" constant="8" id="z7w-PV-Avi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentTextView" destination="OQV-Wh-j6e" id="vtZ-b5-KC7"/>
+                                            <outlet property="titleTextField" destination="nZH-83-sPJ" id="FS7-pJ-qQX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -508,12 +609,15 @@
         <image name="CircleRed" width="62" height="62"/>
         <image name="Connect" width="27" height="23"/>
         <image name="Date" width="22" height="19"/>
+        <image name="EnrollConnectOff" width="117" height="45"/>
+        <image name="EnrollConnectOn" width="117" height="45"/>
         <image name="EnrollTop" width="249" height="117"/>
         <image name="Goal" width="19" height="26"/>
         <image name="Heart" width="28" height="25"/>
         <image name="Location" width="17" height="23"/>
         <image name="Next" width="15" height="24"/>
         <image name="Refresh" width="27" height="24"/>
+        <image name="SettingLine" width="288" height="2"/>
         <image name="StartBackground" width="375" height="667"/>
         <image name="StartNoBackground" width="263" height="48"/>
         <image name="StartYesBackground" width="263" height="48"/>

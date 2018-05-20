@@ -11,8 +11,10 @@ import UIKit
 class CardCell: UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var backgroundImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundImageView.layer.cornerRadius = self.backgroundImageView.frame.height / 2
     }
 }

@@ -19,21 +19,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9hH-Ih-NnT">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card" translatesAutoresizingMaskIntoConstraints="NO" id="4Qg-qk-MVX">
                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9hH-Ih-NnT">
+                        <rect key="frame" x="8" y="8" width="24" height="24"/>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="9hH-Ih-NnT" secondAttribute="bottom" id="D82-1X-drn"/>
-                <constraint firstItem="9hH-Ih-NnT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="M1w-Pg-r7w"/>
-                <constraint firstAttribute="trailing" secondItem="9hH-Ih-NnT" secondAttribute="trailing" id="Q68-Xr-Oed"/>
-                <constraint firstItem="9hH-Ih-NnT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xyg-Ao-yKM"/>
+                <constraint firstItem="9hH-Ih-NnT" firstAttribute="bottom" secondItem="4Qg-qk-MVX" secondAttribute="bottom" constant="-8" id="AWj-dS-ZNX"/>
+                <constraint firstAttribute="bottom" secondItem="4Qg-qk-MVX" secondAttribute="bottom" id="CTL-wO-FRC"/>
+                <constraint firstAttribute="trailing" secondItem="4Qg-qk-MVX" secondAttribute="trailing" id="EqP-lc-fha"/>
+                <constraint firstItem="9hH-Ih-NnT" firstAttribute="trailing" secondItem="4Qg-qk-MVX" secondAttribute="trailing" constant="-8" id="GyT-gO-cTn"/>
+                <constraint firstItem="4Qg-qk-MVX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="P7b-Ba-OI7"/>
+                <constraint firstItem="9hH-Ih-NnT" firstAttribute="leading" secondItem="4Qg-qk-MVX" secondAttribute="leading" constant="8" id="bNO-3d-E4b"/>
+                <constraint firstItem="4Qg-qk-MVX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="k86-gx-ypZ"/>
+                <constraint firstItem="9hH-Ih-NnT" firstAttribute="top" secondItem="4Qg-qk-MVX" secondAttribute="top" constant="8" id="kBF-Y7-fiD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="backgroundImageView" destination="4Qg-qk-MVX" id="LnB-5b-6pz"/>
                 <outlet property="imageView" destination="9hH-Ih-NnT" id="OSe-6n-R8w"/>
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Card" width="66" height="66"/>
+    </resources>
 </document>

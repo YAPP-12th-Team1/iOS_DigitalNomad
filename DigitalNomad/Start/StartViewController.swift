@@ -47,7 +47,7 @@ extension StartViewController: PopupStartViewDelegate {
     func touchUpRecommendButton() {
         self.popup.removeFromSuperview()
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "EnrollViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "ResearchViewController")
         self.present(controller, animated: true, completion: nil)
     }
 }
