@@ -203,7 +203,7 @@
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BIO-fR-zog">
                                 <rect key="frame" x="0.0" y="87" width="375" height="375"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BIO-fR-zog" secondAttribute="height" multiplier="1:1" id="70p-j0-0Mc"/>
                                 </constraints>
@@ -294,24 +294,24 @@
                         <constraints>
                             <constraint firstItem="nrE-I3-3kY" firstAttribute="leading" secondItem="Axz-b4-hom" secondAttribute="leading" constant="18" id="2VB-nY-356"/>
                             <constraint firstItem="BIO-fR-zog" firstAttribute="leading" secondItem="Axz-b4-hom" secondAttribute="leading" id="3Tf-CV-CdQ"/>
-                            <constraint firstItem="1zs-qk-Bee" firstAttribute="leading" secondItem="Axz-b4-hom" secondAttribute="leading" id="9NI-Ea-7EG"/>
-                            <constraint firstItem="Axz-b4-hom" firstAttribute="trailing" secondItem="1zs-qk-Bee" secondAttribute="trailing" id="BPY-NW-ITk"/>
                             <constraint firstItem="Axz-b4-hom" firstAttribute="trailing" secondItem="BIO-fR-zog" secondAttribute="trailing" id="FOK-mZ-hQd"/>
+                            <constraint firstItem="1zs-qk-Bee" firstAttribute="trailing" secondItem="Axz-b4-hom" secondAttribute="trailing" id="FYr-Ap-85B"/>
                             <constraint firstItem="nrE-I3-3kY" firstAttribute="height" secondItem="uzj-hg-OOH" secondAttribute="height" multiplier="0.416666" id="LDP-Tg-Bpy"/>
                             <constraint firstItem="iGv-Xc-PNP" firstAttribute="bottom" secondItem="nrE-I3-3kY" secondAttribute="bottom" id="MFL-MG-zbc"/>
+                            <constraint firstItem="Axz-b4-hom" firstAttribute="bottom" secondItem="1zs-qk-Bee" secondAttribute="bottom" constant="49" id="Sbt-m2-YVJ"/>
                             <constraint firstItem="Xhm-Xv-fgJ" firstAttribute="centerY" secondItem="iGv-Xc-PNP" secondAttribute="centerY" id="Sn3-Tk-3y6"/>
                             <constraint firstItem="Axz-b4-hom" firstAttribute="trailing" secondItem="iGv-Xc-PNP" secondAttribute="trailing" constant="18" id="Y3W-Bj-7KG"/>
                             <constraint firstItem="Xhm-Xv-fgJ" firstAttribute="trailing" secondItem="iGv-Xc-PNP" secondAttribute="trailing" constant="-10" id="aQl-uW-sbF"/>
-                            <constraint firstItem="1zs-qk-Bee" firstAttribute="top" secondItem="BIO-fR-zog" secondAttribute="bottom" id="atL-aE-1if"/>
                             <constraint firstItem="iGv-Xc-PNP" firstAttribute="leading" secondItem="nrE-I3-3kY" secondAttribute="trailing" constant="10" id="gne-6A-Ve2"/>
                             <constraint firstItem="nrE-I3-3kY" firstAttribute="bottom" secondItem="uzj-hg-OOH" secondAttribute="bottom" multiplier="0.815" id="hdS-P9-5k5"/>
                             <constraint firstItem="uzj-hg-OOH" firstAttribute="leading" secondItem="Axz-b4-hom" secondAttribute="leading" id="k2Q-ja-NJq"/>
                             <constraint firstItem="uzj-hg-OOH" firstAttribute="top" secondItem="chB-lq-Okx" secondAttribute="top" id="lpx-56-UaX"/>
+                            <constraint firstItem="1zs-qk-Bee" firstAttribute="top" secondItem="BIO-fR-zog" secondAttribute="bottom" id="mzB-ng-4gm"/>
                             <constraint firstItem="BIO-fR-zog" firstAttribute="top" secondItem="uzj-hg-OOH" secondAttribute="bottom" id="p0h-xZ-nTc"/>
+                            <constraint firstItem="1zs-qk-Bee" firstAttribute="leading" secondItem="Axz-b4-hom" secondAttribute="leading" id="qP6-xt-wA5"/>
                             <constraint firstItem="uzj-hg-OOH" firstAttribute="trailing" secondItem="Axz-b4-hom" secondAttribute="trailing" id="tjV-BR-DEC"/>
                             <constraint firstItem="nrE-I3-3kY" firstAttribute="width" secondItem="uzj-hg-OOH" secondAttribute="width" multiplier="0.226666" id="u8h-OA-0JB"/>
                             <constraint firstItem="iGv-Xc-PNP" firstAttribute="top" secondItem="nrE-I3-3kY" secondAttribute="top" id="ycm-AW-CYC"/>
-                            <constraint firstAttribute="bottom" secondItem="1zs-qk-Bee" secondAttribute="bottom" constant="49" id="yjJ-M4-8IX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Axz-b4-hom"/>
                     </view>

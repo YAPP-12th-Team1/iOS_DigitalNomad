@@ -24,7 +24,7 @@ class ProjectInfo: Object{
     }
 }
 
-func addProject(_ day: Int = 5){
+func addProject(_ day: Int){
     let realm = try! Realm()
     let object = ProjectInfo()
     object.id = object.incrementId()

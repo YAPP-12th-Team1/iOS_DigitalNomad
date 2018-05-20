@@ -34,11 +34,12 @@ class EnrollViewController: UIViewController {
     
     @objc func touchUpEnrollButton(_ sender: UIButton) {
         //개인정보 저장, 파이어베이스 업로드
-        addUser(self.enrollInfo.address!, self.enrollInfo.days!, self.enrollInfo.purpose!)
         addProject(self.enrollInfo.days!)
         if self.enrollInfo.isCoworking! {
+            addUser(address: self.enrollInfo.address!, day: self.enrollInfo.days!, purpose: self.enrollInfo.purpose!, job: self.enrollInfo.job!, introducing: self.enrollInfo.introducing!, meetupPurpose: self.enrollInfo.meetupPurpose!, emailTitle: self.enrollInfo.emailTitle!, emailContent: self.enrollInfo.emailContent!)
             addEmail(self.enrollInfo.emailTitle!, self.enrollInfo.emailContent!)
         } else {
+            addUser(address: self.enrollInfo.address!, day: self.enrollInfo.days!, purpose: self.enrollInfo.purpose!)
             addEmail("", "")
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

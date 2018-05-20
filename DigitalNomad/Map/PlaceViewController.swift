@@ -68,6 +68,13 @@ class PlaceViewController: UIViewController {
         self.distanceCheckButton.addTarget(self, action: #selector(touchUpDistanceCheckButton(_:)), for: .touchUpInside)
         
         initMapView()
+        
+        self.tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.centerView.snp.bottom)
+            make.left.equalTo(self.view.snp.left)
+            make.right.equalTo(self.view.snp.right)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-49)
+        }
     }
     
     //MARK:- 커스텀 메소드
@@ -306,11 +313,14 @@ extension PlaceViewController: MTMapViewDelegate {
         self.filteredData = self.loctaion_name_array
         
         mapView = MTMapView(frame: CGRect(x: 0, y: 0, width: self.centerView.frame.size.width, height: self.centerView.frame.size.height))
-        
         //mapView.daumMapApiKey = "YOUR_DAUM_API_KEY"
         self.mapView!.delegate = self
         self.mapView!.baseMapType = .standard
-        self.centerView.addSubview(self.mapView!)
+        self.view.addSubview(self.mapView)
+        mapView.snp.makeConstraints { (make) in
+            make.size.equalTo(self.centerView.snp.size)
+            make.top.equalTo(self.upperView.snp.bottom)
+        }
         self.loadStoredItems()
     }
     
@@ -486,11 +496,8 @@ extension PlaceViewController: UITableViewDataSource {
 
 //MARK:- 테이블 뷰 델리게이트 구현
 extension PlaceViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         var obj = self.realm.objects(MapLocationInfo.self)
         if flag == 1 || flag == 4 || flag == 5 { obj = obj.sorted(byKeyPath: "distance", ascending: true) }
         else if flag == 0 || flag == 3 { obj = obj.sorted(byKeyPath: "update", ascending: false) }

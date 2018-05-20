@@ -315,7 +315,7 @@
                                         <rect key="frame" x="0.0" y="455" width="328" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9aC-uI-frf" id="Cud-4G-J2B">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="직업" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wy-oE-5QY">
@@ -352,7 +352,7 @@
                                         <rect key="frame" x="0.0" y="505" width="328" height="154"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IkY-cO-FMf" id="9GK-aU-qVa">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="153.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="154"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SettingLine" translatesAutoresizingMaskIntoConstraints="NO" id="RrS-Fj-JUv">

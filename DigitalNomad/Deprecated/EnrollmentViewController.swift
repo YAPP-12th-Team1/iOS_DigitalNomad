@@ -53,7 +53,7 @@ class EnrollmentViewController: UIViewController {
             Toast(text: "입력해주세요.", duration: Delay.short).show()
             return
         } else {
-            addUser(place, selectedDay, purpose)
+//            addUser(place, selectedDay, purpose)
             addProject(selectedDay)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let next = storyboard.instantiateViewController(withIdentifier: "TabBarController")

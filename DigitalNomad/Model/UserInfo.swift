@@ -17,34 +17,64 @@ class UserInfo: Object{
     @objc dynamic var image: Data = UIImagePNGRepresentation(#imageLiteral(resourceName: "ProfileNone"))!
     @objc dynamic var address: String?
     @objc dynamic var cowork: Bool = false                                                  //default: false
-    @objc dynamic var job: String = ""
+    @objc dynamic var job: String?
     @objc dynamic var introducing: String?
     @objc dynamic var purpose: String?
 }
 
-func addUser(_ address: String, _ day: Int, _ purpose: String){
+func addUser(address: String, day: Int, purpose: String){
     let realm = try! Realm()
     let object = UserInfo()
     object.address = address
     object.purpose = purpose
-
-    // firebase
-    Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).setValue([
+    object.cowork = false
+    try! realm.write{
+        realm.add(object)
+    }
+    guard let uid = Auth.auth().currentUser?.uid else { return }
+    Database.database().reference().child("users").child(uid).setValue([
         "email": Auth.auth().currentUser?.email,
         "nickname": Auth.auth().currentUser?.displayName,
         "address": address,
         "cowork": false,
-        "job": object.job,
-        "day" : 1,
-        "purpose" : purpose,
+        "job": "",
+        "day": 1,
+        "purpose": purpose,
         "introducing": ""
     ])
-    Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("emailInfo").setValue([
+ Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("emailInfo").setValue([
         "title": "",
         "context": ""
     ])
-    try! realm.write{
+}
+
+func addUser(address: String, day: Int, purpose: String, job: String, introducing: String, meetupPurpose: String, emailTitle: String, emailContent: String) {
+    let realm = try! Realm()
+    let object = UserInfo()
+    object.address = address
+    object.purpose = purpose
+    object.cowork = true
+    object.job = job
+    object.introducing = introducing
+    try! realm.write {
         realm.add(object)
     }
+    guard let uid = Auth.auth().currentUser?.uid else { return }
+    Database.database().reference().child("users").child(uid).setValue([
+        "email": Auth.auth().currentUser?.email,
+        "nickname": Auth.auth().currentUser?.displayName,
+        "address": address,
+        "cowork": true,
+        "job": job,
+        "day": 1,
+        "purpose": purpose,
+        "introducing": introducing
+        ])
+    Database.database().reference().child("users").child(uid).child("emailInfo").setValue([
+        "title": emailTitle,
+        "context": emailContent
+        ])
 }
+
+
 

@@ -23,5 +23,3 @@ func addEmail(_ title: String, _ context: String){
         realm.add(object)
     }
 }
-
-//마이페이지 디테일의 밋업 메세지에 들어갈 내용
