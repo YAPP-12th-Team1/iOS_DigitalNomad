@@ -2,7 +2,6 @@ PODS:
   - AKPickerView-Swift (2.0.1)
   - Alamofire (4.6.0)
   - BEMCheckBox (1.4.1)
-  - DLRadioButton (1.4.11)
   - DZNEmptyDataSet (1.8.1)
   - Firebase/Auth (4.8.2):
     - Firebase/Core
@@ -41,7 +40,6 @@ PODS:
     - Firebase/Storage (~> 4.0)
     - SDWebImage (~> 4.0)
   - FSPagerView (0.7.1)
-  - GaugeKit (0.4.5)
   - GoogleSignIn (4.1.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
@@ -64,7 +62,6 @@ PODS:
   - GTMSessionFetcher/Core (1.1.13)
   - GTMSessionFetcher/Full (1.1.13):
     - GTMSessionFetcher/Core (= 1.1.13)
-  - JTMaterialSwitch (1.1)
   - leveldb-library (1.20)
   - lottie-ios (2.5.0)
   - MarqueeLabel/Swift (3.1.4)
@@ -83,7 +80,6 @@ PODS:
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
   - SnapKit (4.0.0)
-  - SwiftyJSON (4.0.0)
   - SwipeCellKit (2.1.0)
   - Tags (0.1.4)
   - Toaster (2.1.1)
@@ -92,7 +88,6 @@ DEPENDENCIES:
   - AKPickerView-Swift (from `https://github.com/Akkyie/AKPickerView-Swift.git`)
   - Alamofire (~> 4.5)
   - BEMCheckBox
-  - DLRadioButton (~> 1.4)
   - DZNEmptyDataSet
   - Firebase/Auth
   - Firebase/Core
@@ -100,15 +95,12 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseUI/Storage
   - FSPagerView
-  - GaugeKit
   - GoogleSignIn
-  - JTMaterialSwitch
   - lottie-ios
   - MarqueeLabel/Swift
   - ReachabilitySwift
   - RealmSwift
   - SnapKit (~> 4.0.0)
-  - SwiftyJSON
   - SwipeCellKit
   - Tags
   - Toaster
@@ -126,7 +118,6 @@ SPEC CHECKSUMS:
   AKPickerView-Swift: 4969de689bee54f720dd64700f7aaab02a8f2ddc
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
-  DLRadioButton: 0d04b8259e7bfd886571a1e9173c73fee7118f50
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
@@ -137,12 +128,10 @@ SPEC CHECKSUMS:
   FirebaseStorage: 181bb543d39ee3c53e0558de7ba86b1286a0427f
   FirebaseUI: 7f149d40db1a67c459df16540256b66d8f8e8c70
   FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
-  GaugeKit: 7872069a8aed2d26b17fca110fe1ab59722f8a33
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
-  JTMaterialSwitch: cad8093c3773ff9f6c60005c98d269eb869b5e04
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
@@ -152,11 +141,10 @@ SPEC CHECKSUMS:
   RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwipeCellKit: 80bdb188166484d8a0d813d9fd7748ad33181815
   Tags: b18378f79d8b30c40d4b7ae4d5edfc478434d858
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: 08d2f1d084f71af0d91d82544bb25ea24b58a5ac
+PODFILE CHECKSUM: a75003336f95327f1f22c74caf5b161aaa848d5b
 
 COCOAPODS: 1.4.0

@@ -1,11 +1,3 @@
-//
-//  NomadLifeViewController.swift
-//  DigitalNomad
-//
-//  Created by Presto on 2018. 3. 6..
-//  Copyright © 2018년 MokMinSimSeo. All rights reserved.
-//
-
 
 //프로젝트 종료시 알려주기
 //        if(diffDay > realm.objects(ProjectInfo.self).last!.day) {

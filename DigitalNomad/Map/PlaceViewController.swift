@@ -10,7 +10,6 @@ import UIKit
 import DZNEmptyDataSet
 import RealmSwift
 import Alamofire
-import SwiftyJSON
 import MapKit
 import CoreLocation
 import Firebase
@@ -68,13 +67,6 @@ class PlaceViewController: UIViewController {
         self.distanceCheckButton.addTarget(self, action: #selector(touchUpDistanceCheckButton(_:)), for: .touchUpInside)
         
         initMapView()
-        
-        self.tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.centerView.snp.bottom)
-            make.left.equalTo(self.view.snp.left)
-            make.right.equalTo(self.view.snp.right)
-            make.bottom.equalTo(self.view.snp.bottom).offset(-49)
-        }
     }
     
     //MARK:- 커스텀 메소드
@@ -460,12 +452,10 @@ extension PlaceViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let obj = self.realm.objects(MapLocationInfo.self)
         return obj.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "mapCell", for: indexPath) as? PlaceCell else { return UITableViewCell() }
         
@@ -477,6 +467,7 @@ extension PlaceViewController: UITableViewDataSource {
         let placeCategory = obj[indexPath.row].category
         let curDistance = self.distance(lat1: self.myLat, lng1: self.myLong, lat2: obj[indexPath.row].latitude, lng2: obj[indexPath.row].longitude)
     
+        cell.tag = obj[indexPath.row].id
         cell.titleLabel?.text = placeName
         cell.addressLabel?.text = placeAddress
         cell.distanceLabel?.text = "\(round(100*curDistance)/100)km"
@@ -491,6 +482,9 @@ extension PlaceViewController: UITableViewDataSource {
         }
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }
 
@@ -516,6 +510,17 @@ extension PlaceViewController: UITableViewDelegate {
         item.customImageAnchorPointOffset = .init(offsetX: 30, offsetY: 0)    // 마커 위치 조정
         
         self.mapView.add(item)
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let action = UITableViewRowAction(style: .destructive, title: "삭제") { (action, indexPath) in
+            let tag = (tableView.cellForRow(at: indexPath)?.tag)!
+            let object = self.realm.objects(MapLocationInfo.self).filter("id = %d", tag).first!
+            try! self.realm.write {
+                self.realm.delete(object)
+            }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        return [action]
     }
 }
 
