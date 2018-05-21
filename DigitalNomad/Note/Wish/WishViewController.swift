@@ -335,7 +335,7 @@ extension WishViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as? CardCell else { return UICollectionViewCell() }
             cell.imageView.image = UIImage(imageLiteralResourceName: "wish\(indexPath.item)")
             if cell.isSelected {
-                cell.backgroundImageView.layer.borderColor = UIColor.black.cgColor
+                cell.backgroundImageView.layer.borderColor = UIColor.salmon.cgColor
                 cell.backgroundImageView.layer.borderWidth = 2
             } else {
                 cell.backgroundImageView.layer.borderWidth = 0
@@ -381,7 +381,7 @@ extension WishViewController: UICollectionViewDelegate {
         } else {
             guard let item = collectionView.cellForItem(at: indexPath) as? CardCell else { return }
             item.backgroundImageView.layer.borderWidth = 2
-            item.backgroundImageView.layer.borderColor = UIColor.black.cgColor
+            item.backgroundImageView.layer.borderColor = UIColor.salmon.cgColor
         }
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
