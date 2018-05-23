@@ -131,7 +131,15 @@ extension MyDetailViewController: UITextFieldDelegate {
 
 //MARK:- 텍스트 뷰 델리게이트 구현
 extension MyDetailViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        UIView.animate(withDuration: 0.3) {
+            self.view.frame.origin.y = -100
+        }
+    }
     func textViewDidEndEditing(_ textView: UITextView) {
+        UIView.animate(withDuration: 0.3) {
+            self.view.frame.origin.y = 0
+        }
         try! realm.write {
             self.emailInfo.context = textView.text
         }

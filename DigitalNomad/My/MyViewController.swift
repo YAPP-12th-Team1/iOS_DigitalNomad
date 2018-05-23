@@ -215,7 +215,7 @@ extension MyViewController: PopupMeetUpViewDelegate {
         mail.mailComposeDelegate = self
         mail.setToRecipients([email ?? ""])
         mail.setSubject("[유목민] Co-Working 신청")
-        let imageData = UIImagePNGRepresentation(#imageLiteral(resourceName: "testImage.png")) ?? nil
+        let imageData = UIImagePNGRepresentation(#imageLiteral(resourceName: "MailImage")) ?? nil
         let imageString = imageData?.base64EncodedString() ?? ""
         var body = ""
         if let message = self.emailInfo?.context {
