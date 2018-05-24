@@ -1079,10 +1079,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.digitalnomad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-<<<<<<< HEAD
-=======
-				PROVISIONING_PROFILE = "";
->>>>>>> 9ba41f4e16b8f8030a552d24359d1d119fe98499
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DigitalNomad/DigitalNomad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
