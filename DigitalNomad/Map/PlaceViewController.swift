@@ -496,7 +496,7 @@ extension PlaceViewController: UITableViewDelegate {
         if flag == 1 || flag == 4 || flag == 5 { obj = obj.sorted(byKeyPath: "distance", ascending: true) }
         else if flag == 0 || flag == 3 { obj = obj.sorted(byKeyPath: "update", ascending: false) }
         let objClicked = obj[indexPath.row]
-        let objClickedMapPoint = MTMapPoint.init(geoCoord: MTMapPointGeo.init(latitude: objClicked.latitude-0.0015, longitude: objClicked.longitude))
+        let objClickedMapPoint = MTMapPoint.init(geoCoord: MTMapPointGeo.init(latitude: objClicked.latitude, longitude: objClicked.longitude))
         self.mapView?.setMapCenter(objClickedMapPoint, animated: true)
         
         self.mapView.removeAllPOIItems()
@@ -519,6 +519,8 @@ extension PlaceViewController: UITableViewDelegate {
                 self.realm.delete(object)
             }
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.mapView.removeAllPOIItems()
+            self.loadStoredItems()
         }
         return [action]
     }
