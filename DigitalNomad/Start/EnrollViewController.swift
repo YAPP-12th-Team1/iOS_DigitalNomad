@@ -199,7 +199,7 @@ extension EnrollViewController: UITableViewDataSource {
             cell.titleTextField.tag = 5
             cell.contentTextView.tag = 6
             cell.titleTextField.text = self.enrollInfo.emailTitle
-            cell.contentTextView.text = self.enrollInfo.emailContent == nil ? "내용을 입력해주세요." : nil
+            cell.contentTextView.text = self.enrollInfo.emailContent ?? "내용을 입력해주세요."
             return cell
         default:
             return UITableViewCell()

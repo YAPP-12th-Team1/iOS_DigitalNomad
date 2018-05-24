@@ -16,5 +16,5 @@ class EnrollInfo {
     var introducing: String?
     var meetupPurpose: String?
     var emailTitle: String?
-    var emailContent: String?
+    var emailContent: String? 
 }
