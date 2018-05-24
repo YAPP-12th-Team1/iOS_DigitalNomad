@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>968526464605-jqdg0c5rffthmc28dkq1l6pr9843a5l6.apps.googleusercontent.com</string>
+	<string>968526464605-npfp2hbhvuv61ijncthsor8tcnrt44ve.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.968526464605-jqdg0c5rffthmc28dkq1l6pr9843a5l6</string>
+	<string>com.googleusercontent.apps.968526464605-npfp2hbhvuv61ijncthsor8tcnrt44ve</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAA7-DlN6D5jaIoinqv4CrdpN8cYnXVlkg</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,23 +17,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>mokminsimseo.DigitalNomad</string>
+	<string>com.yapp.digitalnomad</string>
 	<key>PROJECT_ID</key>
 	<string>digitalnomad-2fab3</string>
 	<key>STORAGE_BUCKET</key>
 	<string>digitalnomad-2fab3.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:968526464605:ios:9ec5f2825b6a0c1b</string>
+	<string>1:968526464605:ios:2f617e2ba8a76f0f</string>
 	<key>DATABASE_URL</key>
 	<string>https://digitalnomad-2fab3.firebaseio.com</string>
 </dict>

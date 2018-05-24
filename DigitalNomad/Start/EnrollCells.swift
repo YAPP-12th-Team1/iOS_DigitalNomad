@@ -21,7 +21,6 @@ class DateCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.pickerView.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-//        self.pickerView.highlightedFont = UIFont.systemFont(ofSize: 16, weight: .regular)
         self.pickerView.textColor = #colorLiteral(red: 0.3725490196, green: 0.3725490196, blue: 0.3725490196, alpha: 1)
         self.pickerView.pickerViewStyle = .wheel
         self.pickerView.viewDepth = UIScreen.main.bounds.height

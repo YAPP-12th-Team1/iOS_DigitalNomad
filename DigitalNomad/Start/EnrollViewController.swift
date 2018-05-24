@@ -118,12 +118,18 @@ extension EnrollViewController: UITextFieldDelegate {
 
 extension EnrollViewController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        UIView.animate(withDuration: 0.3) {
+            self.view.frame.origin.y = -100
+        }
         if textView.text == "내용을 입력해주세요." {
             textView.text = nil
         }
         return true
     }
     func textViewDidEndEditing(_ textView: UITextView) {
+        UIView.animate(withDuration: 0.3) {
+            self.view.frame.origin.y = 0
+        }
         self.enrollInfo.emailContent = textView.text
         self.validateEnrollButton()
     }
@@ -193,7 +199,7 @@ extension EnrollViewController: UITableViewDataSource {
             cell.titleTextField.tag = 5
             cell.contentTextView.tag = 6
             cell.titleTextField.text = self.enrollInfo.emailTitle
-            cell.contentTextView.text = self.enrollInfo.emailContent == nil ? "내용을 입력해주세요." : nil
+            cell.contentTextView.text = self.enrollInfo.emailContent ?? "내용을 입력해주세요."
             return cell
         default:
             return UITableViewCell()

@@ -33,8 +33,8 @@ func addUser(address: String, day: Int, purpose: String){
     }
     guard let uid = Auth.auth().currentUser?.uid else { return }
     Database.database().reference().child("users").child(uid).setValue([
-        "email": Auth.auth().currentUser?.email,
-        "nickname": Auth.auth().currentUser?.displayName,
+        "email": Auth.auth().currentUser?.email ?? "NoEmail",
+        "nickname": Auth.auth().currentUser?.displayName ?? "익명의유목민",
         "address": address,
         "cowork": false,
         "job": "",
@@ -61,8 +61,8 @@ func addUser(address: String, day: Int, purpose: String, job: String, introducin
     }
     guard let uid = Auth.auth().currentUser?.uid else { return }
     Database.database().reference().child("users").child(uid).setValue([
-        "email": Auth.auth().currentUser?.email,
-        "nickname": Auth.auth().currentUser?.displayName,
+        "email": Auth.auth().currentUser?.email ?? "NoEmail",
+        "nickname": Auth.auth().currentUser?.displayName ?? "익명의유목민",
         "address": address,
         "cowork": true,
         "job": job,

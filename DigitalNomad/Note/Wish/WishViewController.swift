@@ -60,6 +60,7 @@ class WishViewController: UIViewController {
         flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.minimumLineSpacing = 10
+        flowLayout.sectionHeadersPinToVisibleBounds = true
         let quarter = self.collectionView.frame.width / 4
         flowLayout.itemSize = CGSize(width: quarter - 40, height: quarter - 20)
         self.collectionView.collectionViewLayout = flowLayout
@@ -329,6 +330,7 @@ extension WishViewController: UICollectionViewDataSource {
                 } else {
                     cell.checkBox.setOn(false, animated: false)
                 }
+                cell.checkBox.reload()
             }
             return cell
         } else {
@@ -470,7 +472,6 @@ extension WishViewController: UICollectionViewDelegate {
         } else {
             return collectionView.dequeueReusableSupplementaryView(ofKind: "kind", withReuseIdentifier: "cardHeaderView", for: indexPath)
         }
-        
     }
 }
 

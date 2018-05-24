@@ -18,6 +18,7 @@ class ReachabilityManager: NSObject {
     }
     let reachability = Reachability()!
     
+    
     @objc func reachabilityChanged(notification: Notification) {
         let reachability = notification.object as! Reachability
         switch reachability.connection {

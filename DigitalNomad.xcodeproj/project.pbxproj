@@ -55,12 +55,12 @@
 		19B9365D20A7DB1800FC826E /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9365C20A7DB1800FC826E /* UIColor+.swift */; };
 		19B9365F20A7DB4000FC826E /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9365E20A7DB4000FC826E /* UIFont+.swift */; };
 		19B9366320A7E29C00FC826E /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9366220A7E29C00FC826E /* GoalViewController.swift */; };
+		19BDEE4920B65E7200B501EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BDEE4820B65E7200B501EF /* GoogleService-Info.plist */; };
 		19C54AA520A988A100717C6F /* PopupMeetUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C54AA420A988A100717C6F /* PopupMeetUpView.xib */; };
 		19C54AA720A988C400717C6F /* PopupMeetUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AA620A988C400717C6F /* PopupMeetUpView.swift */; };
 		19C54AAE20A99DDC00717C6F /* MyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AAD20A99DDC00717C6F /* MyDetailViewController.swift */; };
 		19C54AB520A9A10B00717C6F /* MeetUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C54AB320A9A10B00717C6F /* MeetUpCell.swift */; };
 		19C54AB620A9A10B00717C6F /* MeetUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19C54AB420A9A10B00717C6F /* MeetUpCell.xib */; };
-		19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19E63EE020416D4D003D3155 /* GoogleService-Info.plist */; };
 		19E6FCD020420F12006E76EC /* MapLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */; };
 		19EF0FE820A960200013DCF9 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19EF0FE720A960200013DCF9 /* My.storyboard */; };
 		19EF0FEA20A960C70013DCF9 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EF0FE920A960C70013DCF9 /* MyViewController.swift */; };
@@ -200,12 +200,12 @@
 		19B9365C20A7DB1800FC826E /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		19B9365E20A7DB4000FC826E /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		19B9366220A7E29C00FC826E /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
+		19BDEE4820B65E7200B501EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19C54AA420A988A100717C6F /* PopupMeetUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMeetUpView.xib; sourceTree = "<group>"; };
 		19C54AA620A988C400717C6F /* PopupMeetUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMeetUpView.swift; sourceTree = "<group>"; };
 		19C54AAD20A99DDC00717C6F /* MyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailViewController.swift; sourceTree = "<group>"; };
 		19C54AB320A9A10B00717C6F /* MeetUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUpCell.swift; sourceTree = "<group>"; };
 		19C54AB420A9A10B00717C6F /* MeetUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetUpCell.xib; sourceTree = "<group>"; };
-		19E63EE020416D4D003D3155 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19E6FCCF20420F12006E76EC /* MapLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationInfo.swift; sourceTree = "<group>"; };
 		19EF0FE720A960200013DCF9 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
 		19EF0FE920A960C70013DCF9 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
@@ -475,7 +475,7 @@
 				195CFFAD2041AF010062A26C /* Extension */,
 				19F2CDFA204141CD00CB113B /* Supporting Files */,
 				19F2CDEE2041419C00CB113B /* Info.plist */,
-				19E63EE020416D4D003D3155 /* GoogleService-Info.plist */,
+				19BDEE4820B65E7200B501EF /* GoogleService-Info.plist */,
 				6B5411E220418F3000DDB2D5 /* DigitalNomad-Bridging-Header.h */,
 			);
 			path = DigitalNomad;
@@ -499,9 +499,9 @@
 		19F2CDFA204141CD00CB113B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				19F2CDE92041419C00CB113B /* Assets.xcassets */,
 				191DFED0204EAFB70095E9C1 /* images */,
 				19F2CDE02041419C00CB113B /* AppDelegate.swift */,
-				19F2CDE92041419C00CB113B /* Assets.xcassets */,
 				19587FFA20766A4000FD3D01 /* ERProgressHud.swift */,
 				1970BBC720AD4316005A593B /* ReachabilityManager.swift */,
 			);
@@ -695,7 +695,6 @@
 				6B5412192041900600DDB2D5 /* map_present.png in Resources */,
 				196C4AFA2041493600C7BFAF /* Map.storyboard in Resources */,
 				6B634A48204EF79F00A59EEF /* kamel.png in Resources */,
-				19E63EE120416D4D003D3155 /* GoogleService-Info.plist in Resources */,
 				1946CBB020AE4E3600A1A2BC /* GoalYesterdayView.xib in Resources */,
 				6B3FDE64206FECFA0081332B /* coworking(2)_111111.jpg in Resources */,
 				1946CBBA20AE500500A1A2BC /* GoalYesterdayCell.xib in Resources */,
@@ -706,6 +705,7 @@
 				6B3FDE68206FECFA0081332B /* history(2)_151111.jpg in Resources */,
 				6B3FDE73206FECFA0081332B /* culture(2)_511111.jpg in Resources */,
 				6B634A47204EF79F00A59EEF /* restaurant.png in Resources */,
+				19BDEE4920B65E7200B501EF /* GoogleService-Info.plist in Resources */,
 				198D92CB2061447E001325DD /* Start.storyboard in Resources */,
 				6BA8A9C92070313500DD7B3B /* seoul.jpg in Resources */,
 				194CD6E420AC4F5A00110AFD /* CardCell.xib in Resources */,
@@ -1079,6 +1079,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.digitalnomad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
+=======
+				PROVISIONING_PROFILE = "";
+>>>>>>> 9ba41f4e16b8f8030a552d24359d1d119fe98499
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DigitalNomad/DigitalNomad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

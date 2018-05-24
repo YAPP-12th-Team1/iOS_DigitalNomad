@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.00</string>
+	<string>1.0.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -25,16 +25,21 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.968526464605-jqdg0c5rffthmc28dkq1l6pr9843a5l6</string>
+				<string>com.googleusercontent.apps.968526464605-npfp2hbhvuv61ijncthsor8tcnrt44ve</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>3d40b6ed4ced3246061284fa06c17c02</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>위치 정보를 사용하여 가까운 유목민을 먼저 표시합니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

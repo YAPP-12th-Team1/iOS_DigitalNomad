@@ -397,6 +397,9 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0m-Ay-Kgm" customClass="BEMCheckBox">
                                                                     <rect key="frame" x="60.5" y="2" width="26.5" height="26.5"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="Y0m-Ay-Kgm" secondAttribute="height" multiplier="1:1" id="s3R-vI-DRU"/>
+                                                                    </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                                             <real key="value" value="1"/>
@@ -413,6 +416,9 @@
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="offFillColor">
                                                                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="size" keyPath="minimumTouchSize">
+                                                                            <size key="value" width="1" height="1"/>
+                                                                        </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="touchUpCheckBox:" destination="WjI-Kd-DDU" eventType="valueChanged" id="fPK-p4-hiX"/>
@@ -422,9 +428,7 @@
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="Y0m-Ay-Kgm" secondAttribute="trailing" constant="2" id="05A-FK-fVt"/>
-                                                                <constraint firstItem="Y0m-Ay-Kgm" firstAttribute="height" secondItem="KAo-2D-uxB" secondAttribute="height" multiplier="0.3" id="1kz-ZP-mp3"/>
                                                                 <constraint firstAttribute="bottom" secondItem="GoV-Mq-DuQ" secondAttribute="bottom" constant="8" id="3GZ-e8-b10"/>
-                                                                <constraint firstItem="Y0m-Ay-Kgm" firstAttribute="width" secondItem="KAo-2D-uxB" secondAttribute="width" multiplier="0.3" id="BJt-SH-kAR"/>
                                                                 <constraint firstAttribute="trailing" secondItem="GoV-Mq-DuQ" secondAttribute="trailing" constant="8" id="EIa-e6-oEz"/>
                                                                 <constraint firstItem="KAo-2D-uxB" firstAttribute="leading" secondItem="xPF-TK-fiB" secondAttribute="leading" id="Gwo-kc-F6S"/>
                                                                 <constraint firstItem="KAo-2D-uxB" firstAttribute="top" secondItem="xPF-TK-fiB" secondAttribute="top" id="LfD-Aa-eO6"/>
@@ -460,6 +464,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="bVu-bv-18w" secondAttribute="bottom" id="8wW-Fj-I4O"/>
                                                     <constraint firstAttribute="trailing" secondItem="xPF-TK-fiB" secondAttribute="trailing" id="Bmi-Qi-dEe"/>
                                                     <constraint firstItem="bVu-bv-18w" firstAttribute="top" secondItem="xPF-TK-fiB" secondAttribute="bottom" id="Xut-Eh-0Yd"/>
+                                                    <constraint firstItem="Y0m-Ay-Kgm" firstAttribute="width" secondItem="WjI-Kd-DDU" secondAttribute="width" multiplier="0.3" id="d2P-4D-rwf"/>
                                                     <constraint firstAttribute="trailing" secondItem="bVu-bv-18w" secondAttribute="trailing" id="g0x-Tg-Tgq"/>
                                                     <constraint firstItem="xPF-TK-fiB" firstAttribute="leading" secondItem="WjI-Kd-DDU" secondAttribute="leading" id="iU8-Ek-QXA"/>
                                                     <constraint firstItem="xPF-TK-fiB" firstAttribute="top" secondItem="WjI-Kd-DDU" secondAttribute="top" id="obu-WV-LAL"/>
