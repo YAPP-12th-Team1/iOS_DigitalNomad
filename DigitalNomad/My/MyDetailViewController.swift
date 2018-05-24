@@ -268,11 +268,12 @@ extension MyDetailViewController: UIImagePickerControllerDelegate, UINavigationC
         imageReference.putData(result.image, metadata: nil) { (metadata, error) in
             if let error = error { print(error.localizedDescription) }
             else {
-                if let downloadURL = metadata?.downloadURL() {
+                imageReference.downloadURL(completion: { (url, _) in
+                    guard let url = url else { return }
                     Database.database().reference().child("users").child(uid).updateChildValues([
-                        "profileImage": String(describing: downloadURL)
+                        "profileImage": String(describing: url)
                         ])
-                }
+                })
             }
         }
         picker.dismiss(animated: true, completion: nil)
