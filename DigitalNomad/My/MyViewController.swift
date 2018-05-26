@@ -116,15 +116,16 @@ class MyViewController: UIViewController {
                         let email = value["email"] as? String ?? ""
                         var image: UIImage? = nil
                         if let profileImageData = value["profileImage"] as? String {
-                            guard let imageReference = URL(string: profileImageData) else { return }
-                            do {
-                                let imageData = try Data(contentsOf: imageReference)
-                                image = UIImage(data: imageData)
-                            } catch { print(error.localizedDescription) }
+                            if let imageReference = URL(string: profileImageData) {
+                                do {
+                                    let imageData = try Data(contentsOf: imageReference)
+                                    image = UIImage(data: imageData)
+                                } catch { print(error.localizedDescription) }
+                            }
                         }
                         self.meetupData.append((nickname: nickname, job: job, day: day, address: address, introducing: introducing, image: image))
                         self.emails.append(email)
-                        if meetupKey == self.meetupKeys.last! {
+                        if self.meetupKeys.count == self.meetupData.count {
                             OperationQueue.main.addOperation {
                                 self.pagerView.reloadData()
                                 self.activityIndicator.stopAnimating()

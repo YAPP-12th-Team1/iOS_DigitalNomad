@@ -79,14 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         // ...
-        
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if error != nil {
-                // ...
-                return
-            }
-            // User is signed in
-            // ...
+        Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
+            if error != nil { return }
+            //User is signed in...
         }
     }
     

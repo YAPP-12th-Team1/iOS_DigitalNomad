@@ -30,7 +30,7 @@ class ParentViewController: UIViewController {
         //N일차 파이어베이스 갱신
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Database.database().reference().child("users").child(uid).updateChildValues([
-            "day": try! Realm().objects(ProjectInfo.self).last?.date.dateInterval
+            "day": try! Realm().objects(ProjectInfo.self).last?.date.dateInterval ?? 1
             ])
     }
     
