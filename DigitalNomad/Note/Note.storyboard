@@ -367,6 +367,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ListNote" translatesAutoresizingMaskIntoConstraints="NO" id="tSy-Jc-zH1">
                                         <rect key="frame" x="0.0" y="0.0" width="337" height="382"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v2n-w6-Ila">
                                         <rect key="frame" x="0.0" y="30" width="337" height="352"/>
