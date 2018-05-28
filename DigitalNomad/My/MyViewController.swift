@@ -99,8 +99,8 @@ class MyViewController: UIViewController {
                 guard let uid = Auth.auth().currentUser?.uid else { return }
                 if newKey != uid {
                     guard let newValue = key.value as? NSMutableDictionary else { return }
-                    if newValue["cowork"] != nil {
-                        self.meetupKeys.append(newKey)
+                    if let isCowork = newValue["cowork"] as? Bool {
+                        if isCowork { self.meetupKeys.append(newKey) }
                     }
                 }
             }
