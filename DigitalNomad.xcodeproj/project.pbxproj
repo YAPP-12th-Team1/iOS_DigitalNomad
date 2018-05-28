@@ -69,7 +69,6 @@
 		19F2CDE82041419C00CB113B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE62041419C00CB113B /* Main.storyboard */; };
 		19F2CDEA2041419C00CB113B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDE92041419C00CB113B /* Assets.xcassets */; };
 		19F2CDED2041419C00CB113B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2CDEB2041419C00CB113B /* LaunchScreen.storyboard */; };
-		4A8AC3322070221E002F6B32 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC3312070221E002F6B32 /* testImage.png */; };
 		6B3FDE5D206FECFA0081332B /* coworking(3)_111115.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */; };
 		6B3FDE5E206FECFA0081332B /* nature(4)_111511.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */; };
 		6B3FDE5F206FECFA0081332B /* coworking(1)_111111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B3FDE42206FECEE0081332B /* coworking(1)_111111.jpg */; };
@@ -216,7 +215,6 @@
 		19F2CDE92041419C00CB113B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19F2CDEC2041419C00CB113B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19F2CDEE2041419C00CB113B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A8AC3312070221E002F6B32 /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
 		6B3FDE40206FECED0081332B /* coworking(3)_111115.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coworking(3)_111115.jpg"; sourceTree = "<group>"; };
 		6B3FDE41206FECEE0081332B /* nature(4)_111511.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nature(4)_111511.jpg"; sourceTree = "<group>"; };
 		6B3FDE42206FECEE0081332B /* coworking(1)_111111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coworking(1)_111111.jpg"; sourceTree = "<group>"; };
@@ -359,7 +357,6 @@
 		191DFED0204EAFB70095E9C1 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				4A8AC3312070221E002F6B32 /* testImage.png */,
 				6B5877A82064BBEA0001FAB5 /* researchData */,
 				6B634A43204EF79F00A59EEF /* cafe.png */,
 				6B634A44204EF79F00A59EEF /* restaurant.png */,
@@ -762,7 +759,6 @@
 				6B5412032041900600DDB2D5 /* map_pinup_custom@3x.png in Resources */,
 				6B5412162041900600DDB2D5 /* noimage256.png in Resources */,
 				6B3FDE6B206FECFA0081332B /* citynature(2)_111151.jpg in Resources */,
-				4A8AC3322070221E002F6B32 /* testImage.png in Resources */,
 				6B5412042041900600DDB2D5 /* map_pin_custom.png in Resources */,
 				6BA8A9C82070313500DD7B3B /* daegu.jpg in Resources */,
 			);
