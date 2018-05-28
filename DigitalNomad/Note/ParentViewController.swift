@@ -32,8 +32,36 @@ class ParentViewController: UIViewController {
         Database.database().reference().child("users").child(uid).updateChildValues([
             "day": try! Realm().objects(ProjectInfo.self).last?.date.dateInterval ?? 1
             ])
+        
+        //프로젝트 기한 종료시 알려주기
+        noticeProjectEnded()
     }
     
+    //MARK: 프로젝트 기한 종료시 알려주기
+    func noticeProjectEnded() {
+        let projectDay = self.realm.objects(ProjectInfo.self).last?.day ?? 1
+        let currentDay = self.realm.objects(ProjectInfo.self).last?.date.dateInterval ?? 1
+        if projectDay < currentDay {
+            let alert = UIAlertController(title: "프로젝트 종료 알림", message: "프로젝트가 종료되었습니다.", preferredStyle: .alert)
+            let initializeAction = UIAlertAction(title: "프로젝트 초기화", style: .default) { (action) in
+                let storyboard = UIStoryboard(name: "Start", bundle: nil)
+                let next = storyboard.instantiateViewController(withIdentifier: "EnrollViewController")
+                next.modalTransitionStyle = .flipHorizontal
+                self.present(next, animated: true, completion: nil)
+            }
+            let noAction = UIAlertAction(title: "계속하기", style: .cancel) { action in
+                let alert = UIAlertController(title: "", message: "마이페이지 설정에서 프로젝트를 초기화할 수 있습니다.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
+            alert.addAction(initializeAction)
+            alert.addAction(noAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK: 뷰 컨트롤러 전환
     func switchViewController(from fromVC: UIViewController?, to toVC: UIViewController?) {
         UIView.transition(with: view, duration: 0.4, options: [.curveEaseInOut, .transitionCurlDown], animations: {
             if fromVC != nil {

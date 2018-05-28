@@ -249,7 +249,7 @@ extension MyDetailViewController: UITableViewDataSource {
 extension MyDetailViewController: UITableViewDelegate {
     //MARK: 프로젝트 등록 화면으로 이동
     func presentInitializeAlert() {
-        let alert = UIAlertController(title: "프로젝트 초기화", message: "프로젝트 등록 화면으로 접근합니다.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "프로젝트 초기화", message: "프로젝트 등록 화면으로 이동합니다.", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "예", style: .default) { (action) in
             let storyboard = UIStoryboard(name: "Start", bundle: nil)
             let next = storyboard.instantiateViewController(withIdentifier: "EnrollViewController")
