@@ -443,17 +443,27 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVu-bv-18w">
                                                             <rect key="frame" x="0.0" y="89" width="89" height="34"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jr0-Zp-HZE">
-                                                                    <rect key="frame" x="33" y="9.5" width="23" height="16"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카드" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jr0-Zp-HZE" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                                                    <rect key="frame" x="0.0" y="9.5" width="89" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                                     <color key="textColor" red="0.0" green="0.80000000000000004" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                                                            <real key="value" value="8"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                                            <real key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="jr0-Zp-HZE" firstAttribute="centerY" secondItem="bVu-bv-18w" secondAttribute="centerY" id="28i-Qr-t8U"/>
                                                                 <constraint firstItem="jr0-Zp-HZE" firstAttribute="centerX" secondItem="bVu-bv-18w" secondAttribute="centerX" id="QmE-7f-vNZ"/>
+                                                                <constraint firstItem="jr0-Zp-HZE" firstAttribute="leading" secondItem="bVu-bv-18w" secondAttribute="leading" id="fzT-Ta-6tz"/>
+                                                                <constraint firstAttribute="trailing" secondItem="jr0-Zp-HZE" secondAttribute="trailing" id="mUE-g2-69Y"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>

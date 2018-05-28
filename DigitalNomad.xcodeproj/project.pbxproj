@@ -398,14 +398,6 @@
 			path = Wish;
 			sourceTree = "<group>";
 		};
-		19362B7620A9C7E100419425 /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				19F167E120B2A97600654914 /* Todo */,
-			);
-			path = Deprecated;
-			sourceTree = "<group>";
-		};
 		195CFFAD2041AF010062A26C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,7 +454,7 @@
 		19F2CDDF2041419C00CB113B /* DigitalNomad */ = {
 			isa = PBXGroup;
 			children = (
-				19362B7620A9C7E100419425 /* Deprecated */,
+				19F167E120B2A97600654914 /* Todo */,
 				19F2CDEB2041419C00CB113B /* LaunchScreen.storyboard */,
 				19F2CDF4204141B000CB113B /* Model */,
 				19F2CDE62041419C00CB113B /* Main.storyboard */,

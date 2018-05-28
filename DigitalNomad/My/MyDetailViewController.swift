@@ -210,12 +210,24 @@ extension MyDetailViewController: UITableViewDataSource {
                 return cell
             }
         case 2:
+            if self.userInfo.cowork {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "section3Cell", for: indexPath) as? Section3Cell else { return UITableViewCell() }
+                cell.titleTextField.tag = 3
+                cell.contentTextView.tag = 4
+                cell.titleTextField.text = self.emailInfo.title
+                cell.contentTextView.text = self.emailInfo.context
+                return cell
+            } else {
+                return tableView.dequeueReusableCell(withIdentifier: "initializeCell", for: indexPath)
+            }
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "section3Cell", for: indexPath) as? Section3Cell else { return UITableViewCell() }
             cell.titleTextField.tag = 3
             cell.contentTextView.tag = 4
             cell.titleTextField.text = self.emailInfo.title
             cell.contentTextView.text = self.emailInfo.context
             return cell
+        case 3:
+            return tableView.dequeueReusableCell(withIdentifier: "initializeCell", for: indexPath)
         default:
             return UITableViewCell()
         }
@@ -225,20 +237,45 @@ extension MyDetailViewController: UITableViewDataSource {
         case 0: return 2
         case 1: return self.userInfo.cowork ? 4 : 1
         case 2: return 1
+        case 3: return 1
         default: return 0
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.userInfo.cowork ? 3 : 2
+        return self.userInfo.cowork ? 4 : 3
     }
 }
 
 extension MyDetailViewController: UITableViewDelegate {
+    func presentInitializeAlert() {
+        let alert = UIAlertController(title: "프로젝트 초기화", message: "프로젝트 등록 화면으로 접근합니다.", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "예", style: .default) { (action) in
+            //프로젝트 등록 화면으로 이동
+        }
+        let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if self.userInfo.cowork {
+            if indexPath.section == 3 {
+                presentInitializeAlert()
+            }
+        } else {
+            if indexPath.section == 2 {
+                presentInitializeAlert()
+            }
+        }
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section != 2 {
+        if self.userInfo.cowork {
+            if indexPath.section != 2 { return 50 }
+            return 154
+        } else {
             return 50
         }
-        return 154
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0

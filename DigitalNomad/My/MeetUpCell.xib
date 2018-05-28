@@ -30,17 +30,39 @@
                             <constraint firstAttribute="width" constant="58" id="SyW-Yg-OHU"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxE-tY-yOf">
-                        <rect key="frame" x="204.5" y="120" width="32" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울시 어디구" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxE-tY-yOf" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                        <rect key="frame" x="166.5" y="120" width="70" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="H8d-P7-Aqu"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                         <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정약용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="If3-Uc-D5E">
-                        <rect key="frame" x="114" y="119.5" width="34" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정약용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="If3-Uc-D5E" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                        <rect key="frame" x="114" y="119.5" width="40" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="r4P-CM-KUE"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                         <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30일차" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QY-Uu-wsa">
                         <rect key="frame" x="194" y="148.5" width="42" height="17"/>
@@ -65,11 +87,19 @@
                         <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot; 저녁 식사 함께해요! &quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8e-ON-D3x">
-                        <rect key="frame" x="65" y="38.5" width="146" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot; 저녁 식사 함께해요! &quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8e-ON-D3x" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                        <rect key="frame" x="39" y="38.5" width="197" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>
@@ -82,12 +112,14 @@
                 <constraint firstAttribute="trailing" secondItem="Xr3-fJ-LTx" secondAttribute="trailing" id="C72-bU-zy0"/>
                 <constraint firstItem="Xr3-fJ-LTx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="GgT-Ou-ze5"/>
                 <constraint firstItem="T6Z-1t-AgY" firstAttribute="leading" secondItem="2YB-Mt-E3f" secondAttribute="trailing" constant="17" id="J6M-ya-CVc"/>
+                <constraint firstAttribute="trailing" secondItem="t8e-ON-D3x" secondAttribute="trailing" constant="40" id="Mdd-4k-Ux3"/>
                 <constraint firstItem="2YB-Mt-E3f" firstAttribute="leading" secondItem="OXu-k6-5uv" secondAttribute="leading" id="N3n-Up-8ty"/>
                 <constraint firstItem="t8e-ON-D3x" firstAttribute="centerX" secondItem="9Ew-g9-Z3U" secondAttribute="centerX" id="Nck-1C-o1l"/>
                 <constraint firstItem="If3-Uc-D5E" firstAttribute="top" secondItem="2YB-Mt-E3f" secondAttribute="top" constant="6" id="TzD-xn-Vg0"/>
                 <constraint firstItem="T6Z-1t-AgY" firstAttribute="bottom" secondItem="2YB-Mt-E3f" secondAttribute="bottom" constant="-6" id="U3K-wf-Zvs"/>
                 <constraint firstItem="fxE-tY-yOf" firstAttribute="trailing" secondItem="OXu-k6-5uv" secondAttribute="trailing" id="dKG-SQ-ahN"/>
                 <constraint firstAttribute="bottom" secondItem="Xr3-fJ-LTx" secondAttribute="bottom" id="hN1-zj-qPU"/>
+                <constraint firstItem="t8e-ON-D3x" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="39" id="iIA-E2-jgJ"/>
                 <constraint firstItem="OXu-k6-5uv" firstAttribute="top" secondItem="2YB-Mt-E3f" secondAttribute="bottom" constant="15" id="j2t-hp-XId"/>
                 <constraint firstItem="If3-Uc-D5E" firstAttribute="leading" secondItem="2YB-Mt-E3f" secondAttribute="trailing" constant="17" id="k3b-Nb-rlf"/>
                 <constraint firstItem="OXu-k6-5uv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="kYE-ON-3kW"/>
