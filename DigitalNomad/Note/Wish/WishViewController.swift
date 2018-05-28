@@ -315,6 +315,7 @@ extension WishViewController: UICollectionViewDataSource {
             let gesture = UITapGestureRecognizer(target: self, action: #selector(touchUpPlus(_:)))
             if indexPath.item == 0 {
                 cell.todoImageView.image = #imageLiteral(resourceName: "Plus")
+                cell.todoImageView.contentMode = .center
                 cell.todoImageView.addGestureRecognizer(gesture)
                 cell.todoLabel.text = nil
                 cell.checkBox.isHidden = true
@@ -322,6 +323,7 @@ extension WishViewController: UICollectionViewDataSource {
                 let result = self.todayObject[indexPath.item - 1]
                 cell.checkBox.tag = result.id
                 cell.todoImageView.image = result.pictureIndex == -1 ? nil : UIImage(imageLiteralResourceName: "wish\(result.pictureIndex)")
+                cell.todoImageView.contentMode = .scaleAspectFit
                 cell.todoImageView.removeGestureRecognizer(gesture)
                 cell.todoLabel.text = result.todo
                 cell.checkBox.isHidden = false

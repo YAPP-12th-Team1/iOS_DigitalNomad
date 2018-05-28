@@ -474,11 +474,11 @@ extension PlaceViewController: UITableViewDataSource {
         
         switch placeCategory {
         case 15:
-            cell.placeImageView.image = #imageLiteral(resourceName: "cafe.png")
+            cell.placeImageView.image = #imageLiteral(resourceName: "MapCafe")
         case 14:
-            cell.placeImageView.image = #imageLiteral(resourceName: "restaurant.png")
+            cell.placeImageView.image = #imageLiteral(resourceName: "MapRestaurant")
         default:
-            cell.placeImageView.image = #imageLiteral(resourceName: "kamel.png")
+            cell.placeImageView.image = #imageLiteral(resourceName: "MapLocation")
         }
         
         return cell

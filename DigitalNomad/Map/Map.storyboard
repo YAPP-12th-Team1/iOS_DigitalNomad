@@ -54,7 +54,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8rZ-fg-za4">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapLocation" translatesAutoresizingMaskIntoConstraints="NO" id="8rZ-fg-za4">
                                                     <rect key="frame" x="15" y="11" width="48" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="EUJ-ed-5Ux"/>
@@ -167,6 +167,7 @@
     <resources>
         <image name="Flag" width="13" height="18"/>
         <image name="MapButtonBackground" width="85" height="35"/>
+        <image name="MapLocation" width="18" height="18"/>
         <image name="MapSearchBackground" width="244" height="35"/>
         <image name="MapUpper" width="375" height="87"/>
         <image name="SearchBlack" width="16" height="16"/>
